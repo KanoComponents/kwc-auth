@@ -3,7 +3,7 @@
   "description": "Front end for Kano&#39;s authentication flow.",
   "main": "kwc-auth.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.9.0",
+    "polymer": "Polymer/polymer#1 - 2",
     "kwc-style": "git@github.com:KanoComponents/kwc-style.git",
     "kwc-modal": "git@github.com:KanoComponents/kwc-modal.git",
     "kwc-behaviours": "git@github.com:KanoComponents/kwc-behaviours.git",
