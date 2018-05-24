@@ -3,6 +3,8 @@
 ## Purpose
 Front end for Kano&#39;s authentication flow.
 
+**24/05/2018**: The README is out of date. Please proceed with caution.
+
 This component implements view according to the current User Login Journey as descibe in this [working document](https://docs.google.com/a/kano.me/drawings/d/1TJx_Y6rA6tQYHww99x2aJy4qxoWrQZzoOjYEnQUh5f0/edit?usp=sharing). **Please note** _this link is not garunteed to be in sync with the component but should be a good guide_.
 
 ## Properties
@@ -18,7 +20,7 @@ This component implements view according to the current User Login Journey as de
   * terms: Flags if user has accepted terms and conditions.
   * username: Input value.
   * worldUrl: Kano world URL.
- 
+
  If `assetsPath` is given the modal will look for a motif icon at `${assetsPath}/avatar/judoka-face.svg` and an arrow icon at `${assetsPath}/icons/link-arrow.svg` so you need to provide those files.
 
 ## API
@@ -29,7 +31,7 @@ Open the `kwc-auth` modal. The default view is the [`login`](#login) view. This 
 #### Arguments
 * defaultview: one of `login`, `signup`, `grownups`, `password-reset` or `username-reminder`.
 ### kwc-auth#reset()
-Reset the internal state of the auth modal. Essentially 
+Reset the internal state of the auth modal. Essentially
 ```js
 kwc-auth.errors = {};
 kwc-auth.firstName = null;
