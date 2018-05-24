@@ -259,7 +259,7 @@ Now you are ready to authenticate!
                             <div class="form-error" hidden$="[[!errors.terms]]">[[errors.terms]]</div>
                         </div>
                         <div class="checkbox-input">
-                            <input type="checkbox" checked="{{newsletter::change}}" id="newsletter"><label for="newsletter">Subscribe to the Kano newsletter</label>
+                            <input type="checkbox" checked="{{newsletter::change}}" id="newsletter"><label for="newsletter">Tick to receive the latest news, offers, promotions and competitions from Kano.</label>
                         </div>
                     </div>
                     <div class="submit-wrapper">
@@ -389,7 +389,7 @@ Now you are ready to authenticate!
                  */
                 terms: {
                     type: Boolean,
-                    value: true,
+                    value: false,
                     observer: 'validateTerms'
                 },
                 /**
@@ -398,7 +398,7 @@ Now you are ready to authenticate!
                  */
                 newsletter: {
                     type: Boolean,
-                    value: true
+                    value: false
                 },
                 /**
                  * Kano world URL
