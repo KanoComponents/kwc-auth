@@ -2,7 +2,6 @@
 <link rel="import" href="../iron-pages/iron-pages.html">
 <link rel="import" href="../iron-image/iron-image.html">
 <link rel="import" href="../paper-spinner/paper-spinner-lite.html">
-<link rel="import" href="../kwc-modal/kwc-modal.html">
 <link rel="import" href="../kwc-style/button.html">
 <link rel="import" href="../kwc-style/typography.html">
 <link rel="import" href="../kwc-behaviours/kano-validation.html">
@@ -31,8 +30,6 @@ Now you are ready to authenticate!
                 --paper-spinner-color: #ff842a;
             }
             #pager {
-                padding: 50px 0 40px;
-                margin-top: 85px;
                 background-color: #fff;
             }
             #pager > * {
@@ -338,7 +335,6 @@ Now you are ready to authenticate!
 
             is: 'kwc-auth',
             behaviors: [Kano.Validation.Behaviour],
-            _VIEWS: ['login', 'signup', 'grownups', 'password-reset', 'username-reminder'],
 
             properties: {
                 /**
@@ -433,23 +429,6 @@ Now you are ready to authenticate!
                     value: false
                 },
                 /**
-                 * Flags modal is opened
-                 * @type {Boolean}
-                 */
-                opened: {
-                    type: Boolean,
-                    notify: true
-                },
-                /**
-                 * Flags if modal can be closed or not. If `isForceSignup` is
-                 * `true` then the `kwc-modal` is not closable.
-                 * @type {Boolean}
-                 */
-                isForceSignup: {
-                    type: Boolean,
-                    value: false
-                },
-                /**
                  * Error messages
                  * @type {Object}
                  */
@@ -532,6 +511,14 @@ Now you are ready to authenticate!
              */
             showUsernameReminder () {
                 this.set('view', 'username-reminder');
+            },
+
+            /**
+             * Set view by name
+             * @argument {String} viewName A valid name of a view.
+             */
+            setView (viewName) {
+                this.set('view', viewName);
             },
 
             /** FORM SUBMISSION */
@@ -687,7 +674,7 @@ Now you are ready to authenticate!
             /** INTERNAL STATE MANAGEMENT */
 
             /**
-             * Reset the internal state of the auth modal. Essentially
+             * Reset the internal state of the auth component. Essentially
              *   ```js
              *      kwc-auth.errors = {};
              *      kwc-auth.firstName = null;
