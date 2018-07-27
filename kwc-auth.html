@@ -336,6 +336,9 @@ Now you are ready to authenticate!
             is: 'kwc-auth',
             behaviors: [Kano.Validation.Behaviour],
 
+            ready() {
+                this.reset();
+            },
             properties: {
                 /**
                  * View
@@ -464,12 +467,14 @@ Now you are ready to authenticate!
              * Displays login page.
              */
             showLogin () {
+                this.reset();
                 this.set('view', 'login');
             },
             /**
              * Displays signup page.
              */
             showSignup () {
+                this.reset();
                 this.set('view', 'signup');
             },
             /**
@@ -533,8 +538,8 @@ Now you are ready to authenticate!
              */
             _onSubmitLogin (e) {
                 e.preventDefault();
-                this.set('errors.username', undefined);
-                this.set('errors.password', undefined);
+                this.set('errors.username', null);
+                this.set('errors.password', null);
                 if (!this.username) {
                     this.set('errors.username', 'Username cannot be empty.');
                     return;
@@ -562,8 +567,11 @@ Now you are ready to authenticate!
              */
             _onSubmitSignupInfo (e) {
                 e.preventDefault();
-                if (this.validateUsername(this.username) &&
-                this.validatePassword(this.password)) {
+                this.set('errors.username', null);
+                this.set('errors.password', null);
+                const validUsername = this.validateUsername(this.username);
+                const validPassword = this.validatePassword(this.password);
+                if (validUsername && validPassword) {
                     let info = {
                         firstName: this.firstName,
                         username: this.username,
@@ -591,7 +599,15 @@ Now you are ready to authenticate!
              */
             _onSubmitSignupEmail (e) {
                 e.preventDefault();
-                if (this.validateEmail(this.email) && this.validateTerms(this.terms)) {
+                const validEmail = this.validateEmail(this.email);
+                const validTerms = this.validateTerms(this.terms);
+                if (validEmail) {
+                    this.set('errors.email', null);
+                }
+                if (validTerms) {
+                    this.set('errors.terms', null);
+                }
+                if (validEmail && validTerms) {
                     let data = {
                         firstName: this.firstName,
                         username: this.username,
@@ -691,8 +707,8 @@ Now you are ready to authenticate!
                 this.username = null;
                 this.password = null;
                 this.email = null;
-                this.terms = true;
-                this.newsletter = true;
+                this.terms = false;
+                this.newsletter = false;
             }
         });
     </script>
