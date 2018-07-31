@@ -626,6 +626,13 @@ Now you are ready to authenticate!
                 this.fire('done');
             },
             /**
+             * Handles when the process is skipped.
+             */
+             _skip (e) {
+                e.preventDefault();
+                this.fire('skip');
+            },
+            /**
              * Event signaling the uer forgot the username and it's requesting a
              * username reminder by providing the email.
              * @event forgot-username
