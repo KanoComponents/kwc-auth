@@ -181,7 +181,7 @@ Polymer({
             <div id="login">
                 <h2>Log in to your account</h2>
                 <form class="fields" on-submit="_onSubmitLogin">
-                    <input type="text" value="{{username::input}}" placeholder="Your Kano username" tabindex="0">
+                    <input type="text" value="{{username::input}}" placeholder="Your Kano username" tabindex="0" autocapitalize="none">
                     <div class="form-error" hidden\$="[[!errors.username]]">[[errors.username]]</div>
                     <input type="password" value="{{password::input}}" placeholder="Your secret password" tabindex="0">
                     <div class="form-error" hidden\$="[[!errors.password]]">[[errors.password]]</div>
@@ -203,7 +203,7 @@ Polymer({
                 </div>
                 <form class="fields" on-submit="_onSubmitSignupInfo">
                     <input type="text" value="{{firstName::input}}" placeholder="Type your first name" tabindex="0">
-                    <input type="text" value="{{username::input}}" placeholder="Make up a Kano username" tabindex="0">
+                    <input type="text" value="{{username::input}}" placeholder="Make up a Kano username" tabindex="0" autocapitalize="none">
                     <div class="form-error" hidden\$="[[!errors.username]]">[[errors.username]]</div>
                     <input type="password" value="{{password::input}}" placeholder="Make up a secret password" tabindex="0">
                     <div class="form-error" hidden\$="[[!errors.password]]">[[errors.password]]</div>
@@ -307,7 +307,7 @@ Polymer({
             <div id="password-reset">
                 <h2>Forgotten your password?</h2>
                 <form class="fields" on-submit="_onSubmitForgotPassword">
-                    <input type="text" value="{{username::input}}" placeholder="Your username" tabindex="0">
+                    <input type="text" value="{{username::input}}" placeholder="Your username" tabindex="0" autocapitalize="none">
                     <div class="form-error" hidden\$="[[!errors.username]]">[[errors.username]]</div>
                     <div class="submit-wrapper">
                         <input disabled\$="[[processing]]" type="submit" value="Request new password">
