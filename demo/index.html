@@ -15,15 +15,9 @@
 
     <custom-style>
         <style is="custom-style" include="demo-pages-shared-styles">
-        button {
-            border-radius: 3px;
-            width: 100px;
-            height: 80px;
-            background-color: #fff;
-            font-family: 'Bariol', sans-serif;
-            font-size: 16px;
-            font-weight: bold;
-        }
+            .vertical-section-container {
+                max-width: 850px;
+            }
         </style>
     </custom-style>
 </head>
@@ -51,14 +45,14 @@
                 </kwc-auth>
             </template>
         </demo-snippet>
-        <h3>Grownups kwc-auth demo</h3>
+        <h3>Parents kwc-auth demo</h3>
         <demo-snippet>
             <template>
                 <kwc-auth id="auth"
                     world-url="https://world-staging.kano.me"
                     api-url="https://api-staging.kano.me"
                     assets-path="demo-assets"
-                    view="grownups">
+                    view="signup-parents">
                 </kwc-auth>
             </template>
         </demo-snippet>
@@ -81,6 +75,28 @@
                     api-url="https://api-staging.kano.me"
                     assets-path="demo-assets"
                     view="username-reminder">
+                </kwc-auth>
+            </template>
+        </demo-snippet>
+        <h3>Done kwc-auth demo</h3>
+        <demo-snippet>
+            <template>
+                <kwc-auth id="auth"
+                    world-url="https://world-staging.kano.me"
+                    api-url="https://api-staging.kano.me"
+                    assets-path="demo-assets"
+                    view="done">
+                </kwc-auth>
+            </template>
+        </demo-snippet>
+        <h3>Reset confirmation kwc-auth demo</h3>
+        <demo-snippet>
+            <template>
+                <kwc-auth id="auth"
+                    world-url="https://world-staging.kano.me"
+                    api-url="https://api-staging.kano.me"
+                    assets-path="demo-assets"
+                    view="reset-confirmation">
                 </kwc-auth>
             </template>
         </demo-snippet>
