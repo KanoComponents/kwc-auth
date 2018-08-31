@@ -6,10 +6,10 @@
 
     <title>kwc-auth test</title>
 
-    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-    <script src="../../web-component-tester/browser.js"></script>
+    <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../../../wct-browser-legacy/browser.js"></script>
 
-    <link rel="import" href="../kwc-auth.html">
+    <script type="module" src="../kwc-auth.js"></script>
 </head>
 <body>
     <test-fixture id="basic">
@@ -18,28 +18,29 @@
         </template>
     </test-fixture>
 
-    <script>
-    suite('kwc-auth', function() {
-        test('instantiating the element works', function() {
-            var element = fixture('basic');
-            assert.equal(element.is, 'kwc-auth');
-        });
+    <script type="module">
+import '../kwc-auth.js';
+suite('kwc-auth', function() {
+    test('instantiating the element works', function() {
+        var element = fixture('basic');
+        assert.equal(element.is, 'kwc-auth');
     });
-    /** TODO:
-     * - Open should open modal
-     * - Close should close modal
-     * - Cancel should close and fire event
-     * - Skip should close and fire event
-     * - Reset resets internal state
-     * - If isForceSignup is true the modal can't be closed
-     * - Error messages
-     * - Changing username, email, firstName and password trigger events
-     * - Submitting forms trigger events
-     * - If terms is not true, can't click continue
-     * - If processing is true, show spinner
-     * - If modal is opened, `opened` should be true
-     * - 'showXXX' should display XXX page
-     */
-    </script>
+});
+/** TODO:
+ * - Open should open modal
+ * - Close should close modal
+ * - Cancel should close and fire event
+ * - Skip should close and fire event
+ * - Reset resets internal state
+ * - If isForceSignup is true the modal can't be closed
+ * - Error messages
+ * - Changing username, email, firstName and password trigger events
+ * - Submitting forms trigger events
+ * - If terms is not true, can't click continue
+ * - If processing is true, show spinner
+ * - If modal is opened, `opened` should be true
+ * - 'showXXX' should display XXX page
+ */
+</script>
 </body>
 </html>
