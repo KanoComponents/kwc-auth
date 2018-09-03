@@ -32,15 +32,18 @@ import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 Polymer({
   _template: html`
         <style>
+            :host {
+                font-family: var(--font-body);
+                background: #FFF;
+                padding: 12px;
+                border-radius: 8px;
+            }
             .form-error {
                 text-align: left;
                 color: #ED5F5F;
                 font-weight: bold;
                 margin: auto 2px 5px 2px;
             }            
-            :host {
-                font-family: var(--font-body);
-            }
             .bold {
                 font-weight: bold;
             }
@@ -148,10 +151,10 @@ Polymer({
             }
             #pager > * {
                 width: 360px;
-                margin: auto 50px;
             }
             .big {
                 width: 720px !important;
+                padding: 26px;
             }
             .big h2 {
                 text-align: left;
