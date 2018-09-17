@@ -339,15 +339,14 @@ Polymer({
                 <form class="fields" on-submit="_onSubmitSignupInfo">
                     <div class="left">
                         <div class="header">
-                            <h2>Account Creation</h2>
+                            <h2>Create a Kano World account</h2>
                             <div class="body">
-                                Make up a new username that you dont use on any other websites.
-                                Be sure your account is safe by keeping your password a secret.
+                                Make up a username that you don’t use on any other website. Don’t use your real name. Keep your password secret.
                             </div>
                         </div>
                         <div class="footer">
                             <div class="submit-wrapper">
-                                <input disabled\$="[[processing]]" type="submit" value="Next">
+                                <input disabled\$="[[processing]]" type="submit" value="NEXT">
                                 <paper-spinner-lite active="[[processing]]"></paper-spinner-lite>
                             </div>
                             <div class="no-account">
@@ -370,16 +369,15 @@ Polymer({
                 <form class="fields" on-submit="_onSubmitSignupEmail">
                     <div class="left">
                         <div class="header">
-                            <h2>Parents</h2>
+                            <h2>You need an email address</h2>
                             <div class="body">
-                                This section is for your parents. Ask them to fill
-                                it in for you to finish setting up your account.
+                                If you don’t have an email address, ask an adult who does, to help you finish setting up your Kano World account.
                             </div>
                         </div>
                         <div class="footer">
                             <div class="submit-wrapper">
                                 <input type="button" value="Back" on-click="showSignup">
-                                <input disabled\$="[[processing]]" type="submit" value="Done">
+                                <input disabled\$="[[processing]]" type="submit" value="DONE">
                                 <paper-spinner-lite active="[[processing]]"></paper-spinner-lite>
                             </div>
                         </div>
@@ -411,15 +409,14 @@ Polymer({
             </div>
             <div id="done" class="small">
                 <h2>
-                    You are now the proud owner<br>
-                    of a Kano World account
+                    Welcome to Kano World
                 </h2>
                 <div class="body">
-                    Use it wisely
+                    Make, play, and share with people around the world
                 </div>
                 <form on-submit="_onSubmitDone">
                     <div class="submit-wrapper">
-                        <input type="submit" value="Got it">
+                        <input type="submit" value="LET’S GO!">
                     </div>
                 </form>
             </div>
