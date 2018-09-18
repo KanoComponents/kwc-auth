@@ -36,7 +36,7 @@ Polymer({
                 font-family: var(--font-body);
                 background: #FFF;
                 padding: 12px;
-                border-radius: 8px;
+                border-radius: 12px;
             }
             .form-error {
                 text-align: left;
@@ -48,7 +48,7 @@ Polymer({
                 font-weight: bold;
             }
             input[type=submit]:hover {
-                background-color: #fd621e;
+                background-color: #FF6900;
             }
             input[type=submit]:disabled,
             input[type=submit]:disabled:hover {
@@ -162,11 +162,14 @@ Polymer({
                 width: 360px;
             }
             .big {
-                width: 720px !important;
-                padding: 26px;
+                width: 816px !important;
+                height: 400px;
+                padding: 28px;
+                box-sizing: border-box;
             }
             .big h2 {
                 text-align: left;
+                margin: 0 0 14px;
             }
             .big .body {
                 color: #414A51;
@@ -226,7 +229,7 @@ Polymer({
                 position: absolute;
                 display: block;
                 left: 0;
-                top: 9px;
+                /* top: 9px; */
                 width: 32px;
                 height: 17px;
                 border-radius: 16px;
@@ -238,7 +241,7 @@ Polymer({
                 position: absolute;
                 display: block;
                 left: 0px;
-                top: 11px;
+                /* top: 11px; */
                 width: 13px;
                 height: 13px;
                 border-radius: 16px;
@@ -260,6 +263,7 @@ Polymer({
             }
             .small {
                 text-align: center;
+                padding: 12px;
             }
             .small h2 {
                 margin-bottom: 10px;
@@ -273,9 +277,20 @@ Polymer({
             .small input {
                 margin-top: 24px;
             }
-            #signup-parents .left {
+            .big .left {
                 display: flex;
                 flex-direction: column;
+                justify-content: space-between;
+            }
+            #signup .fields {
+                height: 100%;
+            }
+            #signup .footer {
+                padding: 0;
+            }
+            #signup .right {
+                padding: 21px 32px 32px;
+                align-self: flex-start;
             }
             #signup-parents .footer {
                 flex: 1;
@@ -297,15 +312,59 @@ Polymer({
                 margin-bottom: 0;
             }
             #signup-parents .fields-content {
-                padding: 24px 24px 3px;
+                padding: 21px 24px 0;
             }
             #signup-parents input[type="submit"],
             #signup-parents input[type="button"] {
-                margin: 8px;
+                margin: 8px 8px 1px;
             }
             .checkbox-container {
                 margin-top: 8px;
                 overflow: hidden;
+            }
+            .big .footer input:first-child {
+                margin-left: 0 !important;
+            }
+            label[for="login-remember"]:before {
+                top: 9px;
+            }
+            label[for="login-remember"]:after {
+                top: 11px;
+            }
+            label[for="signup-terms"]:before {
+                top: 12px;
+            }
+            label[for="signup-terms"]:after {
+                top: 14px;
+            }
+            label[for="signup-news"]:before {
+                top: 7px;
+            }
+            label[for="signup-news"]:after {
+                top: 9px;
+            }
+            #done {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            #done h2,
+            #done h3,
+            #done .body {
+                font-size: 24px;
+            }
+            #done h2 {
+                margin-bottom: 5px;
+            }
+            #done h3 {
+                color: #414A51;
+                text-align: center;
+                margin: 0;
+            }
+            #done .body {
+                color: #9FA4A8;
+                margin: 30px 0 28px;
             }
         </style>
         <iron-pages attr-for-selected="id" selected="[[view]]" id="pager">
@@ -407,12 +466,16 @@ Polymer({
                     </div>
                 </form>
             </div>
-            <div id="done" class="small">
+            <div id="done" class="big">
                 <h2>
-                    Welcome to Kano World
+                    Complete
                 </h2>
+                <h3>
+                    Your are now the proud owner of<br />
+                    a Kano World account
+                </h3>
                 <div class="body">
-                    Make, play, and share with people around the world
+                    Use it wisely
                 </div>
                 <form on-submit="_onSubmitDone">
                     <div class="submit-wrapper">
