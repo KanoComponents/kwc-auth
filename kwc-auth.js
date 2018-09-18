@@ -229,7 +229,6 @@ Polymer({
                 position: absolute;
                 display: block;
                 left: 0;
-                /* top: 9px; */
                 width: 32px;
                 height: 17px;
                 border-radius: 16px;
@@ -241,7 +240,6 @@ Polymer({
                 position: absolute;
                 display: block;
                 left: 0px;
-                /* top: 11px; */
                 width: 13px;
                 height: 13px;
                 border-radius: 16px;
