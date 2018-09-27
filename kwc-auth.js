@@ -457,7 +457,7 @@ Polymer({
                                 <p>
                                     Tick to receive the latest news,<br>
                                     offers, promotions and competitions<br>
-                                    sfrom Kano.
+                                    from Kano.
                                 </p>
                             </label>
                         </div>
@@ -500,9 +500,9 @@ Polymer({
             <div id="password-reset">
                 <h2>Forgot your password?</h2>
                 <form class="fields" on-submit="_onSubmitForgotPassword">
-                    <span>Email</span>
-                    <input type="text" value="{{email::input}}" placeholder="Your email address" tabindex="0" autocapitalize="none">
-                    <div class="form-error" hidden\$="[[!errors.email]]">[[errors.email]]</div>
+                    <span>Username</span>
+                    <input type="text" value="{{username::input}}" placeholder="Your username" tabindex="0" autocapitalize="none">
+                    <div class="form-error" hidden\$="[[!errors.username]]">[[errors.username]]</div>
                     <div class="submit-wrapper center">
                         <input disabled\$="[[processing]]" type="submit" value="Send">
                         <paper-spinner-lite active="[[processing]]"></paper-spinner-lite>
@@ -868,8 +868,8 @@ Polymer({
      */
     _onSubmitForgotPassword(e) {
         e.preventDefault();
-        if (this.validateEmail(this.email)) {
-            this.fire('forgot-password', this.email);
+        if (this.validateUsername(this.username)) {
+            this.fire('forgot-password', this.username);
         }
     },
 
