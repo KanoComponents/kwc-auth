@@ -466,14 +466,14 @@ Polymer({
             </div>
             <div id="done" class="big">
                 <h2>
-                    Complete
+                    Welcome to Kano World
                 </h2>
                 <h3>
                     Your are now the proud owner of<br />
                     a Kano World account
                 </h3>
                 <div class="body">
-                    Use it wisely
+                    Make, play, and share with people around the world
                 </div>
                 <form on-submit="_onSubmitDone">
                     <div class="submit-wrapper">
@@ -483,7 +483,7 @@ Polymer({
             </div>
             <div id="username-reminder">
                 <h2>Forgot your username?</h2>
-                <form class="fields" on-submit="_onSumbitForgotUsername">
+                <form class="fields" on-submit="_onSubmitForgotUsername">
                     <span>Email</span>
                     <input type="text" value="{{email::input}}" placeholder="Your email address" tabindex="0">
                     <div class="form-error" hidden\$="[[!errors.email]]">[[errors.email]]</div>
@@ -850,7 +850,7 @@ Polymer({
     /**
      * Handles form submission for username reminder.
      */
-    _onSumbitForgotUsername(e) {
+    _onSubmitForgotUsername(e) {
         e.preventDefault();
         if (this.validateEmail(this.email)) {
             this.fire('forgot-username', this.email);
