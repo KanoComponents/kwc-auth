@@ -481,10 +481,6 @@ Polymer({
                 <h2>
                     Welcome to Kano World
                 </h2>
-                <h3>
-                    Your are now the proud owner of<br />
-                    a Kano World account
-                </h3>
                 <div class="body">
                     Make, play, and share with people around the world
                 </div>
