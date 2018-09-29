@@ -1,7 +1,7 @@
 {
   "description": "Front end for Kano&#39;s authentication flow.",
   "name": "@kano/kwc-auth",
-  "version": "3.0.0-beta.16",
+  "version": "3.0.0",
   "resolutions": {
     "inherits": "2.0.3",
     "samsam": "1.1.3",
@@ -10,6 +10,9 @@
     "@webcomponents/webcomponentsjs": "2.0.0-beta.2"
   },
   "main": "kwc-auth.js",
+  "scripts": {
+    "checkstyle": "eslint kwc-auth.js -f checkstyle -o eslint.xml"
+  },
   "dependencies": {
     "@kano/kwc-behaviors": "^3.0.0-beta.4",
     "@kano/kwc-style": "^3.0.0-beta.2",
@@ -19,9 +22,10 @@
     "@polymer/polymer": "^3.0.0"
   },
   "devDependencies": {
+    "@kano/eslint-config": "^1.0.0",
     "@polymer/iron-component-page": "^3.0.0-pre.18",
     "@polymer/iron-demo-helpers": "^3.0.0-pre.18",
     "@webcomponents/webcomponentsjs": "^2.0.0",
-    "wct-browser-legacy": "^0.0.1-pre.11"
+    "eslint": "^4.19.1"
   }
 }

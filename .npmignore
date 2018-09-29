@@ -8,4 +8,9 @@
 ehthumbs.db
 Thumbs.db
 
-bower_components/
+demo
+test
+.eslintrc.js
+index.html
+Jenkinsfile
+README.md

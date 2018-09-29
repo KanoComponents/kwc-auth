@@ -1,25 +1,5 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-
-    <title>kwc-auth test</title>
-
-    <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
-    <script src="../../../wct-browser-legacy/browser.js"></script>
-
-    <script type="module" src="../kwc-auth.js"></script>
-</head>
-<body>
-    <test-fixture id="basic">
-        <template>
-            <kwc-auth></kwc-auth>
-        </template>
-    </test-fixture>
-
-    <script type="module">
 import '../kwc-auth.js';
+
 suite('kwc-auth', function() {
     test('instantiating the element works', function() {
         var element = fixture('basic');
@@ -41,6 +21,3 @@ suite('kwc-auth', function() {
  * - If modal is opened, `opened` should be true
  * - 'showXXX' should display XXX page
  */
-</script>
-</body>
-</html>
