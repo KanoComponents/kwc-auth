@@ -13,10 +13,12 @@ pipeline {
         }
         stage('tools') {
             steps {
-                def NODE_PATH = tool name: 'Node 8.11.2', type: 'nodejs'
-                env.PATH = "${env.PATH}:${NODE_PATH}/bin"
-                def YARN_PATH = tool name: 'yarn', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'
-                env.PATH = "${env.PATH}:${YARN_PATH}/bin"
+                script {
+                    def NODE_PATH = tool name: 'Node 8.11.2', type: 'nodejs'
+                    env.PATH = "${env.PATH}:${NODE_PATH}/bin"
+                    def YARN_PATH = tool name: 'yarn', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'
+                    env.PATH = "${env.PATH}:${YARN_PATH}/bin"
+                }
             }
         }
         // Install the bower dependencies of the component
