@@ -38,6 +38,11 @@ pipeline {
                 }
             }
         }
+        stage('doc') {
+            steps {
+                build job: 'Generate components doc', wait: false
+            }
+        }
     }
     options {
         buildDiscarder(logRotator(numToKeepStr: '20'))
