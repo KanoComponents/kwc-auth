@@ -2,7 +2,7 @@
 
 pipeline {
     agent {
-        label 'ubuntu-18.04'
+        label 'ubuntu_18.04'
     }
     stages {
         // pulls down locally the sources for the component
