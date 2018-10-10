@@ -369,10 +369,10 @@ Polymer({
                 <h2>Login to your account</h2>
                 <form class="fields" on-submit="_onSubmitLogin">
                     <span>Username</span>
-                    <input type="text" value="{{username::input}}" placeholder="Your Kano username" tabindex="0" autocapitalize="none">
+                    <input type="text" value="{{username::input}}" placeholder="Your Kano username" tabindex="0" autocapitalize="none" on-keydown="_dialogKeydown">
                     <div class="form-error" hidden\$="[[!errors.username]]">[[errors.username]]</div>
                     <span>Password</span>
-                    <input type="password" value="{{password::input}}" placeholder="Your secret password" tabindex="0">
+                    <input type="password" value="{{password::input}}" placeholder="Your secret password" tabindex="0" on-keydown="_dialogKeydown">
                     <div class="form-error" hidden\$="[[!errors.password]]">[[errors.password]]</div>
                     <div class="submit-wrapper">
                         <div class="remember-me">
@@ -413,12 +413,12 @@ Polymer({
                     </div>
                     <div class="fields-content right">
                         <span>Username</span>
-                        <input type="text" value="{{username::input}}" placeholder="Make up a Kano username" tabindex="0" autocapitalize="none">
+                        <input type="text" value="{{username::input}}" placeholder="Make up a Kano username" tabindex="0" autocapitalize="none" on-keydown="_dialogKeydown">
                         <div class="form-error-wrapper">
                             <div class="form-error" hidden\$="[[!errors.username]]">[[errors.username]]</div>
                         </div>
                         <span>Secret Password</span>
-                        <input type="password" value="{{password::input}}" placeholder="Make up a secret password" tabindex="0">
+                        <input type="password" value="{{password::input}}" placeholder="Make up a secret password" tabindex="0" on-keydown="_dialogKeydown">
                         <div class="form-error-wrapper">
                             <div class="form-error" hidden\$="[[!errors.password]]">[[errors.password]]</div>
                         </div>
@@ -444,13 +444,13 @@ Polymer({
                     </div>
                     <div class="fields-content right">
                         <span>Adult's first name</span>
-                        <input type="text" value="{{firstName::input}}" placeholder="Adult's first name" tabindex="0" autocapitalize="none">
+                        <input type="text" value="{{firstName::input}}" placeholder="Adult's first name" tabindex="0" autocapitalize="none" on-keydown="_dialogKeydown">
                         <div class="form-error-wrapper">
                             <div class="form-error" hidden\$="[[!errors.firstName]]">[[errors.firstName]]</div>
                         </div>
 
                         <span>Adult's email address</span>
-                        <input type="email" value="{{email::input}}" placeholder="Your email address" tabindex="0">
+                        <input type="email" value="{{email::input}}" placeholder="Your email address" tabindex="0" on-keydown="_dialogKeydown">
                         <div class="form-error-wrapper">
                             <div class="form-error" hidden\$="[[!errors.email]]">[[errors.email]]</div>
                         </div>
@@ -489,7 +489,7 @@ Polymer({
                 <h2>Forgot your username?</h2>
                 <form class="fields" on-submit="_onSubmitForgotUsername">
                     <span>Email</span>
-                    <input type="text" value="{{email::input}}" placeholder="Your email address" tabindex="0">
+                    <input type="text" value="{{email::input}}" placeholder="Your email address" tabindex="0" on-keydown="_dialogKeydown">
                     <div class="form-error" hidden\$="[[!errors.email]]">[[errors.email]]</div>
                     <div class="submit-wrapper center">
                         <input disabled\$="[[processing]]" type="submit" value="Send">
@@ -505,7 +505,7 @@ Polymer({
                 <h2>Forgot your password?</h2>
                 <form class="fields" on-submit="_onSubmitForgotPassword">
                     <span>Username</span>
-                    <input type="text" value="{{username::input}}" placeholder="Your username" tabindex="0" autocapitalize="none">
+                    <input type="text" value="{{username::input}}" placeholder="Your username" tabindex="0" autocapitalize="none" on-keydown="_dialogKeydown">
                     <div class="form-error" hidden\$="[[!errors.username]]">[[errors.username]]</div>
                     <div class="submit-wrapper center">
                         <input disabled\$="[[processing]]" type="submit" value="Send">
@@ -644,6 +644,12 @@ Polymer({
                 termos: null,
             }),
         },
+    },
+
+    _dialogKeydown(e) {
+        if (e.keyCode === 8) {
+            e.stopPropagation();
+        }
     },
 
     _computeMotifUrl(assetsPath) {
