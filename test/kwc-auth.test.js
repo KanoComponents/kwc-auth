@@ -1,8 +1,8 @@
 import '../kwc-auth.js';
 
-suite('kwc-auth', function() {
-    test('instantiating the element works', function() {
-        var element = fixture('basic');
+suite('kwc-auth', () => {
+    test('instantiating the element works', () => {
+        const element = document.createElement('kwc-auth');
         assert.equal(element.is, 'kwc-auth');
     });
 });

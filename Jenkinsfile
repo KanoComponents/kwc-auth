@@ -4,6 +4,15 @@ pipeline {
     agent {
         label 'ubuntu_18.04'
     }
+    post {
+        always {
+            junit allowEmptyResults: true, testResults: 'test-results.xml'
+            step([$class: 'CheckStylePublisher', pattern: 'eslint.xml'])
+        }
+        regression {
+            notify_culprits currentBuild.result
+        }
+    }
     stages {
         // pulls down locally the sources for the component
         stage('checkout') {
@@ -33,14 +42,15 @@ pipeline {
         stage('checkstyle') {
             steps {
                 script {
-                    sh "yarn checkstyle || exit 0"
-                    step([$class: 'CheckStylePublisher', pattern: 'eslint.xml'])
+                    sh "yarn checkstyle-ci"
                 }
             }
         }
-        stage('doc') {
+        stage('test') {
             steps {
-                build job: 'Generate components doc', wait: false
+                script {
+                    sh "yarn test-ci"
+                }
             }
         }
     }
