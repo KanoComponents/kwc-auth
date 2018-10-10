@@ -15,7 +15,7 @@
     "checkstyle-ci": "yarn checkstyle -f checkstyle -o eslint.xml",
     "serve-test": "web-tester serve ./test",
     "test": "web-tester run ./test",
-    "test-ci": "yarn run --silent test > eslint.xml"
+    "test-ci": "yarn run --silent test > test-results.xml"
   },
   "dependencies": {
     "@kano/kwc-behaviors": "^3.0.0-beta.4",
