@@ -1,5 +1,7 @@
 #!groovy
 
+@Library('kanolib') _
+
 pipeline {
     agent {
         label 'ubuntu_18.04'
