@@ -12,7 +12,7 @@
   "main": "kwc-auth.js",
   "scripts": {
     "checkstyle": "eslint kwc-auth.js",
-    "checkstyle-ci": "yarn test-f checkstyle -o eslint.xml",
+    "checkstyle-ci": "yarn checkstyle -f checkstyle -o eslint.xml",
     "serve-test": "web-tester serve ./test",
     "test": "web-tester run ./test",
     "test-ci": "yarn run --silent test > eslint.xml"
