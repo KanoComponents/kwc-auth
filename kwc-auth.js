@@ -43,7 +43,7 @@ class KwcAuth extends mixinBehaviors([ValidationBehavior], PolymerElement) {
                 padding: 0 18px;
             }
             .form-error-wrapper {
-                height: 21px;
+                min-height: 21px;
             }
             .form-error {
                 text-align: left;
@@ -105,6 +105,8 @@ class KwcAuth extends mixinBehaviors([ValidationBehavior], PolymerElement) {
             }
             .submit-wrapper {
                 margin-top: 3px;
+                margin-left: auto;
+                margin-right: auto;
                 display: flex;
                 flex-direction: row;
                 align-items: end;
@@ -179,6 +181,7 @@ class KwcAuth extends mixinBehaviors([ValidationBehavior], PolymerElement) {
             }
             .big .submit-wrapper {
                 margin-top: 0;
+                margin-left: 0;
             }
             .big .footer {
                 display: flex;
@@ -349,10 +352,6 @@ class KwcAuth extends mixinBehaviors([ValidationBehavior], PolymerElement) {
                     <input type="password" value="{{password::input}}" placeholder="Your secret password" tabindex="0" on-keydown="_dialogKeydown">
                     <div class="form-error" hidden$="[[!errors.password]]">[[errors.password]]</div>
                     <div class="submit-wrapper">
-                        <div class="remember-me">
-                            <input type="checkbox" id="login-remember" checked="[[rememberMe]]">
-                            <label for="login-remember">Remember me</label>
-                        </div>
                         <div class="submit-container">
                             <input class="btn" disabled$="[[processing]]" type="submit" value="Login">
                             <paper-spinner-lite active="[[processing]]"></paper-spinner-lite>
@@ -771,7 +770,7 @@ class KwcAuth extends mixinBehaviors([ValidationBehavior], PolymerElement) {
     _onSubmitSignupEmail(e) {
         e.preventDefault();
         const validName = this.validateFirstName(this.firstName);
-        const validEmail = this.validateEmail(this.email);
+        const validEmail = this.validateEmail(this.email.trim());
         const validTerms = this.validateTerms(this.terms);
         if (validName) {
             this.set('errors.firstName', null);
@@ -787,7 +786,7 @@ class KwcAuth extends mixinBehaviors([ValidationBehavior], PolymerElement) {
                 firstName: this.firstName,
                 username: this.username,
                 password: this.password,
-                email: this.email,
+                email: this.email.trim(),
                 newsletter: this.newsletter,
             };
             this.dispatchEvent(new CustomEvent('submit-signup-email', { detail: data, bubbles: true, composed: true }));
@@ -821,8 +820,8 @@ class KwcAuth extends mixinBehaviors([ValidationBehavior], PolymerElement) {
      */
     _onSubmitForgotUsername(e) {
         e.preventDefault();
-        if (this.validateEmail(this.email)) {
-            this.dispatchEvent(new CustomEvent('forgot-username', { detail: this.email, bubbles: true, composed: true }));
+        if (this.validateEmail(this.email.trim())) {
+            this.dispatchEvent(new CustomEvent('forgot-username', { detail: this.email.trim(), bubbles: true, composed: true }));
         }
     }
     /**
