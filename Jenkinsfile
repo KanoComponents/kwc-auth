@@ -45,7 +45,7 @@ pipeline {
         stage('test') {
             steps {
                 script {
-                    docker.image('kanocomputing/puppeteer').inside {
+                    docker.image('kanocomputing/puppeteer').inside('--cap-add=SYS_ADMIN') {
                         sh "yarn test-ci"
                     }
                 }

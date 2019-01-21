@@ -15,7 +15,7 @@
     "checkstyle-ci": "yarn checkstyle -f checkstyle -o eslint.xml",
     "serve": "es6-server",
     "serve-test": "web-tester serve ./*.test.js",
-    "test": "web-tester run ./test",
+    "test": "web-tester run ./*.test.js",
     "test-ci": "yarn run --silent test > test-results.xml"
   },
   "dependencies": {
