@@ -4,7 +4,7 @@
 
 pipeline {
     agent {
-        label 'ubuntu_18.04'
+        label 'ubuntu_18.04_with_docker'
     }
     post {
         always {
@@ -22,21 +22,13 @@ pipeline {
                 checkout scm
             }
         }
-        stage('tools') {
-            steps {
-                script {
-                    def NODE_PATH = tool name: 'Node 8.11.2', type: 'nodejs'
-                    env.PATH = "${env.PATH}:${NODE_PATH}/bin"
-                    def YARN_PATH = tool name: 'yarn', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'
-                    env.PATH = "${env.PATH}:${YARN_PATH}/bin"
-                }
-            }
-        }
         // Install the bower dependencies of the component
         stage('install dependencies') {
             steps {
                 script {
-                    sh "yarn"
+                    docker.image('node:8-alpine').inside {
+                        sh "yarn"
+                    }
                 }
             }
         }
@@ -44,15 +36,18 @@ pipeline {
         stage('checkstyle') {
             steps {
                 script {
-                    sh "yarn checkstyle-ci"
+                    docker.image('node:8-alpine').inside {
+                        sh "yarn checkstyle-ci"
+                    }
                 }
             }
         }
         stage('test') {
             steps {
                 script {
-                    install_chrome_dependencies()
-                    sh "yarn test-ci"
+                    docker.image('kanocomputing/puppeteer').inside {
+                        sh "yarn test-ci"
+                    }
                 }
             }
         }
