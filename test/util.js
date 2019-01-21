@@ -23,7 +23,7 @@ export class AuthTestUtil {
         const getter = this._get.bind(this);
         return {
             get username() {
-                return getter('#signup input');
+                return getter('#signup input[type="text"]');
             },
             get password() {
                 return getter('#signup input[type="password"]');
@@ -33,9 +33,63 @@ export class AuthTestUtil {
             },
         };
     }
+    get parents() {
+        const getter = this._get.bind(this);
+        return {
+            get firstName() {
+                return getter('#signup-parents input[type="text"]');
+            },
+            get email() {
+                return getter('#signup-parents input[type="email"]');
+            },
+            get form() {
+                return getter('#signup-parents .fields');
+            },
+            get conditions() {
+                return getter('#signup-parents #signup-terms');
+            },
+        };
+    }
+    get forgot() {
+        const getter = this._get.bind(this);
+        return {
+            get email() {
+                return getter('#username-reminder input[type="text"]');
+            },
+            get form() {
+                return getter('#username-reminder form');
+            },
+        };
+    }
+    get reset() {
+        const getter = this._get.bind(this);
+        return {
+            get username() {
+                return getter('#password-reset input[type="text"]');
+            },
+            get form() {
+                return getter('#password-reset form');
+            },
+        };
+    }
+    get done() {
+        const getter = this._get.bind(this);
+        return {
+            get form() {
+                return getter('#done form');
+            },
+        };
+    }
     type(input, text) {
-        input.value = text;
+        this.setInputValue(input, 'value', text);
+    }
+    check(input, value) {
+        this.setInputValue(input, 'checked', value);
+    }
+    setInputValue(input, prop, value) {
+        input[prop] = value;
         input.dispatchEvent(new CustomEvent('input'));
+        input.dispatchEvent(new CustomEvent('change'));
     }
 }
 
