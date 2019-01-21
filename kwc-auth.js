@@ -1,15 +1,12 @@
 /**
-`<kwc-auth>` Front end for Kano&#39;s authentication flow.
+`<kwc-auth>` Front end for Kano's authentication flow.
 
 Add this component somewhere in your html body and set some EventListeners
 to interact with its many useful events.
 
 ```html
-    <body>
-      <kwc-auth></kwc-auth>
+<kwc-auth></kwc-auth>
 ```
-
-Now you are ready to authenticate!
 
 @demo demo/index.html
 */
@@ -19,7 +16,7 @@ import '@polymer/iron-pages/iron-pages.js';
 import '@polymer/iron-image/iron-image.js';
 import '@polymer/paper-spinner/paper-spinner-lite.js';
 import '@kano/kwc-style/button.js';
-import '@kano/kwc-style/typography.js';
+import '@kano/styles/typography.js';
 import { Behaviour as ValidationBehavior } from '@kano/kwc-behaviors/kano-validation.js';
 import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';
@@ -28,6 +25,7 @@ Polymer({
     _template: html`
         <style>
             :host {
+                display: inline-block;
                 font-family: var(--font-body);
                 background: #FFF;
                 padding: 12px;
@@ -370,17 +368,17 @@ Polymer({
                 <form class="fields" on-submit="_onSubmitLogin">
                     <span>Username</span>
                     <input type="text" value="{{username::input}}" placeholder="Your Kano username" tabindex="0" autocapitalize="none" on-keydown="_dialogKeydown">
-                    <div class="form-error" hidden\$="[[!errors.username]]">[[errors.username]]</div>
+                    <div class="form-error" hidden$="[[!errors.username]]">[[errors.username]]</div>
                     <span>Password</span>
                     <input type="password" value="{{password::input}}" placeholder="Your secret password" tabindex="0" on-keydown="_dialogKeydown">
-                    <div class="form-error" hidden\$="[[!errors.password]]">[[errors.password]]</div>
+                    <div class="form-error" hidden$="[[!errors.password]]">[[errors.password]]</div>
                     <div class="submit-wrapper">
                         <div class="remember-me">
                             <input type="checkbox" id="login-remember" checked="[[rememberMe]]">
                             <label for="login-remember">Remember me</label>
                         </div>
                         <div class="submit-container">
-                            <input disabled\$="[[processing]]" type="submit" value="Login">
+                            <input disabled$="[[processing]]" type="submit" value="Login">
                             <paper-spinner-lite active="[[processing]]"></paper-spinner-lite>
                         </div>
                     </div>
@@ -402,7 +400,7 @@ Polymer({
                         </div>
                         <div class="footer">
                             <div class="submit-wrapper">
-                                <input disabled\$="[[processing]]" type="submit" value="NEXT">
+                                <input disabled$="[[processing]]" type="submit" value="NEXT">
                                 <paper-spinner-lite active="[[processing]]"></paper-spinner-lite>
                             </div>
                             <div class="no-account">
@@ -415,12 +413,12 @@ Polymer({
                         <span>Username</span>
                         <input type="text" value="{{username::input}}" placeholder="Make up a Kano username" tabindex="0" autocapitalize="none" on-keydown="_dialogKeydown">
                         <div class="form-error-wrapper">
-                            <div class="form-error" hidden\$="[[!errors.username]]">[[errors.username]]</div>
+                            <div class="form-error" hidden$="[[!errors.username]]">[[errors.username]]</div>
                         </div>
                         <span>Secret Password</span>
                         <input type="password" value="{{password::input}}" placeholder="Make up a secret password" tabindex="0" on-keydown="_dialogKeydown">
                         <div class="form-error-wrapper">
-                            <div class="form-error" hidden\$="[[!errors.password]]">[[errors.password]]</div>
+                            <div class="form-error" hidden$="[[!errors.password]]">[[errors.password]]</div>
                         </div>
                     </div>
                 </form>
@@ -437,7 +435,7 @@ Polymer({
                         <div class="footer">
                             <div class="submit-wrapper">
                                 <input type="button" value="Back" on-click="showSignup">
-                                <input disabled\$="[[processing]]" type="submit" value="DONE">
+                                <input disabled$="[[processing]]" type="submit" value="DONE">
                                 <paper-spinner-lite active="[[processing]]"></paper-spinner-lite>
                             </div>
                         </div>
@@ -446,19 +444,19 @@ Polymer({
                         <span>Adult's first name</span>
                         <input type="text" value="{{firstName::input}}" placeholder="Adult's first name" tabindex="0" autocapitalize="none" on-keydown="_dialogKeydown">
                         <div class="form-error-wrapper">
-                            <div class="form-error" hidden\$="[[!errors.firstName]]">[[errors.firstName]]</div>
+                            <div class="form-error" hidden$="[[!errors.firstName]]">[[errors.firstName]]</div>
                         </div>
 
                         <span>Adult's email address</span>
                         <input type="email" value="{{email::input}}" placeholder="Your email address" tabindex="0" on-keydown="_dialogKeydown">
                         <div class="form-error-wrapper">
-                            <div class="form-error" hidden\$="[[!errors.email]]">[[errors.email]]</div>
+                            <div class="form-error" hidden$="[[!errors.email]]">[[errors.email]]</div>
                         </div>
 
                         <div class="checkbox-container">
                             <input type="checkbox" id="signup-terms" checked="{{terms::change}}">
                             <label for="signup-terms">I accept the terms and conditions</label>
-                            <div class="form-error" hidden\$="[[!errors.terms]]">[[errors.terms]]</div>
+                            <div class="form-error" hidden$="[[!errors.terms]]">[[errors.terms]]</div>
 
                             <input type="checkbox" id="signup-news" checked="{{newsletter::change}}">
                             <label for="signup-news">
@@ -490,9 +488,9 @@ Polymer({
                 <form class="fields" on-submit="_onSubmitForgotUsername">
                     <span>Email</span>
                     <input type="text" value="{{email::input}}" placeholder="Your email address" tabindex="0" on-keydown="_dialogKeydown">
-                    <div class="form-error" hidden\$="[[!errors.email]]">[[errors.email]]</div>
+                    <div class="form-error" hidden$="[[!errors.email]]">[[errors.email]]</div>
                     <div class="submit-wrapper center">
-                        <input disabled\$="[[processing]]" type="submit" value="Send">
+                        <input disabled$="[[processing]]" type="submit" value="Send">
                         <paper-spinner-lite active="[[processing]]"></paper-spinner-lite>
                     </div>
                 </form>
@@ -506,9 +504,9 @@ Polymer({
                 <form class="fields" on-submit="_onSubmitForgotPassword">
                     <span>Username</span>
                     <input type="text" value="{{username::input}}" placeholder="Your username" tabindex="0" autocapitalize="none" on-keydown="_dialogKeydown">
-                    <div class="form-error" hidden\$="[[!errors.username]]">[[errors.username]]</div>
+                    <div class="form-error" hidden$="[[!errors.username]]">[[errors.username]]</div>
                     <div class="submit-wrapper center">
-                        <input disabled\$="[[processing]]" type="submit" value="Send">
+                        <input disabled$="[[processing]]" type="submit" value="Send">
                         <paper-spinner-lite active="[[processing]]"></paper-spinner-lite>
                     </div>
                 </form>
