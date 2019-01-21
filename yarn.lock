@@ -47,13 +47,6 @@
     blueimp-md5 "^2.10"
     platform "^1.3.5"
 
-"@kano/kwc-style@^3.0.0-beta.2":
-  version "3.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@kano/kwc-style/-/kwc-style-3.0.0-beta.2.tgz#350947eefe1278658ae138646e961b13290e9057"
-  integrity sha1-NQlH7v4SeGWK4ThkbpYbEykOkFc=
-  dependencies:
-    "@polymer/polymer" "^3.0.0"
-
 "@kano/styles@^1.0.0-alpha.0":
   version "1.0.0-alpha.0"
   resolved "https://registry.yarnpkg.com/@kano/styles/-/styles-1.0.0-alpha.0.tgz#cce594e4938c5bcf49115f6da1b057bce0505c13"
