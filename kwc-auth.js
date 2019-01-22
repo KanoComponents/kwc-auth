@@ -14,7 +14,6 @@ import '@polymer/iron-pages/iron-pages.js';
 import '@polymer/iron-image/iron-image.js';
 import '@polymer/paper-spinner/paper-spinner-lite.js';
 import '@kano/styles/typography.js';
-import '@kano/styles/color.js';
 import button from '@kano/styles/button.js';
 import { Behaviour as ValidationBehavior } from '@kano/kwc-behaviors/kano-validation.js';
 
