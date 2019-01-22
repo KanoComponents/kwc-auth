@@ -19,7 +19,7 @@
     "test-ci": "yarn run --silent test > test-results.xml"
   },
   "dependencies": {
-    "@kano/kwc-behaviors": "^3.0.0-beta.4",
+    "@kano/kwc-behaviors": "^3.0.0-beta.5",
     "@kano/styles": "^1.0.0-alpha.0",
     "@polymer/iron-image": "^3.0.0-pre.18",
     "@polymer/iron-pages": "^3.0.0-pre.18",
