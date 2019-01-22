@@ -15,7 +15,7 @@ import '@polymer/iron-image/iron-image.js';
 import '@polymer/paper-spinner/paper-spinner-lite.js';
 import '@kano/styles/typography.js';
 import '@kano/styles/color.js';
-import * as button from '@kano/styles/button.js';
+import button from '@kano/styles/button.js';
 import { Behaviour as ValidationBehavior } from '@kano/kwc-behaviors/kano-validation.js';
 
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
@@ -24,8 +24,7 @@ import { mixinBehaviors } from '@polymer/polymer/lib/legacy/class.js';
 class KwcAuth extends mixinBehaviors([ValidationBehavior], PolymerElement) {
     static get template() {
         return html`
-        ${button.button}
-        ${button.tertiary}
+        ${button}
         <style>
             :host {
                 display: inline-block;
@@ -33,14 +32,6 @@ class KwcAuth extends mixinBehaviors([ValidationBehavior], PolymerElement) {
                 background: #FFF;
                 padding: 12px;
                 border-radius: 12px;
-            }
-            /* Override some of btn styles to fit specific design */
-            .btn {
-                text-transform: unset;
-                font-size: 16.5px;
-                letter-spacing: 0.037em;
-                min-width: auto;
-                padding: 0 18px;
             }
             .form-error-wrapper {
                 min-height: 21px;
@@ -59,14 +50,14 @@ class KwcAuth extends mixinBehaviors([ValidationBehavior], PolymerElement) {
             }
             h2 {
                 color: #FF6900;
-                font-size: 19px;
+                font-size: 24px;
                 text-align: center;
+                margin-bottom: 32px;
             }
-            #pager .fields span{
+            #pager .fields span {
                 font-size: 14px;
                 color: #9FA4A8;
                 font-weight: bold;
-                letter-spacing: 0.016em;
             }
             input {
                 display: block;
@@ -80,7 +71,7 @@ class KwcAuth extends mixinBehaviors([ValidationBehavior], PolymerElement) {
             input[type="email"],
             input[type="password"] {
                 font-size: 16px;
-                border-radius: 5px;
+                border-radius: 6px;
                 margin: 6px 0 16px;
                 padding: 0 10px;
                 height: 46px;
@@ -353,7 +344,7 @@ class KwcAuth extends mixinBehaviors([ValidationBehavior], PolymerElement) {
                     <div class="form-error" hidden$="[[!errors.password]]">[[errors.password]]</div>
                     <div class="submit-wrapper">
                         <div class="submit-container">
-                            <input class="btn" disabled$="[[processing]]" type="submit" value="Login">
+                            <input class="btn l" disabled$="[[processing]]" type="submit" value="Login">
                             <paper-spinner-lite active="[[processing]]"></paper-spinner-lite>
                         </div>
                     </div>
@@ -375,7 +366,7 @@ class KwcAuth extends mixinBehaviors([ValidationBehavior], PolymerElement) {
                         </div>
                         <div class="footer">
                             <div class="submit-wrapper">
-                                <input class="btn" disabled$="[[processing]]" type="submit" value="NEXT">
+                                <input class="btn l" disabled$="[[processing]]" type="submit" value="Next">
                                 <paper-spinner-lite active="[[processing]]"></paper-spinner-lite>
                             </div>
                             <div class="no-account">
@@ -409,8 +400,8 @@ class KwcAuth extends mixinBehaviors([ValidationBehavior], PolymerElement) {
                         </div>
                         <div class="footer">
                             <div class="submit-wrapper">
-                                <input class="btn tertiary" type="button" value="Back" on-click="showSignup">
-                                <input class="btn" disabled$="[[processing]]" type="submit" value="DONE">
+                                <input class="btn l secondary" type="button" value="Back" on-click="showSignup">
+                                <input class="btn l" disabled$="[[processing]]" type="submit" value="Done">
                                 <paper-spinner-lite active="[[processing]]"></paper-spinner-lite>
                             </div>
                         </div>
@@ -454,7 +445,7 @@ class KwcAuth extends mixinBehaviors([ValidationBehavior], PolymerElement) {
                 </div>
                 <form on-submit="_onSubmitDone">
                     <div class="submit-wrapper">
-                        <input class="btn" type="submit" value="LET’S GO!">
+                        <input class="btn l" type="submit" value="Let’s go!">
                     </div>
                 </form>
             </div>
@@ -465,7 +456,7 @@ class KwcAuth extends mixinBehaviors([ValidationBehavior], PolymerElement) {
                     <input type="text" value="{{email::input}}" placeholder="Your email address" tabindex="0" on-keydown="_dialogKeydown">
                     <div class="form-error" hidden$="[[!errors.email]]">[[errors.email]]</div>
                     <div class="submit-wrapper center">
-                        <input class="btn" disabled$="[[processing]]" type="submit" value="Send">
+                        <input class="btn l" disabled$="[[processing]]" type="submit" value="Send">
                         <paper-spinner-lite active="[[processing]]"></paper-spinner-lite>
                     </div>
                 </form>
@@ -481,7 +472,7 @@ class KwcAuth extends mixinBehaviors([ValidationBehavior], PolymerElement) {
                     <input type="text" value="{{username::input}}" placeholder="Your username" tabindex="0" autocapitalize="none" on-keydown="_dialogKeydown">
                     <div class="form-error" hidden$="[[!errors.username]]">[[errors.username]]</div>
                     <div class="submit-wrapper center">
-                        <input class="btn" disabled$="[[processing]]" type="submit" value="Send">
+                        <input class="btn l" disabled$="[[processing]]" type="submit" value="Send">
                         <paper-spinner-lite active="[[processing]]"></paper-spinner-lite>
                     </div>
                 </form>
@@ -497,7 +488,7 @@ class KwcAuth extends mixinBehaviors([ValidationBehavior], PolymerElement) {
                 </div>
                 <form on-submit="_onResetDone">
                     <div class="submit-wrapper">
-                        <input class="btn" type="submit" value="OK">
+                        <input class="btn l" type="submit" value="Ok">
                     </div>
                 </form>
             </div>
