@@ -1,7 +1,7 @@
 {
   "description": "Front end for Kano&#39;s authentication flow.",
   "name": "@kano/kwc-auth",
-  "version": "3.0.0-beta.17",
+  "version": "3.0.0-beta.18",
   "resolutions": {
     "inherits": "2.0.3",
     "samsam": "1.1.3",
