@@ -20,6 +20,9 @@ This component implements view according to the current User Login Journey as de
   * terms: Flags if user has accepted terms and conditions.
   * username: Input value.
   * worldUrl: Kano world URL.
+  * view: Login view to show
+  * _motifUrl: Computed value of jukoka-face url
+  * _linkArrowIcon: Computed value of arrow SVG
 
  If `assetsPath` is given the modal will look for a motif icon at `${assetsPath}/avatar/judoka-face.svg` and an arrow icon at `${assetsPath}/icons/link-arrow.svg` so you need to provide those files.
 
@@ -191,10 +194,16 @@ The event is passed the following detail:
 ```
 ## Installation
  * Clone this repository.
- * Run `bower i`
- * Make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your element locally.
+ * Run `yarn`
+
+ * To serve locally `yarn serve` - the site will be served on http://localhost:4000
+
 ## Running Tests
 
 ```
-$ polymer test --skip-plugin junit-reporter
+$ yarn test
+```
+or to serve your tests while you work 
+```
+$ yarn serve-test
 ```
