@@ -598,7 +598,7 @@ class KwcAuth extends mixinBehaviors([ValidationBehavior], PolymerElement) {
                     password: null,
                     username: null,
                     firstName: null,
-                    termos: null,
+                    terms: null,
                 }),
             },
         };

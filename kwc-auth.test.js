@@ -48,7 +48,6 @@ suite('kwc-auth', () => {
             assert.equal(e.detail.password, validPassword);
             cb();
         });
-
         testUtil.login.form.dispatchEvent(new CustomEvent('submit'));
     });
     test('invalid login event, empty username', (cb) => {
@@ -314,3 +313,30 @@ suite('kwc-auth', () => {
         cb();
     });
 });
+
+
+// _dialogKeydown(e)
+// _computeMotifUrl(assetsPath)
+// _computeLinkArrowIcon(assetsPath)
+// showLogin()
+// showSignup()
+// showParents()
+// showEmail()
+// showDone()
+// showPasswordReset()
+// showResetConfirmation()
+// showUsernameReminder()
+// setView(viewName)
+// _onSubmitLogin(e)
+// _onSubmitSignupInfo(e)
+// _onSubmitGrownup(e)
+// _onSubmitSignupEmail(e)
+// validateFirstName(firstName)
+// _onSubmitDone(e)
+// _onSubmitForgotUsername(e)
+// _onSubmitForgotPassword(e)
+// _onChangeUsername(username)
+// _onChangePassword(password)
+// _onChangeFirstName(firstName)
+// _onChangeEmail(email)
+// reset()

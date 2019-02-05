@@ -29,7 +29,7 @@
   "devDependencies": {
     "@kano/es6-server": "^1.0.1",
     "@kano/eslint-config": "^1.0.0",
-    "@kano/web-tester": "^1.0.0-alpha.6",
+    "@kano/web-tester": "^1.0.0-alpha.9",
     "@webcomponents/webcomponentsjs": "^2.0.0",
     "eslint": "^4.19.1"
   }
