@@ -13,18 +13,23 @@
   "scripts": {
     "checkstyle": "eslint kwc-auth.js",
     "checkstyle-ci": "yarn checkstyle -f checkstyle -o eslint.xml",
+    "tsc": "tsc",
     "serve": "es6-server",
-    "serve-test": "web-tester serve ./*.test.js",
-    "test": "web-tester run ./*.test.js",
+    "serve-test": "web-tester serve dist/**/*.test.js",
+    "test": "web-tester run dist/**/*.test.js",
     "test-ci": "yarn run --silent test > test-results.xml"
   },
   "dependencies": {
     "@kano/kwc-behaviors": "^3.0.0-beta.5",
-    "@kano/styles": "^1.0.0",
+    "@kano/styles": "^3.0.10",
     "@polymer/iron-image": "^3.0.0-pre.18",
     "@polymer/iron-pages": "^3.0.0-pre.18",
     "@polymer/paper-spinner": "^3.0.0-pre.18",
-    "@polymer/polymer": "^3.0.0"
+    "@polymer/polymer": "^3.0.0",
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.6",
+    "@types/sinon": "^7.0.9",
+    "lit-element": "^2.0.1"
   },
   "devDependencies": {
     "@kano/es6-server": "^1.0.1",
