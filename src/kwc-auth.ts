@@ -13,7 +13,8 @@ to interact with its many useful events.
 import '@kano/styles/typography.js';
 import button from '@kano/styles/button.js';
 import { LitElement, html, customElement } from 'lit-element';
-// import button from '@kano/styles/button.js';
+// import button from '@kano/styles/button.js;
+
 
 @customElement('kwc-auth')
 export class KwcAuth extends LitElement {
@@ -66,6 +67,7 @@ export class KwcAuth extends LitElement {
 
     render() {
         return html`
+        
         <div>
             ${this.formTemplate(this.view)}
         </div>
