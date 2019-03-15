@@ -27,8 +27,8 @@ export class LandingPage extends LitElement {
         </div>
         <div class="form-container">
             <form class="button-wrapper" @submit=${this._submit}>
-                <button class="getStarted" type="button">Let's get Started</button>
-                <button class="alreadyGotAccount" type="button">I already have an account</button>
+                <button class="getStarted" type="submit">Let's get Started</button>
+                <button class="alreadyGotAccount" type="submit">I already have an account</button>
             </form>
         </div>
     `;
