@@ -211,6 +211,8 @@ The event is passed the following detail:
  * Run `yarn`
 
  * To serve locally `yarn serve` - the site will be served on http://localhost:4000/demo
+
+ * yarn add --dev typescript
  * Watch file changes: yarn tsc --watch
 
 ## Running Tests
