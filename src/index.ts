@@ -12,4 +12,4 @@ class Index extends LitElement {
     }
   }
 
-  customElements.define('my-page', Index);
+  customElements.define('kwc-auth', Index);

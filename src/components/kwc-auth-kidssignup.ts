@@ -23,7 +23,7 @@ export class LandingPage extends LitElement {
             <h1>Create a Kano World account</h1>
         </div>
         <div class="form-container">       
-            <form @submit=${this._submit}>
+            <form class="form-wrapper" @submit=${this._submit}>
                 <label for="username">Choose username that you don't use on any other website. Don't use their real name</label>
                 <input type="text" id="username" placeholder="Make up a Kano Username"/>
                 <label for="password">Your password must be at least 8 characters</label>

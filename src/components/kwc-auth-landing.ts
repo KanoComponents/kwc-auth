@@ -1,9 +1,20 @@
 import '@kano/styles/typography.js';
 import button from '@kano/styles/button.js';
-import { LitElement, customElement, html, property } from 'lit-element';
+import { LitElement, css, customElement, html, property } from 'lit-element';
 
 @customElement('kwc-auth-landing')
 export class LandingPage extends LitElement {
+    static get styles(){
+        return css`
+        :host {
+            display: inline-block;
+            font-family: var(--font-body);
+        }
+        button {
+            font-family: var(--font-body);
+        }
+        `
+    }
     @property ( { type: String } ) view = '';
     // public view : string;
 
@@ -19,9 +30,6 @@ export class LandingPage extends LitElement {
     render() {
         return html`
         ${button}
-        <div class="landing-title">
-            <h1>Login to your account</h1>
-        </div>
         <div class="landing-image">
             <img src=""/>
         </div>
