@@ -7,11 +7,19 @@ export class LandingPage extends LitElement {
     static get styles(){
         return css`
         :host {
-            display: inline-block;
+            /* display: inline-block; */
             font-family: var(--font-body);
+            width: 100%;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
         }
         button {
             font-family: var(--font-body);
+            display: flex;
+            width: 100%;
+            min-width: 250px;
+            justify-content: center;
         }
         `
     }
@@ -30,14 +38,16 @@ export class LandingPage extends LitElement {
     render() {
         return html`
         ${button}
-        <div class="landing-image">
-            <img src=""/>
-        </div>
-        <div class="form-container">
-            <form class="button-wrapper" @submit=${this._submit}>
-                <button class="getStarted" type="submit">Let's get Started</button>
-                <button class="alreadyGotAccount" type="submit">I already have an account</button>
-            </form>
+        <div class="section-landing">
+            <div class="landing-image">
+                <img src=""/>
+            </div>
+            <div class="form-container">
+                <form class="button-wrapper" @submit=${this._submit}>
+                    <button class="getStarted" type="submit">Let's get Started</button>
+                    <button class="alreadyGotAccount" type="submit">I already have an account</button>
+                </form>
+            </div>
         </div>
     `;
     }
