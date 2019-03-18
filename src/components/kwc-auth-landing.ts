@@ -6,14 +6,19 @@ import { LitElement, css, customElement, html, property } from 'lit-element';
 export class LandingPage extends LitElement {
     static get styles(){
         return css`
-        :host {
-            /* display: inline-block; */
-            font-family: var(--font-body);
+        /* :host {
             width: 100%;
             display: flex;
             flex-flow: column;
             align-items: center;
-        }
+            border: 1px solid grey;
+            border-radius: 10px;
+        } */
+        /* .auth-section {
+        border: 1px solid grey;
+        border-radius: 10px;
+
+    } */
         button {
             font-family: var(--font-body);
             display: flex;
@@ -37,8 +42,9 @@ export class LandingPage extends LitElement {
 
     render() {
         return html`
+        <link rel="stylesheet" href="./static/styles.css">
         ${button}
-        <div class="section-landing">
+        <div class="auth-section">
             <div class="landing-image">
                 <img src=""/>
             </div>
