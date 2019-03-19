@@ -4,6 +4,7 @@ import './components/kwc-auth-kidsignup.js';
 import './components/kwc-auth-kidparentsemail.js';
 import './components/kwc-auth-emailconfirmation.js';
 import './components/kwc-auth-emailvarificationmodel.js'
+import './components/kwc-auth-homescreen.js';
 
 class Index extends LitElement {
 
@@ -18,6 +19,8 @@ class Index extends LitElement {
         <kwc-auth-emailconfirmation></kwc-auth-emailconfirmation>
         <hr>
         <kwc-auth-emailvarificationmodel></kwc-auth-emailvarificationmodel>
+        <hr>
+        <kwc-auth-homescreen></kwc-auth-homescreen>
       `;
     }
   }
