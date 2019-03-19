@@ -1,3 +1,66 @@
+
+:host {
+    font-family: var(--font-body);
+    /* --red-color: red; */
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    border: 1px solid grey;
+    padding: 12px;
+    border-radius: 12px;
+}
+
+/* h2 {
+            color: var(--red-color);
+    } */
+
 h2 {
-    color: green;
+    color: #FF6900;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.signupkids-title {
+    text-align: center;
+}
+.linkToLogin {
+    text-align: center;
+}
+
+.button-wrapper {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+button {
+    font-family: var(--font-body);
+    justify-content: center;
+}
+
+input {
+    display: block;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 16px;
+    font-family: 'Bariol', sans-serif;
+    font-weight: bold;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    font-size: 16px;
+    border-radius: 6px;
+    margin: 6px 0 16px;
+    width: 98%;
+    padding-left: 2%;
+    height: 46px;
+    color: #414A51;
+}
+
+.footer a {
+    color: #FF6900;
+    text-decoration: underline;
 }
