@@ -21,7 +21,7 @@ export class KidSignup extends LitElement {
         ${button}
         <link rel="stylesheet" href="./static/styles.css">
         <div class="auth-section">
-            <div class="auth-title">
+            <div class="title-wrapper">
                 <h2>Create a Kano World account</h2>
             </div>
             <div class="form">       

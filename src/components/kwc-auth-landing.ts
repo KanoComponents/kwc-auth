@@ -23,7 +23,7 @@ export class LandingPage extends LitElement {
         <link rel="stylesheet" href="./static/styles.css">
         ${button}
         <div class="auth-section">
-            <div class="landing-image">
+            <div class="image">
                 <img src=""/>
             </div>
             <div class="form-container">

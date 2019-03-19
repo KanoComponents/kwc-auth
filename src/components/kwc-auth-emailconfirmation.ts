@@ -2,8 +2,8 @@ import '@kano/styles/typography.js';
 import button from '@kano/styles/button.js';
 import { LitElement, html, customElement, property } from 'lit-element';
 
-@customElement('kwc-auth-kidparentsemail')
-export class KidParentsEmail extends LitElement {
+@customElement('kwc-auth-emailconfirmation')
+export class EmailConfirmation extends LitElement {
     @property ( { type: String } ) view = '';
     // public view : string;
 
@@ -22,18 +22,20 @@ export class KidParentsEmail extends LitElement {
         <link rel="stylesheet" href="./static/styles.css">
         <div class="auth-section">
             <div class="title-wrapper">
-                <h2>Give us a valid email!<br>(Social features will be turned off until the email is varified)</h2>
+                <h2>Check the email!</h2>
+            </div>
+            <div class="image-wrapper">
+                <img src=""/>
             </div>
             <div class="form">       
-                <form class="form-wrapper" @submit=${this._submit}>
-                    <div class="input-wrapper">
-                        <input class="input" type="email" placeholder="Email"/>
-                        <h4>Please enter your parent's or guardian's email</h4>
-                     </div>
-                     <div class="button-wrapper">
-                       <button class="btn l" type="submit">Continue</button>
+                    <form class="form-wrapper" @submit=${this._submit}>
+                    <div class="button-wrapper">
+                        <button class="btn l" type="submit">Continue</button>
                     </div>
-                    </div>
+                    <div class="link-wrapper">
+                        <a href="">Use different email</a>
+                        <a href="">Resend email</a>
+                    </div>    
                 </form>
             </div>
         </div>  

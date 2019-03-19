@@ -21,10 +21,11 @@ h2 {
     margin-bottom: 32px;
 }
 
-.signupkids-title {
+p {
     text-align: center;
 }
-.linkToLogin {
+
+h4 {
     text-align: center;
 }
 
@@ -60,7 +61,13 @@ input[type="password"] {
     color: #414A51;
 }
 
-.footer a {
+.a {
     color: #FF6900;
     text-decoration: underline;
+}
+
+.link-wrapper {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
 }
