@@ -29,7 +29,7 @@ export class EmailConfirmation extends LitElement {
             </div>
             <div class="form">       
                     <form class="form-wrapper" @submit=${this._submit}>
-                    <div class="button-wrapper">
+                    <div class="button">
                         <button class="btn l" type="submit">Continue</button>
                     </div>
                     <div class="link-wrapper">

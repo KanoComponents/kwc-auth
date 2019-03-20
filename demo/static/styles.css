@@ -15,25 +15,26 @@
     } */
 
 h2 {
-    color: #FF6900;
+    color: #414a51;
     font-size: 24px;
-    text-align: center;
+    text-align: left;
     margin-bottom: 32px;
-}
-
-p {
-    text-align: center;
 }
 
 h4 {
     text-align: center;
 }
 
-.button-wrapper {
-    width: 100%;
+button {
     display: flex;
-    flex-flow: column;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: center;
     align-items: center;
+}
+
+button:first-child {
+    margin-top: 20px;
 }
 
 button {
@@ -69,5 +70,4 @@ input[type="password"] {
 .link-wrapper {
     display: flex;
     flex-flow: column;
-    align-items: center;
 }
