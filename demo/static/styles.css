@@ -26,18 +26,6 @@ h4 {
 }
 
 button {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    text-align: center;
-    align-items: center;
-}
-
-button:first-child {
-    margin-top: 20px;
-}
-
-button {
     font-family: var(--font-body);
     justify-content: center;
 }
@@ -70,4 +58,6 @@ input[type="password"] {
 .link-wrapper {
     display: flex;
     flex-flow: column;
+    justify-content: flex-end;
 }
+

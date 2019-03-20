@@ -1,10 +1,16 @@
 import '@kano/styles/typography.js';
 import { button } from '@kano/styles/button.js';
-import { LitElement, html, customElement, property } from 'lit-element';
+import { LitElement, css, html, customElement, property } from 'lit-element';
 import { templateContent } from '../utils/template-content.js';
 
 @customElement('kwc-auth-kidsignup')
 export class KidSignup extends LitElement {
+    static get styles() {
+        return css`
+        #kid-signup {
+        max-width: 525px;
+        }`;
+      } 
     @property ( { type: String } ) view = '';
     // public view : string;
 
@@ -15,7 +21,6 @@ export class KidSignup extends LitElement {
 
     _submit(e: Event) {
         e.preventDefault();
-        console.log("click");
         
     }
 
@@ -23,10 +28,7 @@ export class KidSignup extends LitElement {
         return html`
         <link rel="stylesheet" href="./static/styles.css">
         ${templateContent(button)}
-        <div class="auth-section">
-            <div class="banner">
-                <h1>Create a Kano World account</h1>
-            </div>
+        <div id="kid-signup">
             <div class="form">       
                 <form class="form-wrapper" @submit=${this._submit}>
                     <div class="input-wrapper">
