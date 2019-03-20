@@ -15,12 +15,10 @@ export class LandingPage extends LitElement {
             text-align: center;
             align-items: center;
         }
-        button {
+        .btn.secondary {
             margin-top: 10px;
             min-width: 200px;
-        }
-    
-        `;
+        }`;
       } 
     @property ( { type: String } ) view = '';
     prop: any;

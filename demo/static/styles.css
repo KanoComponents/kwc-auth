@@ -1,7 +1,6 @@
 
 :host {
     font-family: var(--font-body);
-    /* --red-color: red; */
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -9,10 +8,6 @@
     padding: 12px;
     border-radius: 12px;
 }
-
-/* h2 {
-            color: var(--red-color);
-    } */
 
 h2 {
     color: #414a51;
@@ -46,7 +41,7 @@ input[type="password"] {
     margin: 6px 0 16px;
     width: 98%;
     padding-left: 2%;
-    height: 46px;
+    height: 32px;
     color: #414A51;
 }
 
