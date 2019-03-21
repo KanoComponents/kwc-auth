@@ -10,7 +10,6 @@ export class Login extends LitElement {
       } 
     
     @property ( { type: String } ) view = '';
-    // public view : string;
 
     constructor() {
         super();

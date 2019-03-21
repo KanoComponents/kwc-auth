@@ -10,7 +10,6 @@ export class HomeScreen extends LitElement {
         return [styles];
       } 
     @property ( { type: String } ) view = '';
-    // public view : string;
 
     constructor() {
         super();

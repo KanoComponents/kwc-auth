@@ -8,18 +8,22 @@ import { styles } from '../styles.js';
 @customElement('kwc-auth-landing')
 export class LandingPage extends LitElement {
     static get styles() {
-        return [styles, css`
-        .button-wrapper {
-            display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
-            text-align: center;
-            align-items: center;
-        }
-        .btn.secondary {
-            margin-top: 10px;
-            min-width: 200px;
-        }`];
+        return [
+            styles,
+            css`
+                .button-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    flex-wrap: wrap;
+                    text-align: center;
+                    align-items: center;
+                }
+                .btn.secondary {
+                    margin-top: 10px;
+                    min-width: 200px;
+                }
+            `,
+        ];
       } 
     @property ( { type: String } ) view = '';
     prop: any;

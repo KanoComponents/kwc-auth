@@ -8,13 +8,16 @@ import { styles } from '../styles.js';
 @customElement('kwc-auth-kidsignup')
 export class KidSignup extends LitElement {
     static get styles() {
-        return [styles, css`
-        #kid-signup {
-        max-width: 525px;
-        }`];
-      } 
+        return [
+            styles,
+            css`
+                #kid-signup {
+                    max-width: 525px;
+                }
+            `,
+            ];
+        } 
     @property ( { type: String } ) view = '';
-    // public view : string;
 
     constructor() {
         super();
