@@ -11,18 +11,23 @@ to interact with its many useful events.
 @demo demo/index.html
 */
 import '@kano/styles/typography.js';
-import button from '@kano/styles/button.js';
-import { LitElement, html, customElement } from 'lit-element';
-// import button from '@kano/styles/button.js;
+import { LitElement, html, property, customElement } from 'lit-element';
 
+import './components/kwc-auth-landing.js';
+import './components/kwc-auth-kidsignup.js';
+import './components/kwc-auth-kidparentsemail.js';
+import './components/kwc-auth-emailconfirmation.js';
+import './components/kwc-auth-emailvarificationmodel.js'
+import './components/kwc-auth-homescreen.js';
+import './components/kwc-auth-login.js';
 
 @customElement('kwc-auth')
 export class KwcAuth extends LitElement {
-    public view : string;
+    @property ( { type: String } ) view = '';
 
     constructor() {
         super();
-        this.view = 'form1';
+
     }
     static get properties() {
         return {
@@ -33,27 +38,20 @@ export class KwcAuth extends LitElement {
     }
 
     // Return template of the current form
-    formTemplate(formId: string) {
-        switch (formId) {
-            case 'form1':
+    formTemplate(view: string) {                        
+        switch (view) {
+            case 'kidsignup':
                 return html`
-                ${button}
-                <div class="form-container">
-                    <h1>Start</h1>
-                    <form @submit=${this._submit} id="form1" next="view2">
-                        <input type="text">
-                        <input type="text">
-                        <input type="text">
-                        <input type="text">
-                        <input type="text">
-                        <input type="submit">
-                    </form>
-                </div>
+                    <kwc-auth-kidsignup></kwc-auth-kidsignup>
             `;
-            case 'view2':
+            case 'landing':
                 return html`
-                <h1>OTHER</h1>
+                    <kwc-auth-landing></kwc-auth-landing>
             `;
+            case 'kidparentsemail':
+                return html`
+                    <kwc-auth-kidparentsemail></kwc-auth-kidparentsemail>
+            `;    
             default:
                 return html`
                 <h1>DEFAULT</h1>

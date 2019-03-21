@@ -50,8 +50,7 @@ export class LandingPage extends LitElement {
     }
     handleClick(e: Event) {
         e.preventDefault(); 
-        console.log('click');
-              
+        console.log('click');              
     }
 }
   

@@ -21,17 +21,15 @@ export class KidSignup extends LitElement {
         this.view = '';
     }
 
-    _submit(e: Event) {
-        e.preventDefault();
-        
-    }
-
     render() {
         return html`
         ${templateContent(button)}
         <div id="kid-signup">
             <div class="form">       
-                <form class="form-wrapper" @submit=${this._submit}>
+                <div class="back-button">
+                    <a href="" class="back">Back</a>
+                </div>
+                <form class="form-wrapper">
                     <div class="input-wrapper">
                         <label for="username">Choose a username that you don't use on any other website. Don't use your real name.</label>
                         <input class="input" type="text" id="username" placeholder="Make up a Kano Username"/>
@@ -39,7 +37,7 @@ export class KidSignup extends LitElement {
                         <input class="input" type="password" id="password" placeholder="Make up a secret password"/>
                     </div>
                     <div class="button-wrapper">
-                        <button class="btn s" type="submit">Continue</button>
+                        <button @click=${this.handleClick} class="btn s" type="submit">Continue</button>
                     </div>
                     <div class="link-wrapper">
                         <p class="linkToLogin">Already have an account? <a href="">Login</a></p>
@@ -48,6 +46,10 @@ export class KidSignup extends LitElement {
             </div>
         </div>
     `;
+    }
+    handleClick(e: Event) {
+        e.preventDefault(); 
+        console.log('click');              
     }
 }
 
