@@ -1,3 +1,6 @@
+import { css } from 'lit-element';
+
+export const styles = css`
 
 :host {
     font-family: var(--font-body);
@@ -56,3 +59,5 @@ input[type="password"] {
     justify-content: flex-end;
 }
 
+
+`

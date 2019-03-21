@@ -1,15 +1,17 @@
 import '@kano/styles/typography.js';
 import { button } from '@kano/styles/button.js';
-import { LitElement, css, html, customElement, property } from 'lit-element';
+import { LitElement, css, html, customElement, property } from 'lit-element/lit-element.js';
 import { templateContent } from '../utils/template-content.js';
+import { styles } from '../styles.js';
+
 
 @customElement('kwc-auth-kidparentsemail')
 export class KidParentsEmail extends LitElement {
     static get styles() {
-        return css`
+        return [styles, css`
         #kid-parents-email {
         max-width: 525px;
-        }`;
+        }`];
       } 
     @property ( { type: String } ) view = '';
     // public view : string;
@@ -26,7 +28,6 @@ export class KidParentsEmail extends LitElement {
     render() {
         return html`
         ${templateContent(button)}
-        <link rel="stylesheet" href="./static/styles.css">
         <div id="kid-parents-email">
             <div class="title">
                 <h2>Give us a valid email! (Social features will be turned off until the email is varified)</h2>

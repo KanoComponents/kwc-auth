@@ -1,10 +1,13 @@
 import '@kano/styles/typography.js';
 import button from '@kano/styles/button.js';
 import { LitElement, customElement, html, property } from 'lit-element';
+import { styles } from '../styles.js';
 
 @customElement('kwc-auth-login')
 export class Login extends LitElement {
-    
+    static get styles() {
+        return [styles];
+      } 
     
     @property ( { type: String } ) view = '';
     // public view : string;
@@ -20,7 +23,6 @@ export class Login extends LitElement {
 
     render() {
         return html`
-        <link rel="stylesheet" href="./static/styles.css">
         ${button}
         <div class="auth-section">
             <div class="title-wrapper">

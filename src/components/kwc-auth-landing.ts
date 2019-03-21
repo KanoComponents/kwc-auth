@@ -1,13 +1,14 @@
 import '@kano/styles/typography.js';
 import { button } from '@kano/styles/button.js';
-import { LitElement, css, customElement, html, property } from 'lit-element';
+import { LitElement, css, customElement, html, property } from 'lit-element/lit-element.js';
 import { templateContent } from '../utils/template-content.js';
+import { styles } from '../styles.js';
 
 
 @customElement('kwc-auth-landing')
 export class LandingPage extends LitElement {
     static get styles() {
-        return css`
+        return [styles, css`
         .button-wrapper {
             display: flex;
             flex-direction: column;
@@ -18,7 +19,7 @@ export class LandingPage extends LitElement {
         .btn.secondary {
             margin-top: 10px;
             min-width: 200px;
-        }`;
+        }`];
       } 
     @property ( { type: String } ) view = '';
     prop: any;
@@ -28,11 +29,9 @@ export class LandingPage extends LitElement {
         this.view = '';
 
     }
-
     
     render() {
         return html`
-        <link rel="stylesheet" href="./static/styles.css">
         ${templateContent(button)}
         <div class="auth-landing">
             <div class="image">

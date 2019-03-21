@@ -1,9 +1,14 @@
 import '@kano/styles/typography.js';
 import button from '@kano/styles/button.js';
 import { LitElement, html, customElement, property } from 'lit-element';
+import { styles } from '../styles.js';
+
 
 @customElement('kwc-auth-emailconfirmation')
 export class EmailConfirmation extends LitElement {
+    static get styles() {
+        return [styles];
+      } 
     @property ( { type: String } ) view = '';
     // public view : string;
 
@@ -19,7 +24,6 @@ export class EmailConfirmation extends LitElement {
     render() {
         return html`
         ${button}
-        <link rel="stylesheet" href="./static/styles.css">
         <div class="auth-section">
             <div class="title-wrapper">
                 <h2>Check the email!</h2>

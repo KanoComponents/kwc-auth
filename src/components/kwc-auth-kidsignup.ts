@@ -2,14 +2,16 @@ import '@kano/styles/typography.js';
 import { button } from '@kano/styles/button.js';
 import { LitElement, css, html, customElement, property } from 'lit-element';
 import { templateContent } from '../utils/template-content.js';
+import { styles } from '../styles.js';
+
 
 @customElement('kwc-auth-kidsignup')
 export class KidSignup extends LitElement {
     static get styles() {
-        return css`
+        return [styles, css`
         #kid-signup {
         max-width: 525px;
-        }`;
+        }`];
       } 
     @property ( { type: String } ) view = '';
     // public view : string;
@@ -26,7 +28,6 @@ export class KidSignup extends LitElement {
 
     render() {
         return html`
-        <link rel="stylesheet" href="./static/styles.css">
         ${templateContent(button)}
         <div id="kid-signup">
             <div class="form">       
