@@ -31,10 +31,8 @@ export class EmailConfirmation extends LitElement {
                 <img src=""/>
             </div>
             <div class="form">       
-                    <form class="form-wrapper" @submit=${this._submit}>
-                    <div class="button">
-                        <button class="btn l" type="submit">Continue</button>
-                    </div>
+                <form class="form-wrapper" @submit=${this._submit}>
+                    <button class="btn l" type="submit">Continue</button>
                     <div class="link-wrapper">
                         <a href="">Use different email</a>
                         <a href="">Resend email</a>

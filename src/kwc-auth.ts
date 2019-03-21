@@ -27,7 +27,6 @@ export class KwcAuth extends LitElement {
 
     constructor() {
         super();
-
     }
     static get properties() {
         return {
@@ -36,7 +35,6 @@ export class KwcAuth extends LitElement {
             },
         };
     }
-
     // Return template of the current form
     formTemplate(view: string) {                        
         switch (view) {
@@ -62,10 +60,8 @@ export class KwcAuth extends LitElement {
         e.preventDefault();
         // TODO: Handle submit
     }
-
     render() {
-        return html`
-        
+        return html`      
         <div>
             ${this.formTemplate(this.view)}
         </div>

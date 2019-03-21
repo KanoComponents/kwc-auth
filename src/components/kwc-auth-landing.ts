@@ -43,7 +43,7 @@ export class LandingPage extends LitElement {
             </div>
             <div class="form-container">
                 <form class="form-wrapper">
-                    <div class ="button-wrapper">
+                    <div class="button-wrapper">
                         <button @click=${this.handleClick} class="btn secondary" type="submit">Let's get Started</button>
                         <button @click=${this.handleClick} class="btn secondary" type="submit">I already have an account</button>
                     </div>

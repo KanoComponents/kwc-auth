@@ -58,6 +58,4 @@ input[type="password"] {
     flex-flow: column;
     justify-content: flex-end;
 }
-
-
 `
