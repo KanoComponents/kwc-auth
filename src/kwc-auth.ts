@@ -10,8 +10,9 @@ to interact with its many useful events.
 
 @demo demo/index.html
 */
-import '@kano/styles/typography.js';
-import { LitElement, html, property, customElement } from 'lit-element';
+
+import { LitElement, html, property, customElement } from 'lit-element/lit-element.js';
+
 import './components/kwc-auth-landing.js';
 import './components/kwc-auth-kidsignup.js';
 import './components/kwc-auth-kidparentsemail.js';

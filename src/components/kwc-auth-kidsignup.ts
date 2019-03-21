@@ -1,6 +1,6 @@
 import '@kano/styles/typography.js';
 import { button } from '@kano/styles/button.js';
-import { LitElement, css, html, customElement, property } from 'lit-element';
+import { LitElement, css, html, customElement, property } from 'lit-element/lit-element.js';
 import { templateContent } from '../utils/template-content.js';
 import { styles } from '../styles.js';
 

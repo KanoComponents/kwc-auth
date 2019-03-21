@@ -1,6 +1,6 @@
 import '@kano/styles/typography.js';
 import button from '@kano/styles/button.js';
-import { LitElement, customElement, html, property } from 'lit-element';
+import { LitElement, customElement, html, property } from 'lit-element/lit-element.js';
 import { styles } from '../styles.js';
 
 @customElement('kwc-auth-login')
