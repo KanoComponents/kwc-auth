@@ -31,7 +31,6 @@ export class LandingPage extends LitElement {
     constructor() {
         super();
         this.view = '';
-
     }
     
     render() {
