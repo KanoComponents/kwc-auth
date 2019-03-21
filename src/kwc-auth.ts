@@ -12,7 +12,6 @@ to interact with its many useful events.
 */
 import '@kano/styles/typography.js';
 import { LitElement, html, property, customElement } from 'lit-element';
-
 import './components/kwc-auth-landing.js';
 import './components/kwc-auth-kidsignup.js';
 import './components/kwc-auth-kidparentsemail.js';
