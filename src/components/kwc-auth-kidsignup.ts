@@ -7,6 +7,7 @@ import { styles } from '../styles.js';
 
 @customElement('kwc-auth-kidsignup')
 export class KidSignup extends LitElement {
+    inputValue: unknown;
     static get styles() {
         return [
             styles,
@@ -18,10 +19,14 @@ export class KidSignup extends LitElement {
             ];
         } 
     @property ( { type: String } ) view = '';
+    @property ( { type: String } ) username = '';
+
 
     constructor() {
         super();
         this.view = '';
+        this.username = '';
+        
     }
 
     render() {
@@ -32,7 +37,7 @@ export class KidSignup extends LitElement {
                 <div class="back-button">
                     <a href="" class="back">Back</a>
                 </div>
-                <form class="form-wrapper">
+                <form class="form-wrapper" >
                     <div class="input-wrapper">
                         <label for="username">Choose a username that you don't use on any other website. Don't use your real name.</label>
                         <input class="input" type="text" id="username" placeholder="Make up a Kano Username"/>
@@ -40,7 +45,7 @@ export class KidSignup extends LitElement {
                         <input class="input" type="password" id="password" placeholder="Make up a secret password"/>
                     </div>
                     <div class="button-wrapper">
-                        <button @click=${this.handleClick} class="btn s" type="submit">Continue</button>
+                        <button @click=${this._onSubmit} class="btn s" type="submit">Continue</button>
                     </div>
                     <div class="link-wrapper">
                         <p class="linkToLogin">Already have an account? <a href="">Login</a></p>
@@ -50,10 +55,17 @@ export class KidSignup extends LitElement {
         </div>
     `;
     }
-    handleClick(e: Event) {
+    _onSubmit(e: Event) {
         e.preventDefault(); 
-        console.log('click');              
+        console.log('click');
+
     }
+
+    updated(changedProps: { get: (arg0: string) => void; }) {
+        console.log(changedProps.get('username'));
+      }
+
+    
 }
 
 
