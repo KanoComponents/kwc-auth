@@ -73,7 +73,7 @@ export class KidSignup extends LitElement {
         //         password: this.password,
         //     };
         //     this.dispatchEvent(new CustomEvent('kids-signup-form', {detail: info, bubbles: true, composed: true }));
-        }
+        // }
     }    
 }
 
