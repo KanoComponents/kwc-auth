@@ -3,11 +3,11 @@ import { button } from '@kano/styles/button.js';
 import { LitElement, css, html, customElement, property } from 'lit-element/lit-element.js';
 import { templateContent } from '../utils/template-content.js';
 import { styles } from '../styles.js';
-
+import '../utils/validation.js';
 
 @customElement('kwc-auth-kidsignup')
 export class KidSignup extends LitElement {
-    inputValue: unknown;
+
     static get styles() {
         return [
             styles,
@@ -20,13 +20,11 @@ export class KidSignup extends LitElement {
         } 
     @property ( { type: String } ) view = '';
     @property ( { type: String } ) username = '';
+    @property ( { type: String } ) password = '';
 
 
     constructor() {
         super();
-        this.view = '';
-        this.username = '';
-        
     }
 
     render() {
@@ -37,15 +35,15 @@ export class KidSignup extends LitElement {
                 <div class="back-button">
                     <a href="" class="back">Back</a>
                 </div>
-                <form class="form-wrapper" >
+                <form class="form-wrapper" @submit=${this._onSubmit}>
                     <div class="input-wrapper">
                         <label for="username">Choose a username that you don't use on any other website. Don't use your real name.</label>
-                        <input class="input" type="text" id="username" placeholder="Make up a Kano Username"/>
+                        <input value="${this.username}" @change="${this.updateUsername}" class="input" type="text" id="username" placeholder="Make up a Kano Username"/>
                         <label for="password">Your password must be at least 8 characters.</label>
-                        <input class="input" type="password" id="password" placeholder="Make up a secret password"/>
+                        <input value="${this.password}" @change="${this.updatePassword}" class="input" type="password" id="password" placeholder="Make up a secret password"/>
                     </div>
                     <div class="button-wrapper">
-                        <button @click=${this._onSubmit} class="btn s" type="submit">Continue</button>
+                        <button class="btn s" type="submit">Continue</button>
                     </div>
                     <div class="link-wrapper">
                         <p class="linkToLogin">Already have an account? <a href="">Login</a></p>
@@ -55,17 +53,28 @@ export class KidSignup extends LitElement {
         </div>
     `;
     }
-    _onSubmit(e: Event) {
-        e.preventDefault(); 
-        console.log('click');
 
+    updateUsername(e: { target: { value: string; }; }){
+        this.username = e.target.value
     }
 
-    updated(changedProps: { get: (arg0: string) => void; }) {
-        console.log(changedProps.get('username'));
-      }
+    updatePassword(e: { target: { value: string; }; }){
+        this.password = e.target.value
+    }
 
-    
+    _onSubmit(e: Event) {
+        e.preventDefault(); 
+        console.log(e, this.username, this.password); 
+        // const validUsername = this.validateUsername(this.username);
+        // const validPassword = this.validatePassword(this.password);
+        // if (validUsername && validPassword) {
+        //     const info = {
+        //         username: this.username,
+        //         password: this.password,
+        //     };
+        //     this.dispatchEvent(new CustomEvent('kids-signup-form', {detail: info, bubbles: true, composed: true }));
+        }
+    }    
 }
 
 
