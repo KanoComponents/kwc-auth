@@ -1,7 +1,9 @@
+import { css } from 'lit-element';
+
+export const styles = css`
 
 :host {
     font-family: var(--font-body);
-    /* --red-color: red; */
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -9,38 +11,19 @@
     padding: 12px;
     border-radius: 12px;
 }
-
-/* h2 {
-            color: var(--red-color);
-    } */
-
 h2 {
-    color: #FF6900;
+    color: #414a51;
     font-size: 24px;
-    text-align: center;
+    text-align: left;
     margin-bottom: 32px;
 }
-
-p {
-    text-align: center;
-}
-
 h4 {
     text-align: center;
 }
-
-.button-wrapper {
-    width: 100%;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-}
-
 button {
     font-family: var(--font-body);
     justify-content: center;
 }
-
 input {
     display: block;
     border: 1px solid #ccc;
@@ -57,17 +40,16 @@ input[type="password"] {
     margin: 6px 0 16px;
     width: 98%;
     padding-left: 2%;
-    height: 46px;
+    height: 32px;
     color: #414A51;
 }
-
 .a {
     color: #FF6900;
     text-decoration: underline;
 }
-
 .link-wrapper {
     display: flex;
     flex-flow: column;
-    align-items: center;
+    justify-content: flex-end;
 }
+`

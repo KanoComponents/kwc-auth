@@ -7,22 +7,32 @@ export class AuthTestUtil {
         return this.el.root.querySelector(selector);
     }
 
-    // --- Example from old util ---
+    get kidsignup() {
+        const getter = this._get.bind(this);
+        return {
+            get username() {
+                return getter('#kidsignup input[type="text"]');
+            },
+            get password() {
+                return getter('#kidsignup input[type="password"]');
+            },
+            get form() {
+                return getter('#kidsignup .fields');
+            },
+        };
+    }
 
-    // get login() {
-    //     const getter = this._get.bind(this);
-    //     return {
-    //         get username() {
-    //             return getter('#login input');
-    //         },
-    //         get password() {
-    //             return getter('#login input[type="password"]');
-    //         },
-    //         get form() {
-    //             return getter('#login .fields');
-    //         },
-    //     };
-    // }
+    get kidparentsemail() {
+        const getter = this._get.bind(this);
+        return {
+            get email() {
+                return getter('#kidsignup input[type="email"]');
+            },
+            get form() {
+                return getter('#kidsignup .fields');
+            },
+        };
+    }
     
     type(input: HTMLInputElement, text: string) {
         this.setInputValue(input, 'value', text);
