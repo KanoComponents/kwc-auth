@@ -26,10 +26,10 @@ export class AuthTestUtil {
         const getter = this._get.bind(this);
         return {
             get email() {
-                return getter('#kidsignup input[type="email"]');
+                return getter('#kidparentsemail input[type="email"]');
             },
             get form() {
-                return getter('#kidsignup .fields');
+                return getter('#kidparentsemail .fields');
             },
         };
     }

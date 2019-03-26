@@ -25,6 +25,11 @@ export class KidSignup extends LitElement {
 
     constructor() {
         super();
+
+        this.addEventListener('valueChange', async (e) => {
+            console.log(e.detail.username);
+            console.log(await this.requestUpdate());
+          });
     }
 
     render() {
@@ -65,16 +70,13 @@ export class KidSignup extends LitElement {
     _onSubmit(e: Event) {
         e.preventDefault(); 
         console.log(e, this.username, this.password); 
-        // const validUsername = this.validateUsername(this.username);
-        // const validPassword = this.validatePassword(this.password);
-        // if (validUsername && validPassword) {
-        //     const info = {
-        //         username: this.username,
-        //         password: this.password,
-        //     };
-        //     this.dispatchEvent(new CustomEvent('kids-signup-form', {detail: info, bubbles: true, composed: true }));
-        // }
+        this._valueChanged();
     }    
+
+    _valueChanged() {
+        // Fire a custom event for others to listen to
+        this.dispatchEvent(new CustomEvent('valueChange', { detail: this.username, bubbles: true, composed: true }));
+      }
 }
 
 

@@ -18,10 +18,10 @@ export class KidParentsEmail extends LitElement {
         ];
     } 
     @property ( { type: String } ) view = '';
+    @property ( { type: String } ) email = '';
 
     constructor() {
         super();
-        this.view = '';
     }
 
     render() {
@@ -32,13 +32,13 @@ export class KidParentsEmail extends LitElement {
                 <h2>Give us a valid email! (Social features will be turned off until the email is varified)</h2>
             </div>
             <div class="form">       
-                <form class="form-wrapper">
+                <form class="form-wrapper" @submit=${this._onSubmit}>
                     <div class="input-wrapper">
                         <label for="input">Please enter your parent's or guardian's email.</label>
-                        <input class="input" type="email" placeholder="Email"/>
+                        <input value="${this.email}" @change="${this.updateEmail}" class="input" type="email" placeholder="Email"/>
                      </div>
                      <div class="button-wrapper">
-                       <button @click=${this.handleClick} class="btn s" type="submit">Continue</button>
+                       <button class="btn s" type="submit">Continue</button>
                     </div>
                     </div>
                 </form>
@@ -46,8 +46,19 @@ export class KidParentsEmail extends LitElement {
         </div>  
     `;
     }
-    handleClick(e: Event) {
-        e.preventDefault(); 
-        console.log('click');              
+
+    updateEmail(e: { target: { value: string; }; }){
+        this.email = e.target.value
     }
+    _onSubmit(e: Event) {
+        e.preventDefault(); 
+        console.log(e, this.email); 
+        this._valueChanged();
+    }    
+
+    _valueChanged() {
+        // Fire a custom event for others to listen to
+        this.dispatchEvent(new CustomEvent('submit', { detail: this.email, bubbles: true, composed: true }));
+      }
 }
+
