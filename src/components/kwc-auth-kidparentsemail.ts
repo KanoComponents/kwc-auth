@@ -56,7 +56,6 @@ export class KidParentsEmail extends LitElement {
     }
     _onSubmit(e: Event) {
         e.preventDefault(); 
-        console.log(e, this.email); 
         this._valueChanged();
     }    
 

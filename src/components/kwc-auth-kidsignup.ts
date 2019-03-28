@@ -68,7 +68,6 @@ export class KidSignup extends LitElement {
 
     _onSubmit(e: Event) {
         e.preventDefault(); 
-        console.log(this.username, this.password); 
         this._valueChanged();
     }    
 
