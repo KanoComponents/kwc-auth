@@ -3,11 +3,9 @@ import { button } from '@kano/styles/button.js';
 import { LitElement, css, html, customElement, property } from 'lit-element/lit-element.js';
 import { templateContent } from '../utils/template-content.js';
 import { styles } from '../styles.js';
-import '../utils/validation.js';
 
 @customElement('kwc-auth-kidsignup')
 export class KidSignup extends LitElement {
-
     static get styles() {
         return [
             styles,
@@ -21,16 +19,17 @@ export class KidSignup extends LitElement {
     @property ( { type: String } ) view = '';
     @property ( { type: String } ) username = '';
     @property ( { type: String } ) password = '';
-
+    @property ( { type: Object } ) error = ({ username: null, password: null  });
 
     constructor() {
         super();
-
-        this.addEventListener('valueChange', async (e) => {
-            console.log(e.detail.username);
-            console.log(await this.requestUpdate());
-          });
-    }
+        this.addEventListener('valueChange', async () => {
+            try {
+                await this.requestUpdate;
+            } catch (err) {
+                }
+            });
+        }
 
     render() {
         return html`
@@ -69,14 +68,20 @@ export class KidSignup extends LitElement {
 
     _onSubmit(e: Event) {
         e.preventDefault(); 
-        console.log(e, this.username, this.password); 
+        console.log(this.username, this.password); 
         this._valueChanged();
     }    
 
     _valueChanged() {
-        // Fire a custom event for others to listen to
-        this.dispatchEvent(new CustomEvent('valueChange', { detail: this.username, bubbles: true, composed: true }));
-      }
+        this.dispatchEvent(new CustomEvent('valueChange', {
+            detail:{
+                username: this.username,
+                password: this.password
+            },
+            bubbles: true,
+            composed: true, 
+        }))
+    }
 }
 
 

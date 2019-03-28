@@ -4,7 +4,6 @@ import { LitElement, css, html, customElement, property } from 'lit-element/lit-
 import { templateContent } from '../utils/template-content.js';
 import { styles } from '../styles.js';
 
-
 @customElement('kwc-auth-kidparentsemail')
 export class KidParentsEmail extends LitElement {
     static get styles() {
@@ -19,10 +18,15 @@ export class KidParentsEmail extends LitElement {
     } 
     @property ( { type: String } ) view = '';
     @property ( { type: String } ) email = '';
+    @property ( { type: Object } ) error = ({ email: null });
+
 
     constructor() {
         super();
-    }
+        this.addEventListener('valueChange', async () => {
+                return await this.requestUpdate;
+            });
+        }
 
     render() {
         return html`
@@ -35,7 +39,7 @@ export class KidParentsEmail extends LitElement {
                 <form class="form-wrapper" @submit=${this._onSubmit}>
                     <div class="input-wrapper">
                         <label for="input">Please enter your parent's or guardian's email.</label>
-                        <input value="${this.email}" @change="${this.updateEmail}" class="input" type="email" placeholder="Email"/>
+                        <input value="${this.email}" @change="${this.updateEmail}" id="email" class="input" type="email" placeholder="Email"/>
                      </div>
                      <div class="button-wrapper">
                        <button class="btn s" type="submit">Continue</button>
@@ -57,8 +61,13 @@ export class KidParentsEmail extends LitElement {
     }    
 
     _valueChanged() {
-        // Fire a custom event for others to listen to
-        this.dispatchEvent(new CustomEvent('submit', { detail: this.email, bubbles: true, composed: true }));
-      }
+        this.dispatchEvent(new CustomEvent('valueChange', {
+            detail:{
+                username: this.email
+            },
+            bubbles: true,
+            composed: true, 
+        }))
+    }
 }
 
