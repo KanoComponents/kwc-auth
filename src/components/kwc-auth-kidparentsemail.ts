@@ -63,7 +63,7 @@ export class KidParentsEmail extends LitElement {
     _valueChanged() {
         this.dispatchEvent(new CustomEvent('valueChange', {
             detail:{
-                username: this.email
+                email: this.email
             },
             bubbles: true,
             composed: true, 
