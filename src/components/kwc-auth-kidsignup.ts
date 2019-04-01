@@ -13,6 +13,9 @@ export class KidSignup extends LitElement {
                 #kid-signup {
                     max-width: 525px;
                 }
+                .error {
+                    color: red;
+                }
             `,
             ];
         } 
@@ -29,6 +32,7 @@ export class KidSignup extends LitElement {
             } catch (err) {
                 }
             });
+        
         }
 
     render() {        
@@ -42,11 +46,11 @@ export class KidSignup extends LitElement {
                 <form class="form-wrapper" @submit=${this._onSubmit}>
                     <div class="input-wrapper">
                         <label for="username">Choose a username that you don't use on any other website. Don't use your real name.</label>
-                        <input value="${this.username}" @change="${this.updateUsername}" class="input" type="text" id="username" placeholder="Make up a Kano Username"/>
+                        <input value="${this.username}" @keyup="${this.updateUsername}" class="input" type="text" id="username" placeholder="Make up a Kano Username"/>
                         <div class="error">${this.errors.username}</div>
                         <label for="password">Your password must be at least 8 characters.</label>
-                        <input value="${this.password}" @change="${this.updatePassword}" class="input" type="password" id="password" placeholder="Make up a secret password"/>
-                        <div class="error-message">${console.log(this.errors.password)}</div>
+                        <input value="${this.password}" @keyup="${this.updatePassword}" class="input" type="password" id="password" placeholder="Make up a secret password"/>
+                        <div class="error">${this.errors.password}</div>
                     </div>
                     <div class="button-wrapper">
                         <button class="btn s" type="submit">Continue</button>
@@ -61,18 +65,22 @@ export class KidSignup extends LitElement {
     }
 
     updateUsername(e: { target: { value: string; }; }){
+        console.log(e.target.value);   
         this.username = e.target.value;
+        this.validateUsername();
+        this.validatePassword();
     }
 
     updatePassword(e: { target: { value: string; }; }){
+        console.log(e.target.value);  
         this.password = e.target.value;
+        this.validateUsername();
+        this.validatePassword();
     }
 
     _onSubmit(e: Event) {
-        e.preventDefault(); 
-        const validUsername = this.validateUsername();
-        const validPassword = this.validatePassword();
-        if (validUsername && validPassword) {
+        e.preventDefault();
+        if (this.validateUsername() || this.validatePassword()) {
             this._valueChanged();
         }
     }    
@@ -90,49 +98,48 @@ export class KidSignup extends LitElement {
     }
 
     validateUsername() {
-        if (!this.username || this.username.length === 0) { 
-            this.errors.username = 'Username is required.';
-            console.log(this.errors.username);
-            return false;
-        }
-        else if (this.username.length < 6) {
-            this.errors.username = 'Username must be at least 6 characters long.';
-            console.log(this.errors.username);
-            return false;
-        }
-        else if (!/^[a-zA-Z0-9_\-.]+$/.test(this.username)) {
-            this.errors.username = 'Username must only contain letters, numbers, dashes, underscores and dots are allowed.';
-            console.log(this.errors.username);
-            return false;
-        }
-        else
-            this.errors.username = ''
-            return true;
-    }
+        let errorUsername;
 
-    validatePassword() {
-        if (!this.password || this.password.length === 0) {
-            this.errors.password = 'Password cannot be empty.';
-            console.log(this.errors.password);
-            return false;
+        if (!this.username || this.username.length === 0) { 
+            errorUsername = 'Username is required.';
+        } else if (this.username.length < 6) {
+            errorUsername = 'Username must be at least 6 characters long.';
+        } else if (!/^[a-zA-Z0-9_\-.]+$/.test(this.username)) {
+            errorUsername = 'Username must only contain letters, numbers, dashes, underscores and dots are allowed.';
         }
-        else if (this.password.includes(' ')) {
-            this.errors.password = 'Password cannot contain spaces.';
-            console.log(this.errors.password);
-            return false;
-        }
-        else if (this.password.length < 8) {
-            this.errors.password = 'Password must be at least 8 characters long.';
-            console.log(this.errors.password);
-            return false;
-        }
-        else
-            this.errors.password = '';
-            return true;
+
+        if (errorUsername) {           
+            this.errors.username =
+            errorUsername            
+        return false;
     }
+        else 
+            this.errors.username = '';
+        return true; 
 }
 
+    validatePassword() {
+        let errorPassword;
 
+        if (!this.password || this.password.length === 0) {
+            errorPassword = 'Password cannot be empty.';
+        } else if (this.password.includes(' ')) {
+            errorPassword = 'Password cannot contain spaces.';
+        } else if (this.password.length < 8) {
+            errorPassword = 'Password must be at least 8 characters long.';
+        }
+
+        if (errorPassword) {
+            this.errors.password = 
+            errorPassword      
+        return false;
+        }
+        else 
+            this.errors.password = '';
+        return true; 
+    }
+
+}
 //add error handler message to say password isnt valid > when click away from page error removes from page
 //green tick 
 //eye icon to show pword or not
