@@ -45,6 +45,7 @@ export class AuthTestUtil {
     }
     setInputValue(input: HTMLInputElement, prop: string, value: string) {
         input.setAttribute(prop, value);
+        input.dispatchEvent(new CustomEvent('keyup'));
         input.dispatchEvent(new CustomEvent('input'));
         input.dispatchEvent(new CustomEvent('change'));
     }
