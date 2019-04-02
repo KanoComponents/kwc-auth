@@ -13,9 +13,6 @@ export class KidSignup extends LitElement {
                 #kid-signup {
                     max-width: 525px;
                 }
-                .error {
-                    color: red;
-                }
             `,
             ];
         } 
@@ -23,18 +20,20 @@ export class KidSignup extends LitElement {
 
     @query('#username')
     private usernameInput? : HTMLInputElement;
+   
     /**
      * Returns the current value of the username field or an empty string
      */
     get username() {
         return this.usernameInput ? this.usernameInput.value : '';
     }
-     /**
-     * Returns the current value of the password field or an empty string
-     */
+   
     @query('#password')
     private passwordInput? : HTMLInputElement;
-
+    
+    /**
+    * Returns the current value of the password field or an empty string
+    */
     get password() {
         return this.passwordInput ? this.passwordInput.value : '';
     }

@@ -8,11 +8,11 @@ const kidsignup = fixture<KidSignup>`
 
 const testUsername = 'usernametest';
 const testPassword = 'passwordtest';
-const shortPword = 'shortp';
-// const shortUser = 'shortu';
+// const shortPassword = 'p';
+// const shortUsername = 'u';
 
 suite('kwc-auth-kidsignup', () => {
-    test('kids sign up form successfull input and submit', (done) => {
+    test('Successfull input and submit', (done) => {
         const el = kidsignup();
         el.updateComplete.then(() => {
             const shadowRoot = el.shadowRoot!;
@@ -31,27 +31,102 @@ suite('kwc-auth-kidsignup', () => {
         });
     });
 
-    test('kids sign up form password too short', (done) => {
+    test('Password cannot be empty', () => {
         const el = kidsignup();
-        el.updateComplete.then(() => {
+        return el.updateComplete.then(() => {            
             const shadowRoot = el.shadowRoot!;
             const testUtil = new AuthTestUtil(shadowRoot);
 
             testUtil.type(testUtil.kidsignup.username, testUsername);
-            testUtil.type(testUtil.kidsignup.password, shortPword);
+            testUtil.type(testUtil.kidsignup.password, testPassword);
 
-            el.addEventListener('submit', ((e: CustomEvent) => {
-                assert.equal(e.detail.username, testUsername);
-                assert.equal(e.detail.password, shortPword);
-                done();
-            }) as EventListener);
-
-            testUtil.kidsignup.form.dispatchEvent(new CustomEvent('submit'));
-
-            const errors = el.errors;  
-            assert.equal(errors.username, '');          
-            assert.equal(errors.password, 'Password must be at least 8 characters long.');
-            done();
+            const errors = el.errors;
+            assert.equal(errors.password, 'Password cannot be empty.');
         });
     });
+
+    test('Password must not contain spaces', () => {
+        const el = kidsignup();
+        return el.updateComplete.then(() => {
+            const shadowRoot = el.shadowRoot!;
+            const testUtil = new AuthTestUtil(shadowRoot);
+
+            testUtil.type(testUtil.kidsignup.username, testUsername);
+            testUtil.type(testUtil.kidsignup.password, testPassword);
+
+            const errors = el.errors;
+            assert.equal(errors.password, 'Password cannot contain spaces.');
+        });
+    });
+
+    test('Password too short', () => {
+        const el = kidsignup();
+        return el.updateComplete.then(() => {
+            const shadowRoot = el.shadowRoot!;
+            const testUtil = new AuthTestUtil(shadowRoot);
+
+            testUtil.type(testUtil.kidsignup.username, testUsername);
+            testUtil.type(testUtil.kidsignup.password, testPassword);
+
+            const errors = el.errors;  
+            assert.equal(errors.password, 'Password must be at least 8 characters long.');
+        });
+    });
+
+    test('Username cannot be empty', () => {
+        const el = kidsignup();
+        return el.updateComplete.then(() => {
+            const shadowRoot = el.shadowRoot!;
+            const testUtil = new AuthTestUtil(shadowRoot);
+
+            testUtil.type(testUtil.kidsignup.username, testUsername);
+            testUtil.type(testUtil.kidsignup.password, testPassword);
+
+            const errors = el.errors;
+            assert.equal(errors.username, 'Username is required.');
+        });
+    });
+
+    test('Username must not contain spaces', () => {
+        const el = kidsignup();
+        return el.updateComplete.then(() => {
+            const shadowRoot = el.shadowRoot!;
+            const testUtil = new AuthTestUtil(shadowRoot);
+
+            testUtil.type(testUtil.kidsignup.username, testUsername);
+            testUtil.type(testUtil.kidsignup.password, testPassword);
+
+            const errors = el.errors;
+            assert.equal(errors.username, 'Password cannot contain spaces.');
+        });
+    });
+
+    test('Username is too short', () => {
+        const el = kidsignup();
+        return el.updateComplete.then(() => {
+            const shadowRoot = el.shadowRoot!;
+            const testUtil = new AuthTestUtil(shadowRoot);
+
+            testUtil.type(testUtil.kidsignup.username, testUsername);
+            testUtil.type(testUtil.kidsignup.password, testPassword);
+
+            const errors = el.errors;
+            assert.equal(errors.username, 'Username must be at least 6 characters long.')
+        })
+    })
+
+    test('Username can only contain letters, numbers dashes, underscores and dots', () => {
+        const el = kidsignup();
+        return el.updateComplete.then(() => {
+            const shadowRoot = el.shadowRoot!;
+            const testUtil = new AuthTestUtil(shadowRoot);
+
+            testUtil.type(testUtil.kidsignup.username, testUsername);
+            testUtil.type(testUtil.kidsignup.password, testPassword);
+
+            const errors = el.errors;
+            assert.equal(errors.username, 'Username must only contain letters, numbers, dashes, underscores and dots are allowed.')
+        })
+    } )
+
 });
