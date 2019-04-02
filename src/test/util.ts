@@ -43,6 +43,11 @@ export class AuthTestUtil {
     check(input: HTMLInputElement, value: string) {
         this.setInputValue(input, 'checked', value);
     }
+
+    blur(input: HTMLInputElement) {
+        input.dispatchEvent(new CustomEvent('blur'));
+    }
+
     setInputValue(input: HTMLInputElement, prop: string, value: string) {
         input.setAttribute(prop, value);
         input.dispatchEvent(new CustomEvent('keyup'));

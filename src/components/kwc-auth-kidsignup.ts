@@ -99,7 +99,7 @@ export class KidSignup extends LitElement {
         } else if (this.username.length < 6) {
             errorUsername = 'Username must be at least 6 characters long.';
         } else if (!/^[a-zA-Z0-9_\-.]+$/.test(this.username)) {
-            errorUsername = 'Username must only contain letters, numbers, dashes, underscores and dots are allowed.';
+            errorUsername = 'Username must only contain letters, numbers, dashes, underscores or dots.';
         }
         
         this.updateError('username', errorUsername || '');
