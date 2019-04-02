@@ -51,7 +51,7 @@ export class KidParentsEmail extends LitElement {
     `;
     }
 
-    _onSubmit(e: Event) {
+    _onSubmit(e: Event) {        
         e.preventDefault(); 
         
             this.dispatchEvent(new CustomEvent('submit', {

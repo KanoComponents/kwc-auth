@@ -1,7 +1,7 @@
 /* globals suite, test, assert, teardown, setup */
 import { KidSignup } from  './kwc-auth-kidsignup.js';
 import { AuthTestUtil } from '../test/util.js';
-import { fixture, assert } from '@kano/web-tester/helpers.js'
+import { fixture, assert } from '@kano/web-tester/helpers.js';
 
 const kidsignup = fixture<KidSignup>`
     <kwc-auth-kidsignup></kwc-auth-kidsignup>
@@ -15,7 +15,7 @@ const invalidUsername = 'user &.name';
 const shortUsername = 'u';
 
 suite('kwc-auth-kidsignup', () => {
-    test('Successfull password and username input and submit', (done) => {
+    test('Input and submit username and password', (done) => {
         const el = kidsignup();
         el.updateComplete.then(() => {
             const shadowRoot = el.shadowRoot!;
