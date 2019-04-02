@@ -23,13 +23,15 @@ export class KidSignup extends LitElement {
 
     @query('#username')
     private usernameInput? : HTMLInputElement;
-
     /**
      * Returns the current value of the username field or an empty string
      */
     get username() {
         return this.usernameInput ? this.usernameInput.value : '';
     }
+     /**
+     * Returns the current value of the password field or an empty string
+     */
     @query('#password')
     private passwordInput? : HTMLInputElement;
 
@@ -67,7 +69,7 @@ export class KidSignup extends LitElement {
     }
 
     _onSubmit(e: Event) {
-        e.preventDefault();
+        e.preventDefault();        
         if (this.validateUsername() && this.validatePassword()) {
             this.dispatchEvent(new CustomEvent('submit', {
                 detail: {
@@ -78,6 +80,16 @@ export class KidSignup extends LitElement {
                 composed: true, 
             }))
         }
+    }
+  
+    /**
+     * Updates the error message for a field
+     * @param field Which error field to update
+     * @param message Error mesasge displayed next to the field
+     */
+    updateError(field : 'username'|'password', message : string) {
+        this.errors = Object.assign({}, this.errors, { [field]: message });
+        
     }
 
     validateUsername() {
@@ -95,15 +107,6 @@ export class KidSignup extends LitElement {
         return !errorUsername;
     }
     
-    /**
-     * Updates the error message for a field
-     * @param field Which error field to update
-     * @param message Error mesasge displayed next to the field
-     */
-    updateError(field : 'username'|'password', message : string) {
-        this.errors = Object.assign({}, this.errors, { [field]: message });
-    }
-
     validatePassword() {
         let errorPassword;
 
@@ -118,7 +121,6 @@ export class KidSignup extends LitElement {
         this.updateError('password', errorPassword || '');
         return !errorPassword;
     }
-
 }
 //add error handler message to say password isnt valid > when click away from page error removes from page
 //green tick 
