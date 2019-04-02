@@ -16,7 +16,7 @@ export class KidParentsEmail extends LitElement {
             `
         ];
     } 
-    @property ( { type: String } ) errors = '';
+    @property ( { type: String } ) errors = ({ email: '' });
 
     @query('#email')
     private emailInput? : HTMLInputElement;
@@ -39,7 +39,7 @@ export class KidParentsEmail extends LitElement {
                 <form class="form-wrapper" @submit=${this._onSubmit}>
                     <div class="input-wrapper">
                         <label for="input">Please enter your parent's or guardian's email.</label>
-                        <input id="email" class="input" type="email" placeholder="Email"/>
+                        <input @blur="${this.validateEmail}" id="email" class="input" type="email" placeholder="Email"/>
                      </div>
                      <div class="button-wrapper">
                        <button class="btn s" type="submit">Continue</button>
@@ -53,7 +53,7 @@ export class KidParentsEmail extends LitElement {
 
     _onSubmit(e: Event) {        
         e.preventDefault(); 
-        
+            if (this.validateEmail()){
             this.dispatchEvent(new CustomEvent('submit', {
                 detail:{
                     email: this.email
@@ -61,6 +61,30 @@ export class KidParentsEmail extends LitElement {
                 bubbles: true,
                 composed: true, 
             }))
+            }
+        }
+
+    /**
+     * Updates the error message for a field
+     * @param field Which error field to update
+     * @param message Error mesasge displayed next to the field
+     */
+    updateError(field : 'email', message : string) {
+        this.errors = Object.assign({}, this.errors, { [field]: message });
+        console.log(this.errors);
+        
+    }
+
+    validateEmail() {
+        let errorEmail;
+        const emailRegex = /^[_a-z0-9-\+]+(\.[_a-z0-9-\+]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]+)$/i;
+
+        if (!emailRegex.test(this.email)) {
+            errorEmail = 'Please enter a valid email address.';
+        }
+
+        this.updateError('email', errorEmail || '');
+        return !errorEmail;
         }
     }
 

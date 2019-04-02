@@ -8,6 +8,8 @@ const kidparentsemail = fixture<KidParentsEmail>`
 `;
 
 const testEmail = 'email@test.com';
+const invalidEmail1 = 'email@testcom'
+const invalidEmail2 = 'email.test.com'
 
 suite('kwc-auth-kidparentsemail', () => {
     test('Input and submit email form', (done) => {
@@ -34,36 +36,36 @@ suite('kwc-auth-kidparentsemail', () => {
             const shadowRoot = el.shadowRoot!;
             const testUtil = new AuthTestUtil(shadowRoot);
 
-            testUtil.type(testUtil.kidparentsemail.email, testEmail);
+            testUtil.type(testUtil.kidparentsemail.email, '');
             testUtil.blur(testUtil.kidparentsemail.email);
 
             const errors = el.errors;
-            assert.equal(errors, 'Please enter a valid email address.');
+            assert.equal(errors.email, 'Please enter a valid email address.');
         });
     });
 
-    test('Email must contain a dot', () => {const el = kidparentsemail();
+    test('Email will throw an error if not presented with a dot symbol', () => {const el = kidparentsemail();
         return el.updateComplete.then(() => {            
             const shadowRoot = el.shadowRoot!;
             const testUtil = new AuthTestUtil(shadowRoot);
 
-            testUtil.type(testUtil.kidparentsemail.email, testEmail);
+            testUtil.type(testUtil.kidparentsemail.email, invalidEmail1);
             testUtil.blur(testUtil.kidparentsemail.email);
 
             const errors = el.errors;
-            assert.equal(errors, 'Please enter a valid email address.');
+            assert.equal(errors.email, 'Please enter a valid email address.');
         })
     })
-    test('Email must contain an @ symbol', () => {const el = kidparentsemail();
+    test('Email will throw an error if not presented with an @ symbol', () => {const el = kidparentsemail();
         return el.updateComplete.then(() => {            
             const shadowRoot = el.shadowRoot!;
             const testUtil = new AuthTestUtil(shadowRoot);
 
-            testUtil.type(testUtil.kidparentsemail.email, testEmail);
+            testUtil.type(testUtil.kidparentsemail.email, invalidEmail2);
             testUtil.blur(testUtil.kidparentsemail.email);
 
             const errors = el.errors;
-            assert.equal(errors, 'Please enter a valid email address.');
+            assert.equal(errors.email, 'Please enter a valid email address.');
         })
     })
 
