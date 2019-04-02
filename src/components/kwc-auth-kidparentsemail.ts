@@ -39,7 +39,7 @@ export class KidParentsEmail extends LitElement {
                 <form class="form-wrapper" @submit=${this._onSubmit}>
                     <div class="input-wrapper">
                         <label for="input">Please enter your parent's or guardian's email.</label>
-                        <input value="${this.email}" @change="${this.updateEmail}" id="email" class="input" type="email" placeholder="Email"/>
+                        <input id="email" class="input" type="email" placeholder="Email"/>
                      </div>
                      <div class="button-wrapper">
                        <button class="btn s" type="submit">Continue</button>
@@ -51,22 +51,16 @@ export class KidParentsEmail extends LitElement {
     `;
     }
 
-    updateEmail(e: { target: { value: string; }; }){
-        this.email = e.target.value
-    }
     _onSubmit(e: Event) {
         e.preventDefault(); 
-        this._valueChanged();
-    }    
-
-    _valueChanged() {
-        this.dispatchEvent(new CustomEvent('valueChange', {
-            detail:{
-                email: this.email
-            },
-            bubbles: true,
-            composed: true, 
-        }))
+        
+            this.dispatchEvent(new CustomEvent('submit', {
+                detail:{
+                    email: this.email
+                },
+                bubbles: true,
+                composed: true, 
+            }))
+        }
     }
-}
 
