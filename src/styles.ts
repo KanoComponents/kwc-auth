@@ -23,7 +23,13 @@ h4 {
 button {
     font-family: var(--font-body);
     justify-content: center;
+    margin-top: 20px;
 }
+
+.back-button {
+    padding-bottom: 20px;
+}
+
 input {
     display: block;
     border: 1px solid #ccc;
@@ -37,7 +43,7 @@ input[type="email"],
 input[type="password"] {
     font-size: 16px;
     border-radius: 6px;
-    margin: 6px 0 16px;
+    margin: 6px 0 3px;
     width: 98%;
     padding-left: 2%;
     height: 32px;
@@ -46,6 +52,7 @@ input[type="password"] {
 .a {
     color: #FF6900;
     text-decoration: underline;
+    margin-bottom: 20px;
 }
 .link-wrapper {
     display: flex;
@@ -54,5 +61,7 @@ input[type="password"] {
 }
 .error {
     color: red;
+    margin-bottom: 5px;
+    font-size: 14px;
 }
 `

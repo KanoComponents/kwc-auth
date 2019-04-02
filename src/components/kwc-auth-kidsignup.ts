@@ -11,7 +11,7 @@ export class KidSignup extends LitElement {
             styles,
             css`
                 #kid-signup {
-                    max-width: 525px;
+                    max-width: 425px;
                 }
             `,
             ];
@@ -121,6 +121,5 @@ export class KidSignup extends LitElement {
         return !errorPassword;
     }
 }
-//add error handler message to say password isnt valid > when click away from page error removes from page
 //green tick 
 //eye icon to show pword or not

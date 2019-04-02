@@ -14,7 +14,7 @@ const invalidUsername = 'user &.name';
 const shortUsername = 'u';
 
 suite('kwc-auth-kidsignup', () => {
-    test('Successfull input and submit', (done) => {
+    test('Successfull password and username input and submit', (done) => {
         const el = kidsignup();
         el.updateComplete.then(() => {
             const shadowRoot = el.shadowRoot!;
@@ -103,7 +103,7 @@ suite('kwc-auth-kidsignup', () => {
         })
     })
 
-    test('Username can only contain letters, numbers dashes, underscores and dots and no spaces', () => {
+    test('Username can only contain letters, numbers dashes, underscores and dots', () => {
         const el = kidsignup();
         return el.updateComplete.then(() => {
             const shadowRoot = el.shadowRoot!;

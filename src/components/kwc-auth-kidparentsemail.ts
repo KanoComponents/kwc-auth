@@ -1,6 +1,6 @@
 import '@kano/styles/typography.js';
 import { button } from '@kano/styles/button.js';
-import { LitElement, css, html, customElement, property } from 'lit-element/lit-element.js';
+import { LitElement, css, html, customElement, property, query } from 'lit-element/lit-element.js';
 import { templateContent } from '../utils/template-content.js';
 import { styles } from '../styles.js';
 
@@ -11,22 +11,22 @@ export class KidParentsEmail extends LitElement {
             styles,
             css`
                 #kid-parents-email {
-                    max-width: 525px;
+                    max-width: 425px;
                 }
             `
         ];
     } 
-    @property ( { type: String } ) view = '';
-    @property ( { type: String } ) email = '';
-    @property ( { type: Object } ) error = ({ email: null });
+    @property ( { type: String } ) errors = '';
 
+    @query('#email')
+    private emailInput? : HTMLInputElement;
 
-    constructor() {
-        super();
-        this.addEventListener('valueChange', async () => {
-                return await this.requestUpdate;
-            });
-        }
+    /**
+     * Returns the current value of the email field or an empty string
+     */
+    get email() {
+        return this.emailInput ? this.emailInput.value : '';
+    }
 
     render() {
         return html`
