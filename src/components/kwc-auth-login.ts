@@ -1,42 +1,72 @@
 import '@kano/styles/typography.js';
-import button from '@kano/styles/button.js';
-import { LitElement, customElement, html, property } from 'lit-element/lit-element.js';
+import { button } from '@kano/styles/button.js';
+import { LitElement, css, customElement, html, query } from 'lit-element/lit-element.js';
+import { templateContent } from '../utils/template-content.js';
 import { styles } from '../styles.js';
 
 @customElement('kwc-auth-login')
 export class Login extends LitElement {
     static get styles() {
-        return [styles];
-      } 
+        return [
+            styles,
+            css`
+                #login {
+                    min-width: 425px;
+                }
+            `,
+            ];
+        }
     
-    @property ( { type: String } ) view = '';
-
-    constructor() {
-        super();
-        this.view = '';
+    @query('#username')
+    private usernameInput? : HTMLInputElement;
+    
+     /**
+      * Returns the current value of the username field or an empty string
+      */
+    get username() {
+        return this.usernameInput ? this.usernameInput.value : '';
+    }
+    
+    @query('#password')
+    private passwordInput? : HTMLInputElement;
+     
+     /**
+     * Returns the current value of the password field or an empty string
+     */
+    get password() {
+        return this.passwordInput ? this.passwordInput.value : '';
     }
 
-    _submit(e: Event) {
-        e.preventDefault();
+    @query('#eyeimage')
+    private imageInput? : HTMLInputElement;
+
+     /**
+    * Returns the current value of the eye image field or an empty string
+    */
+
+    get eyeimage() {
+        return this.imageInput ? this.imageInput.value : '';
     }
+
 
     render() {
         return html`
-        ${button}
-        <div class="auth-section">
-            <div class="title-wrapper">
+         ${templateContent(button)}
+        <div id="login">
+            <div class="title">
                 <h2>Login</h2>
             </div>
             <div class="form">       
                 <form class="form-wrapper" @submit=${this._submit}>
                     <div class="input-wrapper">
-                        <h3 class="usernameText">Username</h3>
+                        <label for="username">Username</label>
                         <input class="input" type="text" id="username" placeholder="Your Kano Username"/>
-                        <h3 class="passwordText">Password</h3>
-                        <input class="input" type="text" id="password" placeholder="Your secret Password"/>
+                        <label for="password">Password</label>
+                        <input class="input" type="password" id="password" placeholder="Your secret Password"/>
+                        <img src="https://imgplaceholder.com/42x32/transparent/757575/fa-eye-slash" class="eye-toggle" id="eyeimage" @click="${this.togglePassword}"/>
                     </div>
                     <div class="button-wrapper">
-                        <button class="btn l" type="submit">Log in</button>
+                        <button class="btn s" type="submit">Log in</button>
                     </div>
                     <div class="link-wrapper">
                         <p class="linkToLogin">Forgot your <a href="">Username</a> or <a href="">Password</a> ?</p>
@@ -47,4 +77,35 @@ export class Login extends LitElement {
         </div>
     `;
     }
+
+    _submit(e: Event) {
+        e.preventDefault();
+        console.log(this.username, this.password);
+        
+        this.dispatchEvent(new CustomEvent('submit', {
+            detail: {
+                username: this.username,
+                password: this.password,
+            },
+            bubbles: true,
+            composed: true, 
+        }))
+    }
+
+    togglePassword() {
+        let img1 = "https://imgplaceholder.com/42x32/transparent/757575/fa-eye";
+        let img2 = "https://imgplaceholder.com/42x32/transparent/757575/fa-eye-slash";
+        
+        if (!this.passwordInput || !this.imageInput ){
+            return
+        }        
+        if (this.passwordInput.type == 'password') {
+            this.passwordInput.type = 'text';
+            this.imageInput.src = img1;
+        } else {
+            this.passwordInput.type = 'password';
+            this.imageInput.src = img2;
+        }
+    }
+    
 }

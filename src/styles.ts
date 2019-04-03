@@ -15,8 +15,8 @@ h2 {
     color: #414a51;
     font-size: 24px;
     text-align: left;
-    margin-bottom: 32px;
 }
+
 h4 {
     text-align: center;
 }
@@ -70,4 +70,5 @@ input[type="password"] {
     margin-top: -37px;
     position: relative;
 }
+
 `

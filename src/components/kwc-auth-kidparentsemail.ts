@@ -33,13 +33,14 @@ export class KidParentsEmail extends LitElement {
         ${templateContent(button)}
         <div id="kid-parents-email">
             <div class="title">
-                <h2>Give us a valid email! (Social features will be turned off until the email is varified)</h2>
+                <h3>Give us a valid email! (Social features will be turned off until the email is varified)</h3>
             </div>
             <div class="form">       
                 <form class="form-wrapper" @submit=${this._onSubmit}>
                     <div class="input-wrapper">
-                        <label for="input">Please enter your parent's or guardian's email.</label>
+                        <label for="email">Please enter your parent's or guardian's email.</label>
                         <input @blur="${this.validateEmail}" id="email" class="input" type="email" placeholder="Email"/>
+                        <div class="error">${this.errors.email}</div>
                      </div>
                      <div class="button-wrapper">
                        <button class="btn s" type="submit">Continue</button>
@@ -71,8 +72,6 @@ export class KidParentsEmail extends LitElement {
      */
     updateError(field : 'email', message : string) {
         this.errors = Object.assign({}, this.errors, { [field]: message });
-        console.log(this.errors);
-        
     }
 
     validateEmail() {

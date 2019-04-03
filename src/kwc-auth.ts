@@ -49,7 +49,11 @@ export class KwcAuth extends LitElement {
             case 'kidparentsemail':
                 return html`
                     <kwc-auth-kidparentsemail></kwc-auth-kidparentsemail>
-            `;    
+            `; 
+            case 'login':
+                return html`
+                    <kwc-auth-login></kwc-auth-login>  
+            `;   
             default:
                 return html`
                 <h1>DEFAULT</h1>
