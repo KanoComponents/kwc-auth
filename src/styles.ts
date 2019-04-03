@@ -64,4 +64,10 @@ input[type="password"] {
     margin-bottom: 5px;
     font-size: 14px;
 }
+
+.eye-toggle {
+    float: right;
+    margin-top: -37px;
+    position: relative;
+}
 `

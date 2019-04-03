@@ -38,6 +38,17 @@ export class KidSignup extends LitElement {
         return this.passwordInput ? this.passwordInput.value : '';
     }
 
+    @query('#eyeimage')
+    private imageInput? : HTMLInputElement;
+
+     /**
+    * Returns the current value of the eye image field or an empty string
+    */
+
+    get eyeimage() {
+        return this.imageInput ? this.imageInput.value : '';
+    }
+
     render() {        
         return html`
         ${templateContent(button)}
@@ -53,6 +64,7 @@ export class KidSignup extends LitElement {
                         <div class="error">${this.errors.username}</div>
                         <label for="password">Your password must be at least 8 characters.</label>
                         <input @blur="${this.validatePassword}" class="input" type="password" id="password" placeholder="Make up a secret password"/>
+                        <img src="https://imgplaceholder.com/42x32/transparent/757575/fa-eye-slash" class="eye-toggle" id="eyeimage" @click="${this.togglePassword}"/>
                         <div class="error">${this.errors.password}</div>
                     </div>
                     <div class="button-wrapper">
@@ -120,6 +132,20 @@ export class KidSignup extends LitElement {
         this.updateError('password', errorPassword || '');
         return !errorPassword;
     }
+
+    togglePassword() {
+        let img1 = "https://imgplaceholder.com/42x32/transparent/757575/fa-eye";
+        let img2 = "https://imgplaceholder.com/42x32/transparent/757575/fa-eye-slash";
+        
+        if (!this.passwordInput || !this.imageInput ){
+            return
+        }        
+        if (this.passwordInput.type == 'password') {
+            this.passwordInput.type = 'text';
+            this.imageInput.src = img1;
+        } else {
+            this.passwordInput.type = 'password';
+            this.imageInput.src = img2;
+        }
+    }
 }
-//green tick 
-//eye icon to show pword or not
