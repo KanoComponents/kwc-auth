@@ -17,7 +17,7 @@ import './components/kwc-auth-landing.js';
 import './components/kwc-auth-kidsignup.js';
 import './components/kwc-auth-kidparentsemail.js';
 import './components/kwc-auth-emailconfirmation.js';
-import './components/kwc-auth-emailvarificationmodel.js'
+import './components/kwc-auth-emailvarificationmodel.js';
 import './components/kwc-auth-homescreen.js';
 import './components/kwc-auth-login.js';
 
@@ -53,7 +53,15 @@ export class KwcAuth extends LitElement {
             case 'login':
                 return html`
                     <kwc-auth-login></kwc-auth-login>  
-            `;   
+            `; 
+            case 'emailvarificationmodel':
+            return html`
+                    <kwc-auth-emailvarificationmodel></kwc-auth-emailvarificationmodel>  
+            `; 
+            case 'emailconfirmation':
+            return html`
+                    <kwc-auth-emailconfirmation></kwc-auth-emailconfirmation>  
+            `; 
             default:
                 return html`
                 <h1>DEFAULT</h1>

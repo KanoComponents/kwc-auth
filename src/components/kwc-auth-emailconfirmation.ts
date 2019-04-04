@@ -1,37 +1,35 @@
 import '@kano/styles/typography.js';
-import button from '@kano/styles/button.js';
-import { LitElement, html, customElement, property } from 'lit-element/lit-element.js';
+import { button } from '@kano/styles/button.js';
+import { LitElement, html, customElement, css, property } from 'lit-element/lit-element.js';
+import { templateContent } from '../utils/template-content.js';
 import { styles } from '../styles.js';
-
 
 @customElement('kwc-auth-emailconfirmation')
 export class EmailConfirmation extends LitElement {
     static get styles() {
-        return [styles];
-      } 
-    @property ( { type: String } ) view = '';
-
-    constructor() {
-        super();
-        this.view = '';
-    }
-
-    _submit(e: Event) {
-        e.preventDefault();
-    }
+        return [
+            styles,
+            css`
+                #email-confirmation {
+                    max-width: 425px;
+                    text-align: center;
+                }
+            `
+        ];
+    } 
 
     render() {
         return html`
-        ${button}
-        <div class="auth-section">
+        ${templateContent(button)}
+        <div id="email-confirmation">
             <div class="title-wrapper">
                 <h2>Check the email!</h2>
             </div>
             <div class="image-wrapper">
-                <img src=""/>
+                <img src="https://imgplaceholder.com/125x85/transparent/757575/glyphicon-send"/>
             </div>
             <div class="form">       
-                <form class="form-wrapper" @submit=${this._submit}>
+                <form class="form-wrapper">
                     <button class="btn l" type="submit">Continue</button>
                     <div class="link-wrapper">
                         <a href="">Use different email</a>
