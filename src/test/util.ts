@@ -35,6 +35,20 @@ export class AuthTestUtil {
             },
         };
     }
+    get login() {
+        const getter = this._get.bind(this);
+        return {
+            get username() {
+                return getter('input#username');
+            },
+            get password() {
+                return getter('input#password');
+            },
+            get form() {
+                return getter('form');
+            },
+        };
+    }
     
     
     type(input: HTMLInputElement, text: string) {        

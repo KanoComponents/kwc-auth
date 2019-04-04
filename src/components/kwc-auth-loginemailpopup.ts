@@ -42,6 +42,5 @@ export class LoginEmailPopUp extends LitElement {
             </div>
         </div>
         `
-    
     }
 }

@@ -1,6 +1,6 @@
 import '@kano/styles/typography.js';
 import { button } from '@kano/styles/button.js';
-import { LitElement, css, customElement, html, property } from 'lit-element/lit-element.js';
+import { LitElement, css, customElement, html } from 'lit-element/lit-element.js';
 import { templateContent } from '../utils/template-content.js';
 import { styles } from '../styles.js';
 
@@ -25,13 +25,6 @@ export class LandingPage extends LitElement {
             `,
         ];
       } 
-    @property ( { type: String } ) view = '';
-    prop: any;
-
-    constructor() {
-        super();
-        this.view = '';
-    }
     
     render() {
         return html`
