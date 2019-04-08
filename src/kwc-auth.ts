@@ -18,7 +18,6 @@ import './components/kwc-auth-kidsignup.js';
 import './components/kwc-auth-kidparentsemail.js';
 import './components/kwc-auth-emailconfirmation.js';
 import './components/kwc-auth-emailvarificationmodel.js';
-import './components/kwc-auth-homescreen.js';
 import './components/kwc-auth-login.js';
 
 @customElement('kwc-auth')

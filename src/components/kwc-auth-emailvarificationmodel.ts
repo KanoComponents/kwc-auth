@@ -15,7 +15,7 @@ export class EmailVarificationModel extends LitElement {
                     min-width: 575px;
                     text-align: center;
                 }
-                .warning-message {
+                .warning-message { 
                     text-align: center;
                 }
             `
