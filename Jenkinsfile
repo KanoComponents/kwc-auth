@@ -28,16 +28,7 @@ pipeline {
                 script {
                     docker.image('node:8-alpine').inside {
                         sh "yarn"
-                    }
-                }
-            }
-        }
-        // Lints, the component
-        stage('checkstyle') {
-            steps {
-                script {
-                    docker.image('node:8-alpine').inside {
-                        sh "yarn checkstyle-ci"
+                        sh "yarn tsc"
                     }
                 }
             }
