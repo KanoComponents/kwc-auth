@@ -3,7 +3,7 @@ import { button } from '@kano/styles/button.js';
 import { LitElement, css, html, customElement, property, query } from 'lit-element/lit-element.js';
 import { templateContent } from '../utils/template-content.js';
 import { styles } from '../styles.js';
-import { Validation } from '../utils/validation.js';
+import { validateUsername, validatePassword } from '../utils/validation.js';
 
 @customElement('kwc-auth-kidsignup')
 export class KidSignup extends LitElement {
@@ -107,30 +107,14 @@ export class KidSignup extends LitElement {
     }
 
     validateUsername() {
-        let errorUsername;
-
-        if (!this.username || this.username.length === 0) { 
-            errorUsername = 'Username is required.';
-        } else if (this.username.length < 6) {
-            errorUsername = 'Username must be at least 6 characters long.';
-        } else if (!/^[a-zA-Z0-9_\-.]+$/.test(this.username)) {
-            errorUsername = 'Username must only contain letters, numbers, dashes, underscores or dots.';
-        }
+        const errorUsername = validateUsername(this.username);
         
         this.updateError('username', errorUsername || '');
         return !errorUsername;
     }
     
     validatePassword() {
-        let errorPassword;
-
-        if (!this.password || this.password.length === 0) {
-            errorPassword = 'Password cannot be empty.';
-        } else if (this.password.includes(' ')) {
-            errorPassword = 'Password cannot contain spaces.';
-        } else if (this.password.length < 8) {
-            errorPassword = 'Password must be at least 8 characters long.';
-        }
+        const errorPassword = validatePassword(this.password);
 
         this.updateError('password', errorPassword || '');
         return !errorPassword;

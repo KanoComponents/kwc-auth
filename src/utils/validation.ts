@@ -1,71 +1,37 @@
-import { IError } from '../error.js';
+export function validateUsername(username : string){
+    let errorUsername = null
 
-export class Validation {
-    public errors: IError;
-
-    constructor(errors: IError) {
-        this.errors = errors;
+    if (!username || username.length === 0) { 
+        errorUsername = 'Username is required.';
+    } else if (username.length < 6) {
+        errorUsername = 'Username must be at least 6 characters long.';
+    } else if (!/^[a-zA-Z0-9_\-.]+$/.test(username)) {
+        errorUsername = 'Username must only contain letters, numbers, dashes, underscores or dots.';
     }
-    validateUsername(username: string) {
-        if (!username || username.length === 0) {
-            this.errors.username = 'Username is required.';
-            return false;
-        }
+    return errorUsername
+}
 
-        if (username.length < 3) {
-            this.errors.username = 'Must be at least 3 characters long.';
-            return false;
-        }
+export function validatePassword(password : string){
+    let errorPassword = null
 
-        if (!/^[a-zA-Z0-9_\-.]+$/.test(username)) {
-            this.errors.username = 'Only letters, numbers, dashes, underscores and dots are allowed.';
-            return false;
-        }
-
-        this.errors.username = '';
-        return true;
+    if (!password || password.length === 0) {
+        errorPassword = 'Password cannot be empty.';
+    } else if (password.includes(' ')) {
+        errorPassword = 'Password cannot contain spaces.';
+    } else if (password.length < 8) {
+        errorPassword = 'Password must be at least 8 characters long.';
     }
-    validatePassword(password: string) {
-        if (!password || password.length === 0) {
-            this.errors.password = 'Password cannot be empty.';
-            return false;
-        }
-        const trimmedPassword = password.trim();
+   
+    return errorPassword
+}
 
-        if (trimmedPassword.includes(' ')) {
-            this.errors.password = 'Password cannot contain spaces.';
-            return false;
-        }
+export function validateEmail(email : string){
+    let errorEmail = null
+    const emailRegex = /^[_a-z0-9-\+]+(\.[_a-z0-9-\+]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]+)$/i;
 
-        if (trimmedPassword.length < 6) {
-            this.errors.password = 'Password must be at least 6 characters long.';
-            return false;
-        }
-
-        this.errors.password = '';
-        return true;
+    if (!emailRegex.test(email)) {
+        errorEmail = 'Please enter a valid email address.';
     }
-    validateEmail(email: string) {
-        const emailRegex = /^[_a-z0-9-\+]+(\.[_a-z0-9-\+]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]+)$/i;
-
-        if (!emailRegex.test(email)) {
-            this.errors.email = 'Please enter a valid email address.';
-            return false;
-        }
-
-        this.errors.email = '';
-        return true;
-    }
-    /**
-     * Set relevant error if the terms have not been agreed to.
-     * @param terms
-     */
-    validateTerms(terms: boolean) {
-        if (terms) {
-            this.errors.terms = '';
-        } else {
-            this.errors.terms = 'Please agree to the terms and conditions';
-        }
-        return terms;
-    }
+   
+    return errorEmail
 }

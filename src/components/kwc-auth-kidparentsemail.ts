@@ -3,6 +3,7 @@ import { button } from '@kano/styles/button.js';
 import { LitElement, css, html, customElement, property, query } from 'lit-element/lit-element.js';
 import { templateContent } from '../utils/template-content.js';
 import { styles } from '../styles.js';
+import { validateEmail } from '../utils/validation.js';
 
 @customElement('kwc-auth-kidparentsemail')
 export class KidParentsEmail extends LitElement {
@@ -75,12 +76,12 @@ export class KidParentsEmail extends LitElement {
     }
 
     validateEmail() {
-        let errorEmail;
-        const emailRegex = /^[_a-z0-9-\+]+(\.[_a-z0-9-\+]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]+)$/i;
+        const errorEmail = validateEmail(this.email);
+        // const emailRegex = /^[_a-z0-9-\+]+(\.[_a-z0-9-\+]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]+)$/i;
 
-        if (!emailRegex.test(this.email)) {
-            errorEmail = 'Please enter a valid email address.';
-        }
+        // if (!emailRegex.test(this.email)) {
+        //     errorEmail = 'Please enter a valid email address.';
+        // }
 
         this.updateError('email', errorEmail || '');
         return !errorEmail;
