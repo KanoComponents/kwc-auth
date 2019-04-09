@@ -77,11 +77,6 @@ export class KidParentsEmail extends LitElement {
 
     validateEmail() {
         const errorEmail = validateEmail(this.email);
-        // const emailRegex = /^[_a-z0-9-\+]+(\.[_a-z0-9-\+]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]+)$/i;
-
-        // if (!emailRegex.test(this.email)) {
-        //     errorEmail = 'Please enter a valid email address.';
-        // }
 
         this.updateError('email', errorEmail || '');
         return !errorEmail;

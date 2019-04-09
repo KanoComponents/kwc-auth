@@ -67,7 +67,8 @@ input[type="password"] {
 .eye-toggle {
     position: absolute;
     right: 0;
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .input-password-wrapper {
