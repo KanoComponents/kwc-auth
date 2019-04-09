@@ -68,7 +68,7 @@ export class KidParentsEmail extends LitElement {
     /**
      * Updates the error message for a field
      * @param field Which error field to update
-     * @param message Error mesasge displayed next to the field
+     * @param message Error message displayed next to the field
      */
     updateError(field : 'email', message : string) {
         this.errors = Object.assign({}, this.errors, { [field]: message });

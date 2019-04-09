@@ -1,4 +1,4 @@
-import { css } from 'lit-element';
+import { css } from 'lit-element/lit-element.js';
 
 export const styles = css`
 
@@ -41,10 +41,9 @@ input {
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-    font-size: 16px;
-    border-radius: 6px;
-    margin: 6px 0 3px;
-    width: 98%;
+    width: 100%;
+    padding-left: 2%;
+    box-sizing: border-box;
     padding-left: 2%;
     height: 32px;
     color: #414A51;
@@ -66,9 +65,12 @@ input[type="password"] {
 }
 
 .eye-toggle {
-    float: right;
-    margin-top: -37px;
-    position: relative;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
+.input-password-wrapper {
+    position: relative
+}
 `

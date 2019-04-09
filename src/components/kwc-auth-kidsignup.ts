@@ -3,6 +3,7 @@ import { button } from '@kano/styles/button.js';
 import { LitElement, css, html, customElement, property, query } from 'lit-element/lit-element.js';
 import { templateContent } from '../utils/template-content.js';
 import { styles } from '../styles.js';
+import { Validation } from '../utils/validation.js';
 
 @customElement('kwc-auth-kidsignup')
 export class KidSignup extends LitElement {
@@ -63,8 +64,10 @@ export class KidSignup extends LitElement {
                         <input @blur="${this.validateUsername}" class="input" type="text" id="username" placeholder="Make up a Kano Username"/>
                         <div class="error">${this.errors.username}</div>
                         <label for="password">Your password must be at least 8 characters.</label>
-                        <input @blur="${this.validatePassword}" class="input" type="password" id="password" placeholder="Make up a secret password"/>
-                        <img src="https://imgplaceholder.com/42x32/transparent/757575/fa-eye-slash" class="eye-toggle" id="eyeimage" @click="${this.togglePassword}"/>
+                        <div class="input-password-wrapper">
+                            <input @blur="${this.validatePassword}" class="input" type="password" id="password" placeholder="Make up a secret password"/>
+                            <img src="https://imgplaceholder.com/42x32/transparent/757575/fa-eye-slash" class="eye-toggle" id="eyeimage" @click="${this.togglePassword}"/>
+                        </div>
                         <div class="error">${this.errors.password}</div>
                     </div>
                     <div class="button-wrapper">
@@ -80,7 +83,8 @@ export class KidSignup extends LitElement {
     }
 
     _onSubmit(e: Event) {
-        e.preventDefault();        
+        e.preventDefault(); 
+        
         if (this.validateUsername() && this.validatePassword()) {
             this.dispatchEvent(new CustomEvent('submit', {
                 detail: {
@@ -100,7 +104,6 @@ export class KidSignup extends LitElement {
      */
     updateError(field : 'username'|'password', message : string) {
         this.errors = Object.assign({}, this.errors, { [field]: message });
-        
     }
 
     validateUsername() {
@@ -134,12 +137,14 @@ export class KidSignup extends LitElement {
     }
 
     togglePassword() {
-        let img1 = "https://imgplaceholder.com/42x32/transparent/757575/fa-eye";
-        let img2 = "https://imgplaceholder.com/42x32/transparent/757575/fa-eye-slash";
-        
         if (!this.passwordInput || !this.imageInput ){
             return
         }        
+
+        const img1 = "https://imgplaceholder.com/42x32/transparent/757575/fa-eye";
+        const img2 = "https://imgplaceholder.com/42x32/transparent/757575/fa-eye-slash";
+    
+        
         if (this.passwordInput.type == 'password') {
             this.passwordInput.type = 'text';
             this.imageInput.src = img1;
