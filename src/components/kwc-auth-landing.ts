@@ -12,15 +12,11 @@ export class LandingPage extends LitElement {
             styles,
             css`
                 .button-wrapper {
-                    display: flex;
-                    flex-direction: column;
-                    flex-wrap: wrap;
                     text-align: center;
-                    align-items: center;
+                    padding: 23px;
                 }
-                .btn.secondary {
-                    margin-top: 10px;
-                    min-width: 200px;
+                .btn.l {
+                    margin: 10px;
                 }
             `,
         ];
@@ -36,8 +32,8 @@ export class LandingPage extends LitElement {
             <div class="form-container">
                 <form class="form-wrapper">
                     <div class="button-wrapper">
-                        <button @click=${this.handleClick} class="btn secondary" type="submit">Let's get Started</button>
-                        <button @click=${this.handleClick} class="btn secondary" type="submit">I already have an account</button>
+                        <button @click=${this.handleClick} class="btn l" type="submit">Let's get Started</button>
+                        <button @click=${this.handleClick} class="btn l" type="submit">I already have an account</button>
                     </div>
                 </form>
             </div>

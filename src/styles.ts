@@ -11,15 +11,13 @@ export const styles = css`
     padding: 12px;
     border-radius: 12px;
 }
+
 h2 {
     color: #414a51;
     font-size: 24px;
     text-align: left;
 }
 
-h4 {
-    text-align: center;
-}
 button {
     font-family: var(--font-body);
     justify-content: center;
@@ -36,7 +34,9 @@ input {
     font-size: 16px;
     font-family: 'Bariol', sans-serif;
     font-weight: bold;
+    margin-bottom: 20px;
 }
+
 input[type="text"],
 input[type="email"],
 input[type="password"] {
@@ -50,24 +50,20 @@ input[type="password"] {
     border: 1px solid #1093F5
 }
 
-.input-wrapper {
-    padding-bottom: 83px;
-}
-
 .a {
     color: grey;
     text-decoration: underline;
     margin-bottom: 20px;
 }
+
 .link-wrapper {
     display: flex;
     flex-flow: column;
     justify-content: flex-end;
 }
 
-.linkToLogin{
+.linkToLogin {
     height: 20px;
-    width: 251px;
     color: #9FA4A8;
     font-family: Bariol;
     font-size: 20px;
@@ -88,7 +84,7 @@ input[type="password"] {
 }
 
 .input-password-wrapper {
-    position: relative
+    position: relative;
 }
 
 .privacy-wrapper {

@@ -34,20 +34,28 @@ export class KidParentsEmail extends LitElement {
         ${templateContent(button)}
         <div id="kid-parents-email">
             <div class="title">
-                <h3>Give us a valid email! (Social features will be turned off until the email is varified)</h3>
+                <h3>What's your parent's email address?</h3>
+            </div>
+            <div class="subtitle">
+                <h4>Notice that all user-generated content (UGC) is moderated for privacy and safety.<h4>
             </div>
             <div class="form">       
                 <form class="form-wrapper" @submit=${this._onSubmit}>
                     <div class="input-wrapper">
-                        <label for="email">Please enter your parent's or guardian's email.</label>
-                        <input @blur="${this.validateEmail}" id="email" class="input" type="email" placeholder="Email"/>
+                        <input @blur="${this.validateEmail}" id="email" class="input" type="email" placeholder="Parent's email address"/>
                         <div class="error">${this.errors.email}</div>
                      </div>
                      <div class="button-wrapper">
-                       <button class="btn s" type="submit">Continue</button>
+                       <button class="btn l" type="submit">Continue</button>
                     </div>
+                    <div class="link-wrapper">
+                        <p class="linkToLogin">Already have an account? <a href="">Login</a></p>
                     </div>
                 </form>
+                <hr>
+                <div class="privacy-wrapper">
+                    <p class="privacy-policy"><a href="">Privacy Policy</a></p>
+                </div>
             </div>
         </div>  
     `;

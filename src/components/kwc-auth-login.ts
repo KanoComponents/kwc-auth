@@ -13,6 +13,18 @@ export class Login extends LitElement {
                 #login {
                     min-width: 425px;
                 }
+                .login-title {
+                    text-align: center;
+                    background-color: #C8C8C8;
+                    padding: 20px;
+                }
+                .button-wrapper {
+                    text-align: center;
+                    padding: 10px;
+                }
+                .link-wrapper {
+                    text-align: center;
+                }
             `,
             ];
         }
@@ -54,7 +66,7 @@ export class Login extends LitElement {
          ${templateContent(button)}
         <div id="login">
             <div class="title">
-                <h2>Login</h2>
+                <h2 class="login-title">Login to your account</h2>
             </div>
             <div class="form">       
                 <form class="form-wrapper" @submit=${this._submit}>
@@ -69,11 +81,12 @@ export class Login extends LitElement {
                     </div>
 
                     <div class="button-wrapper">
-                        <button class="btn s" type="submit">Log in</button>
+                        <button class="btn l" type="submit">Login</button>
                     </div>
+                    <hr>
                     <div class="link-wrapper">
                         <p class="linkToLogin">Forgot your <a href="">Username</a> or <a href="">Password</a> ?</p>
-                        <p class="linkToLogin">No account? <a href="">Sign up</a></p>
+                        <p class="linkToLogin">No account? <a href="">Sign up!</a></p>
                     </div> 
                 </form>
             </div>
