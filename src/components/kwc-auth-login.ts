@@ -11,7 +11,7 @@ export class Login extends LitElement {
             styles,
             css`
                 #login {
-                    min-width: 425px;
+                    max-width: 425px;
                 }
                 .login-title {
                     text-align: center;
@@ -85,7 +85,7 @@ export class Login extends LitElement {
                     </div>
                     <hr>
                     <div class="link-wrapper">
-                        <p class="linkToLogin">Forgot your <a href="">Username</a> or <a href="">Password</a> ?</p>
+                        <p class="linkToLogin">Forgot your <a href="">username</a> or <a href="">password</a> ?</p>
                         <p class="linkToLogin">No account? <a href="">Sign up!</a></p>
                     </div> 
                 </form>

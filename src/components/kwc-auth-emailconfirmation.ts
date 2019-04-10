@@ -22,20 +22,27 @@ export class EmailConfirmation extends LitElement {
         return html`
         ${templateContent(button)}
         <div id="email-confirmation">
-            <div class="title-wrapper">
-                <h2>Check the email!</h2>
+            <div class="title">
+                <h4>Thanks for signing up!</h4>
             </div>
+            <div class="subtitle">
+                    <h4>Ask your parents to confirm your account to get full access to Kano World.<h4>
+                </div>
             <div class="image-wrapper">
                 <img src="https://imgplaceholder.com/125x85/transparent/757575/glyphicon-send"/>
             </div>
             <div class="form">       
                 <form class="form-wrapper">
-                    <button class="btn l" type="submit">Continue</button>
+                    <button class="btn l" type="submit">Start Playing</button>
                     <div class="link-wrapper">
-                        <a href="">Use different email</a>
-                        <a href="">Resend email</a>
+                        <p class="linkToLogin"><a href="">Use different email</a></p>
+                        <p class="linkToLogin"><a href="">Resend email</a></p>
                     </div>    
                 </form>
+            </div>
+            <hr>
+            <div class="privacy-wrapper">
+                <p class="privacy-policy"><a href="">Privacy Policy</a></p>
             </div>
         </div>  
     `;
