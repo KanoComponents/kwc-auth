@@ -3,12 +3,26 @@
 ## Purpose
 Front end for Kano&#39;s authentication flow.
 
+**27/02/2019**: Starting refactor to allow for new GDPR and COPPA compliant flow. This will involve the following tasks:
+* remove unnecessary properties
+* remove unnecessary styles
+* Align with brand styles
+* Remove Polymer dependency
+* Add lit-html dependency
+* Investigation on need for typescript
+* Remove Behaviour dep
+* Move behaviour / validation into utility
+* Ensure tabbing and accessability is as expected
+* Show/hide password feature
+* Check username available on blur
+* Validation of other inputs on blur
+
 **24/05/2018**: The README is out of date. Please proceed with caution.
 
-This component implements view according to the current User Login Journey as descibe in this [working document](https://docs.google.com/a/kano.me/drawings/d/1TJx_Y6rA6tQYHww99x2aJy4qxoWrQZzoOjYEnQUh5f0/edit?usp=sharing). **Please note** _this link is not garunteed to be in sync with the component but should be a good guide_.
+This component implements view according to the current User Login Journey as descibe in this [working document](https://docs.google.com/a/kano.me/drawings/d/1TJx_Y6rA6tQYHww99x2aJy4qxoWrQZzoOjYEnQUh5f0/edit?usp=sharing). **Please note** _this link is not guarenteed to be in sync with the component but should be a good guide_.
 
 ## Properties
-  * assetsPath: Path for assets used during the auth flow.
+  <!-- * assetsPath: Path for assets used during the auth flow.
   * errors: Keeps track of error messages.
   * email: Input value.
   * firstName: Input value.
@@ -22,20 +36,20 @@ This component implements view according to the current User Login Journey as de
   * worldUrl: Kano world URL.
   * view: Login view to show
   * _motifUrl: Computed value of jukoka-face url
-  * _linkArrowIcon: Computed value of arrow SVG
+  * _linkArrowIcon: Computed value of arrow SVG -->
 
- If `assetsPath` is given the modal will look for a motif icon at `${assetsPath}/avatar/judoka-face.svg` and an arrow icon at `${assetsPath}/icons/link-arrow.svg` so you need to provide those files.
+ <!-- If `assetsPath` is given the modal will look for a motif icon at `${assetsPath}/avatar/judoka-face.svg` and an arrow icon at `${assetsPath}/icons/link-arrow.svg` so you need to provide those files. -->
 
 ## API
-### kwc-auth#close()
+<!-- ### kwc-auth#close()
 A [ronseal](http://media-assets-02.thedrum.com/cache/images/thedrum-prod/public-news-tmp-56351-1806130_orig--default--300.jpg) function. It does what it says on the tin.
 ### kwc-auth#open([defaultview])
 Open the `kwc-auth` modal. The default view is the [`login`](#login) view. This can be overidden if a valid view name is passed.
 #### Arguments
-* defaultview: one of `login`, `signup`, `grownups`, `password-reset` or `username-reminder`.
+* defaultview: one of `login`, `signup`, `grownups`, `password-reset` or `username-reminder`. -->
 ### kwc-auth#reset()
 Reset the internal state of the auth modal. Essentially
-```js
+<!-- ```js
 kwc-auth.errors = {};
 kwc-auth.firstName = null;
 kwc-auth.username = null;
@@ -43,9 +57,9 @@ kwc-auth.password = null;
 kwc-auth.email = null;
 kwc-auth.terms = true;
 kwc-auth.newsletter = false;
-```
+``` -->
 ### kwc-auth#show*
-Router helper functions that allow an external component to trigger a view change to the desired view.
+<!-- Router helper functions that allow an external component to trigger a view change to the desired view.
 * `showLogin()`
 * `showSignup()`
 * `showGrownup()`
@@ -53,23 +67,23 @@ Router helper functions that allow an external component to trigger a view chang
 * `showDone()`
 * `showPasswordReset()`
 * `showResetConfirmation()`
-* `showUsernameReminder()`
+* `showUsernameReminder()` -->
 
 ## Auth Flows and Views
 This component is very specific to the authentication flow as it is currently specified for the `kano` apps. It does not contain any logic for completing the authentication flows, that is defered the the context in which the component is used. The views are for collecting the relevant user data so any parent (probably app specific) component can complete the communicaiton with the api and process any responses.
 ### Login | Signup
-The first flow is for authenticating a user. (__NOTE: This flow may be updated before this doc is!__). Either a user authenticates an existing account or creates a new account and is logged in on completion. (See [here](https://docs.google.com/a/kano.me/drawings/d/1TJx_Y6rA6tQYHww99x2aJy4qxoWrQZzoOjYEnQUh5f0/edit?usp=sharing) for more detail.)
+<!-- The first flow is for authenticating a user. (__NOTE: This flow may be updated before this doc is!__). Either a user authenticates an existing account or creates a new account and is logged in on completion. (See [here](https://docs.google.com/a/kano.me/drawings/d/1TJx_Y6rA6tQYHww99x2aJy4qxoWrQZzoOjYEnQUh5f0/edit?usp=sharing) for more detail.)
 
-The `kwc-auth` component implements views for [login](#login) and [signup](#signup) with links between the two.
+The `kwc-auth` component implements views for [login](#login) and [signup](#signup) with links between the two. -->
 #### login
-* Fields: username, password.
-* On submit event: [`login`](#login).
+<!-- * Fields: username, password.
+* On submit event: [`login`](#login). -->
 #### signup
-* Fields: firstname, username, password.
-* On submit event: [`submit-signup-info`](#submit-signup-info).
+<!-- * Fields: firstname, username, password.
+* On submit event: [`submit-signup-info`](#submit-signup-info). -->
 #### grownups
-* Fields: email.
-* On submit event: [`submit-signup-email`](#submit-signup-email).
+<!-- * Fields: email.
+* On submit event: [`submit-signup-email`](#submit-signup-email). -->
 
 ### Forget credentials
 The `kwc-auth` component implements two views to allow a user to enter information in order to recover forgotten credentials. Username recovery flow accepts a valid email address and password recovery asks for a username. (See [here](https://docs.google.com/a/kano.me/drawings/d/1TJx_Y6rA6tQYHww99x2aJy4qxoWrQZzoOjYEnQUh5f0/edit?usp=sharing) for more detail.)
@@ -80,7 +94,7 @@ The `kwc-auth` component implements two views to allow a user to enter informati
 #### username-reminder
 * Fields: email.
 * On submit event: [`forgot-username`](#forgot-username).
-## Events
+<!-- ## Events
 This component fires the following custom events:
 
 ### cancel
@@ -190,13 +204,16 @@ The event is passed the following detail:
             type: 'string'
         }
     }
-}
+} -->
 ```
 ## Installation
  * Clone this repository.
  * Run `yarn`
 
- * To serve locally `yarn serve` - the site will be served on http://localhost:4000
+ * To serve locally `yarn serve` - the site will be served on http://localhost:4000/demo
+
+ * yarn add --dev typescript
+ * Watch file changes: yarn tsc --watch
 
 ## Running Tests
 
