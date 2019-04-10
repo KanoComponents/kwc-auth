@@ -1,4 +1,4 @@
-bower_components
+dist
 
 # OS generated files #
 ######################
@@ -14,3 +14,4 @@ node_modules
 
 eslint.xml
 test-results.xml
+dist
