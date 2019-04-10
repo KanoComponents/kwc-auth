@@ -45,11 +45,11 @@ input[type="password"] {
     padding-left: 2%;
     box-sizing: border-box;
     padding-left: 2%;
-    height: 32px;
+    height: 39px;
     color: #414A51;
 }
 .a {
-    color: #FF6900;
+    color: grey;
     text-decoration: underline;
     margin-bottom: 20px;
 }

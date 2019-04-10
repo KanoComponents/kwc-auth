@@ -19,6 +19,7 @@ import './components/kwc-auth-kidparentsemail.js';
 import './components/kwc-auth-emailconfirmation.js';
 import './components/kwc-auth-emailverificationmodel.js';
 import './components/kwc-auth-login.js';
+import './components/kwc-auth-createusername.js';
 
 @customElement('kwc-auth')
 export class KwcAuth extends LitElement {
@@ -60,6 +61,10 @@ export class KwcAuth extends LitElement {
             case 'emailconfirmation':
             return html`
                     <kwc-auth-emailconfirmation></kwc-auth-emailconfirmation>  
+            `; 
+            case 'createusername':            
+            return html`
+                    <kwc-auth-createusername></kwc-auth-createusername>
             `; 
             default:
                 return html`

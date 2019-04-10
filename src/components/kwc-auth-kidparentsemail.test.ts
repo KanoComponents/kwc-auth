@@ -1,7 +1,7 @@
 // /* globals suite, test, assert, teardown, setup */
 import { KidParentsEmail } from './kwc-auth-kidparentsemail.js';
 import { AuthTestUtil } from '../test/util.js';
-import { fixture, assert } from '@kano/web-tester/helpers.js';
+// import { fixture, assert } from '@kano/web-tester/helpers.js';
 
 const kidparentsemail = fixture<KidParentsEmail>`
     <kwc-auth-kidparentsemail></kwc-auth-kidparentsemail>
