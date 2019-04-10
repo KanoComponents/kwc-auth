@@ -23,7 +23,6 @@ h4 {
 button {
     font-family: var(--font-body);
     justify-content: center;
-    margin-top: 20px;
 }
 
 .back-button {
@@ -41,13 +40,20 @@ input {
 input[type="text"],
 input[type="email"],
 input[type="password"] {
+    // width: 387px;
+    color: #414A51;
+    box-sizing: border-box;
+    height: 39px;
     width: 100%;
     padding-left: 2%;
-    box-sizing: border-box;
-    padding-left: 2%;
-    height: 39px;
-    color: #414A51;
+    border-radius: 6px;
+    border: 1px solid #1093F5
 }
+
+.input-wrapper {
+    padding-bottom: 83px;
+}
+
 .a {
     color: grey;
     text-decoration: underline;
@@ -58,6 +64,16 @@ input[type="password"] {
     flex-flow: column;
     justify-content: flex-end;
 }
+
+.linkToLogin{
+    height: 20px;
+    width: 251px;
+    color: #9FA4A8;
+    font-family: Bariol;
+    font-size: 20px;
+    line-height: 20px;
+}
+
 .error {
     color: red;
     margin-bottom: 5px;
@@ -73,5 +89,17 @@ input[type="password"] {
 
 .input-password-wrapper {
     position: relative
+}
+
+.privacy-wrapper {
+    text-align: center;
+}
+
+.privacy-policy {
+    color: #9FA4A8;
+    font-family: Bariol;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 14px;
 }
 `

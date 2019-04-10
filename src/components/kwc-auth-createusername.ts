@@ -11,7 +11,7 @@ export class CreateUsername extends LitElement {
         return [
             styles,
             css`
-                #kid-signup {
+                #create-username {
                     max-width: 425px;
                 }
             `,
@@ -32,27 +32,29 @@ export class CreateUsername extends LitElement {
     render() {        
         return html`
         ${templateContent(button)}
-        <div id="kid-signup">
+        <div id="create-username">
             <div class="form">       
                 <div class="back-button">
                     <a href="" class="back">Back</a>
                 </div>
+                <div class="title">
+                    <h3>Make up a username. Don't use your real name or a name you used on other websites.<h3>
+                </div>
                 <form class="form-wrapper" @submit=${this._onSubmit}>
                     <div class="input-wrapper">
-                        <label for="username">Make up a username. Don't use your real name or a name you used on other websites.</label>
                         <input @blur="${this.validateUsername}" class="input" type="text" id="username" placeholder="Make up a username"/>
                         <div class="error">${this.errors.username}</div>
                     </div>
                     <div class="button-wrapper">
-                        <button class="btn s" type="submit">Continue</button>
+                        <button class="btn l" type="submit">Continue</button>
                     </div>
                     <div class="link-wrapper">
                         <p class="linkToLogin">Already have an account? <a href="">Login</a></p>
                     </div>
                 </form>
                 <hr>
-                <div class="link-wrapper">
-                    <p class="PrivacyPolicy"><a href="">Privacy Policy</a></p>
+                <div class="privacy-wrapper">
+                    <p class="privacy-policy"><a href="">Privacy Policy</a></p>
                 </div>
             </div>
         </div>
