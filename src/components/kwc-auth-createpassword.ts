@@ -11,10 +11,7 @@ export class CreatePassword extends LitElement {
         return [
             styles,
             css`
-                #create-password {
-                    justify-content: center;
-                }
-                .kano-username {
+                .welcome-to-kano-username-setup {
                     height: 96px;
                     width: 387px;
                     color: #414A51;
@@ -61,9 +58,9 @@ export class CreatePassword extends LitElement {
             </div>
             <div class="main-section">       
                 <form class="form-wrapper" @submit=${this._onSubmit}>
-                    <div class="kano-username">
+                    <div class="welcome-to-kano-username-setup">
                         <h3>Welcome to Kano ${this.username}!<h3>
-                        <h4>Set up a password for your account to make it secure. Your password must be at least 8 characters.!<h4>
+                        <h4>Set up a password for your account to make it secure. Your password must be at least 8 characters<h4>
                     </div>
                     <div class="input-wrapper">
                         <div class="input-password-wrapper">
@@ -76,7 +73,7 @@ export class CreatePassword extends LitElement {
                         <button class="btn l" type="submit">Continue</button>
                     </div>
                     <div class="link-wrapper">
-                        <p class="linkToLogin">Already have an account? <a href="">Login</a></p>
+                        <p class="already-have-an-account">Already have an account? <a href="">Login</a></p>
                     </div>
                 </form>
             </div>
