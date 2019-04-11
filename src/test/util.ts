@@ -9,6 +9,30 @@ export class AuthTestUtil {
         return this.el.querySelector(selector);
     }
 
+    get createpassword() {
+        const getter = this._get.bind(this);
+        return {
+            get password() {
+                return getter('input#password');
+            },
+            get form() {
+                return getter('form');
+            },
+        }
+    }
+
+    get createusername() {
+        const getter = this._get.bind(this);
+        return {
+            get username() {
+                return getter('input#username');
+            },
+            get form() {
+                return getter('form');
+            },
+        }
+    }
+
     get kidsignup() {
         const getter = this._get.bind(this);
         return {

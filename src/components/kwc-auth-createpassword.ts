@@ -98,7 +98,7 @@ export class CreatePassword extends LitElement {
      * @param field Which error field to update
      * @param message Error message displayed next to the field
      */
-    updateError(field : 'username'|'password', message : string) {
+    updateError(field : 'password', message : string) {
         this.errors = Object.assign({}, this.errors, { [field]: message });
     }
     
