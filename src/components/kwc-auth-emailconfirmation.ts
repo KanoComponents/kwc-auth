@@ -11,7 +11,6 @@ export class EmailConfirmation extends LitElement {
             styles,
             css`
                 #email-confirmation {
-                    justify-content: center;
                     text-align: center;
                 }
                 .thanks-for-signing-up {
@@ -59,9 +58,7 @@ export class EmailConfirmation extends LitElement {
                 <form class="form-wrapper">
                     <h4 class="thanks-for-signing-up">Thanks for signing up!</h4>
                     <h4 class="ask-your-parents-to">Ask your parents to confirm your account to get full access to Kano World.<h4>
-                    <div class="image-wrapper">
-                        <img src="https://imgplaceholder.com/125x85/transparent/757575/glyphicon-send"/>
-                    </div>
+                    <div class="image-wrapper"></div>
                     <div class="button-wrapper">
                         <button class="btn l" type="submit">Start Playing</button>
                     </div>
