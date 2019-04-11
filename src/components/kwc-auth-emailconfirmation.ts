@@ -64,7 +64,7 @@ export class EmailConfirmation extends LitElement {
                     </div>
                     <div class="link-wrapper">
                         <p class="resend-email"><a href="">Resend email</a></p>
-                        <p class="use-a-different-email-address"><a href="">Use different email</a></p>
+                        <p class="use-a-different-email-address"><a href="">Use a different email address</a></p>
                     </div>    
                 </form>
             </div> 
