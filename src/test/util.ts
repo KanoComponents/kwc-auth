@@ -33,21 +33,6 @@ export class AuthTestUtil {
         }
     }
 
-    get kidsignup() {
-        const getter = this._get.bind(this);
-        return {
-            get username() {
-                return getter('input#username');
-            },
-            get password() {
-                return getter('input#password');
-            },
-            get form() {
-                return getter('form');
-            },
-        };
-    }
-
     get kidparentsemail() {
         const getter = this._get.bind(this);        
         return {
