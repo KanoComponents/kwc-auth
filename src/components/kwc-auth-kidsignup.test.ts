@@ -115,6 +115,6 @@ suite('kwc-auth-kidsignup', () => {
             const errors = el.errors;
             assert.equal(errors.username, 'Username must only contain letters, numbers, dashes, underscores or dots.')
         })
-    } )
+    })
 
 });
