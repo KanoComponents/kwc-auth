@@ -14,11 +14,16 @@ export class Login extends LitElement {
                     text-align: center;
                     padding: 10px;
                 }
-                .link-wrapper {
+                .already-have-an-account {
                     text-align: center;
                 }
                 .login-title {
                     text-align: center;
+                }
+                .login-section {
+                    display: flex;
+                    justify-content: center;
+                    height: 100%;
                 }
             `,
             ];
@@ -60,7 +65,7 @@ export class Login extends LitElement {
         return html`
          ${templateContent(button)}
         <div id="login">
-            <div class="main-section">     
+            <div class="login-section">     
                 <form class="form-wrapper" @submit=${this._submit}>
                     <h2 class="login-title">Login to your account</h2>
                     <div class="input-wrapper">
@@ -77,8 +82,8 @@ export class Login extends LitElement {
                     </div>
                     <hr>
                     <div class="link-wrapper">
-                        <p class="linkToLogin">Forgot your <a href="">username</a> or <a href="">password</a> ?</p>
-                        <p class="linkToLogin">No account? <a href="">Sign up!</a></p>
+                        <p class="already-have-an-account">Forgot your <a href="">username</a> or <a href="">password</a> ?</p>
+                        <p class="already-have-an-account">No account? <a href="">Sign up!</a></p>
                     </div> 
                 </form>
             </div>

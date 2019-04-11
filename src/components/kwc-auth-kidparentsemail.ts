@@ -11,10 +11,7 @@ export class KidParentsEmail extends LitElement {
         return [
             styles,
             css`
-                #kid-parents-email {
-                    justify-content: center;
-                }
-                .kano-username {
+                .whats-your-parents {
                     width: 387px;
                     color: #414A51;
                     font-family: Bariol;
@@ -56,8 +53,8 @@ export class KidParentsEmail extends LitElement {
             </div>
             <div class="main-section">       
                 <form class="form-wrapper" @submit=${this._onSubmit}>
-                    <h3 class="kano-username">What's your parent's email address?</h3>
-                    <h4 class="notice-that-all-user">Notice that all user-generated content (UGC) is moderated for privacy and safety.<h4>
+                    <h3 class="whats-your-parents">What's your parent's email address?</h3>
+                    <h4 class="notice-that-all-user">Notice that all user-generated content (UGC) is moderated for privacy and safety.</h4>
                     <div class="input-wrapper">
                         <input @blur="${this.validateEmail}" id="email" class="input" type="email" placeholder="Parent's email address"/>
                         <div class="error">${this.errors.email}</div>
@@ -65,8 +62,8 @@ export class KidParentsEmail extends LitElement {
                      <div class="button-wrapper">
                        <button class="btn l" type="submit">Continue</button>
                     </div>
-                    <div class="already-have-an-account">
-                        <p class="linkToLogin">Already have an account? <a href="">Login</a></p>
+                    <div class="link-wrapper">
+                        <p class="already-have-an-account">Already have an account? <a href="">Login</a></p>
                     </div>
                 </form>
             </div>
