@@ -12,7 +12,16 @@ export class CreateUsername extends LitElement {
             styles,
             css`
                 #create-username {
-                    max-width: 425px;
+                    justify-content: center;
+                }
+                .kano-username {
+                    height: 48px;
+                    width: 387px;
+                    color: #414A51;
+                    font-family: Bariol;
+                    font-size: 18px;
+                    font-weight: 700;
+                    line-height: 18px;
                 }
             `,
             ];
@@ -33,14 +42,16 @@ export class CreateUsername extends LitElement {
         return html`
         ${templateContent(button)}
         <div id="create-username">
-            <div class="form">       
+            <div class="topbar">
                 <div class="back-button">
                     <a href="" class="back">Back</a>
                 </div>
-                <div class="title">
-                    <h3>Make up a username. Don't use your real name or a name you used on other websites.<h3>
-                </div>
+            </div>
+            <div class="main-section">       
                 <form class="form-wrapper" @submit=${this._onSubmit}>
+                    <div class="kano-username">
+                        <h3>Make up a username. Don't use your real name or a name you used on other websites.<h3>
+                    </div>
                     <div class="input-wrapper">
                         <input @blur="${this.validateUsername}" class="input" type="text" id="username" placeholder="Make up a username"/>
                         <div class="error">${this.errors.username}</div>
@@ -52,11 +63,13 @@ export class CreateUsername extends LitElement {
                         <p class="linkToLogin">Already have an account? <a href="">Login</a></p>
                     </div>
                 </form>
+            </div>
+            </footer>
                 <hr>
                 <div class="privacy-wrapper">
                     <p class="privacy-policy"><a href="">Privacy Policy</a></p>
                 </div>
-            </div>
+            </footer>   
         </div>
     `;
     }

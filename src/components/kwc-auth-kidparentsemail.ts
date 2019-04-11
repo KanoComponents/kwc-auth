@@ -12,7 +12,23 @@ export class KidParentsEmail extends LitElement {
             styles,
             css`
                 #kid-parents-email {
-                    max-width: 425px;
+                    justify-content: center;
+                }
+                .kano-username {
+                    width: 387px;
+                    color: #414A51;
+                    font-family: Bariol;
+                    font-size: 18px;
+                    font-weight: 700;
+                    line-height: 18px;
+                }
+                .notice-that-all-user {
+                    height: 48px;
+                    width: 388px;
+                    color: #414A51;
+                    font-family: Bariol;
+                    font-size: 18px;
+                    line-height: 18px;
                 }
             `
         ];
@@ -33,14 +49,15 @@ export class KidParentsEmail extends LitElement {
         return html`
         ${templateContent(button)}
         <div id="kid-parents-email">
-            <div class="title">
-                <h3>What's your parent's email address?</h3>
+            <div class="topbar">
+                <div class="back-button">
+                    <a href="" class="back">Back</a>
+                </div>
             </div>
-            <div class="subtitle">
-                <h4>Notice that all user-generated content (UGC) is moderated for privacy and safety.<h4>
-            </div>
-            <div class="form">       
+            <div class="main-section">       
                 <form class="form-wrapper" @submit=${this._onSubmit}>
+                    <h3 class="kano-username">What's your parent's email address?</h3>
+                    <h4 class="notice-that-all-user">Notice that all user-generated content (UGC) is moderated for privacy and safety.<h4>
                     <div class="input-wrapper">
                         <input @blur="${this.validateEmail}" id="email" class="input" type="email" placeholder="Parent's email address"/>
                         <div class="error">${this.errors.email}</div>
@@ -48,15 +65,17 @@ export class KidParentsEmail extends LitElement {
                      <div class="button-wrapper">
                        <button class="btn l" type="submit">Continue</button>
                     </div>
-                    <div class="link-wrapper">
+                    <div class="already-have-an-account">
                         <p class="linkToLogin">Already have an account? <a href="">Login</a></p>
                     </div>
                 </form>
+            </div>
+            </footer>
                 <hr>
                 <div class="privacy-wrapper">
                     <p class="privacy-policy"><a href="">Privacy Policy</a></p>
                 </div>
-            </div>
+            </footer>    
         </div>  
     `;
     }

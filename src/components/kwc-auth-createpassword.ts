@@ -12,7 +12,16 @@ export class CreatePassword extends LitElement {
             styles,
             css`
                 #create-password {
-                    max-width: 425px;
+                    justify-content: center;
+                }
+                .kano-username {
+                    height: 96px;
+                    width: 387px;
+                    color: #414A51;
+                    font-family: Bariol;
+                    font-size: 18px;
+                    font-weight: 700;
+                    line-height: 18px;
                 }
             `,
             ];
@@ -45,23 +54,23 @@ export class CreatePassword extends LitElement {
         return html`
         ${templateContent(button)}
         <div id="create-password">
-            <div class="form">       
+            <div class="topbar">
                 <div class="back-button">
                     <a href="" class="back">Back</a>
                 </div>
-                <div class="title">
-                    <h3>Welcome to Kano ${this.username}!<h3>
-                </div>
-                <div class="subtitle">
-                    <h4>Set up a password for your account to make it secure. Your password must be at least 8 characters.!<h4>
-                </div>
+            </div>
+            <div class="main-section">       
                 <form class="form-wrapper" @submit=${this._onSubmit}>
+                    <div class="kano-username">
+                        <h3>Welcome to Kano ${this.username}!<h3>
+                        <h4>Set up a password for your account to make it secure. Your password must be at least 8 characters.!<h4>
+                    </div>
                     <div class="input-wrapper">
                         <div class="input-password-wrapper">
                             <input @blur="${this.validatePassword}" class="input" type="password" id="password" placeholder="Make up a password"/>
                             <img src="https://imgplaceholder.com/42x32/transparent/757575/fa-eye-slash" class="eye-toggle" id="eyeimage" @click="${this.togglePassword}"/>
+                            <div class="error">${this.errors.password}</div>
                         </div>
-                        <div class="error">${this.errors.password}</div>
                     </div>
                     <div class="button-wrapper">
                         <button class="btn l" type="submit">Continue</button>
@@ -70,11 +79,13 @@ export class CreatePassword extends LitElement {
                         <p class="linkToLogin">Already have an account? <a href="">Login</a></p>
                     </div>
                 </form>
+            </div>
+            </footer>
                 <hr>
                 <div class="privacy-wrapper">
                     <p class="privacy-policy"><a href="">Privacy Policy</a></p>
                 </div>
-            </div>
+            </footer> 
         </div>
     `;
     }

@@ -26,8 +26,9 @@ export class LandingPage extends LitElement {
         return html`
         ${templateContent(button)}
         <div class="auth-landing">
+            <div class="topbar"></div>
             <div class="image">
-                <img src="http://via.placeholder.com/640x360"/>
+                <img src="http://via.placeholder.com/1024x560"/>
             </div>
             <div class="form-container">
                 <form class="form-wrapper">
@@ -39,12 +40,13 @@ export class LandingPage extends LitElement {
             </div>
         </div>
         `;
-    }
+    };
+
     handleClick(e: Event) {
         e.preventDefault(); 
         console.log('click');              
-    }
-}
+    };
+};
   
 
 
