@@ -10,19 +10,14 @@ export class Login extends LitElement {
         return [
             styles,
             css`
-                #login {
-                    max-width: 425px;
-                }
-                .login-title {
-                    text-align: center;
-                    background-color: #C8C8C8;
-                    padding: 20px;
-                }
                 .button-wrapper {
                     text-align: center;
                     padding: 10px;
                 }
                 .link-wrapper {
+                    text-align: center;
+                }
+                .login-title {
                     text-align: center;
                 }
             `,
@@ -65,11 +60,9 @@ export class Login extends LitElement {
         return html`
          ${templateContent(button)}
         <div id="login">
-            <div class="title">
-                <h2 class="login-title">Login to your account</h2>
-            </div>
-            <div class="form">       
+            <div class="main-section">     
                 <form class="form-wrapper" @submit=${this._submit}>
+                    <h2 class="login-title">Login to your account</h2>
                     <div class="input-wrapper">
                         <label for="username">Username</label>
                         <input class="input" type="text" id="username" placeholder="Your Kano Username"/>
@@ -79,7 +72,6 @@ export class Login extends LitElement {
                             <img src="https://imgplaceholder.com/42x32/transparent/757575/fa-eye-slash" class="eye-toggle" id="eyeimage" @click="${this.togglePassword}"/>
                         </div>
                     </div>
-
                     <div class="button-wrapper">
                         <button class="btn l" type="submit">Login</button>
                     </div>

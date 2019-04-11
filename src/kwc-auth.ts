@@ -19,7 +19,6 @@ import './components/kwc-auth-createpassword.js';
 import './components/kwc-auth-kidparentsemail.js';
 import './components/kwc-auth-emailconfirmation.js';
 import './components/kwc-auth-login.js';
-import './components/kwc-auth-kidsignup.js';
 
 
 @customElement('kwc-auth')
@@ -41,42 +40,59 @@ export class KwcAuth extends LitElement {
         switch (view) {
             case 'landing':
                 return html`
-                    <kwc-auth-landing></kwc-auth-landing>
+                    <div class="kwc-auth">
+                        <h3>Registation Landing Page</h3>
+                        <kwc-auth-landing></kwc-auth-landing>
+                    </div>
+                    <hr>
             `;
             case 'createusername':            
             return html`
-                    <kwc-auth-createusername></kwc-auth-createusername>
+                    <div class="kwc-auth">
+                        <h3>Registation Create Username</h3>
+                        <kwc-auth-createusername></kwc-auth-createusername>
+                    </div>
+                    <hr>
             `; 
             case 'createpassword':            
             return html`
-                    <kwc-auth-createpassword></kwc-auth-createpassword>
+                    <div class="kwc-auth">
+                        <h3>Registation Create Password</h3>
+                        <kwc-auth-createpassword></kwc-auth-createpassword>                        
+                    </div>
+                    <hr>
             `; 
             case 'kidparentsemail':
                 return html`
-                    <kwc-auth-kidparentsemail></kwc-auth-kidparentsemail>
-                    `; 
+                    <div class="kwc-auth">
+                        <h3>Registation Create Parent email</h3>
+                        <kwc-auth-kidparentsemail></kwc-auth-kidparentsemail>                                              
+                    </div>
+                    <hr>
+            `; 
             case 'login':
                 return html`
-                    <kwc-auth-login></kwc-auth-login>  
-                    `; 
+                    <div class="kwc-auth">
+                        <h3>Registation login</h3>
+                        <kwc-auth-login></kwc-auth-login>                                                              
+                    </div>
+                    <hr>
+            `; 
             case 'emailconfirmation':
             return html`
-                    <kwc-auth-emailconfirmation></kwc-auth-emailconfirmation>  
-                    `; 
-            case 'kidsignup':
-            return html`
-                    <kwc-auth-kidsignup></kwc-auth-kidsignup>
-                    `;
+                    <div class="kwc-auth">
+                        <h3>Registation confirmation</h3>
+                        <kwc-auth-emailconfirmation></kwc-auth-emailconfirmation>                                                              
+                    </div>
+                    <hr>
+            `; 
             default:
                 return html`
                 <h1>DEFAULT</h1>
             `;
         }
     }
-    _submit(e: Event) {
-        e.preventDefault();
-        // TODO: Handle submit
-    }
+
     render() {
         return html`      
         <div>

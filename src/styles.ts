@@ -7,9 +7,35 @@ export const styles = css`
     display: flex;
     flex-flow: column;
     align-items: center;
-    border: 1px solid grey;
-    padding: 12px;
-    border-radius: 12px;
+}
+
+.topbar {
+    height: 66px;
+    width: 1025px;
+    background-color: #2C3D4E;
+}
+
+.title {
+    height: 48px;
+    width: 387px;
+    color: #414A51;
+    font-family: Bariol;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 18px;
+}
+
+.subtitle {
+    height: 48px;
+    width: 387px;
+}
+
+.main-section {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    height: 560px;
+    /* margin-bottom: 400px; */
 }
 
 h2 {
@@ -29,12 +55,12 @@ button {
 
 input {
     display: block;
-    border: 1px solid #ccc;
     outline: none;
     font-size: 16px;
     font-family: 'Bariol', sans-serif;
     font-weight: bold;
     margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 input[type="text"],
@@ -44,7 +70,7 @@ input[type="password"] {
     color: #414A51;
     box-sizing: border-box;
     height: 39px;
-    width: 100%;
+    width: 387px;
     padding-left: 2%;
     border-radius: 6px;
     border: 1px solid #1093F5
