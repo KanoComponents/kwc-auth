@@ -1,6 +1,6 @@
 import '@kano/styles/typography.js';
 import { button } from '@kano/styles/button.js';
-import { LitElement, css, html, customElement, property, query } from 'lit-element/lit-element.js';
+import { LitElement, html, customElement, property, query } from 'lit-element/lit-element.js';
 import { templateContent } from '../utils/template-content.js';
 import { styles } from '../styles.js';
 import { validateEmail } from '../utils/validation.js';
@@ -8,27 +8,7 @@ import { validateEmail } from '../utils/validation.js';
 @customElement('kwc-auth-kidparentsemail')
 export class KidParentsEmail extends LitElement {
     static get styles() {
-        return [
-            styles,
-            css`
-                .whats-your-parents {
-                    width: 387px;
-                    color: #414A51;
-                    font-family: Bariol;
-                    font-size: 18px;
-                    font-weight: 700;
-                    line-height: 18px;
-                }
-                .notice-that-all-user {
-                    height: 48px;
-                    width: 388px;
-                    color: #414A51;
-                    font-family: Bariol;
-                    font-size: 18px;
-                    line-height: 18px;
-                }
-            `
-        ];
+        return [styles];
     } 
     @property ( { type: String } ) errors = ({ email: '' });
 
@@ -53,8 +33,8 @@ export class KidParentsEmail extends LitElement {
             </div>
             <div class="main-section">       
                 <form class="form-wrapper" @submit=${this._onSubmit}>
-                    <h3 class="whats-your-parents">What's your parent's email address?</h3>
-                    <h4 class="notice-that-all-user">Notice that all user-generated content (UGC) is moderated for privacy and safety.</h4>
+                    <h3 class="title">What's your parent's email address?</h3>
+                    <h4 class="title">Notice that all user-generated content (UGC) is moderated for privacy and safety.</h4>
                     <div class="input-wrapper">
                         <input @blur="${this.validateEmail}" id="email" class="input" type="email" placeholder="Parent's email address"/>
                         <div class="error">${this.errors.email}</div>
@@ -63,7 +43,7 @@ export class KidParentsEmail extends LitElement {
                        <button class="btn l" type="submit">Continue</button>
                     </div>
                     <div class="link-wrapper">
-                        <p class="already-have-an-account">Already have an account? <a href="">Login</a></p>
+                        <p class="link-to-page">Already have an account? <a href="">Login</a></p>
                     </div>
                 </form>
             </div>

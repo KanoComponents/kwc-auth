@@ -14,7 +14,7 @@ export class Login extends LitElement {
                     text-align: center;
                     padding: 10px;
                 }
-                .already-have-an-account {
+                .link-to-page {
                     text-align: center;
                 }
                 .login-title {
@@ -82,8 +82,8 @@ export class Login extends LitElement {
                     </div>
                     <hr>
                     <div class="link-wrapper">
-                        <p class="already-have-an-account">Forgot your <a href="">username</a> or <a href="">password</a> ?</p>
-                        <p class="already-have-an-account">No account? <a href="">Sign up!</a></p>
+                        <p class="link-to-page">Forgot your <a href="">username</a> or <a href="">password</a> ?</p>
+                        <p class="link-to-page">No account? <a href="">Sign up!</a></p>
                     </div> 
                 </form>
             </div>

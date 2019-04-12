@@ -59,7 +59,7 @@ input[type="password"] {
     border: 1px solid #1093F5
 }
 
-.a {
+a {
     color: grey;
     margin-bottom: 20px;
     text-decoration: none;
@@ -94,10 +94,19 @@ input[type="password"] {
     line-height: 14px;
 }
 
-.already-have-an-account {
-  color: #9FA4A8;
-  font-family: Bariol;
-  font-size: 20px;
-  line-height: 20px;
+.link-to-page {
+    color: #9FA4A8;
+    font-family: Bariol;
+    font-size: 20px;
+    line-height: 20px;
+}
+
+.title {
+    width: 387px;
+    color: #414A51;
+    font-family: Bariol;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 18px;
 }
 `

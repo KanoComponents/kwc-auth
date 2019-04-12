@@ -1,6 +1,6 @@
 import '@kano/styles/typography.js';
 import { button } from '@kano/styles/button.js';
-import { LitElement, css, html, customElement, property, query } from 'lit-element/lit-element.js';
+import { LitElement, html, customElement, property, query } from 'lit-element/lit-element.js';
 import { templateContent } from '../utils/template-content.js';
 import { styles } from '../styles.js';
 import { validatePassword } from '../utils/validation.js';
@@ -8,20 +8,7 @@ import { validatePassword } from '../utils/validation.js';
 @customElement('kwc-auth-createpassword')
 export class CreatePassword extends LitElement {
     static get styles() {
-        return [
-            styles,
-            css`
-                .welcome-to-kano-username-setup {
-                    height: 96px;
-                    width: 387px;
-                    color: #414A51;
-                    font-family: Bariol;
-                    font-size: 18px;
-                    font-weight: 700;
-                    line-height: 18px;
-                }
-            `,
-            ];
+            return [styles];
         } 
     @property ( { type: Object } ) errors = ({ password: ''  });
     @property ({ type: String } ) username = '';
@@ -58,7 +45,7 @@ export class CreatePassword extends LitElement {
             </div>
             <div class="main-section">       
                 <form class="form-wrapper" @submit=${this._onSubmit}>
-                    <div class="welcome-to-kano-username-setup">
+                    <div class="title">
                         <h3>Welcome to Kano ${this.username}!<h3>
                         <h4>Set up a password for your account to make it secure. Your password must be at least 8 characters<h4>
                     </div>
@@ -73,7 +60,7 @@ export class CreatePassword extends LitElement {
                         <button class="btn l" type="submit">Continue</button>
                     </div>
                     <div class="link-wrapper">
-                        <p class="already-have-an-account">Already have an account? <a href="">Login</a></p>
+                        <p class="link-to-page">Already have an account? <a href="">Login</a></p>
                     </div>
                 </form>
             </div>

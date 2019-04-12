@@ -10,17 +10,6 @@ export class CreateUsername extends LitElement {
     static get styles() {
         return [
             styles,
-            css`
-                .make-up-a-kano-username-do-not {
-                    height: 48px;
-                    width: 387px;
-                    color: #414A51;
-                    font-family: Bariol;
-                    font-size: 18px;
-                    font-weight: 700;
-                    line-height: 18px;
-                }
-            `,
             ];
         } 
     @property ( { type: Object } ) errors = ({ username: '' });
@@ -46,7 +35,7 @@ export class CreateUsername extends LitElement {
             </div>
             <div class="main-section">       
                 <form class="form-wrapper" @submit=${this._onSubmit}>
-                    <div class="make-up-a-kano-username-do-not">
+                    <div class="title">
                         <h3>Make up a username. Don't use your real name or a name you used on other websites.<h3>
                     </div>
                     <div class="input-wrapper">
@@ -57,7 +46,7 @@ export class CreateUsername extends LitElement {
                         <button class="btn l" type="submit">Continue</button>
                     </div>
                     <div class="link-wrapper">
-                        <p class="already-have-an-account">Already have an account? <a href="">Login</a></p>
+                        <p class="link-to-page">Already have an account? <a href="">Login</a></p>
                     </div>
                 </form>
             </div>
