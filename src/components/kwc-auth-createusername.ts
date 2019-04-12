@@ -1,6 +1,6 @@
 import '@kano/styles/typography.js';
 import { button } from '@kano/styles/button.js';
-import { LitElement, css, html, customElement, property, query } from 'lit-element/lit-element.js';
+import { LitElement, html, customElement, property, query } from 'lit-element/lit-element.js';
 import { templateContent } from '../utils/template-content.js';
 import { styles } from '../styles.js';
 import { validateUsername } from '../utils/validation.js';
@@ -8,9 +8,7 @@ import { validateUsername } from '../utils/validation.js';
 @customElement('kwc-auth-createusername')
 export class CreateUsername extends LitElement {
     static get styles() {
-        return [
-            styles,
-            ];
+            return [styles];
         } 
     @property ( { type: Object } ) errors = ({ username: '' });
 
