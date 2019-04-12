@@ -40,51 +40,27 @@ export class KwcAuth extends LitElement {
         switch (view) {
             case 'landing':
                 return html`
-                    <div class="kwc-auth">
-                        <h3>Registation Landing Page</h3>
-                        <kwc-auth-landing></kwc-auth-landing>
-                    </div>
-                    <hr>
+                    <kwc-auth-landing></kwc-auth-landing>
             `;
             case 'createusername':            
-            return html`
-                    <div class="kwc-auth">
-                        <h3>Registation Create Username</h3>
-                        <kwc-auth-createusername></kwc-auth-createusername>
-                    </div>
-                    <hr>
+                return html`
+                    <kwc-auth-createusername></kwc-auth-createusername>
             `; 
             case 'createpassword':            
-            return html`
-                    <div class="kwc-auth">
-                        <h3>Registation Create Password</h3>
-                        <kwc-auth-createpassword></kwc-auth-createpassword>                        
-                    </div>
-                    <hr>
+                return html`
+                    <kwc-auth-createpassword></kwc-auth-createpassword>
             `; 
             case 'kidparentsemail':
                 return html`
-                    <div class="kwc-auth">
-                        <h3>Registation Create Parent email</h3>
-                        <kwc-auth-kidparentsemail></kwc-auth-kidparentsemail>                                              
-                    </div>
-                    <hr>
+                    <kwc-auth-kidparentsemail></kwc-auth-kidparentsemail>                                              
             `; 
             case 'login':
                 return html`
-                    <div class="kwc-auth">
-                        <h3>Registation login</h3>
-                        <kwc-auth-login></kwc-auth-login>                                                              
-                    </div>
-                    <hr>
+                    <kwc-auth-login></kwc-auth-login>                                                              
             `; 
             case 'emailconfirmation':
-            return html`
-                    <div class="kwc-auth">
-                        <h3>Registation confirmation</h3>
-                        <kwc-auth-emailconfirmation></kwc-auth-emailconfirmation>                                                              
-                    </div>
-                    <hr>
+                return html`
+                    <kwc-auth-emailconfirmation></kwc-auth-emailconfirmation>                                                              
             `; 
             default:
                 return html`

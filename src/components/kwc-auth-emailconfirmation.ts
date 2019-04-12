@@ -13,12 +13,12 @@ export class EmailConfirmation extends LitElement {
                 #email-confirmation {
                     text-align: center;
                 }
-                .thanks-for-signing-up {
+                .title-signup {
                     color: #414A51;
                     font-family: Arial;
                     font-size: 18px;
                 }
-                .ask-your-parents-to {
+                .subtitle-signup {
                     color: #414A51;
                     font-family: Bariol;
                     font-size: 18px;
@@ -31,19 +31,8 @@ export class EmailConfirmation extends LitElement {
                     background-color: #C8C8C8;
                     margin-bottom: 20px;
                 }
-                .resend-email {
-                    color: #9FA4A8;
-                    font-family: Bariol;
-                    font-size: 20px;
+                .link-to-page {
                     font-weight: 700;
-                    line-height: 20px;
-                }
-                .use-a-different-email-address {
-                    color: #9FA4A8;
-                    font-family: Bariol;
-                    font-size: 20px;
-                    font-weight: 700;
-                    line-height: 20px;
                 }
                 `
         ];
@@ -56,15 +45,15 @@ export class EmailConfirmation extends LitElement {
             <div class="topbar"></div>
             <div class="main-section">       
                 <form class="form-wrapper">
-                    <h4 class="thanks-for-signing-up">Thanks for signing up!</h4>
-                    <h4 class="ask-your-parents-to">Ask your parents to confirm your account to get full access to Kano World.<h4>
+                    <h4 class="title-signup">Thanks for signing up!</h4>
+                    <h4 class="subtitle-signup">Ask your parents to confirm your account to get full access to Kano World.<h4>
                     <div class="image-wrapper"></div>
                     <div class="button-wrapper">
                         <button class="btn l" type="submit">Start Playing</button>
                     </div>
                     <div class="link-wrapper">
-                        <p class="resend-email"><a href="">Resend email</a></p>
-                        <p class="use-a-different-email-address"><a href="">Use a different email address</a></p>
+                        <p class="link-to-page"><a href="">Resend email</a></p>
+                        <p class="link-to-page"><a href="">Use a different email address</a></p>
                     </div>    
                 </form>
             </div> 
