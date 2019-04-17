@@ -25,13 +25,13 @@ export class LandingPage extends LitElement {
     render() {
         return html`
         ${templateContent(button)}
-        <div class="auth-landing">
+        <div>
             <div class="topbar"></div>
             <div class="image">
                 <img src="http://via.placeholder.com/1024x560"/>
             </div>
             <div class="form-container">
-                <form class="form-wrapper">
+                <form>
                     <div class="button-wrapper">
                         <button @click=${this.handleClick} class="btn l" type="submit">Let's get Started</button>
                         <button @click=${this.handleClick} class="btn l" type="submit">I already have an account</button>

@@ -10,7 +10,7 @@ export class EmailConfirmation extends LitElement {
         return [
             styles,
             css`
-                #email-confirmation {
+                :host {
                     text-align: center;
                 }
                 .title-signup {
@@ -26,8 +26,7 @@ export class EmailConfirmation extends LitElement {
                     text-align: center;
                 }
                 .image-wrapper {
-                    height: 191px;
-                    width: 972px;
+                    height: 200px;
                     background-color: #C8C8C8;
                     margin-bottom: 20px;
                 }
@@ -41,26 +40,26 @@ export class EmailConfirmation extends LitElement {
     render() {
         return html`
         ${templateContent(button)}
-        <div id="email-confirmation">
+        <div>
             <div class="topbar"></div>
             <div class="main-section">       
-                <form class="form-wrapper">
-                    <h4 class="title-signup">Thanks for signing up!</h4>
-                    <h4 class="subtitle-signup">Ask your parents to confirm your account to get full access to Kano World.<h4>
+                <form>
+                    <h3 class="title-signup">Thanks for signing up!</h3>
+                    <h4 class="subtitle-signup">Ask your parents to confirm your account to get full access to Kano World.</h4>
                     <div class="image-wrapper"></div>
                     <div class="button-wrapper">
                         <button class="btn l" type="submit">Start Playing</button>
                     </div>
                     <div class="link-wrapper">
-                        <p class="link-to-page"><a href="">Resend email</a></p>
-                        <p class="link-to-page"><a href="">Use a different email address</a></p>
+                        <a href="">Resend email</a>
+                        <a href="">Use a different email address</a>
                     </div>    
                 </form>
             </div> 
             </footer>
                 <hr>
-                <div class="privacy-wrapper">
-                    <p class="privacy-policy"><a href="">Privacy Policy</a></p>
+                <div class="footer">
+                    <a href="">Privacy Policy</a>
                 </div>
             </footer>
         </div>  
