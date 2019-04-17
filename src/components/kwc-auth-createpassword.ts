@@ -1,30 +1,19 @@
 import '@kano/styles/typography.js';
-import { button } from '@kano/styles/button.js';
-import { LitElement, html, customElement, property, query } from 'lit-element/lit-element.js';
-import { templateContent } from '../utils/template-content.js';
-import { styles } from '../styles.js';
-import { validatePassword } from '../utils/validation.js';
+import { html, customElement, query, property } from 'lit-element/lit-element.js';
+import { SingleInputElement } from './auth-single-form.js'
 
 @customElement('kwc-auth-createpassword')
-export class CreatePassword extends LitElement {
-    static get styles() {
-            return [styles];
-        } 
-    @property ( { type: Object } ) errors = ({ password: ''  });
-    @property ({ type: String } ) username = '';
-   
-    @query('#password')
-    private passwordInput? : HTMLInputElement;
-    
-    /**
-    * Returns the current value of the password field or an empty string
-    */
-    get password() {
-        return this.passwordInput ? this.passwordInput.value : '';
+export class CreatePassword extends SingleInputElement {
+    constructor() {
+        super();
+        this.id = 'password';
+        this.next = 'email'
     }
 
     @query('#eyeimage')
     private imageInput? : HTMLInputElement;
+
+    @property({type: String}) username = '';
 
      /**
     * Returns the current value of the eye image field or an empty string
@@ -33,91 +22,50 @@ export class CreatePassword extends LitElement {
     get eyeimage() {
         return this.imageInput ? this.imageInput.value : '';
     }
-
-    render() {        
+    inputTemplate() {
         return html`
-        ${templateContent(button)}
-        <div id="create-password">
-            <div class="topbar">
-                <div class="back-button">
-                    <a href="" class="back">Back</a>
+                <h3>Welcome to Kano ${this.username}!</h3>
+                <h4>Set up a password for your account to make it secure. Your password must be at least 8 characters</h4>
+            <div class="input-wrapper">
+                <div class="input-wrapper">
+                    <input
+                        @blur="${() => this.validateInput(this.id, this.value)}"
+                        type="password"
+                        id="input"
+                        placeholder="Make up a password"/>
+                    <img
+                        src="https://imgplaceholder.com/42x32/transparent/757575/fa-eye-slash"
+                        class="eye-toggle"
+                        id="eyeimage"
+                        @click="${this.togglePassword}"/>
+                    <div class="error">${this.errors[this.id]}</div>
                 </div>
             </div>
-            <div class="main-section">       
-                <form class="form-wrapper" @submit=${this._onSubmit}>
-                    <div class="title">
-                        <h3>Welcome to Kano ${this.username}!<h3>
-                        <h4>Set up a password for your account to make it secure. Your password must be at least 8 characters<h4>
-                    </div>
-                    <div class="input-wrapper">
-                        <div class="input-password-wrapper">
-                            <input @blur="${this.validatePassword}" class="input" type="password" id="password" placeholder="Make up a password"/>
-                            <img src="https://imgplaceholder.com/42x32/transparent/757575/fa-eye-slash" class="eye-toggle" id="eyeimage" @click="${this.togglePassword}"/>
-                            <div class="error">${this.errors.password}</div>
-                        </div>
-                    </div>
-                    <div class="button-wrapper">
-                        <button class="btn l" type="submit">Continue</button>
-                    </div>
-                    <div class="link-wrapper">
-                        <p class="link-to-page">Already have an account? <a href="">Login</a></p>
-                    </div>
-                </form>
-            </div>
-            </footer>
-                <hr>
-                <div class="privacy-wrapper">
-                    <p class="privacy-policy"><a href="">Privacy Policy</a></p>
-                </div>
-            </footer> 
-        </div>
-    `;
+        `;
     }
-
-    _onSubmit(e: Event) {
-        e.preventDefault(); 
-        
-        if (this.validatePassword()) {
-            this.dispatchEvent(new CustomEvent('submit', {
-                detail: {
-                    password: this.password,
-                },
-                bubbles: true,
-                composed: true, 
-            }))
-        }
-    }
-  
-    /**
-     * Updates the error message for a field
-     * @param field Which error field to update
-     * @param message Error message displayed next to the field
-     */
-    updateError(field : 'password', message : string) {
-        this.errors = Object.assign({}, this.errors, { [field]: message });
-    }
-    
-    validatePassword() {
-        const errorPassword = validatePassword(this.password);
-
-        this.updateError('password', errorPassword || '');
-        return !errorPassword;
-    }
+    // EXAMPLEinputTemplate() {
+    //     return html`
+    //         <h3>Make up a username. Don't use your real name or a name you used on other websites.</h3>
+    //         <div class="input-wrapper">
+    //             <input @blur="${() => this.validateInput(this.id, this.value)}" type="text" id="input" placeholder="Your username here" />
+    //             <div class="error">${this.getErrors(this.id)}</div>
+    //         </div>
+    //     `;
+    // }
 
     togglePassword() {
-        if (!this.passwordInput || !this.imageInput ){
-            return
-        }        
+        if (!this.inputElement || !this.imageInput ){
+            return;
+        }
 
+        // replace with local assets
         const img1 = "https://imgplaceholder.com/42x32/transparent/757575/fa-eye";
         const img2 = "https://imgplaceholder.com/42x32/transparent/757575/fa-eye-slash";
-    
-        
-        if (this.passwordInput.type == 'password') {
-            this.passwordInput.type = 'text';
+        if (this.inputElement.type == 'password') {
+            this.inputElement.type = 'text';
             this.imageInput.src = img1;
         } else {
-            this.passwordInput.type = 'password';
+            this.inputElement.type = 'password';
             this.imageInput.src = img2;
         }
     }

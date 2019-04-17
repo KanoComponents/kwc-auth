@@ -9,33 +9,45 @@ export const styles = css`
     align-items: center;
 }
 
-.topbar {
-    height: 66px;
-    width: 1025px;
-    background-color: #2C3D4E;
-}
-
 .main-section {
     display: flex;
     justify-content: center;
     height: 100%;
-    height: 560px;
 }
 
-h2 {
+h2, h3 {
     color: #414a51;
-    font-size: 24px;
     text-align: left;
+}
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+p {
+    font-family: 'Bariol', sans-serif;
+    font-size: 20px;
+    line-height: 1em;
+    margin: 0;
+}
+
+p.color-grey {
+    color: #9FA4A8;
+}
+
+a {
+    color: #FF6900;
+    margin-bottom: 20px;
+    text-decoration: none;
 }
 
 button {
     font-family: var(--font-body);
-    justify-content: center;
+    text-align: center;
     margin-top: 20px;
-}
-
-.back-button {
-    padding-bottom: 20px;
 }
 
 input {
@@ -44,25 +56,34 @@ input {
     font-size: 16px;
     font-family: 'Bariol', sans-serif;
     font-weight: bold;
+    margin-bottom: 15px;
 }
 
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-    // width: 387px;
+    width: 100%;
     color: #414A51;
     box-sizing: border-box;
     width: 100%;
-    height: 39px;
+    min-height: 39px;
     padding-left: 2%;
     border-radius: 6px;
-    border: 1px solid #1093F5
+    border: 1px solid #1093F5;
 }
 
-a {
-    color: grey;
-    margin-bottom: 20px;
-    text-decoration: none;
+label {
+    font-size: 12px;
+    color: #9FA4A8;
+}
+
+.footer p, .footer a {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.back-button {
+    padding-bottom: 20px;
 }
 
 .error {
@@ -78,35 +99,11 @@ a {
     transform: translateY(-50%);
 }
 
-.input-password-wrapper {
+.input-wrapper {
     position: relative;
 }
 
 .privacy-wrapper {
     text-align: center;
-}
-
-.privacy-policy {
-    color: #9FA4A8;
-    font-family: Bariol;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 14px;
-}
-
-.link-to-page {
-    color: #9FA4A8;
-    font-family: Bariol;
-    font-size: 20px;
-    line-height: 20px;
-}
-
-.title {
-    width: 387px;
-    color: #414A51;
-    font-family: Bariol;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 18px;
 }
 `
