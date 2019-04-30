@@ -36,8 +36,8 @@ export class KwcAuth extends LitElement {
 
     @property({ type: String }) view = '';
     @property({ type: String }) logo = 'kano';
-    @property({ type: String }) backgroundGliph = 'shapesGliph';
-    @property({ type: String }) loginGliph: string;
+    @property({ type: String }) backgroundGlyph = 'shapesGlyph';
+    @property({ type: String }) loginGlyph: string;
     @property({ type: Object }) form: Form = {
         username: '',
         password: '',
@@ -67,7 +67,7 @@ export class KwcAuth extends LitElement {
 
     constructor() {
         super();
-        this.loginGliph = '';
+        this.loginGlyph = '';
     }
 
     // Return template of the current form
@@ -121,7 +121,7 @@ export class KwcAuth extends LitElement {
                         .logo=${this.logo}
                         @submit=${this.handleLogin}
                         @changeView=${this.changeView}
-                        loginGliph=${this.loginGliph}>
+                        loginGlyph=${this.loginGlyph}>
                     </kwc-auth-login>
                 `;
         }

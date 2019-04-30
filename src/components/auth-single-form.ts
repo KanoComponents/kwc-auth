@@ -46,6 +46,7 @@ export class SingleInputElement extends LitElement {
             <div class="input-wrapper">
                 <input
                     @blur="${() => this.validateInput(this.id, this.value)}"
+                    @keydown="${(e: KeyboardEvent) => this.handleKeydown(e)}"
                     type="text"
                     id="input"
                     placeholder="Input information here"/>
