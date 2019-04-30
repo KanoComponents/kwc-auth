@@ -2,13 +2,13 @@ import '@kano/styles/typography.js';
 import { html, customElement, property } from 'lit-element/lit-element.js';
 import { SingleInputElement } from './auth-single-form.js'
 
-@customElement('kwc-auth-createusername')
-export class CreateUsername extends SingleInputElement {
+@customElement('kwc-auth-username')
+export class UsernameInput extends SingleInputElement {
     @property({type: String}) error = '';
     constructor() {
         super();
         this.id = 'username';
-        this.next = 'password'
+        this.next = 'password';
     }
 
     inputTemplate() {
@@ -18,6 +18,7 @@ export class CreateUsername extends SingleInputElement {
             <div class="input-wrapper">
                 <input
                     @blur="${() => this.validateInput(this.id, this.value)}"
+                    @keydown="${(e: KeyboardEvent) => this.handleKeydown(e)}"
                     type="text"
                     id="input"
                     placeholder="Your username here" />

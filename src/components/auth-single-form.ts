@@ -57,18 +57,33 @@ export class SingleInputElement extends LitElement {
     render() {        
         return html`
         ${templateContent(button)}
-        <div>
-            ${this.inputTemplate()}
-            <div class="button-wrapper">
-                <button @click=${() => this.handleClick()} class="btn l">Continue</button>
+        <div class="form-template">
+            <div>
+                ${this.inputTemplate()}
+                <div class="button-wrapper">
+                    <button
+                    id="submit"
+                    @mousedown=${(e: Event) => this.handleClick(e)}
+                    @keydown=${(e: KeyboardEvent) => this.handleKeydown(e)}
+                    class="btn l">Continue</button>
+                </div>
             </div>
             <div class="link-wrapper">
-                <p>Already have an account? <a href="/login">Login</a></p>
+                <p>Already have an account? <a href="/login">Login</a></p> 
             </div>
         </div>
     `;
     }
-    handleClick() {
+    handleKeydown(e: KeyboardEvent) {
+        if (e.type === 'keydown' && e.keyCode === 13) {
+            this.handleClick(e as Event);
+        }
+    }
+    handleClick(e: Event) {
+        e.preventDefault();
+        if (!this.validateInput(this.id, this.value)) {
+            return;
+        }
         const event: SubmitDetails = {
             detail: {
                 next: this.next,

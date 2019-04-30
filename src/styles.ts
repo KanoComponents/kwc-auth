@@ -5,14 +5,42 @@ export const styles = css`
 :host {
     font-family: var(--font-body);
     display: flex;
-    flex-flow: column;
-    align-items: center;
+    flex-flow: row;
+    margin: 0 auto;
+    justify-content: center;
 }
 
 .main-section {
     display: flex;
     justify-content: center;
     height: 100%;
+    flex-wrap: wrap;
+}
+
+.form-template {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.form-template > div {
+    width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+a,
+input {
+    font-family: 'Bariol', sans-serif;
+    line-height: 1.25em;
+}
+
+
+p,
+span {
+    color: #9FA4A8;
 }
 
 h2, h3 {
@@ -28,9 +56,7 @@ h3 {
 }
 
 p {
-    font-family: 'Bariol', sans-serif;
     font-size: 20px;
-    line-height: 1em;
     margin: 0;
 }
 
@@ -54,7 +80,6 @@ input {
     display: block;
     outline: none;
     font-size: 16px;
-    font-family: 'Bariol', sans-serif;
     font-weight: bold;
     margin-bottom: 15px;
 }
@@ -77,15 +102,6 @@ label {
     color: #9FA4A8;
 }
 
-.footer p, .footer a {
-    font-size: 14px;
-    font-weight: 700;
-}
-
-.back-button {
-    padding-bottom: 20px;
-}
-
 .error {
     color: red;
     margin-bottom: 5px;
@@ -101,6 +117,12 @@ label {
 
 .input-wrapper {
     position: relative;
+}
+
+.link-wrapper {
+    align-self: flex-end;
+    display: block;
+    width: 100%;
 }
 
 .privacy-wrapper {
