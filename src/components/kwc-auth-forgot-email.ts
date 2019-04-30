@@ -6,7 +6,7 @@ import { SingleInputElement } from './auth-single-form.js'
 export class ChangeEmail extends SingleInputElement {
     constructor() {
         super();
-        this.id = 'forgotEmail';
+        this.id = 'forgot-email';
         this.next = 'login'
     }
     inputTemplate() {
