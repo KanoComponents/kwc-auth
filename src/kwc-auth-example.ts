@@ -391,7 +391,7 @@ export class AuthView extends LitElement {
                             <kwc-auth
                             .view='${this.view.id}'
                             @changeView=${this.handleChangeView}
-                            logingliph="../assets/header_splash.png"
+                            loginGlyph="../assets/header_splash.png"
                             ></kwc-auth>
                         </div>
                         ${this.footerTemplate(footerLinks)}
@@ -410,7 +410,7 @@ export class AuthView extends LitElement {
                             @forgotPassword=${this.handleForgotPassword}
                             @forgotUsername=${this.handleForgotUsername}
                             @forgotEmail=${this.handleForgotEmail}
-                            loginGliph="../assets/header_splash.png"
+                            loginGlyph="../assets/header_splash.png"
                         ></kwc-auth>
                         
                         ${this.footerTemplate(footerLinks)}

@@ -25,7 +25,7 @@ suite('kwc-auth-email', () => {
             done();
         }) as EventListener);
 
-        testUtil.email.button.dispatchEvent(new CustomEvent('click'));
+        testUtil.email.button.dispatchEvent(new CustomEvent('mousedown'));
         });
     });
     

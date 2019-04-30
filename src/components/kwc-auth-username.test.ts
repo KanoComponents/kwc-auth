@@ -24,7 +24,7 @@ suite('kwc-auth-username', () => {
                 done();
             }) as EventListener);
 
-            testUtil.username.button.dispatchEvent(new CustomEvent('click'));
+            testUtil.username.button.dispatchEvent(new CustomEvent('mousedown'));
         });
     });
 

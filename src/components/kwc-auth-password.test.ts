@@ -26,7 +26,7 @@ suite('kwc-auth-password', () => {
                 done();
             }) as EventListener);
 
-            testUtil.password.button.dispatchEvent(new CustomEvent('click'));
+            testUtil.password.button.dispatchEvent(new CustomEvent('mousedown'));
         });
     });
 
