@@ -49,7 +49,7 @@ export class Login extends LitElement {
         }
 
     @property({ type: String }) logo = '';
-    @property({ type: String }) loginGliph: string;
+    @property({ type: String }) loginGlyph: string;
     
     @query('#username')
     private usernameInput? : HTMLInputElement;
@@ -83,7 +83,7 @@ export class Login extends LitElement {
 
     constructor() {
         super();
-        this.loginGliph = '';
+        this.loginGlyph = '';
     }
 
     render() {
@@ -91,7 +91,7 @@ export class Login extends LitElement {
          ${templateContent(button)}
         <div>
             <div class="header"
-                style="background-image:url(${this.loginGliph})">
+                style="background-image:url(${this.loginGlyph})">
                 <h2>Login</h2>
             </div>
             <form @submit=${this._submit}>
