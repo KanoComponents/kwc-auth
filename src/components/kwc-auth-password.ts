@@ -2,8 +2,8 @@ import '@kano/styles/typography.js';
 import { html, customElement, query, property } from 'lit-element/lit-element.js';
 import { SingleInputElement } from './auth-single-form.js'
 
-@customElement('kwc-auth-createpassword')
-export class CreatePassword extends SingleInputElement {
+@customElement('kwc-auth-password')
+export class PasswordInput extends SingleInputElement {
     constructor() {
         super();
         this.id = 'password';
@@ -24,12 +24,13 @@ export class CreatePassword extends SingleInputElement {
     }
     inputTemplate() {
         return html`
-                <h3>Welcome to Kano ${this.username}!</h3>
-                <h4>Set up a password for your account to make it secure. Your password must be at least 8 characters</h4>
+            <h3>Welcome to Kano ${this.username}!</h3>
+            <h4>Set up a password for your account to make it secure. Your password must be at least 8 characters</h4>
             <div class="input-wrapper">
                 <div class="input-wrapper">
                     <input
                         @blur="${() => this.validateInput(this.id, this.value)}"
+                        @keydown="${(e: KeyboardEvent) => this.handleKeydown(e)}"
                         type="password"
                         id="input"
                         placeholder="Make up a password"/>
@@ -38,20 +39,11 @@ export class CreatePassword extends SingleInputElement {
                         class="eye-toggle"
                         id="eyeimage"
                         @click="${this.togglePassword}"/>
+                    </div>
                     <div class="error">${this.errors[this.id]}</div>
-                </div>
             </div>
         `;
     }
-    // EXAMPLEinputTemplate() {
-    //     return html`
-    //         <h3>Make up a username. Don't use your real name or a name you used on other websites.</h3>
-    //         <div class="input-wrapper">
-    //             <input @blur="${() => this.validateInput(this.id, this.value)}" type="text" id="input" placeholder="Your username here" />
-    //             <div class="error">${this.getErrors(this.id)}</div>
-    //         </div>
-    //     `;
-    // }
 
     togglePassword() {
         if (!this.inputElement || !this.imageInput ){

@@ -9,54 +9,52 @@ export class AuthTestUtil {
         return this.el.querySelector(selector);
     }
 
-    get createpassword() {
+    get password() {
         const getter = this._get.bind(this);
         return {
             get password() {
-                return getter('input#password');
+                return getter('input#input');
             },
-            get form() {
-                return getter('form');
+            get button() {
+                return getter('button#submit');
             },
         }
     }
 
-    get createusername() {
+    get username() {
         const getter = this._get.bind(this);
         return {
             get username() {
-                return getter('input#username');
+                return getter('input#input');
             },
-            get form() {
-                return getter('form');
+            get button() {
+                return getter('button#submit');
             },
         }
     }
 
-    get kidparentsemail() {
+    get email() {
         const getter = this._get.bind(this);        
         return {
             get email() {
-                return getter('input#email');
+                return getter('input#input');
             },
-            get form() {
-                return getter('form');
+            get button() {
+                return getter('button#submit');
             },
         };
     }
     
     
-    type(input: HTMLInputElement, text: string) {        
+    type(input: HTMLInputElement, text: string) {
         this.setInputValue(input, 'value', text);
     }
     check(input: HTMLInputElement, value: string) {
         this.setInputValue(input, 'checked', value);
     }
-
     blur(input: HTMLInputElement) {
         input.dispatchEvent(new CustomEvent('blur'));
     }
-
     setInputValue(input: HTMLInputElement, prop: string, value: string) {
         input.setAttribute(prop, value);
         input.dispatchEvent(new CustomEvent('keyup'));
