@@ -1,4 +1,5 @@
 import { css } from 'lit-element/lit-element.js';
+import '@kano/styles/typography';
 
 export const styles = css`
 
@@ -33,7 +34,7 @@ h4,
 p,
 a,
 input {
-    font-family: 'Bariol', sans-serif;
+    font-family: var(--font-body);
     line-height: 1.25em;
 }
 

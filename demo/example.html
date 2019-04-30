@@ -17,6 +17,11 @@
 </body>
 <script type="module">
     import '../dist/kwc-auth-example.js';
+    import { Actions } from '../dist/examples/actions.js';
+    import { viewsArray } from '../dist/examples/viewsArray.js';
+    const el = document.querySelector('kwc-auth-example');
+    el.viewsArray = viewsArray;
+    el.actions = Actions;
 </script>
 
 </html>

@@ -1,43 +1,20 @@
 // Sample set of actions for authentication. These are the necessary actions in order to make the Auth flow functional in your app.
-interface Form {
+export interface IForm {
     email: string;
     username: string;
     password: string;
-    newsletter: Boolean;
+}
+export interface ILoginForm {
+    username: string;
+    password: string;
 }
 
-const Actions = () => {
-    const user = {
-        id: 'sampleId',
-    };
-
-    return {
-        login(username: string, password: string) {
-            console.log(username, password);
-            return new Promise((resolve) => resolve());
-        },
-        register(form: Form) {
-            console.log(form);
-            return new Promise((resolve) => resolve());
-        },
-        getAuthenticatedUser() {
-            return new Promise((resolve) => resolve(user));
-        },
-        checkUsernameAvailability(username: string) {
-            console.log(username);
-            return new Promise((resolve) => resolve());
-        },
-        forgotPassword(username: string) {
-            console.log(username);
-            return new Promise((resolve) => resolve());
-        },
-        forgotUsername(email: string) {
-            console.log(email);
-            return new Promise((resolve) => resolve());
-        },
-    };
-};
-
-export { Actions, Form };
-
-export default Actions;
+export interface IActions {
+    login(f : ILoginForm) : Promise<void>;
+    register(f : IForm) : Promise<void>;
+    getAuthenticatedUser(u : string) : Promise<{id: string}>;
+    checkUsernameAvailability(u : string) : Promise<void>;
+    forgotPassword(u : string) : Promise<void>;
+    forgotUsername(e : string) : Promise<void>;
+    forgotEmail(e : string) : Promise<void>;
+}
