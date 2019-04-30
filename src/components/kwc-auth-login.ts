@@ -17,8 +17,14 @@ export class Login extends LitElement {
                 }
                 .header {
                     background-color: #FF6900;
-                    height: 60px;
+                    min-height: 60px;
                     border-radius: 6px 6px 0 0;
+                    padding: 20px;
+                    text-align: center;
+                    box-sizing: border-box;
+                    background-repeat: no-repeat;
+                    background-position: 100% 0;
+                    background-size: contain;
                 }
                 .button-wrapper {
                     text-align: center;
@@ -26,9 +32,7 @@ export class Login extends LitElement {
                 }
                 h2 {
                     text-align: center;
-                    padding: 20px;
                     margin: 0;
-                    background-color: #D8D8D8;
                 }
                 form {
                     padding: 15px 30px;
@@ -45,7 +49,7 @@ export class Login extends LitElement {
         }
 
     @property({ type: String }) logo = '';
-    @property({ type: String }) loginBackgroundGliph = '';
+    @property({ type: String }) loginGliph: string;
     
     @query('#username')
     private usernameInput? : HTMLInputElement;
@@ -77,15 +81,19 @@ export class Login extends LitElement {
         return this.imageInput ? this.imageInput.value : '';
     }
 
+    constructor() {
+        super();
+        this.loginGliph = '';
+    }
 
     render() {
         return html`
          ${templateContent(button)}
         <div>
-            <div class="header" style="background-image:url(${this.loginBackgroundGliph})">
-                <img src=${this.logo}>
+            <div class="header"
+                style="background-image:url(${this.loginGliph})">
+                <h2>Login</h2>
             </div>
-            <h2>Login to your account</h2>
             <form @submit=${this._submit}>
                 <div class="input-wrapper">
                     <label for="username">Username</label>
@@ -101,8 +109,13 @@ export class Login extends LitElement {
                 </div>
                 <hr>
                 <div class="footer">
-                    <p class="color-grey">Forgot your <a href="">username</a> or <a href="">password</a> ?</p>
-                    <p class="color-grey">No account? <a href="">Sign up!</a></p>
+                    <p class="color-grey">Forgot your 
+                        <a @click=${(e: Event) => this._changeView(e, 'forgotUsername')} href="">username</a> or 
+                        <a @click=${(e: Event) => this._changeView(e, 'forgotPassword')} href="">password</a> ?
+                    </p>
+                    <p class="color-grey">No account? 
+                        <a @click=${(e: Event) => this._changeView(e, 'username')} href="">Sign up!</a>
+                    </p>
                 </div> 
             </form>
         </div>
@@ -119,6 +132,15 @@ export class Login extends LitElement {
             },
             bubbles: true,
             composed: true, 
+        }))
+    }
+
+    _changeView(e:Event, view: string) {
+        e.preventDefault();
+        this.dispatchEvent(new CustomEvent('changeView', {
+            detail: {
+                view,
+            }
         }))
     }
 

@@ -1,10 +1,10 @@
 /* globals suite, test, assert, teardown, setup */
-import { CreatePassword } from  './kwc-auth-createpassword';
+import { PasswordInput } from  './kwc-auth-password';
 import { AuthTestUtil } from '../test/util.js';
 
 
-const createpassword = fixture<CreatePassword>`
-    <kwc-auth-createpassword></kwc-auth-createpassword>
+const password = fixture<PasswordInput>`
+    <kwc-auth-password></kwc-auth-password>
 `;
 
 const testPassword = 'passwordtest';
@@ -12,32 +12,32 @@ const invalidPassword = 'pass word';
 const shortPassword = 'p';
 
 
-suite('kwc-auth-createpassword', () => {
+suite('kwc-auth-password', () => {
     test('Input and submit password', (done) => {
-        const el = createpassword();
+        const el = password();
         el.updateComplete.then(() => {
             const shadowRoot = el.shadowRoot!;
             const testUtil = new AuthTestUtil(shadowRoot);
 
-            testUtil.type(testUtil.createpassword.password, testPassword);
+            testUtil.type(testUtil.password.password, testPassword);
 
             el.addEventListener('submit', ((e: CustomEvent) => {
-                assert.equal(e.detail.password, testPassword);
+                assert.equal(e.detail.payload.password, testPassword);
                 done();
             }) as EventListener);
 
-            testUtil.createpassword.form.dispatchEvent(new CustomEvent('submit'));
+            testUtil.password.button.dispatchEvent(new CustomEvent('click'));
         });
     });
 
     test('Password cannot be empty', () => {
-        const el = createpassword();
+        const el = password();
         el.updateComplete.then(() => {
             const shadowRoot = el.shadowRoot!;
             const testUtil = new AuthTestUtil(shadowRoot);
 
-            testUtil.type(testUtil.createpassword.password, '');
-            testUtil.blur(testUtil.createpassword.password);
+            testUtil.type(testUtil.password.password, '');
+            testUtil.blur(testUtil.password.password);
 
             const errors = el.errors;
             assert.equal(errors.password, 'Password cannot be empty.');
@@ -45,13 +45,13 @@ suite('kwc-auth-createpassword', () => {
     });
 
     test('Password must not contrain spaces', () => {
-        const el = createpassword();
+        const el = password();
         return el.updateComplete.then(() => {
             const shadowRoot = el.shadowRoot!;
             const testUtil = new AuthTestUtil(shadowRoot);
 
-            testUtil.type(testUtil.createpassword.password, invalidPassword);
-            testUtil.blur(testUtil.createpassword.password);
+            testUtil.type(testUtil.password.password, invalidPassword);
+            testUtil.blur(testUtil.password.password);
 
             const errors = el.errors;
             assert.equal(errors.password, 'Password cannot contain spaces.');
@@ -59,13 +59,13 @@ suite('kwc-auth-createpassword', () => {
     });
 
     test('Password too short', () => {
-        const el = createpassword();
+        const el = password();
         return el.updateComplete.then(() => {
             const shadowRoot = el.shadowRoot!;
             const testUtil = new AuthTestUtil(shadowRoot);
 
-            testUtil.type(testUtil.createpassword.password, shortPassword);
-            testUtil.blur(testUtil.createpassword.password);
+            testUtil.type(testUtil.password.password, shortPassword);
+            testUtil.blur(testUtil.password.password);
 
             const errors = el.errors;  
             assert.equal(errors.password, 'Password must be at least 8 characters long.');
