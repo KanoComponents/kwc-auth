@@ -7,7 +7,7 @@ export class UsernameInput extends SingleInputElement {
     @property({type: String}) error = '';
     constructor() {
         super();
-        this.id = 'forgotUsername';
+        this.id = 'forgot-username';
         this.next = 'login';
     }
 

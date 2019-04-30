@@ -91,19 +91,19 @@ export class KwcAuth extends LitElement {
                         @submit=${this.handleRegister}
                     ></kwc-auth-email>
             `; 
-            case 'forgotEmail':
+            case 'forgot-email':
                 return html`
                     <kwc-auth-forgot-email
                         @submit=${this.handleForgotEmail}
                     ></kwc-auth-forgot-email>                                                              
                     `; 
-            case 'forgotPassword':
+            case 'forgot-password':
                 return html`
                     <kwc-auth-forgot-password
                         @submit=${this.handleForgotPassword}
                     ></kwc-auth-forgot-password>                                                              
                     `; 
-            case 'forgotUsername':
+            case 'forgot-username':
                 return html`
                     <kwc-auth-forgot-username
                         @submit=${this.handleForgotUsername}
@@ -167,19 +167,18 @@ export class KwcAuth extends LitElement {
         }));
     }
     handleForgotPassword(e: CustomEvent) {
-        this.dispatchEvent(new CustomEvent('forgotPassword', {
-            detail: e.detail,
-
+        this.dispatchEvent(new CustomEvent('forgot-password', {
+            detail: e.detail.payload['forgot-password'],
         }));
     }
     handleForgotUsername(e: CustomEvent) {
-        this.dispatchEvent(new CustomEvent('forgotUsername', {
-            detail: e.detail,
+        this.dispatchEvent(new CustomEvent('forgot-username', {
+            detail: e.detail.payload['forgot-username'],
         }));
     }
     handleForgotEmail(e: CustomEvent) {
-        this.dispatchEvent(new CustomEvent('forgotEmail', {
-            detail: e.detail,
+        this.dispatchEvent(new CustomEvent('forgot-email', {
+            detail: e.detail.payload['forgot-email'],
         }));
     }
 }

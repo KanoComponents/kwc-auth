@@ -5,7 +5,7 @@
 import { LitElement, html, css, customElement, property } from 'lit-element/lit-element.js';
 import { button } from '@kano/styles/button.js';
 
-import { Actions, Form } from './actions.js';
+import { IForm, IActions } from './actions.js';
 
 import { Link, View } from './view-type.js'
 import { templateContent } from './utils/template-content.js';
@@ -16,94 +16,40 @@ export interface HeaderDetails {
     image: string;
 }
 
+interface IBackButton {
+    text: string;
+    link: string;
+}
+
+export interface IViewDefinition {
+    id : string;
+    backButton? : IBackButton;
+}
+
 @customElement('kwc-auth-example')
 export class AuthView extends LitElement {
     
     @property ({type: Object})
     public view : View = { id: '' };
     
-    @property ({type: Map})
-    public views: Map<string, View> = new Map<string, View>();
+    public views : Map<string, View> = new Map<string, View>();
     
     @property ({type: String})
     public headerText : string = '';
 
-    @property ({type: Object})
-    public actions : any;
+    public actions? : IActions;
 
-
-    constructor() {
-        super();
-        this.actions = Actions();
-
-        const backText = 'Back';
-        this.headerText = 'Create a Kano account';
-        const viewsArr = [
-            {
-                id: 'landing',
-            },
-            {
-                id: 'play',
-            },
-            {
-                id: 'username',
-                backButton: {
-                    text: backText,
-                    link: '/landing',
-                },
-            },
-            {
-                id: 'password',
-                backButton: {
-                    text: backText,
-                    link: 'username',
-                },
-            },
-            {
-                id: 'forgotUsername',
-                backButton: {
-                    text: backText,
-                    link: 'login',
-                },
-            },
-            {
-                id: 'forgotPassword',
-                backButton: {
-                    text: backText,
-                    link: 'login',
-                },
-            },
-            {
-                id: 'forgotEmail',
-                backButton: {
-                    text: backText,
-                    link: '/',
-                },
-            },
-            {
-                id: 'email',
-                backButton: {
-                    text: backText,
-                    link: 'password',
-                },
-            },
-            {
-                id: 'login',
-                backButton: {
-                    text: backText,
-                    link: 'landing',
-                },
-            },
-            {
-                id: 'success',
-            },
-        ]
-        this.views = new Map<string, View>();
-        viewsArr.forEach(el => {
+    set viewsArray(value : IViewDefinition[]) {
+        if (this.viewsArray) {
+            throw new Error('Cant define twice');
+        }
+        value.forEach(el => {
             this.views.set(el.id, el);
         });
-        this.view = this.views.get('landing') || viewsArr[0];
+        this.view = this.views.get('landing') || value[0];
     }
+
+
 
     static get styles() {
         return [
@@ -322,7 +268,11 @@ export class AuthView extends LitElement {
         const button = this.view.backButton;
         return html`
             <div class="back-button">
-                <a href=${button.link}>${button.text}</a>
+                <a
+                    @click=${() => this.changeTemplate(button.link)}
+                >
+                ${button.text}
+            </a>
             </div>
         `;
     }
@@ -391,6 +341,7 @@ export class AuthView extends LitElement {
                             <kwc-auth
                             .view='${this.view.id}'
                             @changeView=${this.handleChangeView}
+                            @login=${this.handleLogin}
                             loginGlyph="../assets/header_splash.png"
                             ></kwc-auth>
                         </div>
@@ -407,9 +358,9 @@ export class AuthView extends LitElement {
                             @changeView=${this.handleChangeView}
                             @login=${this.handleLogin}
                             @register=${this.handleRegister}
-                            @forgotPassword=${this.handleForgotPassword}
-                            @forgotUsername=${this.handleForgotUsername}
-                            @forgotEmail=${this.handleForgotEmail}
+                            @forgot-password=${this.handleForgotPassword}
+                            @forgot-username=${this.handleForgotUsername}
+                            @forgot-email=${this.handleForgotEmail}
                             loginGlyph="../assets/header_splash.png"
                         ></kwc-auth>
                         
@@ -422,28 +373,34 @@ export class AuthView extends LitElement {
     render() {
         return this.renderTemplate();
     }
-    validateForm(form: Form) {
+    validateForm(form: IForm) {
         return form && form.username && form.password && form.email;
     }
+    getActions() {
+        if (!this.actions) {
+            throw new Error('Could not configure auth: actions id not defined');
+        }
+        return this.actions;
+    }
 
-    handleLogin() {
-        this.actions.login()
+    handleLogin(e: CustomEvent) {
+        this.getActions().login(e.detail)
             .then(() => this.changeTemplate('play'));
     }
     handleRegister(e: CustomEvent) {
-        this.actions.register(e.detail.form)
+        this.getActions().register(e.detail.form)
             .then(() => this.changeTemplate('play'));
     }
-    handleForgotPassword() {
-        this.actions.forgotPassword()
+    handleForgotPassword(e: CustomEvent) {
+        this.getActions().forgotPassword(e.detail)
             .then(() => this.changeTemplate('login'));
     }
-    handleForgotUsername() {
-        this.actions.forgotUsername()
+    handleForgotUsername(e: CustomEvent) {
+        this.getActions().forgotUsername(e.detail)
             .then(() => this.changeTemplate('login'));
     }
-    handleForgotEmail() {
-        this.actions.forgotEmail()
+    handleForgotEmail(e: CustomEvent) {
+        this.getActions().forgotEmail(e.detail)
             .then(() => this.changeTemplate('play'));
     }
 }
