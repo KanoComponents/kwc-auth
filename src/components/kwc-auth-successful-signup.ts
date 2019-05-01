@@ -24,13 +24,16 @@ export class SuccessfulSignup extends LitElement {
                     line-height: 18px;
                     text-align: center;
                 }
-                .image-wrapper {
+                /* .image-wrapper {
                     height: 200px;
                     background-color: #C8C8C8;
                     margin-bottom: 20px;
-                }
+                } */
                 .link-to-page {
                     font-weight: 700;
+                }
+                .button-wrapper button {
+                    display: block;
                 }
                 `
         ];
@@ -41,17 +44,21 @@ export class SuccessfulSignup extends LitElement {
         ${templateContent(button)}
         <div>
             <h3>Thanks for signing up!</h3>
-            <h4>Ask your parents to confirm your account to get full access to Kano World.</h4>
-            <div class="image-wrapper"></div>
+            <h3>Ask your parents to confirm your account to get full access to Kano World.</h3>
             <div class="button-wrapper">
-                <button class="btn l" type="submit">Start Playing</button>
-            </div>
-            <div class="link-wrapper">
-                
-                <a href="">Resend email</a>
-                <a href="">Use a different email address</a>
+                <button @click=${this.handleSubmit} class="btn l" type="submit">Start Playing</button>
+                <button @click=${this.handleResendEmail} class="btn s secondary" type="submit">Resend email</button>
             </div>
         </div>
     `;
+    }
+
+    handleSubmit(e: Event) {
+        e.preventDefault();
+        this.dispatchEvent(new Event('submit'));
+    }
+    handleResendEmail(e: Event) {
+        e.preventDefault();
+        this.dispatchEvent(new Event('resend-email'));
     }
 }

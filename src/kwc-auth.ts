@@ -112,7 +112,8 @@ export class KwcAuth extends LitElement {
             case 'success':
                 return html`
                     <kwc-auth-successful-signup
-                        @submit=${this.handleSubmit}
+                        @submit=${this.handleFinishedFlow}
+                        @resend-email=${this.handleResendEmail}
                     ></kwc-auth-successful-signup>                                                              
                     `;
             default:
@@ -180,5 +181,11 @@ export class KwcAuth extends LitElement {
         this.dispatchEvent(new CustomEvent('forgot-email', {
             detail: e.detail.payload['forgot-email'],
         }));
+    }
+    handleFinishedFlow() {
+        this.dispatchEvent(new CustomEvent('finished-flow'));
+    }
+    handleResendEmail() {
+        this.dispatchEvent(new Event('finished-flow'));
     }
 }

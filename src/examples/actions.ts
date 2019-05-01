@@ -32,6 +32,10 @@ export const Actions: IActions = {
         console.log(email);
         return new Promise((resolve) => resolve());
     },
+    resendEmail(userId: string) {
+        console.log(userId);
+        return new Promise((resolve) => resolve());
+    },
 };
 
 export default Actions;
