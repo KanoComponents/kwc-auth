@@ -404,7 +404,7 @@ export class AuthView extends LitElement {
         this.getActions().forgotEmail(e.detail)
             .then(() => this.changeTemplate('play'));
     }
-    handleFinishedFlow(e: CustomEvent) {
+    handleFinishedFlow() {
         this.changeTemplate('play');
     }
     handleResendEmail() {
