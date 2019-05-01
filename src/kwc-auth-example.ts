@@ -361,6 +361,7 @@ export class AuthView extends LitElement {
                             @forgot-password=${this.handleForgotPassword}
                             @forgot-username=${this.handleForgotUsername}
                             @forgot-email=${this.handleForgotEmail}
+                            @finished-flow=${this.handleFinishedFlow}
                             loginGlyph="../assets/header_splash.png"
                         ></kwc-auth>
                         
@@ -389,7 +390,7 @@ export class AuthView extends LitElement {
     }
     handleRegister(e: CustomEvent) {
         this.getActions().register(e.detail.form)
-            .then(() => this.changeTemplate('play'));
+            .then(() => this.changeTemplate('success'));
     }
     handleForgotPassword(e: CustomEvent) {
         this.getActions().forgotPassword(e.detail)
@@ -401,6 +402,13 @@ export class AuthView extends LitElement {
     }
     handleForgotEmail(e: CustomEvent) {
         this.getActions().forgotEmail(e.detail)
+            .then(() => this.changeTemplate('play'));
+    }
+    handleFinishedFlow(e: CustomEvent) {
+        this.changeTemplate('play');
+    }
+    handleResendEmail() {
+        this.getActions().resendEmail('userId')
             .then(() => this.changeTemplate('play'));
     }
 }

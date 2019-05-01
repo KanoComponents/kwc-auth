@@ -100,7 +100,7 @@ export class Login extends LitElement {
                     <input type="text" id="username" placeholder="Your Kano Username"/>
                     <label for="password">Password</label>
                     <div class="input-wrapper">
-                        <input type="password" id="password" placeholder="Make up a secret password"/>
+                        <input type="password" id="password" placeholder="Your super secret password"/>
                         <img src="https://imgplaceholder.com/42x32/transparent/757575/fa-eye-slash" class="eye-toggle" id="eyeimage" @click="${this.togglePassword}"/>
                     </div>
                 </div>
