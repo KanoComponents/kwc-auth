@@ -24,11 +24,6 @@ export class SuccessfulSignup extends LitElement {
                     line-height: 18px;
                     text-align: center;
                 }
-                /* .image-wrapper {
-                    height: 200px;
-                    background-color: #C8C8C8;
-                    margin-bottom: 20px;
-                } */
                 .link-to-page {
                     font-weight: 700;
                 }
