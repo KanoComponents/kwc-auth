@@ -5,8 +5,8 @@ import { AuthView, HeaderDetails } from './kwc-auth-example.js';
 import { Link } from './view-type.js'
 import './kwc-auth-example.js';
 
-import { Actions } from '../dist/examples/actions.js';
-import { viewsArray } from '../dist/examples/viewsArray.js';
+import { Actions } from './examples/actions.js';
+import { viewsArray } from './examples/viewsArray.js';
 
 const basic = fixture<AuthView>`
     <kwc-auth-example></kwc-auth-example>
