@@ -39,8 +39,8 @@ export class AuthView extends LitElement {
 
     public actions? : IActions;
 
-    set viewsArray(value : IViewDefinition[]) {
-        if (this.viewsArray) {
+    set flowDefinition(value : IViewDefinition[]) {
+        if (this.flowDefinition) {
             throw new Error('Cant define twice');
         }
         value.forEach(el => {

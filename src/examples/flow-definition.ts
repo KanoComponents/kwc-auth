@@ -1,5 +1,5 @@
 const backText = 'Back';
-export const viewsArray = [
+export const flowDefinition = [
     {
         id: 'landing',
     },
