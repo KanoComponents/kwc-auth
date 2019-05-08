@@ -6,7 +6,7 @@ import { Link } from './view-type.js'
 import './kwc-auth-example.js';
 
 import { Actions } from './examples/actions.js';
-import { viewsArray } from './examples/viewsArray.js';
+import { flowDefinition } from './examples/flow-definition.js';
 
 const basic = fixture<AuthView>`
     <kwc-auth-example></kwc-auth-example>
@@ -24,7 +24,7 @@ suite('kwc-auth-example', () => {
 
         setup(() => {
             element = basic();
-            element.viewsArray = viewsArray;
+            element.flowDefinition = flowDefinition;
             element.actions = Actions;
         });
 
@@ -52,7 +52,7 @@ suite('kwc-auth-example', () => {
 
         setup(() => {
             element = basic();
-            element.viewsArray = viewsArray;
+            element.flowDefinition = flowDefinition;
             element.actions = Actions;
         });
 
@@ -83,7 +83,7 @@ suite('kwc-auth-example', () => {
         let content: HeaderDetails;
         setup(() => {
             element = basic();
-            element.viewsArray = viewsArray;
+            element.flowDefinition = flowDefinition;
             element.actions = Actions;
             content = {
                 text: 'Create a Kano account',
@@ -107,7 +107,7 @@ suite('kwc-auth-example', () => {
         let links: Link[];
         setup(() => {
             element = basic();
-            element.viewsArray = viewsArray;
+            element.flowDefinition = flowDefinition;
             element.actions = Actions;
             links = [
                 {
@@ -141,7 +141,7 @@ suite('kwc-auth-example', () => {
 
         setup(() => {
             element = basic();
-            element.viewsArray = viewsArray;
+            element.flowDefinition = flowDefinition;
             element.actions = Actions;
         });
 
@@ -164,7 +164,7 @@ suite('kwc-auth-example', () => {
 
         setup(() => {
             element = basic();
-            element.viewsArray = viewsArray;
+            element.flowDefinition = flowDefinition;
             element.actions = Actions;
             changeTemplateStub = sinon.stub(element, 'changeTemplate');
             id = 'password';
@@ -187,7 +187,7 @@ suite('kwc-auth-example', () => {
 
         setup(() => {
             element = basic();
-            element.viewsArray = viewsArray;
+            element.flowDefinition = flowDefinition;
             element.actions = Actions;
             changeTemplateStub = sinon.stub(element, 'changeTemplate');
             event = new CustomEvent('test', { detail: { nextView: 'password' }});
@@ -208,7 +208,7 @@ suite('kwc-auth-example', () => {
 
         setup(() => {
             element = basic();
-            element.viewsArray = viewsArray;
+            element.flowDefinition = flowDefinition;
             element.actions = Actions;
         });
 
@@ -244,7 +244,7 @@ suite('kwc-auth-example', () => {
 
         setup(() => {
             element = basic();
-            element.viewsArray = viewsArray;
+            element.flowDefinition = flowDefinition;
             element.actions = Actions;
         })
 
