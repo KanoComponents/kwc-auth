@@ -20,24 +20,19 @@
     "test-ci": "yarn run --silent test -r xunit > test-results.xml"
   },
   "dependencies": {
-    "@kano/kwc-behaviors": "^3.0.0-beta.5",
     "@kano/styles": "^3.0.10",
-    "@polymer/iron-image": "^3.0.0-pre.18",
-    "@polymer/iron-pages": "^3.0.0-pre.18",
-    "@polymer/paper-spinner": "^3.0.0-pre.18",
-    "@polymer/polymer": "^3.0.0",
     "lit-element": "^2.0.1"
   },
   "devDependencies": {
+    "@kano/es6-server": "^1.0.1",
+    "@kano/eslint-config": "^1.0.0",
+    "@kano/web-tester": "^1.0.0-alpha.20",
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.6",
     "@types/sinon": "^7.0.11",
-    "sinon": "^7.3.1",
-    "@kano/es6-server": "^1.0.1",
-    "@kano/eslint-config": "^1.0.0",
-    "@kano/web-tester": "^1.0.0-alpha.18",
     "@webcomponents/webcomponentsjs": "^2.0.0",
     "eslint": "^4.19.1",
+    "sinon": "^7.3.1",
     "typescript": "^3.4.1"
   }
 }
