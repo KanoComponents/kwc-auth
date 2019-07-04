@@ -3,6 +3,7 @@ import { button } from '@kano/styles/button.js';
 import { LitElement, css, customElement, html, query, property } from 'lit-element/lit-element.js';
 import { templateContent } from '../utils/template-content.js';
 import { styles } from '../styles.js';
+import { _ } from '@kano/i18n/dist/index.js';
 
 @customElement('kwc-auth-login')
 export class Login extends LitElement {
@@ -48,6 +49,8 @@ export class Login extends LitElement {
             ];
         }
 
+    @property({type: String}) error = '';
+    @property({ type: Boolean }) disabled = false;
     @property({ type: String }) logo = '';
     @property({ type: String }) loginGlyph: string;
     
@@ -96,25 +99,26 @@ export class Login extends LitElement {
             </div>
             <form @submit=${this._submit}>
                 <div class="input-wrapper">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" placeholder="Your Kano Username"/>
-                    <label for="password">Password</label>
+                    <label for="username"></label>
+                    <input type="text" id="username" placeholder=${_('YOUR_KANO_USERNAME', 'Your Kano Username')} ?disabled=${this.disabled} />
+                    <label for="password">${_('PASSWORD', 'Password')}</label>
                     <div class="input-wrapper">
-                        <input type="password" id="password" placeholder="Your super secret password"/>
-                        <img src="https://imgplaceholder.com/42x32/transparent/757575/fa-eye-slash" class="eye-toggle" id="eyeimage" @click="${this.togglePassword}"/>
+                        <input type="password" id="password" placeholder=${_('YOUR_SUPER_SECRET_PASSWORD', 'Your super secret password')} ?disabled=${this.disabled} />
+                        <img src="https://imgplaceholder.com/42x32/transparent/757575/fa-eye-slash" class="eye-toggle" id="eyeimage" @click=${this.togglePassword} />
                     </div>
+                    <div class="error">${this.error}</div>
                 </div>
                 <div class="button-wrapper">
-                    <button class="btn l" type="submit">Login</button>
+                    <button class="btn l" type="submit" ?disabled=${this.disabled}>${_('LOGIN', 'Login')}</button>
                 </div>
                 <hr>
                 <div class="footer">
-                    <p class="color-grey">Forgot your 
-                        <a @click=${(e: Event) => this._changeView(e, 'forgot-username')} href="">username</a> or 
-                        <a @click=${(e: Event) => this._changeView(e, 'forgot-password')} href="">password</a> ?
+                    <p class="color-grey">${_('FORGOT_YOUR', 'Forgot your')} 
+                        <a @click=${(e: Event) => this._changeView(e, 'forgot-username')} href="">${_('USERNAME_LOWERCASE', 'username')}</a> ${_('OR', 'or')} 
+                        <a @click=${(e: Event) => this._changeView(e, 'forgot-password')} href="">${_('PASSWORD_LOWERCASE', 'username')}</a> ${_('QUESTION_MARK', '?')}
                     </p>
-                    <p class="color-grey">No account? 
-                        <a @click=${(e: Event) => this._changeView(e, 'username')} href="">Sign up!</a>
+                    <p class="color-grey">${_('NO_ACCOUNT', 'No account?')} 
+                        <a @click=${(e: Event) => this._changeView(e, 'username')} href="">${_('SIGN_UP', 'Sign up!')}</a>
                     </p>
                 </div> 
             </form>

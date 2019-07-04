@@ -36,6 +36,10 @@ export const Actions: IActions = {
         console.log(userId);
         return new Promise((resolve) => resolve());
     },
+    finish() {
+        console.log('finish');
+        return Promise.resolve();
+    }
 };
 
 export default Actions;

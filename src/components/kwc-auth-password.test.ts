@@ -39,8 +39,7 @@ suite('kwc-auth-password', () => {
             testUtil.type(testUtil.password.password, '');
             testUtil.blur(testUtil.password.password);
 
-            const errors = el.errors;
-            assert.equal(errors.password, 'Password cannot be empty.');
+            assert.equal(el.error, 'Password cannot be empty.');
         });
     });
 
@@ -53,8 +52,7 @@ suite('kwc-auth-password', () => {
             testUtil.type(testUtil.password.password, invalidPassword);
             testUtil.blur(testUtil.password.password);
 
-            const errors = el.errors;
-            assert.equal(errors.password, 'Password cannot contain spaces.');
+            assert.equal(el.error, 'Password cannot contain spaces.');
         });
     });
 
@@ -67,8 +65,7 @@ suite('kwc-auth-password', () => {
             testUtil.type(testUtil.password.password, shortPassword);
             testUtil.blur(testUtil.password.password);
 
-            const errors = el.errors;  
-            assert.equal(errors.password, 'Password must be at least 8 characters long.');
+            assert.equal(el.error, 'Password must be at least 8 characters long.');
         });
     });    
 });
