@@ -3,6 +3,7 @@ import { button } from '@kano/styles/button.js';
 import { LitElement, html, customElement, css } from 'lit-element/lit-element.js';
 import { templateContent } from '../utils/template-content.js';
 import { styles } from '../styles.js';
+import { _ } from '@kano/i18n/dist/index.js';
 
 @customElement('kwc-auth-successful-signup')
 export class SuccessfulSignup extends LitElement {
@@ -11,11 +12,11 @@ export class SuccessfulSignup extends LitElement {
             styles,
             css`
                 :host {
+                    display: block;
                     text-align: center;
                 }
                 h3 {
                     color: #414A51;
-                    font-family: Arial;
                     font-size: 18px;
                 }
                 h4 {
@@ -30,22 +31,20 @@ export class SuccessfulSignup extends LitElement {
                 .button-wrapper button {
                     display: block;
                 }
-                `
+            `,
         ];
     } 
 
     render() {
         return html`
-        ${templateContent(button)}
-        <div>
-            <h3>Thanks for signing up!</h3>
-            <h3>Ask your parents to confirm your account to get full access to Kano World.</h3>
+            ${templateContent(button)}
+            <h3>${_('THANKS_FOR_SIGNING_UP', 'Thanks for signing up!')}</h3>
+            <h3>${_('ASK_PARENT_CONFIRM', 'Ask your parents to confirm your account to get full access to Kano World.')}</h3>
             <div class="button-wrapper">
-                <button @click=${this.handleSubmit} class="btn l" type="submit">Start Playing</button>
-                <button @click=${this.handleResendEmail} class="btn s secondary" type="submit">Resend email</button>
+                <button @click=${this.handleSubmit} class="btn l" type="submit">${_('START_PLAYING', 'Start Playing')}</button>
+                <button @click=${this.handleResendEmail} class="btn s secondary" type="submit">${_('RESEND_EMAIL', 'Resend email')}</button>
             </div>
-        </div>
-    `;
+        `;
     }
 
     handleSubmit(e: Event) {

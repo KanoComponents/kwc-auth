@@ -38,8 +38,7 @@ suite('kwc-auth-email', () => {
             testUtil.type(testUtil.email.email, '');
             testUtil.blur(testUtil.email.email);
 
-            const errors = el.errors;
-            assert.equal(errors.email, 'Please enter a valid email address.');
+            assert.equal(el.error, 'Please enter a valid email address.');
         });
     });
 
@@ -51,8 +50,7 @@ suite('kwc-auth-email', () => {
             testUtil.type(testUtil.email.email, invalidEmail1);
             testUtil.blur(testUtil.email.email);
 
-            const errors = el.errors;
-            assert.equal(errors.email, 'Please enter a valid email address.');
+            assert.equal(el.error, 'Please enter a valid email address.');
         })
     })
     test('Email will throw an error if not presented with an @ symbol', () => {const el = email();
@@ -63,8 +61,7 @@ suite('kwc-auth-email', () => {
             testUtil.type(testUtil.email.email, invalidEmail2);
             testUtil.blur(testUtil.email.email);
 
-            const errors = el.errors;
-            assert.equal(errors.email, 'Please enter a valid email address.');
+            assert.equal(el.error, 'Please enter a valid email address.');
         })
     })
 

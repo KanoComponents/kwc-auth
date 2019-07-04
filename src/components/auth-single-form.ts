@@ -4,6 +4,7 @@ import { LitElement, html, property, query } from 'lit-element/lit-element.js';
 import { templateContent } from '../utils/template-content.js';
 import { styles } from '../styles.js';
 import { validateUsername, validatePassword, validateEmail } from '../utils/validation.js';
+import { _ } from '@kano/i18n/dist/index.js';
 
 interface SubmitDetails {
     detail: EventDetail;
@@ -17,16 +18,13 @@ interface EventDetail {
 interface EventPayload {
     [key: string]: string;
 }
-interface Errors {
-    [key: string]: string;
-}
-
 
 export class SingleInputElement extends LitElement {
     static get styles() {
-            return [styles];
-        } 
-    @property({ type: Object }) errors : Errors = {};
+        return [styles];
+    } 
+    @property({ type: Boolean }) disabled = false;
+    @property({ type: String }) error = '';
     @property({ type: String }) id = 'username';
     @property({ type: String }) next = 'password';
 
@@ -50,7 +48,7 @@ export class SingleInputElement extends LitElement {
                     type="text"
                     id="input"
                     placeholder="Input information here"/>
-                <div class="error">${this.errors[this.id]}</div>
+                <div class="error">${this.error}</div>
             </div>
         `;
     }
@@ -63,14 +61,15 @@ export class SingleInputElement extends LitElement {
                 ${this.inputTemplate()}
                 <div class="button-wrapper">
                     <button
+                    ?disabled=${this.disabled}
                     id="submit"
                     @mousedown=${(e: Event) => this.handleClick(e)}
                     @keydown=${(e: KeyboardEvent) => this.handleKeydown(e)}
-                    class="btn l">Continue</button>
+                    class="btn l">${_('AUTH_CONTINUE', 'Continue')}</button>
                 </div>
             </div>
             <div class="link-wrapper">
-                <p>Already have an account? <a href="/login">Login</a></p> 
+                <p>${_('AUTH_ALREADY_HAVE_AN_ACCOUNT', 'Already have an account?')} <a href="#" @click=${this.handleLoginClick}>${_('AUTH_LOGIN', 'Login')}</a></p>
             </div>
         </div>
     `;
@@ -79,6 +78,12 @@ export class SingleInputElement extends LitElement {
         if (e.type === 'keydown' && e.keyCode === 13) {
             this.handleClick(e as Event);
         }
+        this.error = '';
+    }
+    handleLoginClick(e : Event) {
+        e.preventDefault();
+        e.stopPropagation();
+        this.dispatchEvent(new CustomEvent('login-requested', { composed: true, bubbles: true }));
     }
     handleClick(e: Event) {
         e.preventDefault();
@@ -97,16 +102,6 @@ export class SingleInputElement extends LitElement {
         event.detail.payload[this.id] = this.value;
         this.dispatchEvent(new CustomEvent('submit', event));
     }
-  
-    /**
-     * Updates the error message for a field
-     * @param field Which error field to update
-     * @param message Error message displayed next to the field
-     */
-    updateError(field : string, message : string) {
-        this.errors[field] = message;
-        this.requestUpdate();
-    }
 
     validateInput(inputId: string, value: string) {
         let error;
@@ -124,7 +119,7 @@ export class SingleInputElement extends LitElement {
                 break;
         }
         
-        this.updateError(inputId, error || '');
+        this.error = error || '';
         return !error;
     }
 }

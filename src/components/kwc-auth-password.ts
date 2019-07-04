@@ -1,6 +1,7 @@
 import '@kano/styles/typography.js';
 import { html, customElement, query, property } from 'lit-element/lit-element.js';
-import { SingleInputElement } from './auth-single-form.js'
+import { SingleInputElement } from './auth-single-form.js';
+import { _ } from '@kano/i18n/dist/index.js';
 
 @customElement('kwc-auth-password')
 export class PasswordInput extends SingleInputElement {
@@ -13,7 +14,7 @@ export class PasswordInput extends SingleInputElement {
     @query('#eyeimage')
     private imageInput? : HTMLInputElement;
 
-    @property({type: String}) username = '';
+    @property({ type: String }) username = '';
 
      /**
     * Returns the current value of the eye image field or an empty string
@@ -24,8 +25,8 @@ export class PasswordInput extends SingleInputElement {
     }
     inputTemplate() {
         return html`
-            <h3>Welcome to Kano ${this.username}!</h3>
-            <h4>Set up a password for your account to make it secure. Your password must be at least 8 characters</h4>
+            <h3>${_('WELCOME_TO_KANO', 'Welcome to Kano')} ${this.username}!</h3>
+            <h4>${_('SETUP_YOUR_PASSWORD', 'Set up a password for your account to make it secure. Your password must be at least 8 characters')}</h4>
             <div class="input-wrapper">
                 <div class="input-wrapper">
                     <input
@@ -33,14 +34,14 @@ export class PasswordInput extends SingleInputElement {
                         @keydown="${(e: KeyboardEvent) => this.handleKeydown(e)}"
                         type="password"
                         id="input"
-                        placeholder="Make up a password"/>
+                        placeholder=${_('MAKE_UP_PASSWORD', 'Make up a password')} />
                     <img
                         src="https://imgplaceholder.com/42x32/transparent/757575/fa-eye-slash"
                         class="eye-toggle"
                         id="eyeimage"
                         @click="${this.togglePassword}"/>
                     </div>
-                    <div class="error">${this.errors[this.id]}</div>
+                    <div class="error">${this.error}</div>
             </div>
         `;
     }

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>kwc-auth demo</title>
     <style>
         body {
@@ -19,6 +19,7 @@
     import '../dist/kwc-auth-example.js';
     import { Actions } from '../dist/examples/actions.js';
     import { flowDefinition } from '../dist/examples/flow-definition.js';
+
     const el = document.querySelector('kwc-auth-example');
     el.flowDefinition = flowDefinition;
     el.actions = Actions;

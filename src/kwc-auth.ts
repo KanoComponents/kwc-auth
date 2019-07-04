@@ -12,7 +12,7 @@ to interact with its many useful events.
 @demo demo/example.html
 */
 
-import { LitElement, html, property, customElement, css } from 'lit-element/lit-element.js';
+import { LitElement, html, property, customElement, css, query } from 'lit-element/lit-element.js';
 
 import './components/kwc-auth-landing.js';
 import './components/kwc-auth-username.js';
@@ -24,6 +24,11 @@ import './components/kwc-auth-forgot-password.js';
 import './components/kwc-auth-successful-signup.js';
 import './components/kwc-auth-login.js';
 import { styles } from './styles.js';
+import { UsernameInput } from './components/kwc-auth-username.js';
+import { ForgotUsernameInput } from './components/kwc-auth-forgot-username.js';
+import { EmailInput } from './components/kwc-auth-email.js';
+import { ForgotPassword } from './components/kwc-auth-forgot-password.js';
+import { Login } from './components/kwc-auth-login.js';
 
 interface Form {
     username: string;
@@ -34,6 +39,7 @@ interface Form {
 @customElement('kwc-auth')
 export class KwcAuth extends LitElement {
 
+    @property({ type: Boolean }) loading = false;
     @property({ type: String }) view = '';
     @property({ type: String }) logo = 'kano';
     @property({ type: String }) backgroundGlyph = 'shapesGlyph';
@@ -68,7 +74,29 @@ export class KwcAuth extends LitElement {
     constructor() {
         super();
         this.loginGlyph = '';
+
+        this.handleLoginRequested = this.handleLoginRequested.bind(this);
     }
+
+    connectedCallback() {
+        super.connectedCallback();
+        this.addEventListener('login-requested', this.handleLoginRequested);
+    }
+
+    disconnectedCallback() {
+        super.disconnectedCallback();
+        this.removeEventListener('login-requested', this.handleLoginRequested);
+    }
+
+    handleLoginRequested() {
+        this.submit('login');
+    }
+
+    @query('kwc-auth-username') username? : UsernameInput;
+    @query('kwc-auth-forgot-username') forgotUsername? : ForgotUsernameInput;
+    @query('kwc-auth-email') email? : EmailInput;
+    @query('kwc-auth-forgot-password') forgotPassword? : ForgotPassword;
+    @query('kwc-auth-login') login? : Login;
 
     // Return template of the current form
     formTemplate(view: string) {
@@ -76,36 +104,42 @@ export class KwcAuth extends LitElement {
             case 'username':            
                 return html`
                     <kwc-auth-username
+                        .disabled=${this.loading}
                         @submit=${this.handleUsernameSubmit}
                     ></kwc-auth-username>
             `; 
             case 'password':            
                 return html`
                     <kwc-auth-password
+                        .username=${this.form.username}
                         @submit=${this.handlePasswordSubmit}
                     ></kwc-auth-password>
             `; 
             case 'email':
                 return html`
                     <kwc-auth-email
+                        .disabled=${this.loading}
                         @submit=${this.handleRegister}
                     ></kwc-auth-email>
             `; 
             case 'forgot-email':
                 return html`
                     <kwc-auth-forgot-email
+                        .disabled=${this.loading}
                         @submit=${this.handleForgotEmail}
                     ></kwc-auth-forgot-email>                                                              
                     `; 
             case 'forgot-password':
                 return html`
                     <kwc-auth-forgot-password
+                        .disabled=${this.loading}
                         @submit=${this.handleForgotPassword}
                     ></kwc-auth-forgot-password>                                                              
                     `; 
             case 'forgot-username':
                 return html`
                     <kwc-auth-forgot-username
+                        .disabled=${this.loading}
                         @submit=${this.handleForgotUsername}
                     ></kwc-auth-forgot-username>                                                              
                     `; 
@@ -119,6 +153,7 @@ export class KwcAuth extends LitElement {
             default:
                 return html`
                     <kwc-auth-login
+                        .disabled=${this.loading}
                         .logo=${this.logo}
                         @submit=${this.handleLogin}
                         @changeView=${this.changeView}
@@ -148,7 +183,9 @@ export class KwcAuth extends LitElement {
     }
     handleUsernameSubmit(e: CustomEvent) {
         this.form.username = e.detail.payload.username;
-        this.handleSubmit(e);
+        this.dispatchEvent(new CustomEvent('submit-username', {
+            detail: e.detail.payload.username,
+        }));
     }
     handlePasswordSubmit(e: CustomEvent) {
         this.form.password = e.detail.payload.password;

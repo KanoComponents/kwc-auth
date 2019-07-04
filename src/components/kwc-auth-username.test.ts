@@ -37,8 +37,7 @@ suite('kwc-auth-username', () => {
             testUtil.type(testUtil.username.username, '');
             testUtil.blur(testUtil.username.username);
 
-            const errors = el.errors;
-            assert.equal(errors.username, 'Username is required.');
+            assert.equal(el.error, 'Username is required.');
         });
     });
 
@@ -51,8 +50,7 @@ suite('kwc-auth-username', () => {
             testUtil.type(testUtil.username.username, shortUsername);
             testUtil.blur(testUtil.username.username);
 
-            const errors = el.errors;
-            assert.equal(errors.username, 'Username must be at least 6 characters long.')
+            assert.equal(el.error, 'Username must be at least 6 characters long.')
         });
     });
 
@@ -65,8 +63,7 @@ suite('kwc-auth-username', () => {
             testUtil.type(testUtil.username.username, invalidUsername);
             testUtil.blur(testUtil.username.username);
 
-            const errors = el.errors;
-            assert.equal(errors.username, 'Username must only contain letters, numbers, dashes, underscores or dots.')
+            assert.equal(el.error, 'Username must only contain letters, numbers, dashes, underscores or dots.')
         })
     })
 });

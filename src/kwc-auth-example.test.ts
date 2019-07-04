@@ -1,7 +1,7 @@
 import { assert, fixture } from '@kano/web-tester/helpers.js';
 import * as sinon from 'sinon/pkg/sinon-esm.js'
 import { SinonStub } from 'sinon';
-import { AuthView, HeaderDetails } from './kwc-auth-example.js';
+import { AuthView } from './kwc-auth-example.js';
 import { Link } from './view-type.js'
 import './kwc-auth-example.js';
 
@@ -78,30 +78,6 @@ suite('kwc-auth-example', () => {
         })
     });
 
-    suite('headerContentTemplate', () => {
-        let element: AuthView;
-        let content: HeaderDetails;
-        setup(() => {
-            element = basic();
-            element.flowDefinition = flowDefinition;
-            element.actions = Actions;
-            content = {
-                text: 'Create a Kano account',
-                image: '../assets/profile_icon.png',
-            };
-        });
-
-        teardown(() => {
-            sinon.restore();
-        });
-
-        test('function renders html template', () => {
-            const el = element.headerContentTemplate(content);
-            const innerHtml = el.getTemplateElement().content;
-            assert.exists(innerHtml);
-        })
-    });
-
     suite('footerTemplate', () => {
         let element: AuthView;
         let links: Link[];
@@ -134,27 +110,6 @@ suite('kwc-auth-example', () => {
             const innerHtml = el.getTemplateElement().content;
             assert.exists(innerHtml);
         })
-    });
-
-    suite('landingTemplate', () => {
-        let element: AuthView;
-
-        setup(() => {
-            element = basic();
-            element.flowDefinition = flowDefinition;
-            element.actions = Actions;
-        });
-
-        teardown(() => {
-            sinon.restore();
-        });
-
-        test('function renders html template', () => {
-            const el = element.landingTemplate();
-            const innerHtml = el.getTemplateElement().content;
-            assert.exists(innerHtml);
-        })
-
     });
 
     suite('handleClick', () => {

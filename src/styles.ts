@@ -1,5 +1,6 @@
 import { css } from 'lit-element/lit-element.js';
-import '@kano/styles/typography';
+import '@kano/styles/typography.js';
+import '@kano/styles/color.js';
 
 export const styles = css`
 
@@ -95,7 +96,13 @@ input[type="password"] {
     min-height: 39px;
     padding-left: 2%;
     border-radius: 6px;
-    border: 1px solid #1093F5;
+    border: 1px solid var(--color-grey);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #1093F5;
 }
 
 label {

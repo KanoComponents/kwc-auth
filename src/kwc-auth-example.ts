@@ -2,14 +2,14 @@
 // * Routing
 // * Check Username availability
 
-import { LitElement, html, css, customElement, property } from 'lit-element/lit-element.js';
-import { button } from '@kano/styles/button.js';
-
+import { LitElement, html, css, customElement, property, query } from 'lit-element/lit-element.js';
 import { IForm, IActions } from './actions.js';
-
-import { Link, View } from './view-type.js'
-import { templateContent } from './utils/template-content.js';
+import { Link, View } from './view-type.js';
 import './kwc-auth.js';
+import { KwcAuth } from './kwc-auth.js';
+import { SingleInputElement } from './components/auth-single-form.js';
+import { Login } from './components/kwc-auth-login.js';
+import { _ } from '@kano/i18n/dist/index.js';
 
 export interface HeaderDetails {
     text: string;
@@ -46,16 +46,16 @@ export class AuthView extends LitElement {
         value.forEach(el => {
             this.views.set(el.id, el);
         });
-        this.view = this.views.get('landing') || value[0];
+        this.view = this.views.get('login') || value[0];
     }
 
-
+    @query('kwc-auth') authElement? : KwcAuth;
 
     static get styles() {
         return [
             css`
             :host {
-                min-height: 100vh;
+                display: block;
             }
             kwc-auth {
                 height: 100%;
@@ -94,7 +94,6 @@ export class AuthView extends LitElement {
 
             a {
                 color: #FF6900;
-                margin-bottom: 20px;
                 text-decoration: none;
             }
 
@@ -215,14 +214,6 @@ export class AuthView extends LitElement {
             footer a:hover {
                 text-decoration: underline;
             }
-            .landing-template {
-                max-width: 100%;
-                min-height: calc(100vh - 66px);
-                background-color: #2C3D4E;
-            }
-            .landing-template img {
-                max-width: 100%;
-            }
             .button-wrapper {
                 text-align: center;
             }
@@ -231,26 +222,16 @@ export class AuthView extends LitElement {
     }
     headerTemplate() {
         const { id } = this.view;
-        const headerDetails : HeaderDetails = {
-            text: 'Create a Kano account',
-            image: '../assets/profile_icon.png',
-        }
-        
-        const emptyHeader : HeaderDetails = {
-            text: '',
-            image: '',
-        }
 
         let header = html``;
         switch(id) {
             case 'username':
             case 'password':
             case 'email':
-                header = this.headerContentTemplate(headerDetails);
+                header = this.headerContentTemplate(_('CREATE_KANO_ACCOUNT', 'Create a Kano account'));
                 break;
-            case 'landing':
             case 'success':
-                header = this.headerContentTemplate(emptyHeader);
+                header = this.headerContentTemplate();
                 break;
             default:
                 break;
@@ -268,19 +249,17 @@ export class AuthView extends LitElement {
         const button = this.view.backButton;
         return html`
             <div class="back-button">
-                <a
-                    @click=${() => this.changeTemplate(button.link)}
-                >
-                ${button.text}
-            </a>
+                <a @click=${() => this.changeTemplate(button.link)} >
+                    ${button.text}
+                </a>
             </div>
         `;
     }
-    headerContentTemplate(details : HeaderDetails) {
+    headerContentTemplate(text? : string) {
         return html`
             <div class="header-content">
-                ${details.image? html`<img src=${details.image}>`: html``}
-                ${details.text? html`<h3>${details.text}</h3>`: html``}
+                <slot name="header-icon"></slot>
+                <h3>${text}</h3>
             </div>    
         `;
     }
@@ -296,18 +275,6 @@ export class AuthView extends LitElement {
         `;
     }
 
-    landingTemplate() {
-        return html`
-                ${templateContent(button)}
-                <div class="landing-template">
-                    <div class="button-wrapper">
-                        <button @click=${() => this.handleClick('username')} class="btn l">Let's get Started</button>
-                        <button @click=${() => this.handleClick('login')} class="btn l">I already have an account</button>
-                    </div>
-                </div>
-            `;
-    }
-
     handleClick(id: string) {
         this.changeTemplate(id);
     }
@@ -315,21 +282,16 @@ export class AuthView extends LitElement {
         this.changeTemplate(e.detail.nextView);
     }
     changeTemplate(id: string) {
-        this.view = this.views.get(id) || { id: 'landing'};
+        this.view = this.views.get(id) || { id: 'login'};
     }
     renderTemplate() {
         const footerLinks: Link[] = [
             {
-                text: 'Privacy Policy',
-                link: '/',
+                text: _('PRIVACY_POLICY', 'Privacy Policy'),
+                link: 'https://world.kano.me/privacy-policy',
             },
         ];
         switch(this.view.id) {
-            case 'landing':
-                return html`
-                    ${this.headerTemplate()}
-                    ${this.landingTemplate()}
-                `;
             case 'play':
                 return html`
                     <h1>PLAY</h1>
@@ -356,6 +318,7 @@ export class AuthView extends LitElement {
                         <kwc-auth 
                             .view='${this.view.id}'
                             @changeView=${this.handleChangeView}
+                            @submit-username=${this.handleSubmitUsername}
                             @login=${this.handleLogin}
                             @register=${this.handleRegister}
                             @forgot-password=${this.handleForgotPassword}
@@ -384,28 +347,87 @@ export class AuthView extends LitElement {
         return this.actions;
     }
 
+    setLoading(state : boolean) {
+        const el = this.authElement;
+        if (!el) {
+            return;
+        }
+        el.loading = state;
+    }
+
+    displayError(message : string, getter : (el : KwcAuth) => SingleInputElement|Login|undefined) {
+        const auth = this.authElement;
+        if (!auth) {
+            return;
+        }
+        const el = getter(auth);
+        if (!el) {
+            return;
+        }
+        el.error = message || _('SOMETHINF_WENT_WRONG', 'Something went wrong, please try again later');
+    }
+
+    wrapTask(task : () => Promise<any>) {
+        this.setLoading(true);
+        return task()
+            .then((v : any) => {
+                this.setLoading(false);
+                return v;
+            })
+            .catch((e) => {
+                this.setLoading(false);
+                throw e;
+            });
+    }
+
+    handleSubmitUsername(e : CustomEvent) {
+        return this.wrapTask(() => {
+            return this.getActions().checkUsernameAvailability(e.detail)
+                .then(() => this.changeTemplate('password'))
+                .catch((e) => this.displayError(e.message, (el) => el.username));
+        });        
+    }
+
     handleLogin(e: CustomEvent) {
-        this.getActions().login(e.detail)
-            .then(() => this.changeTemplate('play'));
+        // Reset error initially
+        this.displayError('', (el) => el.login)
+        return this.wrapTask(() => {
+            return this.getActions().login(e.detail)
+                .then(() => this.changeTemplate('play'))
+                .catch(() => this.displayError(_('USERNAME_OR_PASSWORD_INCORRECT', 'Username or password incorrect'), (el) => el.login));
+        });
     }
     handleRegister(e: CustomEvent) {
-        this.getActions().register(e.detail.form)
-            .then(() => this.changeTemplate('success'));
+        return this.wrapTask(() => {
+            return this.getActions().register(e.detail.form)
+                .then(() => this.changeTemplate('success'))
+                .catch((e) => {
+                    // TODO: Handle error codes here
+                    this.displayError(e.message, (el) => el.forgotPassword);
+                });
+        });
     }
     handleForgotPassword(e: CustomEvent) {
-        this.getActions().forgotPassword(e.detail)
-            .then(() => this.changeTemplate('login'));
+        return this.wrapTask(() => {
+            return this.getActions().forgotPassword(e.detail)
+                .then(() => this.changeTemplate('login'))
+                .catch((e) => this.displayError(e.message, (el) => el.forgotPassword));
+        });
     }
     handleForgotUsername(e: CustomEvent) {
-        this.getActions().forgotUsername(e.detail)
-            .then(() => this.changeTemplate('login'));
+        return this.wrapTask(() => {
+            return this.getActions().forgotUsername(e.detail)
+                .then(() => this.changeTemplate('login'))
+                .catch((e) => this.displayError(e.message, (el) => el.forgotUsername));
+        });
     }
     handleForgotEmail(e: CustomEvent) {
         this.getActions().forgotEmail(e.detail)
             .then(() => this.changeTemplate('play'));
     }
     handleFinishedFlow() {
-        this.changeTemplate('play');
+        this.getActions().finish()
+            .then(() => this.changeTemplate('play'));
     }
     handleResendEmail() {
         this.getActions().resendEmail('userId')

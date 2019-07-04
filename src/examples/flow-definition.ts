@@ -1,17 +1,10 @@
 const backText = 'Back';
 export const flowDefinition = [
     {
-        id: 'landing',
-    },
-    {
         id: 'play',
     },
     {
         id: 'username',
-        backButton: {
-            text: backText,
-            link: '/landing',
-        },
     },
     {
         id: 'password',
@@ -38,7 +31,7 @@ export const flowDefinition = [
         id: 'forgot-email',
         backButton: {
             text: backText,
-            link: '/',
+            link: 'login',
         },
     },
     {
@@ -50,10 +43,6 @@ export const flowDefinition = [
     },
     {
         id: 'login',
-        backButton: {
-            text: backText,
-            link: 'landing',
-        },
     },
     {
         id: 'success',
