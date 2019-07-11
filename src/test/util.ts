@@ -47,7 +47,8 @@ export class AuthTestUtil {
     
     
     type(input: HTMLInputElement, text: string) {
-        this.setInputValue(input, 'value', text);
+        input.value = text;
+        this.dispatchInputEvents(input);
     }
     check(input: HTMLInputElement, value: string) {
         this.setInputValue(input, 'checked', value);
@@ -57,6 +58,10 @@ export class AuthTestUtil {
     }
     setInputValue(input: HTMLInputElement, prop: string, value: string) {
         input.setAttribute(prop, value);
+        this.dispatchInputEvents(input);
+    }
+
+    dispatchInputEvents(input: HTMLInputElement) {
         input.dispatchEvent(new CustomEvent('keyup'));
         input.dispatchEvent(new CustomEvent('input'));
         input.dispatchEvent(new CustomEvent('change'));
