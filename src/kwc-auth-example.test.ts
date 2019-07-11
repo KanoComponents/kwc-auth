@@ -190,7 +190,7 @@ suite('kwc-auth-example', () => {
                 return;
             }
             element.changeTemplate(id);
-            assert.equal(element.view.id, 'landing');
+            assert.equal(element.view.id, 'login');
         })
     });
 
