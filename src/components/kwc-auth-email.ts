@@ -12,9 +12,9 @@ export class EmailInput extends SingleInputElement {
     }
     inputTemplate() {
         return html`
-            <h2>${_('AUTH_GIVE_VALID_EMAIL', 'Give us a valid email! (Social features will be turned off until the email is verified)')}</h2>
+            <h3>${_('AUTH_WHAT_EMAIL', 'What’s your parent’s email address?')}</h2>
+            <h4>${_('AUTH_GIVE_VALID_EMAIL', 'All Kano accounts need a valid parent email address to share and view creations on Kano World.')}</h4>
             <div class="input-wrapper">
-                <label for="input">${_('AUTH_ENTER_GUARDIAN_EMAIL', 'Please enter your parent\'s or guardian\'s email.')}</label>
                 <input
                     ?disabled=${this.disabled}
                     @blur="${() => this.validateInput(this.id, this.value)}"
@@ -22,9 +22,9 @@ export class EmailInput extends SingleInputElement {
                     id="input"
                     class="input"
                     type="email"
-                    placeholder=${_('AUTH_EMAIL', 'Email')} />
-                <div class="error">${this.error}</div>
+                    placeholder=${_('AUTH_PARENT_EMAIL', 'Parent\'s email address')} />
             </div>
+            <div class="error">${this.error}</div>
         `;
     }
 }

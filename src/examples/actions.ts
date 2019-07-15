@@ -32,6 +32,14 @@ export const Actions: IActions = {
         console.log(email);
         return new Promise((resolve) => resolve());
     },
+    updateUsername(password: string) {
+        console.log(password);
+        return new Promise((resolve) => resolve());
+    },
+    updateEmail(email: string) {
+        console.log(email);
+        return new Promise((resolve) => resolve());
+    },
     resendEmail(userId: string) {
         console.log(userId);
         return new Promise((resolve) => resolve());

@@ -17,13 +17,10 @@ export class SuccessfulSignup extends LitElement {
                 }
                 h3 {
                     color: #414A51;
-                    font-size: 18px;
                 }
                 h4 {
                     color: #414A51;
-                    font-size: 18px;
                     line-height: 18px;
-                    text-align: center;
                 }
                 .link-to-page {
                     font-weight: 700;
@@ -38,7 +35,6 @@ export class SuccessfulSignup extends LitElement {
     render() {
         return html`
             ${templateContent(button)}
-            <h3>${_('THANKS_FOR_SIGNING_UP', 'Thanks for signing up!')}</h3>
             <h3>${_('ASK_PARENT_CONFIRM', 'Ask your parents to confirm your account to get full access to Kano World.')}</h3>
             <div class="button-wrapper">
                 <button @click=${this.handleSubmit} class="btn l" type="submit">${_('START_PLAYING', 'Start Playing')}</button>
