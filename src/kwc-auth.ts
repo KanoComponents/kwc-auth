@@ -44,6 +44,8 @@ export class KwcAuth extends LitElement {
     @property({ type: String }) logo = 'kano';
     @property({ type: String }) backgroundGlyph = 'shapesGlyph';
     @property({ type: String }) loginGlyph: string;
+    @property({ type: String }) generateIcon: string;
+    
     @property({ type: Object }) form: Form = {
         username: '',
         password: '',
@@ -54,18 +56,15 @@ export class KwcAuth extends LitElement {
         return [
             styles,
             css`
-                kwc-auth-login {
-                    background-color: white;
-                    border-radius: 6px;
-                    width: 100%;
-                    margin: 0 auto;
-                }
+                kwc-auth-login,
                 kwc-auth-password,
                 kwc-auth-username,
                 kwc-auth-successful-signup,
                 kwc-auth-email {
+                    background-color: white;
+                    border-radius: 6px;
                     width: 100%;
-                    max-width: 600px;
+                    margin: 0 auto;
                 }
             `,
         ];
@@ -74,6 +73,7 @@ export class KwcAuth extends LitElement {
     constructor() {
         super();
         this.loginGlyph = '';
+        this.generateIcon = '';
 
         this.handleLoginRequested = this.handleLoginRequested.bind(this);
     }
@@ -101,27 +101,43 @@ export class KwcAuth extends LitElement {
     // Return template of the current form
     formTemplate(view: string) {
         switch (view) {
-            case 'username':            
+            case 'username':
                 return html`
                     <kwc-auth-username
+                        generateIcon=${this.generateIcon}
                         .disabled=${this.loading}
                         @submit=${this.handleUsernameSubmit}
                     ></kwc-auth-username>
-            `; 
-            case 'password':            
+            `;
+            case 'update-username':
+                return html`
+                    <kwc-auth-username
+                        generateIcon=${this.generateIcon}
+                        .disabled=${this.loading}
+                        @submit=${this.handleUpdateUsername}
+                    ></kwc-auth-username>
+            `;
+            case 'password':
                 return html`
                     <kwc-auth-password
                         .username=${this.form.username}
                         @submit=${this.handlePasswordSubmit}
                     ></kwc-auth-password>
-            `; 
+            `;
             case 'email':
                 return html`
                     <kwc-auth-email
                         .disabled=${this.loading}
                         @submit=${this.handleRegister}
                     ></kwc-auth-email>
-            `; 
+            `;
+            case 'update-email':
+                return html`
+                    <kwc-auth-email
+                        .disabled=${this.loading}
+                        @submit=${this.handleUpdateEmail}
+                    ></kwc-auth-email>
+            `;
             case 'forgot-email':
                 return html`
                     <kwc-auth-forgot-email
@@ -191,11 +207,25 @@ export class KwcAuth extends LitElement {
         this.form.password = e.detail.payload.password;
         this.handleSubmit(e);
     }
+    handleUpdateUsername(e: CustomEvent) {
+        this.dispatchEvent(new CustomEvent('update-username', {
+            detail: {
+                form: e.detail.payload.username,
+            },
+        }));
+    }
     handleRegister(e: CustomEvent) {
         this.form.email = e.detail.payload.email;
         this.dispatchEvent(new CustomEvent('register', {
             detail: {
                 form: this.form,
+            },
+        }));
+    }
+    handleUpdateEmail(e: CustomEvent) {
+        this.dispatchEvent(new CustomEvent('update-email', {
+            detail: {
+                form: e.detail.payload.email,
             },
         }));
     }

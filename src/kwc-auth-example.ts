@@ -222,16 +222,24 @@ export class AuthView extends LitElement {
     }
     headerTemplate() {
         const { id } = this.view;
+        const privacyHeader = _('UPDATED_PRIVACY_SETTINGS', 'We\'ve updated our privacy settings');
+
 
         let header = html``;
         switch(id) {
             case 'username':
+            case 'update-username':
+                header = this.headerContentTemplate(privacyHeader);
+                break;
             case 'password':
             case 'email':
                 header = this.headerContentTemplate(_('CREATE_KANO_ACCOUNT', 'Create a Kano account'));
                 break;
+            case 'update-email':
+                header = this.headerContentTemplate(privacyHeader);
+                break;
             case 'success':
-                header = this.headerContentTemplate();
+                header = this.headerContentTemplate(_('THANKS_SIGN_UP', 'Thanks for signing up!'));
                 break;
             default:
                 break;
@@ -282,6 +290,7 @@ export class AuthView extends LitElement {
         this.changeTemplate(e.detail.nextView);
     }
     changeTemplate(id: string) {
+        console.log(id, this.views);
         this.view = this.views.get(id) || { id: 'login'};
     }
     renderTemplate() {
@@ -307,7 +316,6 @@ export class AuthView extends LitElement {
                             loginGlyph="../assets/header_splash.png"
                             ></kwc-auth>
                         </div>
-                        ${this.footerTemplate(footerLinks)}
                     </div>
                 `;
             default:
@@ -321,11 +329,13 @@ export class AuthView extends LitElement {
                             @submit-username=${this.handleSubmitUsername}
                             @login=${this.handleLogin}
                             @register=${this.handleRegister}
+                            @update-username=${this.handleUpdateUsername}
+                            @update-email=${this.handleUpdateEmail}
                             @forgot-password=${this.handleForgotPassword}
                             @forgot-username=${this.handleForgotUsername}
                             @forgot-email=${this.handleForgotEmail}
                             @finished-flow=${this.handleFinishedFlow}
-                            loginGlyph="../assets/header_splash.png"
+                            generateIcon="../assets/refresh.svg"
                         ></kwc-auth>
                         
                         ${this.footerTemplate(footerLinks)}
@@ -364,7 +374,7 @@ export class AuthView extends LitElement {
         if (!el) {
             return;
         }
-        el.error = message || _('SOMETHINF_WENT_WRONG', 'Something went wrong, please try again later');
+        el.error = message || _('SOMETHING_WENT_WRONG', 'Something went wrong, please try again later');
     }
 
     wrapTask(task : () => Promise<any>) {
@@ -393,7 +403,7 @@ export class AuthView extends LitElement {
         this.displayError('', (el) => el.login)
         return this.wrapTask(() => {
             return this.getActions().login(e.detail)
-                .then(() => this.changeTemplate('play'))
+                .then(() => this.changeTemplate('update-username'))
                 .catch(() => this.displayError(_('USERNAME_OR_PASSWORD_INCORRECT', 'Username or password incorrect'), (el) => el.login));
         });
     }
@@ -404,6 +414,24 @@ export class AuthView extends LitElement {
                 .catch((e) => {
                     // TODO: Handle error codes here
                     this.displayError(e.message, (el) => el.forgotPassword);
+                });
+        });
+    }
+    handleUpdateUsername(e: CustomEvent) {
+        return this.wrapTask(() => {
+            return this.getActions().updateUsername(e.detail)
+                .then(() => this.changeTemplate('update-email'))
+                .catch((e) => {
+                    this.displayError(e.message, (el) => el.username);
+                });
+        });
+    }
+    handleUpdateEmail(e: CustomEvent) {
+        return this.wrapTask(() => {
+            return this.getActions().updateEmail(e.detail)
+                .then(() => this.changeTemplate('play'))
+                .catch((e) => {
+                    this.displayError(e.message, (el) => el.email);
                 });
         });
     }

@@ -6,10 +6,9 @@ export const styles = css`
 
 :host {
     font-family: var(--font-body);
-    display: flex;
-    flex-flow: row;
+    display: block;
+    padding: 0;
     margin: 0 auto;
-    justify-content: center;
 }
 
 .main-section {
@@ -26,6 +25,10 @@ export const styles = css`
 }
 .form-template > div {
     width: 100%;
+}
+
+.form-wrapper {
+    position: relative;
 }
 
 h1,
@@ -45,7 +48,7 @@ span {
     color: #9FA4A8;
 }
 
-h2, h3 {
+h2, h3, h4 {
     color: #414a51;
     text-align: left;
 }
@@ -54,7 +57,8 @@ h2 {
 }
 
 h3 {
-    font-size: 18px;
+    font-size: 20px;
+    margin: 0;
 }
 
 p {
@@ -83,7 +87,7 @@ input {
     outline: none;
     font-size: 16px;
     font-weight: bold;
-    margin-bottom: 15px;
+    margin: 6px 0 15px;
 }
 
 input[type="text"],
@@ -96,7 +100,7 @@ input[type="password"] {
     min-height: 39px;
     padding-left: 2%;
     border-radius: 6px;
-    border: 1px solid var(--color-grey);
+    border: 1px solid var(--color-stone);
 }
 
 input[type="text"]:focus,
@@ -106,14 +110,18 @@ input[type="password"]:focus {
 }
 
 label {
+    font-weight: bold;
     font-size: 12px;
     color: #9FA4A8;
 }
 
 .error {
     color: red;
-    margin-bottom: 5px;
     font-size: 14px;
+    position: absolute;
+    bottom: 10px;
+    left: 130px;
+    font-weight: bold;
 }
 
 .eye-toggle {
@@ -127,13 +135,25 @@ label {
     position: relative;
 }
 
+.link-wrapper p {
+    font-weight: bold;
+    font-size: 14px;
+}
+
 .link-wrapper {
     align-self: flex-end;
     display: block;
     width: 100%;
+    padding: 16px 0 0;
 }
 
 .privacy-wrapper {
     text-align: center;
+}
+
+.header {
+    background-color: var(--color-stone);
+    border-radius: 6px 6px 0 0;
+    padding: 20px;
 }
 `

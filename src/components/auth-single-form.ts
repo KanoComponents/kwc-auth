@@ -57,7 +57,7 @@ export class SingleInputElement extends LitElement {
         return html`
         ${templateContent(button)}
         <div class="form-template">
-            <div>
+            <div class="form-wrapper">
                 ${this.inputTemplate()}
                 <div class="button-wrapper">
                     <button

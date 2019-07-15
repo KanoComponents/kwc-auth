@@ -7,6 +7,9 @@ export const flowDefinition = [
         id: 'username',
     },
     {
+        id: 'update-username',
+    },
+    {
         id: 'password',
         backButton: {
             text: backText,
@@ -40,6 +43,9 @@ export const flowDefinition = [
             text: backText,
             link: 'password',
         },
+    },
+    {
+        id: 'update-email',
     },
     {
         id: 'login',

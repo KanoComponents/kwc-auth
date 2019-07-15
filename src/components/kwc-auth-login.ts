@@ -27,19 +27,37 @@ export class Login extends LitElement {
                     background-position: 100% 0;
                     background-size: contain;
                 }
-                .button-wrapper {
-                    text-align: center;
-                    padding: 10px;
+                form {
+                    position: relative;
                 }
-                h2 {
-                    text-align: center;
+                .header h3 {
+                    color: #fff;
+                }
+                button {
+                    margin-top: 0;
+                }
+                .button-wrapper {
                     margin: 0;
+                }
+                .error-message {
+                    position: absolute;
+                    max-width: 190px;
+                    left: 126px;
+                    font-size: 14px;
+                    color: red;
+                    font-weight: bold;
                 }
                 form {
                     padding: 15px 30px;
                 }
+                .breaker {
+                    height: 1px;
+                    background-color: var(--color-porcelain);
+                    margin: 16px 0;
+                }
                 .footer {
                     text-align: center;
+                    font-weight: bold;
                 }
                 .footer p,
                 .footer a {
@@ -95,35 +113,41 @@ export class Login extends LitElement {
         <div>
             <div class="header"
                 style="background-image:url(${this.loginGlyph})">
-                <h2>Login</h2>
+                <h3>Login to your account</h3>
+                ${this.renderClose()}
             </div>
             <form @submit=${this._submit}>
                 <div class="input-wrapper">
-                    <label for="username"></label>
-                    <input type="text" id="username" placeholder=${_('YOUR_KANO_USERNAME', 'Your Kano Username')} ?disabled=${this.disabled} />
+                <label for="username">${_('USERNAME', 'Username')}</label>
+                    <input type="text" id="username" placeholder=${_('YOUR_KANO_USERNAME', 'Enter your Kano username')} ?disabled=${this.disabled} />
                     <label for="password">${_('PASSWORD', 'Password')}</label>
                     <div class="input-wrapper">
-                        <input type="password" id="password" placeholder=${_('YOUR_SUPER_SECRET_PASSWORD', 'Your super secret password')} ?disabled=${this.disabled} />
+                        <input type="password" id="password" placeholder=${_('YOUR_SUPER_SECRET_PASSWORD', 'Enter your secret password')} ?disabled=${this.disabled} />
                         <img src="https://imgplaceholder.com/42x32/transparent/757575/fa-eye-slash" class="eye-toggle" id="eyeimage" @click=${this.togglePassword} />
                     </div>
-                    <div class="error">${this.error}</div>
                 </div>
+                <div class="error-message">${this.error}</div>
                 <div class="button-wrapper">
                     <button class="btn l" type="submit" ?disabled=${this.disabled}>${_('LOGIN', 'Login')}</button>
                 </div>
-                <hr>
+                <div class="breaker"></div>
                 <div class="footer">
                     <p class="color-grey">${_('FORGOT_YOUR', 'Forgot your')} 
                         <a @click=${(e: Event) => this._changeView(e, 'forgot-username')} href="">${_('USERNAME_LOWERCASE', 'username')}</a> ${_('OR', 'or')} 
-                        <a @click=${(e: Event) => this._changeView(e, 'forgot-password')} href="">${_('PASSWORD_LOWERCASE', 'password')}</a> ${_('QUESTION_MARK', '?')}
+                        <a @click=${(e: Event) => this._changeView(e, 'forgot-password')} href="">${_('PASSWORD_LOWERCASE', 'password')}</a>${_('QUESTION_MARK', '?')}
                     </p>
                     <p class="color-grey">${_('NO_ACCOUNT', 'No account?')} 
-                        <a @click=${(e: Event) => this._changeView(e, 'username')} href="">${_('SIGN_UP', 'Sign up!')}</a>
+                        <a @click=${(e: Event) => this._changeView(e, 'username')} href="">${_('SIGN_UP', 'Sign up')}</a>!
                     </p>
                 </div> 
             </form>
         </div>
     `;
+    }
+
+    renderClose() {
+        // TODO: Add close icon that depending on the app will show or not
+        return html``;
     }
 
     _submit(e: Event) {

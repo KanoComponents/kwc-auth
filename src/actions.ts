@@ -17,6 +17,8 @@ export interface IActions {
     forgotPassword(u : string) : Promise<void>;
     forgotUsername(e : string) : Promise<void>;
     forgotEmail(e : string) : Promise<void>;
+    updateUsername(u : string) : Promise<void>;
+    updateEmail(e : string) : Promise<void>;
     resendEmail(uid : string) : Promise<void>;
     finish() : Promise<void>;
 }
