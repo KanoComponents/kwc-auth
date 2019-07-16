@@ -43,8 +43,6 @@ export class KwcAuth extends LitElement {
     @property({ type: String }) view = '';
     @property({ type: String }) logo = 'kano';
     @property({ type: String }) backgroundGlyph = 'shapesGlyph';
-    @property({ type: String }) loginGlyph: string;
-    @property({ type: String }) generateIcon: string;
     
     @property({ type: Object }) form: Form = {
         username: '',
@@ -72,8 +70,6 @@ export class KwcAuth extends LitElement {
 
     constructor() {
         super();
-        this.loginGlyph = '';
-        this.generateIcon = '';
 
         this.handleLoginRequested = this.handleLoginRequested.bind(this);
     }
@@ -104,7 +100,6 @@ export class KwcAuth extends LitElement {
             case 'username':
                 return html`
                     <kwc-auth-username
-                        generateIcon=${this.generateIcon}
                         .disabled=${this.loading}
                         @submit=${this.handleUsernameSubmit}
                     ></kwc-auth-username>
@@ -112,7 +107,6 @@ export class KwcAuth extends LitElement {
             case 'update-username':
                 return html`
                     <kwc-auth-username
-                        generateIcon=${this.generateIcon}
                         .disabled=${this.loading}
                         @submit=${this.handleUpdateUsername}
                     ></kwc-auth-username>
@@ -173,8 +167,7 @@ export class KwcAuth extends LitElement {
                         .logo=${this.logo}
                         @submit=${this.handleLogin}
                         @changeView=${this.changeView}
-                        loginGlyph=${this.loginGlyph}>
-                    </kwc-auth-login>
+                    ></kwc-auth-login>
                 `;
         }
     }
@@ -209,9 +202,7 @@ export class KwcAuth extends LitElement {
     }
     handleUpdateUsername(e: CustomEvent) {
         this.dispatchEvent(new CustomEvent('update-username', {
-            detail: {
-                form: e.detail.payload.username,
-            },
+            detail: e.detail.payload.username,
         }));
     }
     handleRegister(e: CustomEvent) {
@@ -224,9 +215,7 @@ export class KwcAuth extends LitElement {
     }
     handleUpdateEmail(e: CustomEvent) {
         this.dispatchEvent(new CustomEvent('update-email', {
-            detail: {
-                form: e.detail.payload.email,
-            },
+            detail: e.detail.payload.email,
         }));
     }
     handleLogin(e: CustomEvent) {
