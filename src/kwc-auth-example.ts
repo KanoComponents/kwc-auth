@@ -223,17 +223,22 @@ export class AuthView extends LitElement {
     headerTemplate() {
         const { id } = this.view;
         const privacyHeader = _('UPDATED_PRIVACY_SETTINGS', 'We\'ve updated our privacy settings');
+        const signupHeader = _('CREATE_KANO_ACCOUNT', 'Create a Kano account');
 
 
         let header = html``;
         switch(id) {
             case 'username':
+                header = this.headerContentTemplate(signupHeader);
+                break;
             case 'update-username':
                 header = this.headerContentTemplate(privacyHeader);
                 break;
             case 'password':
+                header = this.headerContentTemplate(signupHeader);
+                break;
             case 'email':
-                header = this.headerContentTemplate(_('CREATE_KANO_ACCOUNT', 'Create a Kano account'));
+                header = this.headerContentTemplate(signupHeader);
                 break;
             case 'update-email':
                 header = this.headerContentTemplate(privacyHeader);
@@ -290,7 +295,6 @@ export class AuthView extends LitElement {
         this.changeTemplate(e.detail.nextView);
     }
     changeTemplate(id: string) {
-        console.log(id, this.views);
         this.view = this.views.get(id) || { id: 'login'};
     }
     renderTemplate() {
@@ -313,7 +317,6 @@ export class AuthView extends LitElement {
                             .view='${this.view.id}'
                             @changeView=${this.handleChangeView}
                             @login=${this.handleLogin}
-                            loginGlyph="../assets/header_splash.png"
                             ></kwc-auth>
                         </div>
                     </div>
@@ -335,7 +338,6 @@ export class AuthView extends LitElement {
                             @forgot-username=${this.handleForgotUsername}
                             @forgot-email=${this.handleForgotEmail}
                             @finished-flow=${this.handleFinishedFlow}
-                            generateIcon="../assets/refresh.svg"
                         ></kwc-auth>
                         
                         ${this.footerTemplate(footerLinks)}
@@ -400,11 +402,18 @@ export class AuthView extends LitElement {
 
     handleLogin(e: CustomEvent) {
         // Reset error initially
-        this.displayError('', (el) => el.login)
+        this.displayError(' ', (el) => el.login)
         return this.wrapTask(() => {
             return this.getActions().login(e.detail)
-                .then(() => this.changeTemplate('update-username'))
-                .catch(() => this.displayError(_('USERNAME_OR_PASSWORD_INCORRECT', 'Username or password incorrect'), (el) => el.login));
+                .then(() => this.changeTemplate('play'))
+                .catch((e) => {
+                    // TODO: Add changeTemplate to 'update-username' or 'update-email' depending on flag and PII
+                    if (e === 400) {
+                        this.changeTemplate('update-username');
+                    } else {
+                        this.displayError(_('USERNAME_OR_PASSWORD_INCORRECT', 'Username or password incorrect'), (el) => el.login);
+                    }
+                });
         });
     }
     handleRegister(e: CustomEvent) {
@@ -422,6 +431,7 @@ export class AuthView extends LitElement {
             return this.getActions().updateUsername(e.detail)
                 .then(() => this.changeTemplate('update-email'))
                 .catch((e) => {
+                    // TODO: Add changeTemplate to 'update-email' depending on flag
                     this.displayError(e.message, (el) => el.username);
                 });
         });
@@ -430,9 +440,7 @@ export class AuthView extends LitElement {
         return this.wrapTask(() => {
             return this.getActions().updateEmail(e.detail)
                 .then(() => this.changeTemplate('play'))
-                .catch((e) => {
-                    this.displayError(e.message, (el) => el.email);
-                });
+                .catch((e) => this.displayError(e.message, (el) => el.email));
         });
     }
     handleForgotPassword(e: CustomEvent) {
