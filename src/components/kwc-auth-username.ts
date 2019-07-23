@@ -95,6 +95,9 @@ export class UsernameInput extends SingleInputElement {
                 .name span:first-child {
                     animation: rollIn 0.3s forwards;
                 }
+                #name__third {
+                    max-width: 8px; 
+                }
 
                 @keyframes rollIn {
                     0% {
@@ -132,6 +135,8 @@ export class UsernameInput extends SingleInputElement {
     private names : string[] = [];
     @property()
     private newNames : string[] = [];
+    @property()
+    private number : number = 1;
 
     @query('#input')
     inputEl? : HTMLInputElement;
@@ -139,6 +144,8 @@ export class UsernameInput extends SingleInputElement {
     nameFirst? : HTMLInputElement;
     @query('#name__second')
     nameSecond? : HTMLInputElement;
+    @query('#name__third')
+    nameThird? : HTMLInputElement;
 
     updated(changed : Map<string, unknown>) {
         if (changed.has('names')) {
@@ -180,6 +187,9 @@ export class UsernameInput extends SingleInputElement {
                     <div id="name__second" class="name">
                         <span>${this.newNames[1]}</span>
                     </div>
+                    <div id="name__third" class="name">
+                        <span>${this.number}</span>
+                    </div>
                 </div>
             </div>
         `;
@@ -188,7 +198,8 @@ export class UsernameInput extends SingleInputElement {
     appendNameSpan() {
         const first = this.nameFirst;
         const second = this.nameSecond;
-        if (!first || !second) {
+        const third = this.nameThird;
+        if (!first || !second || !third) {
             return;
         }
         const newFirst = document.createElement('span');
@@ -197,6 +208,9 @@ export class UsernameInput extends SingleInputElement {
         const newSecond = document.createElement('span');
         newSecond.innerHTML = this.names[1];
         second.insertBefore(newSecond, second.firstChild);
+        const newThird = document.createElement('span');
+        newThird.innerHTML = `${this.number}`;
+        third.insertBefore(newThird, third.firstChild);
     }
 
     renderForcedChange() {
@@ -211,6 +225,7 @@ export class UsernameInput extends SingleInputElement {
         this.names.forEach((name, i) => {
             this.names[i] = name.charAt(0).toUpperCase() + name.slice(1);
         });
+        this.number = this.generateNumber();
         if (this.newNames.length > 0) {
             this.appendNameSpan();
         } else {
@@ -218,12 +233,16 @@ export class UsernameInput extends SingleInputElement {
         }
     }
 
+    generateNumber() {
+        return Math.floor(Math.random() * 9) + 1;
+    }
+
     updateGeneratedNames() {
         const el = this.inputEl;
         if (!el) {
             return;
         }
-        el.value = this.names.join('');
+        el.value = `${this.names.join('')}${this.number}`;
     }
 
     onGenerateClick() {
