@@ -82,7 +82,7 @@ export class AuthView extends LitElement {
             }
 
             h3 {
-                font-size: 18px;
+                font-size: 20px;
             }
 
             p {
@@ -213,6 +213,22 @@ export class AuthView extends LitElement {
             }
             .button-wrapper {
                 text-align: center;
+            }
+
+            @media (max-width: 600px) {
+                .login-page__container {
+                    height: 100vh;
+                    box-sizing: border-box;
+                }
+                .login-page__container kwc-auth {
+                    height: inherit;
+                    width: 100%;
+                    max-width: none;
+                }
+                .login-page footer {
+                    max-width: none;
+                    align-self: center;
+                }
             }
         `,
         ];
