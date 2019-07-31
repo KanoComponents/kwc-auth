@@ -1,7 +1,7 @@
 {
   "description": "Front end for Kano&#39;s authentication flow.",
   "name": "@kano/kwc-auth",
-  "version": "4.0.0-alpha.1",
+  "version": "4.0.0-alpha.3",
   "publishConfig": {
     "access": "public"
   },
