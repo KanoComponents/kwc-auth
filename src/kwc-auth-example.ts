@@ -241,7 +241,7 @@ export class AuthView extends LitElement {
     headerTemplate() {
         const { id } = this.view;
         const privacyHeader = _('UPDATED_PRIVACY_SETTINGS', 'We\'ve updated our privacy settings');
-        const signupHeader = _('CREATE_KANO_ACCOUNT', 'Create a Kano account');
+        const signupHeader = _('CREATE_KANO_ACCOUNT', 'Create a Kano World account');
 
 
         let header = html``;
