@@ -104,6 +104,11 @@ export class AuthView extends LitElement {
                 text-align: center;
                 margin-top: 20px;
             }
+            .play {
+                width: 100%;
+                height: 100%;
+                background-color: #2C3D4E;
+            }
             .page-content,
             .login-page {
                 display: flex;
@@ -320,7 +325,7 @@ export class AuthView extends LitElement {
         switch(this.view.id) {
             case 'play':
                 return html`
-                    <h1>PLAY</h1>
+                    <div class="play"></div>
                 `;
             case 'login':
                 return html`
