@@ -82,7 +82,7 @@ export class AuthView extends LitElement {
             }
 
             h3 {
-                font-size: 18px;
+                font-size: 20px;
             }
 
             p {
@@ -103,6 +103,11 @@ export class AuthView extends LitElement {
                 font-family: var(--font-body);
                 text-align: center;
                 margin-top: 20px;
+            }
+            .play {
+                width: 100%;
+                height: 100%;
+                background-color: #2C3D4E;
             }
             .page-content,
             .login-page {
@@ -214,13 +219,29 @@ export class AuthView extends LitElement {
             .button-wrapper {
                 text-align: center;
             }
+
+            @media (max-width: 600px) {
+                .login-page__container {
+                    height: 100vh;
+                    box-sizing: border-box;
+                }
+                .login-page__container kwc-auth {
+                    height: inherit;
+                    width: 100%;
+                    max-width: none;
+                }
+                .login-page footer {
+                    max-width: none;
+                    align-self: center;
+                }
+            }
         `,
         ];
     }
     headerTemplate() {
         const { id } = this.view;
         const privacyHeader = _('UPDATED_PRIVACY_SETTINGS', 'We\'ve updated our privacy settings');
-        const signupHeader = _('CREATE_KANO_ACCOUNT', 'Create a Kano account');
+        const signupHeader = _('CREATE_KANO_ACCOUNT', 'Create a Kano World account');
 
 
         let header = html``;
@@ -304,7 +325,7 @@ export class AuthView extends LitElement {
         switch(this.view.id) {
             case 'play':
                 return html`
-                    <h1>PLAY</h1>
+                    <div class="play"></div>
                 `;
             case 'login':
                 return html`

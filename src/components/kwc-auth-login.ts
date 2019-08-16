@@ -65,6 +65,15 @@ export class Login extends LitElement {
                 .footer a {
                     font-size: 14px;
                 }
+
+                @media (max-width: 600px) {
+                    .header {
+                        border-radius: 0;
+                    }
+                    .header h3 {
+                        text-align: center;
+                    }
+                }
             `,
             ];
         }

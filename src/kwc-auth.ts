@@ -64,6 +64,13 @@ export class KwcAuth extends LitElement {
                     width: 100%;
                     margin: 0 auto;
                 }
+
+                @media (max-width: 600px) {
+                    kwc-auth-login {
+                        border-radius: 0;
+                        height: 100vh;
+                    }
+                }
             `,
         ];
     }
