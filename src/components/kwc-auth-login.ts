@@ -4,9 +4,11 @@ import { LitElement, css, customElement, html, query, property } from 'lit-eleme
 import { templateContent } from '../utils/template-content.js';
 import { styles } from '../styles.js';
 import { _ } from '@kano/i18n/dist/index.js';
+import * as icons from '../icons.js';
 
 @customElement('kwc-auth-login')
 export class Login extends LitElement {
+    @property({ type: Boolean }) showPassword = false;
     static get styles() {
         return [
             styles,
@@ -64,6 +66,12 @@ export class Login extends LitElement {
                 .footer p,
                 .footer a {
                     font-size: 14px;
+                }
+
+                .eye-toggle {
+                    width: 24px;
+                    height: 24px;
+                    padding: 8px;
                 }
 
                 @media (max-width: 600px) {
@@ -135,7 +143,7 @@ export class Login extends LitElement {
                     <label for="password">${_('PASSWORD', 'Password')}</label>
                     <div class="input-wrapper">
                         <input type="password" id="password" placeholder=${_('YOUR_SUPER_SECRET_PASSWORD', 'Enter your secret password')} ?disabled=${this.disabled} />
-                        <img src="https://imgplaceholder.com/42x32/transparent/757575/fa-eye-slash" class="eye-toggle" id="eyeimage" @click=${this.togglePassword} />
+                        <img src=${icons.eye} class="eye-toggle" id="eyeimage" style="opacity: ${this.showPassword ? '0.5' : '1'}" @click=${() => this.togglePassword()} />
                     </div>
                 </div>
                 <div class="button-wrapper">
@@ -185,19 +193,7 @@ export class Login extends LitElement {
     }
 
     togglePassword() {
-        let img1 = "https://imgplaceholder.com/42x32/transparent/757575/fa-eye";
-        let img2 = "https://imgplaceholder.com/42x32/transparent/757575/fa-eye-slash";
-        
-        if (!this.passwordInput || !this.imageInput ){
-            return
-        }        
-        if (this.passwordInput.type == 'password') {
-            this.passwordInput.type = 'text';
-            this.imageInput.src = img1;
-        } else {
-            this.passwordInput.type = 'password';
-            this.imageInput.src = img2;
-        }
+        this.showPassword = !this.showPassword;
     }
     
 }
