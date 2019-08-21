@@ -69,8 +69,9 @@ export class SingleInputElement extends LitElement {
                     class="btn l">${_('AUTH_CONTINUE', 'Continue')}</button>
                 </div>
             </div>
-            <div class="link-wrapper" ?hidden=${this.hideLogin}>
-                <p>${_('AUTH_ALREADY_HAVE_AN_ACCOUNT', 'Already have an account?')} <a href="#" @click=${this.handleLoginClick}>${_('AUTH_LOGIN', 'Login')}</a></p>
+            <div class="link-wrapper">
+                <a href="https://world.kano.me/privacy-policy" class="privacy">${_('PRIVACY_POLICY', 'Privacy Policy')}</a>
+                <p ?hidden=${this.hideLogin}>${_('AUTH_ALREADY_HAVE_AN_ACCOUNT', 'Already have an account?')} <a href="#" @click=${this.handleLoginClick}>${_('AUTH_LOGIN', 'Login')}</a></p>
             </div>
         </div>
     `;

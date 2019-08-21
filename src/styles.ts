@@ -141,16 +141,29 @@ label {
     position: relative;
 }
 
+.link-wrapper a.privacy {
+    margin-bottom: 0px;
+    font-weight: bold;
+    color: var(--color-grey);
+}
+
 .link-wrapper p {
     font-weight: bold;
     font-size: 16px;
+    padding: 0;
 }
 
 .link-wrapper {
     align-self: flex-end;
-    display: block;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    padding: 16px 0 0;
+    margin: 16px 0 0;
+    border-top: 1px solid #E9EBEC;
+    height: 32px;
+    font-size: 16px;
 }
 
 [hidden] {
