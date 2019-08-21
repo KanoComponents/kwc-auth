@@ -147,6 +147,10 @@ label {
     padding: 16px 0 0;
 }
 
+[hidden] {
+    display: none;
+}
+
 .privacy-wrapper {
     text-align: center;
 }

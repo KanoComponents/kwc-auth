@@ -5,7 +5,7 @@ import { styles } from '../styles.js';
 import { _ } from '@kano/i18n/dist/index.js';
 
 @customElement('kwc-auth-username')
-export class UsernameInput extends SingleInputElement {
+export class UsernameInput extends SingleInputElement {    
     constructor() {
         super();
         this.id = 'username';

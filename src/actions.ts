@@ -10,7 +10,7 @@ export interface ILoginForm {
 }
 
 export interface IActions {
-    login(f : ILoginForm) : Promise<void>;
+    login(f : ILoginForm) : Promise<any>;
     register(f : IForm) : Promise<void>;
     getAuthenticatedUser(u : string) : Promise<{id: string}>;
     checkUsernameAvailability(u : string) : Promise<void>;
