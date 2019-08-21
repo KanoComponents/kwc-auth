@@ -314,6 +314,7 @@ export class AuthView extends LitElement {
     }
     changeTemplate(id: string) {
         this.view = this.views.get(id) || { id: 'login'};
+        this.dispatchEvent(new CustomEvent('view-changed', { detail: this.view, bubbles: true, composed: true }));
     }
     renderTemplate() {
         const footerLinks: Link[] = [
