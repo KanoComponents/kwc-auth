@@ -348,6 +348,7 @@ export class AuthView extends LitElement {
                             .view='${this.view.id}'
                             @changeView=${this.handleChangeView}
                             @submit-username=${this.handleSubmitUsername}
+                            @submit-password=${this.handleSubmitPassword}
                             @login=${this.handleLogin}
                             @register=${this.handleRegister}
                             @update-username=${this.handleUpdateUsername}
@@ -415,6 +416,13 @@ export class AuthView extends LitElement {
             return this.getActions().checkUsernameAvailability(e.detail)
                 .then(() => this.changeTemplate('password'))
                 .catch((e) => this.displayError(e.message, (el) => el.username));
+        });        
+    }
+
+    handleSubmitPassword() {
+        return this.wrapTask(() => {
+            return new Promise((resolve) => setTimeout(resolve, 500))
+                .then(() => this.changeTemplate('email'))
         });        
     }
 

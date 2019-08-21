@@ -124,6 +124,7 @@ export class KwcAuth extends LitElement {
                 return html`
                     <kwc-auth-password
                         .username=${this.form.username}
+                        .disabled=${this.loading}
                         @submit=${this.handlePasswordSubmit}
                     ></kwc-auth-password>
             `;
@@ -208,7 +209,7 @@ export class KwcAuth extends LitElement {
     }
     handlePasswordSubmit(e: CustomEvent) {
         this.form.password = e.detail.payload.password;
-        this.handleSubmit(e);
+        this.dispatchEvent(new CustomEvent('submit-password'));
     }
     handleUpdateUsername(e: CustomEvent) {
         this.dispatchEvent(new CustomEvent('update-username', {
