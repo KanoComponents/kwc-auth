@@ -142,7 +142,7 @@ export class Login extends LitElement {
                     <input type="text" id="username" placeholder=${_('YOUR_KANO_USERNAME', 'Enter your Kano username')} ?disabled=${this.disabled} />
                     <label for="password">${_('PASSWORD', 'Password')}</label>
                     <div class="input-wrapper">
-                        <input type="password" id="password" placeholder=${_('YOUR_SUPER_SECRET_PASSWORD', 'Enter your secret password')} ?disabled=${this.disabled} />
+                        <input type=${this.showPassword ? 'text' : 'password'} id="password" placeholder=${_('YOUR_SUPER_SECRET_PASSWORD', 'Enter your secret password')} ?disabled=${this.disabled} />
                         <img src=${icons.eye} class="eye-toggle" id="eyeimage" style="opacity: ${this.showPassword ? '0.5' : '1'}" @click=${() => this.togglePassword()} />
                     </div>
                 </div>
