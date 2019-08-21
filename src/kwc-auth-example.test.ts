@@ -2,7 +2,6 @@ import { assert, fixture } from '@kano/web-tester/helpers.js';
 import * as sinon from 'sinon/pkg/sinon-esm.js'
 import { SinonStub } from 'sinon';
 import { AuthView } from './kwc-auth-example.js';
-import { Link } from './view-type.js'
 import './kwc-auth-example.js';
 
 import { Actions } from './examples/actions.js';
@@ -75,40 +74,6 @@ suite('kwc-auth-example', () => {
             element.view.backButton = undefined;
             const el = element.backButtonTemplate();
             assert.notExists(el);
-        })
-    });
-
-    suite('footerTemplate', () => {
-        let element: AuthView;
-        let links: Link[];
-        setup(() => {
-            element = basic();
-            element.flowDefinition = flowDefinition;
-            element.actions = Actions;
-            links = [
-                {
-                    text: 'link1',
-                    link: 'link1',
-                },
-                {
-                    text: 'link2',
-                    link: 'link2',
-                },
-                {
-                    text: 'link3',
-                    link: 'link3',
-                },
-            ]
-        });
-
-        teardown(() => {
-            sinon.restore();
-        });
-
-        test('function renders html template', () => {
-            const el = element.footerTemplate(links);
-            const innerHtml = el.getTemplateElement().content;
-            assert.exists(innerHtml);
         })
     });
 

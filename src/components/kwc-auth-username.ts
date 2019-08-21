@@ -22,12 +22,12 @@ export class UsernameInput extends SingleInputElement {
             styles,
             css`
                 .instruction {
-                    padding: 0 10px 32px;
+                    padding: 0 10px 16px;
                 }
                 p {
                     font-weight: bold;
                     font-size: 14px;
-                    padding: 0 10px 16px;
+                    padding: 0 10px 8px;
                 }
                 input {
                     height: 48px;
@@ -53,16 +53,17 @@ export class UsernameInput extends SingleInputElement {
                 .name {
                     display: flex;
                     justify-content: center;
+                    align-items: center;
                     position: relative;
                     font-weight: bold;
                     flex: 1;
                     border-radius: 6px;
                     border: 1px solid var(--color-stone);
-                    padding: 12px 20px;
+                    padding: 0px 20px;
                     font-size: 16px;
                     margin: 8px;
                     user-select: none;
-                    height: 24px;
+                    height: 44px;
                     overflow: hidden;
                 }
                 div.name:last-of-type {
@@ -82,17 +83,30 @@ export class UsernameInput extends SingleInputElement {
                     background-color: var(--color-grey);
                     opacity: 1;
                 }
+                .generate svg {
+                    width: 20px;
+                    height: 20px;
+                }
                 .name span {
                     display: block;
                     position: absolute;
                     color: #414A51;
                 }
+                .name:nth-child(3) span {
+                    animation-delay: 60ms;
+                }
+                .name:nth-child(4) span {
+                    animation-delay: 100ms;
+                }
                 .name span:not(:first-child) {
-                    animation: rollOut 0.3s forwards;
-                    
+                    animation-name: rollOut;
+                    animation-duration: 0.3s;
+                    animation-fill-mode: forwards;
                 }
                 .name span:first-child {
-                    animation: rollIn 0.3s forwards;
+                    animation-name: rollIn;
+                    animation-duration: 0.3s;
+                    animation-fill-mode: backwards;
                 }
                 #name__third {
                     max-width: 8px; 

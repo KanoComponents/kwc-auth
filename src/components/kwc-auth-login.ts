@@ -79,6 +79,10 @@ export class Login extends LitElement {
                     cursor: pointer;
                 }
 
+                .privacy {
+                    color: var(--color-grey);
+                }
+
                 @media (max-width: 600px) {
                     .header {
                         border-radius: 0;
@@ -162,7 +166,8 @@ export class Login extends LitElement {
                         <a @click=${(e: Event) => this._changeView(e, 'forgot-password')} href="">${_('PASSWORD_LOWERCASE', 'password')}</a>${_('QUESTION_MARK', '?')}
                     </p>
                     <p class="color-grey">${_('NO_ACCOUNT', 'No account?')} 
-                        <a @click=${(e: Event) => this._changeView(e, 'username')} href="">${_('SIGN_UP', 'Sign up')}</a>!
+                        <a @click=${(e: Event) => this._changeView(e, 'username')} href="">${_('SIGN_UP', 'Sign up')}</a>!&nbsp;
+                        <a href="https://world.kano.me/privacy-policy" class="privacy">${_('PRIVACY_POLICY', 'Privacy Policy')}</a>
                     </p>
                 </div> 
             </form>
