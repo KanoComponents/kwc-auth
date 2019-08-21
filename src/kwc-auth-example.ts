@@ -423,14 +423,17 @@ export class AuthView extends LitElement {
         this.displayError(' ', (el) => el.login)
         return this.wrapTask(() => {
             return this.getActions().login(e.detail)
-                .then(() => this.changeTemplate('play'))
-                .catch((e) => {
-                    // TODO: Add changeTemplate to 'update-username' or 'update-email' depending on flag and PII
-                    if (e === 400) {
+                .then((user) => {
+                    if (user.attributes && user.attributes.username && user.attributes.username === 'invalid') {
                         this.changeTemplate('update-username');
+                    } else if (user.attributes && user.attributes.email && user.attributes.email === 'invalid') {
+                        this.changeTemplate('update-email');
                     } else {
-                        this.displayError(_('USERNAME_OR_PASSWORD_INCORRECT', 'Username or password incorrect'), (el) => el.login);
+                        this.changeTemplate('play');
                     }
+                })
+                .catch(() => {
+                    this.displayError(_('USERNAME_OR_PASSWORD_INCORRECT', 'Username or password incorrect'), (el) => el.login);
                 });
         });
     }
@@ -448,10 +451,7 @@ export class AuthView extends LitElement {
         return this.wrapTask(() => {
             return this.getActions().updateUsername(e.detail)
                 .then(() => this.changeTemplate('update-email'))
-                .catch((e) => {
-                    // TODO: Add changeTemplate to 'update-email' depending on flag
-                    this.displayError(e.message, (el) => el.username);
-                });
+                .catch((e) => this.displayError(e.message, (el) => el.username));
         });
     }
     handleUpdateEmail(e: CustomEvent) {

@@ -24,6 +24,7 @@ export class SingleInputElement extends LitElement {
         return [styles];
     } 
     @property({ type: Boolean }) disabled = false;
+    @property({ type: Boolean }) hideLogin = false;
     @property({ type: String }) error = '';
     @property({ type: String }) id = 'username';
     @property({ type: String }) next = 'password';
@@ -53,7 +54,7 @@ export class SingleInputElement extends LitElement {
         `;
     }
 
-    render() {        
+    render() {
         return html`
         ${templateContent(button)}
         <div class="form-template">
@@ -68,7 +69,7 @@ export class SingleInputElement extends LitElement {
                     class="btn l">${_('AUTH_CONTINUE', 'Continue')}</button>
                 </div>
             </div>
-            <div class="link-wrapper">
+            <div class="link-wrapper" ?hidden=${this.hideLogin}>
                 <p>${_('AUTH_ALREADY_HAVE_AN_ACCOUNT', 'Already have an account?')} <a href="#" @click=${this.handleLoginClick}>${_('AUTH_LOGIN', 'Login')}</a></p>
             </div>
         </div>

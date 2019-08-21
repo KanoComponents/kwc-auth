@@ -40,6 +40,7 @@ interface Form {
 export class KwcAuth extends LitElement {
 
     @property({ type: Boolean }) loading = false;
+    @property({ type: Boolean }) hideLogin = true;
     @property({ type: String }) view = '';
     @property({ type: String }) logo = 'kano';
     @property({ type: String }) backgroundGlyph = 'shapesGlyph';
@@ -114,6 +115,7 @@ export class KwcAuth extends LitElement {
             case 'update-username':
                 return html`
                     <kwc-auth-username
+                        .hideLogin=${this.hideLogin}
                         .disabled=${this.loading}
                         @submit=${this.handleUpdateUsername}
                     ></kwc-auth-username>
@@ -135,6 +137,7 @@ export class KwcAuth extends LitElement {
             case 'update-email':
                 return html`
                     <kwc-auth-email
+                        .hideLogin=${this.hideLogin}
                         .disabled=${this.loading}
                         @submit=${this.handleUpdateEmail}
                     ></kwc-auth-email>
