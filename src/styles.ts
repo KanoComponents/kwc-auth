@@ -90,6 +90,12 @@ input {
     margin: 6px 0 15px;
 }
 
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder {
+    color: var(--color-grey);
+}
+
 input[type="text"],
 input[type="email"],
 input[type="password"] {
@@ -98,7 +104,7 @@ input[type="password"] {
     box-sizing: border-box;
     width: 100%;
     min-height: 39px;
-    padding-left: 2%;
+    padding-left: 10px;
     border-radius: 6px;
     border: 1px solid var(--color-stone);
 }
@@ -137,7 +143,7 @@ label {
 
 .link-wrapper p {
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .link-wrapper {
@@ -160,4 +166,4 @@ label {
     border-radius: 6px 6px 0 0;
     padding: 20px;
 }
-`
+`;
