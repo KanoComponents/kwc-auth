@@ -1,7 +1,3 @@
-// Outstanding:
-// * Routing
-// * Check Username availability
-
 import { LitElement, html, css, customElement, property, query } from 'lit-element/lit-element.js';
 import { IForm, IActions } from './actions.js';
 import { Link, View } from './view-type.js';
@@ -126,7 +122,7 @@ export class AuthView extends LitElement {
                 box-sizing: border-box;
             }
             .login-page {
-                background-color: #2C3D4E;
+                background-color: var(--color-black);
                 max-width: 100%;
                 height: 100vh;
             }
@@ -176,8 +172,12 @@ export class AuthView extends LitElement {
             }
             .header-content {
                 display: inline-block;
-                margin: 0 auto;
                 position: relative;
+                max-width: 420px;
+                width: 420px;
+                padding: 0 10px;
+                margin: 0 auto;
+                box-sizing: border-box;
             }
             header h3,
             header img {
@@ -348,6 +348,7 @@ export class AuthView extends LitElement {
                             .view='${this.view.id}'
                             @changeView=${this.handleChangeView}
                             @submit-username=${this.handleSubmitUsername}
+                            @submit-password=${this.handleSubmitPassword}
                             @login=${this.handleLogin}
                             @register=${this.handleRegister}
                             @update-username=${this.handleUpdateUsername}
@@ -415,6 +416,13 @@ export class AuthView extends LitElement {
             return this.getActions().checkUsernameAvailability(e.detail)
                 .then(() => this.changeTemplate('password'))
                 .catch((e) => this.displayError(e.message, (el) => el.username));
+        });        
+    }
+
+    handleSubmitPassword() {
+        return this.wrapTask(() => {
+            return new Promise((resolve) => setTimeout(resolve, 500))
+                .then(() => this.changeTemplate('email'))
         });        
     }
 

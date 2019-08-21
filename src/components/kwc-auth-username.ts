@@ -36,7 +36,7 @@ export class UsernameInput extends SingleInputElement {
                 .generator-wrapper {
                     padding: 18px 20px 15px;
                     border: 1px solid var(--color-porcelain);
-                    border-radius: 6px;
+                    border-radius: 9px;
                 }
                 .generator {
                     display: flex;
@@ -77,7 +77,6 @@ export class UsernameInput extends SingleInputElement {
                     line-height: initial;
                     margin: 0 14px;
                     border-radius: 6px;
-                    20px 0 0 10px
                 }
                 .generate:hover {
                     background-color: var(--color-grey);
