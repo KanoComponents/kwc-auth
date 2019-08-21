@@ -61,7 +61,7 @@ export class KwcAuth extends LitElement {
                 kwc-auth-successful-signup,
                 kwc-auth-email {
                     background-color: white;
-                    border-radius: 6px;
+                    border-radius: 9px;
                     width: 100%;
                     margin: 0 auto;
                 }

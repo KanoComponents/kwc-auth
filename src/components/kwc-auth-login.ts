@@ -20,14 +20,18 @@ export class Login extends LitElement {
                 }
                 .header {
                     background-color: #D95000;
-                    min-height: 60px;
+                    min-height: 56px;
                     border-radius: 6px 6px 0 0;
-                    padding: 16px 20px;
+                    padding: 0px 20px;
                     text-align: center;
                     box-sizing: border-box;
                     background-repeat: no-repeat;
                     background-position: 100% 0;
                     background-size: contain;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-start;
                 }
                 form {
                     position: relative;
@@ -65,13 +69,14 @@ export class Login extends LitElement {
                 }
                 .footer p,
                 .footer a {
-                    font-size: 14px;
+                    font-size: 16px;
                 }
 
                 .eye-toggle {
-                    width: 24px;
-                    height: 24px;
-                    padding: 8px;
+                    width: 16px;
+                    height: 16px;
+                    padding: 8px 10px;
+                    cursor: pointer;
                 }
 
                 @media (max-width: 600px) {
@@ -143,7 +148,7 @@ export class Login extends LitElement {
                     <label for="password">${_('PASSWORD', 'Password')}</label>
                     <div class="input-wrapper">
                         <input type=${this.showPassword ? 'text' : 'password'} id="password" placeholder=${_('YOUR_SUPER_SECRET_PASSWORD', 'Enter your secret password')} ?disabled=${this.disabled} />
-                        <img src=${icons.eye} class="eye-toggle" id="eyeimage" style="opacity: ${this.showPassword ? '0.5' : '1'}" @click=${() => this.togglePassword()} />
+                        <img src=${icons.eye} class="eye-toggle" id="eyeimage" style="opacity: ${this.showPassword ? '1' : '0.5'}" @click=${() => this.togglePassword()} />
                     </div>
                 </div>
                 <div class="button-wrapper">
