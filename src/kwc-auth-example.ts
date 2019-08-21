@@ -1,6 +1,6 @@
 import { LitElement, html, css, customElement, property, query } from 'lit-element/lit-element.js';
 import { IForm, IActions } from './actions.js';
-import { Link, View } from './view-type.js';
+import { View } from './view-type.js';
 import './kwc-auth.js';
 import { KwcAuth } from './kwc-auth.js';
 import { SingleInputElement } from './components/auth-single-form.js';
@@ -117,7 +117,7 @@ export class AuthView extends LitElement {
                 justify-content: space-between;
             }
             .page-content {
-                height: calc(100vh - 66px);
+                height: calc(100vh - 56px);
                 padding-top: 32px;
                 box-sizing: border-box;
             }
@@ -159,7 +159,7 @@ export class AuthView extends LitElement {
             }
             header {
                 position: relative;
-                height: 66px;
+                height: 56px;
                 width: 100%;
                 background-color: #D95000;
                 display: flex;
@@ -294,17 +294,6 @@ export class AuthView extends LitElement {
             </div>    
         `;
     }
-    footerTemplate(links : Link[]) {
-        return html`
-            <footer>
-                ${links.map(el => {
-                    return html`
-                        <a href=${el.link}>${el.text}</a>
-                    `;
-                })}
-            </footer>
-        `;
-    }
 
     handleClick(id: string) {
         this.changeTemplate(id);
@@ -317,12 +306,6 @@ export class AuthView extends LitElement {
         this.dispatchEvent(new CustomEvent('view-changed', { detail: this.view, bubbles: true, composed: true }));
     }
     renderTemplate() {
-        const footerLinks: Link[] = [
-            {
-                text: _('PRIVACY_POLICY', 'Privacy Policy'),
-                link: 'https://world.kano.me/privacy-policy',
-            },
-        ];
         switch(this.view.id) {
             case 'play':
                 return html`
@@ -359,8 +342,6 @@ export class AuthView extends LitElement {
                             @forgot-email=${this.handleForgotEmail}
                             @finished-flow=${this.handleFinishedFlow}
                         ></kwc-auth>
-                        
-                        ${this.footerTemplate(footerLinks)}
                     </div>
                 `;
         }
