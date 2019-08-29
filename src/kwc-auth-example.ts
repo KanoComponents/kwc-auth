@@ -144,7 +144,7 @@ export class AuthView extends LitElement {
             }
             .back-button {
                 position: absolute;
-                top: 24px;
+                top: 20px;
                 left: 24px;
                 z-index: 1;
             }
@@ -221,6 +221,11 @@ export class AuthView extends LitElement {
             }
 
             @media (max-width: 600px) {
+                header {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                }
                 .login-page__container {
                     height: 100vh;
                     box-sizing: border-box;
@@ -233,6 +238,9 @@ export class AuthView extends LitElement {
                 .login-page footer {
                     max-width: none;
                     align-self: center;
+                }
+                .header-content {
+                    text-align: center;
                 }
             }
         `,
