@@ -70,7 +70,7 @@ export class SingleInputElement extends LitElement {
                 </div>
             </div>
             <div class="link-wrapper">
-                <a href="https://world.kano.me/privacy-policy" class="privacy">${_('PRIVACY_POLICY', 'Privacy Policy')}</a>
+                <a href="https://world.kano.me/privacy-policy" class="privacy" target="_blank">${_('PRIVACY_POLICY', 'Privacy Policy')}</a>
                 <p ?hidden=${this.hideLogin}>${_('AUTH_ALREADY_HAVE_AN_ACCOUNT', 'Already have an account?')} <a href="#" @click=${this.handleLoginClick}>${_('AUTH_LOGIN', 'Login')}</a></p>
             </div>
         </div>
