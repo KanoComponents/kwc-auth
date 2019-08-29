@@ -422,8 +422,8 @@ export class AuthView extends LitElement {
                         this.changeTemplate('play');
                     }
                 })
-                .catch(() => {
-                    this.displayError(_('USERNAME_OR_PASSWORD_INCORRECT', 'Username or password incorrect'), (el) => el.login);
+                .catch((e) => {
+                    this.displayError(e.message, (el) => el.login);
                 });
         });
     }
