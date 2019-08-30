@@ -71,10 +71,13 @@ export class SingleInputElement extends LitElement {
             </div>
             <div class="link-wrapper">
                 <a href="https://world.kano.me/privacy-policy" class="privacy">${_('PRIVACY_POLICY', 'Privacy Policy')}</a>
-                <p ?hidden=${this.hideLogin}>${_('AUTH_ALREADY_HAVE_AN_ACCOUNT', 'Already have an account?')} <a href="#" @click=${this.handleLoginClick}>${_('AUTH_LOGIN', 'Login')}</a></p>
+                <p ?hidden=${this.hideLogin}>${this.getLoginPromptMessage()} <a href="#" @click=${this.handleLoginClick}>${_('AUTH_LOGIN', 'Login')}</a></p>
             </div>
         </div>
     `;
+    }
+    getLoginPromptMessage() {
+        return _('AUTH_ALREADY_HAVE_AN_ACCOUNT', 'Already have an account?')
     }
     handleKeydown(e: KeyboardEvent) {
         if (e.type === 'keydown' && e.keyCode === 13) {

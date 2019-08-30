@@ -1,5 +1,5 @@
 import '@kano/styles/typography.js';
-import { html, customElement } from 'lit-element/lit-element.js';
+import { html, customElement, css } from 'lit-element/lit-element.js';
 import { SingleInputElement } from './auth-single-form.js';
 import { _ } from '@kano/i18n/dist/index.js';
 
@@ -9,6 +9,15 @@ export class ForgotPassword extends SingleInputElement {
         super();
         this.id = 'forgot-password';
         this.next = 'login';
+    }
+    static get styles() {
+        return super.styles.concat([css`
+            .error {
+                left: 0;
+                top: 100%;
+                padding: 8px;
+            }
+        `]);
     }
     inputTemplate() {
         return html`
@@ -26,5 +35,8 @@ export class ForgotPassword extends SingleInputElement {
                 <div class="error">${this.error}</div>
             </div>
         `;
+    }
+    getLoginPromptMessage() {
+        return _('AUTH_REMEMBERED_PASSWORD', 'Remembered your password?')
     }
 }
