@@ -167,7 +167,7 @@ export class Login extends LitElement {
                     </p>
                     <p class="color-grey">${_('NO_ACCOUNT', 'No account?')} 
                         <a @click=${(e: Event) => this._changeView(e, 'username')} href="">${_('SIGN_UP', 'Sign up')}</a>!&nbsp;
-                        <a href="https://world.kano.me/privacy-policy" class="privacy">${_('PRIVACY_POLICY', 'Privacy Policy')}</a>
+                        <a href="https://world.kano.me/privacy-policy" class="privacy" target="_blank">${_('PRIVACY_POLICY', 'Privacy Policy')}</a>
                     </p>
                 </div> 
             </form>
