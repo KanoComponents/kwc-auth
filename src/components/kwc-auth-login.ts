@@ -4,7 +4,6 @@ import { LitElement, css, customElement, html, query, property } from 'lit-eleme
 import { templateContent } from '../utils/template-content.js';
 import { styles } from '../styles.js';
 import { _ } from '@kano/i18n/dist/index.js';
-import * as icons from '../icons.js';
 
 @customElement('kwc-auth-login')
 export class Login extends LitElement {
@@ -74,7 +73,7 @@ export class Login extends LitElement {
 
                 .eye-toggle {
                     width: 16px;
-                    height: 16px;
+                    height: 10px;
                     padding: 8px 10px;
                     cursor: pointer;
                 }
@@ -152,7 +151,13 @@ export class Login extends LitElement {
                     <label for="password">${_('PASSWORD', 'Password')}</label>
                     <div class="input-wrapper">
                         <input type=${this.showPassword ? 'text' : 'password'} id="password" placeholder=${_('YOUR_SUPER_SECRET_PASSWORD', 'Enter your secret password')} ?disabled=${this.disabled} />
-                        <img src=${icons.eye} class="eye-toggle" id="eyeimage" style="opacity: ${this.showPassword ? '1' : '0.5'}" @click=${() => this.togglePassword()} />
+                        <img
+                            src="${this.showPassword ? '../../assets/fa-eye-slash.png' : '../../assets/fa-eye.png'}"
+                            class="eye-toggle"
+                            id="eyeimage"
+                            style="opacity: ${this.showPassword ? '1' : '0.5'}"
+                            @click=${() => this.togglePassword()}
+                        />
                     </div>
                 </div>
                 <div class="button-wrapper">
