@@ -2,6 +2,7 @@ import '@kano/styles/typography.js';
 import { html, customElement, query, property } from 'lit-element/lit-element.js';
 import { SingleInputElement } from './auth-single-form.js';
 import { _ } from '@kano/i18n/dist/index.js';
+import * as icons from '../icons.js';
 
 @customElement('kwc-auth-password')
 export class PasswordInput extends SingleInputElement {
@@ -10,19 +11,10 @@ export class PasswordInput extends SingleInputElement {
         this.id = 'password';
         this.next = 'email'
     }
-
-    @query('#eyeimage')
-    private imageInput? : HTMLInputElement;
+    @property({ type: Boolean }) showPassword = false;
 
     @property({ type: String }) username = '';
 
-     /**
-    * Returns the current value of the eye image field or an empty string
-    */
-
-    get eyeimage() {
-        return this.imageInput ? this.imageInput.value : '';
-    }
     inputTemplate() {
         return html`
             <h3>${_('WELCOME_TO_KANO', 'Welcome to Kano')} ${this.username}!</h3>
@@ -36,9 +28,7 @@ export class PasswordInput extends SingleInputElement {
                         id="input"
                         placeholder=${_('MAKE_UP_PASSWORD', 'Make up a secret password')} />
                     <img
-                        src="https://imgplaceholder.com/42x32/transparent/757575/fa-eye-slash"
-                        class="eye-toggle"
-                        id="eyeimage"
+                        src=${icons.eye} class="eye-toggle" id="eyeimage" style="opacity: ${this.showPassword ? '1' : '0.5'}"
                         @click="${this.togglePassword}"/>
                     </div>
             </div>
@@ -47,19 +37,6 @@ export class PasswordInput extends SingleInputElement {
     }
 
     togglePassword() {
-        if (!this.inputElement || !this.imageInput ){
-            return;
-        }
-
-        // replace with local assets
-        const img1 = "https://imgplaceholder.com/42x32/transparent/757575/fa-eye";
-        const img2 = "https://imgplaceholder.com/42x32/transparent/757575/fa-eye-slash";
-        if (this.inputElement.type == 'password') {
-            this.inputElement.type = 'text';
-            this.imageInput.src = img1;
-        } else {
-            this.inputElement.type = 'password';
-            this.imageInput.src = img2;
-        }
+        this.showPassword = !this.showPassword;
     }
 }
