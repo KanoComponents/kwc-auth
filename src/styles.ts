@@ -137,6 +137,10 @@ label {
     right: 0;
     top: 50%;
     transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    padding: 8px 10px;
+    cursor: pointer;
 }
 
 .input-wrapper {
