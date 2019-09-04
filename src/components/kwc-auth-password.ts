@@ -1,5 +1,5 @@
 import '@kano/styles/typography.js';
-import { html, customElement, query, property } from 'lit-element/lit-element.js';
+import { html, customElement, property } from 'lit-element/lit-element.js';
 import { SingleInputElement } from './auth-single-form.js';
 import { _ } from '@kano/i18n/dist/index.js';
 import * as icons from '../icons.js';
