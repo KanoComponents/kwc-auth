@@ -6,7 +6,8 @@ export const styles = css`
 
 :host {
     font-family: var(--font-body);
-    display: block;
+    display: flex;
+    flex-direction: column;
     padding: 0;
     margin: 0 auto;
 }
@@ -22,6 +23,7 @@ export const styles = css`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    flex: 1;
 }
 .form-template > div {
     width: 100%;
