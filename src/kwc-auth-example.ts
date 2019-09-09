@@ -424,7 +424,7 @@ export class AuthView extends LitElement {
                 .then((user) => {
                     if (user.attributes && user.attributes.username && user.attributes.username === 'invalid') {
                         this.changeTemplate('update-username');
-                    } else if (user.attributes && user.attributes.email && user.attributes.email === 'invalid') {
+                    } else if (user.attributes && user.attributes.email && (user.attributes.email === 'invalid' || user.attributes.email === 'removed')) {
                         this.changeTemplate('update-email');
                     } else {
                         this.changeTemplate('play');
