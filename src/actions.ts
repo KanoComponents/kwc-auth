@@ -21,4 +21,5 @@ export interface IActions {
     updateEmail(e : string) : Promise<void>;
     resendEmail(uid : string) : Promise<void>;
     finish() : Promise<void>;
+    exit() : Promise<void>;
 }

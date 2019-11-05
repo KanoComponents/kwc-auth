@@ -14,7 +14,8 @@ to interact with its many useful events.
 
 import { LitElement, html, property, customElement, css, query } from 'lit-element/lit-element.js';
 
-import './components/kwc-auth-landing.js';
+// TODO: figure out if this component is required
+// import './components/kwc-auth-landing.js';
 import './components/kwc-auth-username.js';
 import './components/kwc-auth-password.js';
 import './components/kwc-auth-email.js';
@@ -44,6 +45,7 @@ export class KwcAuth extends LitElement {
     @property({ type: String }) view = '';
     @property({ type: String }) logo = 'kano';
     @property({ type: String }) backgroundGlyph = 'shapesGlyph';
+    @property({ type: Boolean }) allowExit = false;
     
     @property({ type: Object }) form: Form = {
         username: '',
@@ -112,7 +114,9 @@ export class KwcAuth extends LitElement {
                 return html`
                     <kwc-auth-username
                         .disabled=${this.loading}
+                        .allowExit=${this.allowExit}
                         @submit=${this.handleUsernameSubmit}
+                        @exit=${this.handleExit}
                     ></kwc-auth-username>
             `;
             case 'update-username':
@@ -179,8 +183,10 @@ export class KwcAuth extends LitElement {
                     <kwc-auth-login
                         .disabled=${this.loading}
                         .logo=${this.logo}
+                        .allowExit=${this.allowExit}
                         @submit=${this.handleLogin}
                         @changeView=${this.changeView}
+                        @exit=${this.handleExit}
                     ></kwc-auth-login>
                 `;
         }
@@ -191,6 +197,9 @@ export class KwcAuth extends LitElement {
     }
     handleSubmit(e: CustomEvent) {
         this.submit(e.detail.next);
+    }
+    handleExit() {
+        this.dispatchEvent(new CustomEvent('exit'));
     }
 
     render() {

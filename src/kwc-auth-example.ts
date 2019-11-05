@@ -35,6 +35,9 @@ export class AuthView extends LitElement {
     @property ({type: String})
     public headerText : string = '';
 
+    @property ({type: Boolean})
+    public allowExit : boolean = false;
+
     public actions? : IActions;
 
     set flowDefinition(value : IViewDefinition[]) {
@@ -325,8 +328,10 @@ export class AuthView extends LitElement {
                         <div class="login-page__container">
                             <kwc-auth
                             .view='${this.view.id}'
+                            .allowExit=${this.allowExit}
                             @changeView=${this.handleChangeView}
                             @login=${this.handleLogin}
+                            @exit=${this.handleExit}
                             ></kwc-auth>
                         </div>
                     </div>
@@ -338,6 +343,7 @@ export class AuthView extends LitElement {
                     <div class="page-content page-content--${this.view.id}">
                         <kwc-auth 
                             .view='${this.view.id}'
+                            .allowExit=${this.allowExit}
                             @changeView=${this.handleChangeView}
                             @submit-username=${this.handleSubmitUsername}
                             @submit-password=${this.handleSubmitPassword}
@@ -349,6 +355,7 @@ export class AuthView extends LitElement {
                             @forgot-username=${this.handleForgotUsername}
                             @forgot-email=${this.handleForgotEmail}
                             @finished-flow=${this.handleFinishedFlow}
+                            @exit=${this.handleExit}
                         ></kwc-auth>
                     </div>
                 `;
@@ -484,6 +491,9 @@ export class AuthView extends LitElement {
     handleResendEmail() {
         this.getActions().resendEmail('userId')
             .then(() => this.changeTemplate('play'));
+    }
+    handleExit() {
+        this.getActions().exit();
     }
 }
 
