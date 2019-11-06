@@ -328,10 +328,8 @@ export class AuthView extends LitElement {
                         <div class="login-page__container">
                             <kwc-auth
                             .view='${this.view.id}'
-                            .allowExit=${this.allowExit}
                             @changeView=${this.handleChangeView}
                             @login=${this.handleLogin}
-                            @exit=${this.handleExit}
                             ></kwc-auth>
                         </div>
                     </div>

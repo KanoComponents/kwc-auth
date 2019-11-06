@@ -183,10 +183,8 @@ export class KwcAuth extends LitElement {
                     <kwc-auth-login
                         .disabled=${this.loading}
                         .logo=${this.logo}
-                        .allowExit=${this.allowExit}
                         @submit=${this.handleLogin}
                         @changeView=${this.changeView}
-                        @exit=${this.handleExit}
                     ></kwc-auth-login>
                 `;
         }

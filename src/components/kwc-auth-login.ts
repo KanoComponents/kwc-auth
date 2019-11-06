@@ -46,17 +46,14 @@ export class Login extends LitElement {
                     position: relative;
                     margin: 0;
                 }
-                .button-wrapper__exit {
-                    font-weight: bold;
-                    float: right;
-                    margin: 10px 0;
-                }
                 .error-message {
+                    position: absolute;
                     max-width: 190px;
+                    left: 95px;
+                    bottom: 10px;
                     font-size: 14px;
                     color: red;
                     font-weight: bold;
-                    margin-top: 10px;
                 }
                 form {
                     padding: 15px 30px;
@@ -101,7 +98,6 @@ export class Login extends LitElement {
     @property({type: String}) error = '';
     @property({ type: Boolean }) disabled = false;
     @property({ type: String }) logo = '';
-    @property({ type: Boolean }) allowExit = false;
     @property({ type: String }) loginGlyph: string;
     
     @query('#username')
@@ -161,7 +157,6 @@ export class Login extends LitElement {
                 </div>
                 <div class="button-wrapper">
                     <button class="btn l" type="submit" ?disabled=${this.disabled}>${_('LOGIN', 'Login')}</button>
-                    ${this.allowExit ? html`<a class="button-wrapper__exit" href @click=${this._exit}>${_('MAYBE_LATER', 'Maybe later')}` : ''}
                     <div class="error-message">${this.error}</div>
                 </div>
                 <div class="breaker"></div>
@@ -205,11 +200,6 @@ export class Login extends LitElement {
                 view,
             }
         }))
-    }
-
-    _exit(e: Event) {
-        e.preventDefault();
-        this.dispatchEvent(new CustomEvent('exit'));
     }
 
     togglePassword() {
