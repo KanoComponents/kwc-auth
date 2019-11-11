@@ -47,6 +47,10 @@ export const Actions: IActions = {
     finish() {
         console.log('finish');
         return Promise.resolve();
+    },
+    exit() {
+        console.log('exit');
+        return Promise.resolve();
     }
 };
 

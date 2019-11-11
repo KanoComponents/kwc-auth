@@ -185,4 +185,9 @@ label {
     border-radius: 6px 6px 0 0;
     padding: 20px;
 }
+.button-wrapper__exit {
+    font-weight: bold;
+    float: right;
+    margin: 10px 0;
+}
 `;

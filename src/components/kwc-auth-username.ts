@@ -111,6 +111,14 @@ export class UsernameInput extends SingleInputElement {
                 #name__third {
                     max-width: 8px; 
                 }
+                .button-wrapper {
+                    position: relative;
+                    margin-top: 20px;
+                }
+
+                .button-wrapper button {
+                    margin: 0;
+                }
 
                 @keyframes rollIn {
                     0% {

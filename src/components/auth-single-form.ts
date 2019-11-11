@@ -24,6 +24,7 @@ export class SingleInputElement extends LitElement {
         return [styles];
     } 
     @property({ type: Boolean }) disabled = false;
+    @property({ type: Boolean }) allowExit = false;
     @property({ type: Boolean }) hideLogin = false;
     @property({ type: String }) error = '';
     @property({ type: String }) id = 'username';
@@ -67,6 +68,7 @@ export class SingleInputElement extends LitElement {
                     @mousedown=${(e: Event) => this.handleClick(e)}
                     @keydown=${(e: KeyboardEvent) => this.handleKeydown(e)}
                     class="btn l">${_('AUTH_CONTINUE', 'Continue')}</button>
+                    ${this.allowExit ? html`<a class="button-wrapper__exit" href @click=${this.exit}>${_('MAYBE_LATER', 'Maybe later')}` : ''}
                 </div>
             </div>
             <div class="link-wrapper">
@@ -106,6 +108,11 @@ export class SingleInputElement extends LitElement {
 
         event.detail.payload[this.id] = this.value;
         this.dispatchEvent(new CustomEvent('submit', event));
+    }
+
+    exit(e: Event) {
+        e.preventDefault();
+        this.dispatchEvent(new CustomEvent('exit'));
     }
 
     validateInput(inputId: string, value: string) {
