@@ -212,6 +212,8 @@ The event is passed the following detail:
 
  * To serve locally `yarn serve` - the site will be served on http://localhost:4000/demo
 
+ * If you'd like to change the port that it's running on use `yarn serve --port=4040`
+
  * yarn add --dev typescript
  * Watch file changes: yarn tsc --watch
 
