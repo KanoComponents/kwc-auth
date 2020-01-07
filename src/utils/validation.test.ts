@@ -39,10 +39,6 @@ suite('validation', () => {
     });
 
     // Username
-    test('username to error if under 6 characters', () => {
-        const result = validateUsername(badUsername01);
-        assert.equal(result, 'Username must be at least 6 characters long.')
-    });
 
     test('username to error if undefined or empty', () => {
         const result = validateUsername(badUsername02);
