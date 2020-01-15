@@ -9,6 +9,7 @@ const username = fixture<UsernameInput>`
 const testUsername = 'usernametest';
 const invalidUsername = 'user &.name';
 const shortUsername = 'u';
+const longUsername = 'abcdefghijklmnopqrstuvwxyz';
 
 suite('kwc-auth-username', () => {
     test('Input and submit username', (done) => {
@@ -50,7 +51,20 @@ suite('kwc-auth-username', () => {
             testUtil.type(testUtil.username.username, shortUsername);
             testUtil.blur(testUtil.username.username);
 
-            assert.equal(el.error, 'Username must be at least 6 characters long.')
+            assert.equal(el.error, 'Username must be at least 3 characters long.')
+        });
+    });
+
+    test('Username is too long', () => {
+        const el = username();
+        return el.updateComplete.then(() => {
+            const shadowRoot = el.shadowRoot!;
+            const testUtil = new AuthTestUtil(shadowRoot);
+
+            testUtil.type(testUtil.username.username, longUsername);
+            testUtil.blur(testUtil.username.username);
+
+            assert.equal(el.error, 'Username must be at most 25 characters long.')
         });
     });
 

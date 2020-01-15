@@ -3,6 +3,10 @@ export function validateUsername(username : string){
 
     if (!username || username.length === 0) { 
         errorUsername = 'Username is required.';
+    } else if (username.length < 3) {	
+        errorUsername = 'Username must be at least 3 characters long.';
+    } else if (username.length > 25) {	
+        errorUsername = 'Username must be at most 25 characters long.';
     } else if (!/^[a-zA-Z0-9_\-.]+$/.test(username)) {
         errorUsername = 'Username must only contain letters, numbers, dashes, underscores or dots.';
     }
