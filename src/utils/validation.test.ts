@@ -10,6 +10,7 @@ suite('validation', () => {
     const badUsername02 = '';
     const badUsername03 = 'us3]]//,'
     const badUsername04 = 'us3r@na.com';
+    const badUsername05 = 'abcdefghijklmnopqrstuvwxyz';
     const goodUsername = 'us3rnam7';
     const badPassword1 = 'pa';
     const badPassword2 = 'pa sswo rd';
@@ -38,6 +39,10 @@ suite('validation', () => {
     });
 
     // Username
+    test('username to error if under 3 characters', () => {	
+        const result = validateUsername(badUsername01);	
+        assert.equal(result, 'Username must be at least 3 characters long.')	
+    });
 
     test('username to error if undefined or empty', () => {
         const result = validateUsername(badUsername02);
@@ -52,6 +57,11 @@ suite('validation', () => {
     test('username to error if is email address', () => {
         const result = validateUsername(badUsername04);
         assert.equal(result, 'Username must only contain letters, numbers, dashes, underscores or dots.')
+    });
+
+    test('username to error if over 25 characters', () => {	
+        const result = validateUsername(badUsername05);	
+        assert.equal(result, 'Username must be at most 25 characters long.')	
     });
 
     test('username to succeed if is valid', () => {
