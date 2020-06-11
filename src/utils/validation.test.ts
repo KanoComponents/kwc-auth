@@ -7,7 +7,6 @@ suite('validation', () => {
     const badEmail02 = 'not.anemail';
     const badEmail03 = 'notanemail';
     const goodEmail = 'test@email.com';
-    // const badUsername01 = 'us';
     const badUsername02 = '';
     const badUsername03 = 'us3]]//,'
     const badUsername04 = 'us3r@na.com';
