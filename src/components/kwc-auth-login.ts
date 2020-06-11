@@ -142,7 +142,7 @@ export class Login extends LitElement {
         <div>
             <div class="header"
                 style="background-image:${this.loginGlyph}">
-                <h3>Login to your account</h3>
+                <h3>${_('LOGIN_TO_YOUR_ACCOUNT', 'Login to your account')}</h3>
                 ${this.renderClose()}
             </div>
             <form @submit=${this._submit}>
