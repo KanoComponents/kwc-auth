@@ -236,7 +236,7 @@ export class UsernameInput extends SingleInputElement {
 
     renderForcedChange() {
         const text = html`
-            <h3 class="">We've updated our privacy policy, please update your username.</h3>
+            <h3 class="">${_('PRIVACY_POLICY_UPDATED', "We've updated our privacy policy, please update your username.")}</h3>
         `;
         return text;
     }
