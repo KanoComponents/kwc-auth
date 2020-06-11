@@ -49,7 +49,7 @@ export class SingleInputElement extends LitElement {
                     @keydown="${(e: KeyboardEvent) => this.handleKeydown(e)}"
                     type="text"
                     id="input"
-                    placeholder="Input information here"/>
+                    placeholder=${_('INPUT_INFORMATION_HERE', 'Input information here')} />
                 <div class="error">${this.error}</div>
             </div>
         `;
