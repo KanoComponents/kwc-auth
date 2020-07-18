@@ -72,6 +72,7 @@ export class SingleInputElement extends LitElement {
                     @keydown=${(e: KeyboardEvent) => this.handleKeydown(e)}
                     class="btn l">${_('AUTH_CONTINUE', 'Continue')}</button>
                     ${this.allowExit ? html`<a class="button-wrapper__exit" href @click=${this.exit}>${_('MAYBE_LATER', 'Maybe later')}` : ''}
+                    <div class="error">${this.error}</div>
                 </div>
             </div>
             <div class="link-wrapper">

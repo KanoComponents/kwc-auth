@@ -57,15 +57,16 @@ export class Login extends LitElement {
                 .button-wrapper {
                     position: relative;
                     margin: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
                 }
                 .error-message {
-                    position: absolute;
                     max-width: 190px;
-                    left: 95px;
-                    bottom: 10px;
                     font-size: 14px;
-                    color: red;
                     font-weight: bold;
+                    color: var(--color-kano-orange);
+                    text-align: center;
                 }
                 form {
                     padding: 15px 30px;

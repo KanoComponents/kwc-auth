@@ -243,9 +243,6 @@ export class AuthView extends LitElement {
                     max-width: none;
                     align-self: center;
                 }
-                .header-content {
-                    text-align: center;
-                }
             }
         `,
         ];

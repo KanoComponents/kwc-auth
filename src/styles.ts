@@ -126,10 +126,9 @@ label {
 .error {
     color: var(--color-kano-orange);
     font-size: 14px;
-    position: absolute;
-    bottom: 10px;
-    left: 130px;
     font-weight: bold;
+    text-align: center;
+    max-width: 275px;
 }
 
 .eye-toggle {
@@ -167,7 +166,7 @@ label {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin: 16px 0 6px;
+    margin: 16px 0 8px;
     height: 32px;
     font-size: 14px;
 }
@@ -222,6 +221,16 @@ label {
     background-color: var(--color-stone);
     border-radius: 6px 6px 0 0;
     padding: 20px;
+}
+.button-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+.button-wrapper button {
+    min-width: min-content;
+    margin: 0;
 }
 .button-wrapper__exit {
     font-weight: bold;
