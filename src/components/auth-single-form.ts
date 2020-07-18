@@ -4,7 +4,7 @@ import '@kano/styles/typography.js';
 import { button } from '@kano/styles/button.js';
 import { _ } from '@kano/i18n/dist/index.js';
 
-import { validateUsername, validatePassword, validateEmail, validateRegion } from '../utils/validation.js';
+import { validateUsername, validatePassword, validateEmail, validateRegion, validateForgotPassword } from '../utils/validation.js';
 import { templateContent } from '../utils/template-content.js';
 import { styles } from '../styles.js';
 import * as icons from '../icons.js';
@@ -133,6 +133,12 @@ export class SingleInputElement extends LitElement {
                 break;
             case 'email':
                 error = validateEmail(value);
+                break;
+            case 'forgot-username':
+                error = validateEmail(value);
+                break;
+            case 'forgot-password':
+                error = validateForgotPassword(value);
                 break;
             case 'region':
                 error = validateRegion(value);

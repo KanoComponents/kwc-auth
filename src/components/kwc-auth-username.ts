@@ -193,7 +193,7 @@ export class UsernameInput extends SingleInputElement {
     inputTemplate() {
         super.inputTemplate()
         return html`
-            <p class="intro">${_('LETS_GET_STARTED', 'Let\'s get started')}</p>
+            <p class="intro">${_('LETS_GET_STARTED', 'Let’s get started')}</p>
             <h3 class="instruction">${_('MAKE_UP_USERNAME', 'Pick a username from the list of generated names, or create your own. Don’t use your real name or a name you used on other websites.')}</h3>
             <div class="input-wrapper">
                 <div class="generator-wrapper">

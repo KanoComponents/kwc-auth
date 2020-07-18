@@ -65,6 +65,7 @@ export class KwcAuth extends LitElement {
                 kwc-auth-successful-signup,
                 kwc-auth-forgot-password,
                 kwc-auth-forgot-username,
+                kwc-auth-forgot-email,
                 kwc-auth-email {
                     background-color: white;
                     border-radius: 9px;
