@@ -175,7 +175,7 @@ export class Login extends LitElement {
                 </div>
                 <div class="footer">
                     <p class="color-grey">${_('FORGOT_YOUR', 'Forgot your')} 
-                        <a @click=${(e: Event) => this._changeView(e, 'update-email')} href="">${_('USERNAME_LOWERCASE', 'username')}</a> ${_('OR', 'or')} 
+                        <a @click=${(e: Event) => this._changeView(e, 'forgot-username')} href="">${_('USERNAME_LOWERCASE', 'username')}</a> ${_('OR', 'or')} 
                         <a @click=${(e: Event) => this._changeView(e, 'forgot-password')} href="">${_('PASSWORD_LOWERCASE', 'password')}</a>${_('QUESTION_MARK', '?')}
                     </p>
                     <p class="color-grey sign-up">
