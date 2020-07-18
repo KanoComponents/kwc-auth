@@ -208,7 +208,6 @@ export class UsernameInput extends SingleInputElement {
                     ${this.renderNames()}
                 </div>
             </div>
-            <div class="error">${this.error}</div>
         `;
     }
 

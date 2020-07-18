@@ -36,7 +36,6 @@ export class PasswordInput extends SingleInputElement {
                         @click="${() => this.togglePassword()}"/>
                     </div>
             </div>
-            <div class="error">${this.error}</div>
         `;
     }
 

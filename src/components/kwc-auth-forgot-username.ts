@@ -11,15 +11,6 @@ export class ForgotUsernameInput extends SingleInputElement {
         this.id = 'forgot-username';
         this.next = 'login';
     }
-    static get styles() {
-        return super.styles.concat([css`
-            .error {
-                left: 0;
-                top: 100%;
-                padding: 8px;
-            }
-        `]);
-    }
     inputTemplate() {
         super.inputTemplate()
         return html`
@@ -34,7 +25,6 @@ export class ForgotUsernameInput extends SingleInputElement {
                     class="input"
                     type="email"
                     placeholder=${_('AUTH_EMAIL', 'Email')} />
-                <div class="error">${this.error}</div>
             </div>
         `;
     }

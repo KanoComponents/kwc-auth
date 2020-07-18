@@ -32,6 +32,7 @@ export class EmailInput extends SingleInputElement {
                    display: flex;
                    justify-content: space-between;
                    margin-top: 14px;
+                   padding-bottom: 7px;
                 }
                 .email__region {
                     display: flex;
@@ -69,6 +70,9 @@ export class EmailInput extends SingleInputElement {
                     font-weight: bold;
                     font-size: 18px;
                     color: #414a51;
+                }
+                .input {
+                    margin-bottom: 22px;
                 }
             `
         ];
@@ -137,7 +141,6 @@ export class EmailInput extends SingleInputElement {
                 <p class="input-title">${_('CREATE_A_PASSWORD', 'What region are you in?')}</p>
                 ${this.renderRegions()}
             </div>
-            <div class="error">${this.error}</div>
         `;
     }
 }

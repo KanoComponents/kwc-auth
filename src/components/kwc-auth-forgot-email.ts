@@ -22,7 +22,6 @@ export class ChangeEmail extends SingleInputElement {
                     class="input"
                     type="email"
                     placeholder=${_('AUTH_EMAIL', 'Email')} />
-                <div class="error">${this.error}</div>
             </div>
         `;
     }

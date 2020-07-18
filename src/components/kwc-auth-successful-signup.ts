@@ -18,6 +18,7 @@ export class SuccessfulSignup extends LitElement {
                 h3 {
                     color: #414A51;
                     font-size: 32px;
+                    padding-bottom: 16px;
                 }
                 h4 {
                     color: #414A51;
@@ -30,9 +31,10 @@ export class SuccessfulSignup extends LitElement {
                     display: block;
                 }
                 .button-wrapper {
-                    display: flex;
+                    justify-content: flex-start;
+                    align-items: flex-start;
                 }
-                .l {
+                .btn.l {
                     margin-right: 28px;
                 }
                 .intro {
