@@ -17,6 +17,7 @@ export class SuccessfulSignup extends LitElement {
                 }
                 h3 {
                     color: #414A51;
+                    font-size: 32px;
                 }
                 h4 {
                     color: #414A51;
@@ -28,6 +29,16 @@ export class SuccessfulSignup extends LitElement {
                 .button-wrapper button {
                     display: block;
                 }
+                .button-wrapper {
+                    display: flex;
+                }
+                .l {
+                    margin-right: 28px;
+                }
+                .intro {
+                    text-align: left;
+                    margin-bottom: 15px;
+                }
             `,
         ];
     } 
@@ -35,10 +46,11 @@ export class SuccessfulSignup extends LitElement {
     render() {
         return html`
             ${templateContent(button)}
+            <p class="intro">${_('THANKS_SIGN_UP', 'Thanks for signing up!')}</p>
             <h3>${_('ASK_PARENT_CONFIRM', 'Ask your parents to confirm your account to get full access to Kano World.')}</h3>
             <div class="button-wrapper">
                 <button @click=${this.handleSubmit} class="btn l" type="submit">${_('START_PLAYING', 'Start Playing')}</button>
-                <button @click=${this.handleResendEmail} class="btn s secondary" type="submit">${_('RESEND_EMAIL', 'Resend email')}</button>
+                <button @click=${this.handleResendEmail} class="btn secondary" type="submit">${_('RESEND_EMAIL', 'Resend email')}</button>
             </div>
         `;
     }

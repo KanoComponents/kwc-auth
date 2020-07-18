@@ -1,12 +1,15 @@
+import { LitElement, html, property, query } from 'lit-element/lit-element.js';
+
 import '@kano/styles/typography.js';
 import { button } from '@kano/styles/button.js';
-import { LitElement, html, property, query } from 'lit-element/lit-element.js';
-import { templateContent } from '../utils/template-content.js';
-import { styles } from '../styles.js';
-import { validateUsername, validatePassword, validateEmail } from '../utils/validation.js';
 import { _ } from '@kano/i18n/dist/index.js';
 
-interface SubmitDetails {
+import { validateUsername, validatePassword, validateEmail, validateRegion } from '../utils/validation.js';
+import { templateContent } from '../utils/template-content.js';
+import { styles } from '../styles.js';
+import * as icons from '../icons.js';
+
+export interface SubmitDetails {
     detail: EventDetail;
 }
 
@@ -72,7 +75,10 @@ export class SingleInputElement extends LitElement {
                 </div>
             </div>
             <div class="link-wrapper">
-                <a href="https://world.kano.me/privacy-policy" class="privacy" target="_blank">${_('PRIVACY_POLICY', 'Privacy Policy')}</a>
+                <div class="link-wrapper__info">
+                    <img src=${icons.kano} class="kano-logo" />
+                    <a href="https://world.kano.me/privacy-policy" class="privacy" target="_blank">${_('PRIVACY_POLICY', 'Privacy Policy')}</a>
+                </div>
                 <p ?hidden=${this.hideLogin}>${this.getLoginPromptMessage()} <a href="#" @click=${this.handleLoginClick}>${_('AUTH_LOGIN', 'Login')}</a></p>
             </div>
         </div>
@@ -126,6 +132,9 @@ export class SingleInputElement extends LitElement {
                 break;
             case 'email':
                 error = validateEmail(value);
+                break;
+            case 'region':
+                error = validateRegion(value);
                 break;
             default:
                 break;

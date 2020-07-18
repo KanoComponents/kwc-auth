@@ -19,25 +19,37 @@ export class Login extends LitElement {
                     margin: 0;
                 }
                 .header {
-                    background-color: #D95000;
+                    background-color: #E9EBEC;
                     min-height: 56px;
                     border-radius: 6px 6px 0 0;
-                    padding: 0px 20px;
+                    padding: 0px 14px;
                     text-align: center;
                     box-sizing: border-box;
                     background-repeat: no-repeat;
-                    background-position: 100% 0;
+                    background-position: calc(100% - 6px) 0px;
                     background-size: contain;
                     display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: flex-start;
+                    flex-direction: row;
+                    justify-content: flex-start;
+                    align-items: center;
+                }
+                .world-logo {
+                    width: 56px;
+                    margin-right: 12px;
                 }
                 form {
                     position: relative;
                 }
                 .header h3 {
-                    color: #fff;
+                    color: #434A50;
+                    font-size: 24px;
+                }
+                .username,
+                .password {
+                    color: #6767EC;
+                }
+                label {
+                    font-size: 14px;
                 }
                 button {
                     margin-top: 0;
@@ -58,29 +70,27 @@ export class Login extends LitElement {
                 form {
                     padding: 15px 30px;
                 }
-                .breaker {
-                    height: 1px;
-                    background-color: var(--color-porcelain);
-                    margin: 16px 0;
-                }
                 .footer {
-                    text-align: center;
+                    margin-top: 16px;
                     font-weight: bold;
                 }
                 .footer p,
                 .footer a {
-                    font-size: 16px;
+                    font-size: 14px;
+                    margin-bottom: 0;
                 }
-
                 .eye-toggle {
                     width: 16px;
                     height: 16px;
                     padding: 8px 10px;
                     cursor: pointer;
                 }
-
                 .privacy {
                     color: var(--color-grey);
+                }
+                .sign-up {
+                    display: flex;
+                    justify-content: space-between;
                 }
 
                 @media (max-width: 600px) {
@@ -133,7 +143,7 @@ export class Login extends LitElement {
     constructor() {
         super();
         // TODO: Pending design decision tweaks
-        this.loginGlyph = `url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQkAAAA4CAYAAADuOQ3YAAAACXBIWXMAAAsTAAALEwEAmpwYAAAGAGlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDUgNzkuMTYzNDk5LCAyMDE4LzA4LzEzLTE2OjQwOjIyICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxOSAoTWFjaW50b3NoKSIgeG1wOkNyZWF0ZURhdGU9IjIwMTktMDctMTdUMTE6Mzk6NDIrMDE6MDAiIHhtcDpNZXRhZGF0YURhdGU9IjIwMTktMDctMTdUMTE6Mzk6NDIrMDE6MDAiIHhtcDpNb2RpZnlEYXRlPSIyMDE5LTA3LTE3VDExOjM5OjQyKzAxOjAwIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOmQ5YmZlMmEyLWZkZDUtNDE3Ny05NjQxLWM1MTg1ODJiNzUyMyIgeG1wTU06RG9jdW1lbnRJRD0iYWRvYmU6ZG9jaWQ6cGhvdG9zaG9wOjJmOGZiOGNlLWQyZGEtZGE0YS04YTU1LWQzODYzYjBhN2IwMiIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOmVhOWRmNGFhLWZkNTktNDI1NC04YjdmLWNmZDljMGJmMzNkYiIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSI+IDx4bXBNTTpIaXN0b3J5PiA8cmRmOlNlcT4gPHJkZjpsaSBzdEV2dDphY3Rpb249ImNyZWF0ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6ZWE5ZGY0YWEtZmQ1OS00MjU0LThiN2YtY2ZkOWMwYmYzM2RiIiBzdEV2dDp3aGVuPSIyMDE5LTA3LTE3VDExOjM5OjQyKzAxOjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxOSAoTWFjaW50b3NoKSIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6ZDliZmUyYTItZmRkNS00MTc3LTk2NDEtYzUxODU4MmI3NTIzIiBzdEV2dDp3aGVuPSIyMDE5LTA3LTE3VDExOjM5OjQyKzAxOjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxOSAoTWFjaW50b3NoKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8L3JkZjpTZXE+IDwveG1wTU06SGlzdG9yeT4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7mJfEPAAAIkklEQVR42u2de4xVxR3HP8Mu7LISKlbQpFYEUh+NUDAGRAsqQdFqxbSxpmmoxBpl1qRKwBpqU2wV3RCjaf9wTFtKQ0NTUaOWlkpKKy1CfURRVFTUrosPisq6aJbH4jL948x255x7zy6PO+eeu+f3STY58zt77rn3d2a+Z+Y3L2WtJQjN6iVgQpkzG5RhOlXEahYD8z3TLmCWMryFUHis5ipgVZlTe5WhqcrfrQWYV+ZUC/fblhD3HBTw9zQcpj1LWoDX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')`;
+        this.loginGlyph = `url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjIxIiBoZWlnaHQ9IjU3IiB2aWV3Qm94PSIwIDAgMjIxIDU3IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDApIj4KPHBhdGggb3BhY2l0eT0iMC42IiBkPSJNMTMyIDEyLjlDMTMyIDcuMzAwMDEgMTM2LjYgMi43MDAwMSAxNDIuMiAyLjcwMDAxQzE0Ny44IDIuNzAwMDEgMTUyLjQgNy4zMDAwMSAxNTIuNCAxMi45QzE1Mi40IDE4LjUgMTQ3LjggMjMuMSAxNDIuMiAyMy4xQzEzNi42IDIzLjEgMTMyIDE4LjUgMTMyIDEyLjlaTTE0OS42IDEyLjlDMTQ5LjYgOC44MDAwMSAxNDYuMyA1LjUwMDAxIDE0Mi4yIDUuNTAwMDFDMTM4LjEgNS41MDAwMSAxMzQuOCA4LjgwMDAxIDEzNC44IDEyLjlDMTM0LjggMTcgMTM4LjEgMjAuMyAxNDIuMiAyMC4zQzE0Ni4zIDIwLjMgMTQ5LjYgMTcgMTQ5LjYgMTIuOVoiIGZpbGw9IiNGRjY5MDAiLz4KPHBhdGggb3BhY2l0eT0iMC42IiBkPSJNMTM4LjQgMTIuOUMxMzguNCAxMC44IDE0MC4xIDkgMTQyLjMgOUMxNDQuNCA5IDE0Ni4yIDEwLjcgMTQ2LjIgMTIuOUMxNDYuMiAxNS4xIDE0NC41IDE2LjggMTQyLjMgMTYuOEMxNDAuMSAxNi44IDEzOC40IDE1IDEzOC40IDEyLjlaTTE0My4zIDEyLjlDMTQzLjMgMTIuMyAxNDIuOCAxMS44IDE0Mi4yIDExLjhDMTQxLjYgMTEuOCAxNDEuMSAxMi4zIDE0MS4xIDEyLjlDMTQxLjEgMTMuNSAxNDEuNiAxNCAxNDIuMiAxNEMxNDIuOCAxNCAxNDMuMyAxMy41IDE0My4zIDEyLjlaIiBmaWxsPSIjRkY2OTAwIi8+CjxwYXRoIG9wYWNpdHk9IjAuNiIgZD0iTTE4OS4xIDI2LjJDMTg5LjEgMjMuMyAxOTEuNCAyMSAxOTQuMyAyMUMxOTcuMiAyMSAxOTkuNSAyMy4zIDE5OS41IDI2LjJDMTk5LjUgMjkuMSAxOTcuMiAzMS40IDE5NC4zIDMxLjRDMTkxLjQgMzEuNCAxODkuMSAyOS4xIDE4OS4xIDI2LjJaTTE5NS44IDI2LjJDMTk1LjggMjUuNCAxOTUuMiAyNC44IDE5NC40IDI0LjhDMTkzLjYgMjQuOCAxOTMgMjUuNCAxOTMgMjYuMkMxOTMgMjcgMTkzLjYgMjcuNiAxOTQuNCAyNy42QzE5NS4yIDI3LjYgMTk1LjggMjcgMTk1LjggMjYuMloiIGZpbGw9IiNGRjY5MDAiLz4KPHBhdGggb3BhY2l0eT0iMC42IiBkPSJNNjguNSAyNS40QzcwLjEgMjUuNCA3MS41IDI0LjEgNzEuNSAyMi40VjExLjVDNzEuNSA5LjkgNzAuMiA4LjUgNjguNSA4LjVDNjYuOSA4LjUgNjUuNSA5LjggNjUuNSAxMS41VjIyLjRDNjUuNSAyNC4xIDY2LjggMjUuNCA2OC41IDI1LjRaIiBmaWxsPSIjRkY2OTAwIi8+CjxnIG9wYWNpdHk9IjAuNiI+CjxwYXRoIG9wYWNpdHk9IjAuNiIgZD0iTTEyNS40IDE5LjdDMTI1LjQgMjEuNCAxMjQuMSAyMi43IDEyMi40IDIyLjdDMTIwLjcgMjIuNyAxMTkuNCAyMS40IDExOS40IDE5LjdDMTE5LjQgMTggMTIwLjcgMTYuNyAxMjIuNCAxNi43QzEyNC4xIDE2LjcgMTI1LjQgMTguMSAxMjUuNCAxOS43WiIgZmlsbD0iI0ZGNjkwMCIvPgo8L2c+CjxwYXRoIGQ9Ik0yMTQuMSAwVjQuNkMyMTQuMSA2LjIgMjE1LjQgNy42IDIxNy4xIDcuNkMyMTguOCA3LjYgMjIwLjEgNi4zIDIyMC4xIDQuNlYwSDIxNC4xWiIgZmlsbD0iIzY3NjdFQyIvPgo8cGF0aCBkPSJNMTMyIDEyLjlDMTMyIDcuMzAwMDEgMTM2LjYgMi43MDAwMSAxNDIuMiAyLjcwMDAxQzE0Ny44IDIuNzAwMDEgMTUyLjQgNy4zMDAwMSAxNTIuNCAxMi45QzE1Mi40IDE4LjUgMTQ3LjggMjMuMSAxNDIuMiAyMy4xQzEzNi42IDIzLjEgMTMyIDE4LjUgMTMyIDEyLjlaTTE0OS42IDEyLjlDMTQ5LjYgOC44MDAwMSAxNDYuMyA1LjUwMDAxIDE0Mi4yIDUuNTAwMDFDMTM4LjEgNS41MDAwMSAxMzQuOCA4LjgwMDAxIDEzNC44IDEyLjlDMTM0LjggMTcgMTM4LjEgMjAuMyAxNDIuMiAyMC4zQzE0Ni4zIDIwLjMgMTQ5LjYgMTcgMTQ5LjYgMTIuOVoiIGZpbGw9IiNGRjY5MDAiLz4KPHBhdGggZD0iTTEzOC40IDEyLjlDMTM4LjQgMTAuOCAxNDAuMSA5IDE0Mi4zIDlDMTQ0LjQgOSAxNDYuMiAxMC43IDE0Ni4yIDEyLjlDMTQ2LjIgMTUuMSAxNDQuNSAxNi44IDE0Mi4zIDE2LjhDMTQwLjEgMTYuOCAxMzguNCAxNSAxMzguNCAxMi45Wk0xNDMuMyAxMi45QzE0My4zIDEyLjMgMTQyLjggMTEuOCAxNDIuMiAxMS44QzE0MS42IDExLjggMTQxLjEgMTIuMyAxNDEuMSAxMi45QzE0MS4xIDEzLjUgMTQxLjYgMTQgMTQyLjIgMTRDMTQyLjggMTQgMTQzLjMgMTMuNSAxNDMuMyAxMi45WiIgZmlsbD0iI0ZGNjkwMCIvPgo8cGF0aCBkPSJNMTg5LjEgMjYuMkMxODkuMSAyMy4zIDE5MS40IDIxIDE5NC4zIDIxQzE5Ny4yIDIxIDE5OS41IDIzLjMgMTk5LjUgMjYuMkMxOTkuNSAyOS4xIDE5Ny4yIDMxLjQgMTk0LjMgMzEuNEMxOTEuNCAzMS40IDE4OS4xIDI5LjEgMTg5LjEgMjYuMlpNMTk1LjggMjYuMkMxOTUuOCAyNS40IDE5NS4yIDI0LjggMTk0LjQgMjQuOEMxOTMuNiAyNC44IDE5MyAyNS40IDE5MyAyNi4yQzE5MyAyNyAxOTMuNiAyNy42IDE5NC40IDI3LjZDMTk1LjIgMjcuNiAxOTUuOCAyNyAxOTUuOCAyNi4yWiIgZmlsbD0iI0ZGNjkwMCIvPgo8cGF0aCBkPSJNNjguNSAyNS40QzcwLjEgMjUuNCA3MS41IDI0LjEgNzEuNSAyMi40VjExLjVDNzEuNSA5LjkgNzAuMiA4LjUgNjguNSA4LjVDNjYuOSA4LjUgNjUuNSA5LjggNjUuNSAxMS41VjIyLjRDNjUuNSAyNC4xIDY2LjggMjUuNCA2OC41IDI1LjRaIiBmaWxsPSIjRkY2OTAwIi8+CjxwYXRoIGQ9Ik0xMjUuNCAxOS43QzEyNS40IDIxLjQgMTI0LjEgMjIuNyAxMjIuNCAyMi43QzEyMC43IDIyLjcgMTE5LjQgMjEuNCAxMTkuNCAxOS43QzExOS40IDE4IDEyMC43IDE2LjcgMTIyLjQgMTYuN0MxMjQuMSAxNi43IDEyNS40IDE4LjEgMTI1LjQgMTkuN1oiIGZpbGw9IiNGRjY5MDAiLz4KPHBhdGggZD0iTTAgMFY4LjRDMCAxMCAxLjMgMTEuNCAzIDExLjRDNC43IDExLjQgNiAxMC4xIDYgOC40VjBIMFoiIGZpbGw9IiNGRkIzMDAiLz4KPHBhdGggZD0iTTEzMiAxMi45QzEzMiA3LjMwMDAxIDEzNi42IDIuNzAwMDEgMTQyLjIgMi43MDAwMUMxNDcuOCAyLjcwMDAxIDE1Mi40IDcuMzAwMDEgMTUyLjQgMTIuOUMxNTIuNCAxOC41IDE0Ny44IDIzLjEgMTQyLjIgMjMuMUMxMzYuNiAyMy4xIDEzMiAxOC41IDEzMiAxMi45Wk0xNDkuNiAxMi45QzE0OS42IDguODAwMDEgMTQ2LjMgNS41MDAwMSAxNDIuMiA1LjUwMDAxQzEzOC4xIDUuNTAwMDEgMTM0LjggOC44MDAwMSAxMzQuOCAxMi45QzEzNC44IDE3IDEzOC4xIDIwLjMgMTQyLjIgMjAuM0MxNDYuMyAyMC4zIDE0OS42IDE3IDE0OS42IDEyLjlaIiBmaWxsPSIjRUY1Mjg1Ii8+CjxwYXRoIGQ9Ik0xMzguNCAxMi45QzEzOC40IDEwLjggMTQwLjEgOSAxNDIuMyA5QzE0NC40IDkgMTQ2LjIgMTAuNyAxNDYuMiAxMi45QzE0Ni4yIDE1LjEgMTQ0LjUgMTYuOCAxNDIuMyAxNi44QzE0MC4xIDE2LjggMTM4LjQgMTUgMTM4LjQgMTIuOVpNMTQzLjMgMTIuOUMxNDMuMyAxMi4zIDE0Mi44IDExLjggMTQyLjIgMTEuOEMxNDEuNiAxMS44IDE0MS4xIDEyLjMgMTQxLjEgMTIuOUMxNDEuMSAxMy41IDE0MS42IDE0IDE0Mi4yIDE0QzE0Mi44IDE0IDE0My4zIDEzLjUgMTQzLjMgMTIuOVoiIGZpbGw9IiNGRkIzMDAiLz4KPHBhdGggZD0iTTE4OS4xIDI2LjJDMTg5LjEgMjMuMyAxOTEuNCAyMSAxOTQuMyAyMUMxOTcuMiAyMSAxOTkuNSAyMy4zIDE5OS41IDI2LjJDMTk5LjUgMjkuMSAxOTcuMiAzMS40IDE5NC4zIDMxLjRDMTkxLjQgMzEuNCAxODkuMSAyOS4xIDE4OS4xIDI2LjJaTTE5NS44IDI2LjJDMTk1LjggMjUuNCAxOTUuMiAyNC44IDE5NC40IDI0LjhDMTkzLjYgMjQuOCAxOTMgMjUuNCAxOTMgMjYuMkMxOTMgMjcgMTkzLjYgMjcuNiAxOTQuNCAyNy42QzE5NS4yIDI3LjYgMTk1LjggMjcgMTk1LjggMjYuMloiIGZpbGw9IiNGRkIzMDAiLz4KPHBhdGggZD0iTTY4LjUgMjUuNEM3MC4xIDI1LjQgNzEuNSAyNC4xIDcxLjUgMjIuNFYxMS41QzcxLjUgOS45IDcwLjIgOC41IDY4LjUgOC41QzY2LjkgOC41IDY1LjUgOS44IDY1LjUgMTEuNVYyMi40QzY1LjUgMjQuMSA2Ni44IDI1LjQgNjguNSAyNS40WiIgZmlsbD0iI0ZGNjkwMCIvPgo8cGF0aCBkPSJNNzUuOTAwMiA0NS42QzcwLjMwMDIgNDUuNiA2NS43MDAyIDUwLjIgNjUuNzAwMiA1NS44SDY4LjUwMDJINzIuMDAwMkg3NC44MDAySDc2LjkwMDJINzkuNzAwMkg4My4yMDAySDg2LjAwMDJDODYuMTAwMiA1MC4yIDgxLjUwMDIgNDUuNiA3NS45MDAyIDQ1LjZaIiBmaWxsPSIjMDBDOUIyIi8+CjxwYXRoIGQ9Ik0yMTMuNiA1NlY1MS44QzIxMy42IDUwLjEgMjEyLjIgNDguNyAyMTAuNSA0OC43QzIwOC44IDQ4LjcgMjA3LjQgNTAuMSAyMDcuNCA1MS44VjU2SDIxMy42WiIgZmlsbD0iI0ZGNjkwMCIvPgo8cGF0aCBkPSJNMTI1LjQgMTkuN0MxMjUuNCAyMS40IDEyNC4xIDIyLjcgMTIyLjQgMjIuN0MxMjAuNyAyMi43IDExOS40IDIxLjQgMTE5LjQgMTkuN0MxMTkuNCAxOCAxMjAuNyAxNi43IDEyMi40IDE2LjdDMTI0LjEgMTYuNyAxMjUuNCAxOC4xIDEyNS40IDE5LjdaIiBmaWxsPSIjMDBDOUIyIi8+CjxwYXRoIGQ9Ik0xNzUuNSAwVjYuNUMxNzUuNSA4LjEgMTc2LjggOS41IDE3OC41IDkuNUMxODAuMSA5LjUgMTgxLjUgOC4yIDE4MS41IDYuNVYwSDE3NS41WiIgZmlsbD0iI0ZGNjkwMCIvPgo8cGF0aCBkPSJNNDMuNjAwNCAxMi45QzQ1LjIwMDQgMTEuMyA0Ni4xMDA0IDkuMSA0Ni4xMDA0IDYuOEM0Ni4xMDA0IDQuNSA0NS4yMDA0IDIuMyA0My42MDA0IDAuN0w0My4wMDA0IDBIMzguODAwNEMzOS4yMDA0IDAuOCAzOS43MDA0IDEuNSA0MC40MDA0IDIuMkw0MS4zMDA0IDMuMUM0Mi4zMDA0IDQuMSA0Mi44MDA0IDUuNCA0Mi44MDA0IDYuOEM0Mi44MDA0IDguMiA0Mi4zMDA0IDkuNSA0MS4zMDA0IDEwLjVMNDAuOTAwNCAxMC45QzM5LjMwMDQgMTIuNSAzOC40MDA0IDE0LjcgMzguNDAwNCAxN0MzOC40MDA0IDE5LjMgMzkuMzAwNCAyMS41IDQwLjkwMDQgMjMuMUM0MS42MDA0IDIzLjggNDIuNjAwNCAyMy44IDQzLjMwMDQgMjMuMUM0NC4wMDA0IDIyLjQgNDQuMDAwNCAyMS40IDQzLjMwMDQgMjAuN0M0Mi4zMDA0IDE5LjcgNDEuODAwNCAxOC40IDQxLjgwMDQgMTdDNDEuODAwNCAxNS42IDQyLjMwMDQgMTQuMyA0My4zMDA0IDEzLjNMNDMuNjAwNCAxMi45WiIgZmlsbD0iIzY3NjdFQyIvPgo8cGF0aCBkPSJNMTQ1LjIgNTZWNTAuOVY0MS40QzE0NS4yIDM5LjggMTQzLjkgMzguNSAxNDIuMyAzOC41QzE0MC43IDM4LjUgMTM5LjQgMzkuOCAxMzkuNCA0MS40VjUwLjlWNTZIMTQ1LjJaIiBmaWxsPSIjNjc2N0VDIi8+CjxwYXRoIGQ9Ik0xNzYuNSA1Mi4xQzE3Ni41IDUzLjUgMTc2IDU0LjggMTc1IDU1LjhMMTc0LjkgNTUuOUgxNzkuMUMxNzkuNyA1NC43IDE4MCA1My40IDE4MCA1Mi4xQzE4MCA0OS44IDE3OS4xIDQ3LjYgMTc3LjUgNDZDMTc2LjggNDUuMyAxNzUuOCA0NS4zIDE3NS4xIDQ2QzE3NC40IDQ2LjcgMTc0LjQgNDcuNyAxNzUuMSA0OC40QzE3NiA0OS40IDE3Ni41IDUwLjcgMTc2LjUgNTIuMVoiIGZpbGw9IiMwMEM5QjIiLz4KPHBhdGggZD0iTTExNy45IDU2VjM2LjVDMTE3LjkgMzQuOSAxMTYuNiAzMy41IDExNC45IDMzLjVDMTEzLjMgMzMuNSAxMTEuOSAzNC44IDExMS45IDM2LjVWNTZIMTE3LjlaIiBmaWxsPSIjRkY2OTAwIi8+CjxwYXRoIGQ9Ik0zNiA1Ni4xVjQ0LjNDMzYgNDIuNyAzNC43IDQxLjMgMzMgNDEuM0MzMS40IDQxLjMgMzAgNDIuNiAzMCA0NC4zVjU2LjFIMzZaIiBmaWxsPSIjRkY2OTAwIi8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDAiPgo8cmVjdCB3aWR0aD0iMjIwLjEiIGhlaWdodD0iNTYuMSIgZmlsbD0id2hpdGUiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K')`;
     }
 
     render() {
@@ -142,14 +152,15 @@ export class Login extends LitElement {
         <div>
             <div class="header"
                 style="background-image:${this.loginGlyph}">
-                <h3>${_('LOGIN_TO_YOUR_ACCOUNT', 'Login to your account')}</h3>
+                <img src=${icons.world} class="world-logo" />
+                <h3>${_('LOGIN', 'Login')}</h3>
                 ${this.renderClose()}
             </div>
             <form @submit=${this._submit}>
                 <div class="input-wrapper">
-                <label for="username">${_('USERNAME', 'Username')}</label>
+                    <label class="username" for="username">${_('USERNAME', 'Username')}</label>
                     <input type="text" id="username" placeholder=${_('YOUR_KANO_USERNAME', 'Enter your Kano username')} ?disabled=${this.disabled} />
-                    <label for="password">${_('PASSWORD', 'Password')}</label>
+                    <label class="password" for="password">${_('PASSWORD', 'Password')}</label>
                     <div class="input-wrapper">
                         <input type=${this.showPassword ? 'text' : 'password'} id="password" placeholder=${_('YOUR_SUPER_SECRET_PASSWORD', 'Enter your secret password')} ?disabled=${this.disabled} />
                         <img src=${icons.eye} class="eye-toggle" id="eyeimage" style="opacity: ${this.showPassword ? '1' : '0.5'}" @click=${() => this.togglePassword()} />
@@ -159,14 +170,16 @@ export class Login extends LitElement {
                     <button class="btn l" type="submit" ?disabled=${this.disabled}>${_('LOGIN', 'Login')}</button>
                     <div class="error-message">${this.error}</div>
                 </div>
-                <div class="breaker"></div>
                 <div class="footer">
                     <p class="color-grey">${_('FORGOT_YOUR', 'Forgot your')} 
                         <a @click=${(e: Event) => this._changeView(e, 'forgot-username')} href="">${_('USERNAME_LOWERCASE', 'username')}</a> ${_('OR', 'or')} 
                         <a @click=${(e: Event) => this._changeView(e, 'forgot-password')} href="">${_('PASSWORD_LOWERCASE', 'password')}</a>${_('QUESTION_MARK', '?')}
                     </p>
-                    <p class="color-grey">${_('NO_ACCOUNT', 'No account?')} 
-                        <a @click=${(e: Event) => this._changeView(e, 'username')} href="">${_('SIGN_UP', 'Sign up')}</a>!&nbsp;
+                    <p class="color-grey sign-up">
+                        <span>
+                            ${_('NO_ACCOUNT', 'No account?')} 
+                            <a @click=${(e: Event) => this._changeView(e, 'username')} href="">${_('SIGN_UP', 'Sign up')}</a>!&nbsp;
+                        </span>
                         <a href="https://world.kano.me/privacy-policy" class="privacy" target="_blank">${_('PRIVACY_POLICY', 'Privacy Policy')}</a>
                     </p>
                 </div> 
@@ -203,6 +216,7 @@ export class Login extends LitElement {
     }
 
     togglePassword() {
+        console.log(this.showPassword);
         this.showPassword = !this.showPassword;
     }
     

@@ -17,19 +17,23 @@ export class PasswordInput extends SingleInputElement {
 
     inputTemplate() {
         return html`
-            <h3>${_('WELCOME_TO_KANO', 'Welcome to Kano')} ${this.username}!</h3>
-            <h4>${_('SETUP_YOUR_PASSWORD', 'Setup a password for your account to make it secure. Your password must be at least 8 characters')}</h4>
+            <p class="intro">${_('WELCOME_TO_KANO', 'Welcome to Kano')}</p>
+            <h1 class="password__username">${this.username}</h1>
+            <div class="breaker"></div>
+            <h4 class="instruction">${_('SETUP_YOUR_PASSWORD', 'Setup a password for your account to make it secure. Your password must be at least 8 characters')}</h4>
             <div class="input-wrapper">
+                <p class="input-title">${_('CREATE_A_PASSWORD', 'Create a password')}</p>
                 <div class="input-wrapper">
                     <input
                         @blur="${() => this.validateInput(this.id, this.value)}"
                         @keydown="${(e: KeyboardEvent) => this.handleKeydown(e)}"
-                        type="password"
+                        type=${this.showPassword ? 'text' : 'password'}
                         id="input"
+                        class="password__input"
                         placeholder=${_('MAKE_UP_PASSWORD', 'Make up a secret password')} />
                     <img
                         src=${icons.eye} class="eye-toggle" id="eyeimage" style="opacity: ${this.showPassword ? '1' : '0.5'}"
-                        @click="${this.togglePassword}"/>
+                        @click="${() => this.togglePassword()}"/>
                     </div>
             </div>
             <div class="error">${this.error}</div>
@@ -37,6 +41,7 @@ export class PasswordInput extends SingleInputElement {
     }
 
     togglePassword() {
+        console.log(this.showPassword);
         this.showPassword = !this.showPassword;
     }
 }
