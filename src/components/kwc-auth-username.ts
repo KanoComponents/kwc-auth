@@ -1,8 +1,10 @@
 import { html, customElement, query, property, css } from 'lit-element/lit-element.js';
+
+import { _ } from '@kano/i18n/dist/index.js';
+
 import { SingleInputElement } from './auth-single-form.js'
 import { generateVerb, generateNoun } from './names.js';
 import { styles } from '../styles.js';
-import { _ } from '@kano/i18n/dist/index.js';
 
 @customElement('kwc-auth-username')
 export class UsernameInput extends SingleInputElement {    
@@ -22,19 +24,31 @@ export class UsernameInput extends SingleInputElement {
             styles,
             css`
                 .instruction {
-                    padding: 0 10px 16px;
+                    padding: 0 10px 0;
+                    margin: 6px 0 20px;
+                }
+                .intro {
+                    color: var(--color-kano-orange);
+                    font-size: 18px;
                 }
                 p {
                     font-weight: bold;
                     font-size: 14px;
+                    color: #6767EC;
                     padding: 0 10px 8px;
+                }
+                .username-generator {
+                    padding: 0 10px 8px 2px;
                 }
                 input {
                     height: 48px;
                     margin-bottom: 11px;
                 }
+                #input {
+                    font-size: 18px;
+                }
                 .generator-wrapper {
-                    padding: 18px 20px 15px;
+                    padding: 15px 16px;
                     border: 1px solid var(--color-porcelain);
                     border-radius: 9px;
                 }
@@ -70,18 +84,20 @@ export class UsernameInput extends SingleInputElement {
                     margin-right: 0;
                 }
                 .generate {
-                    background-color: var(--color-grey);
-                    opacity: 0.8;
+                    background-color: #6767EC;
                     align-self: center;
                     padding: 10px;
                     height: initial;
                     line-height: initial;
                     margin: 0 14px;
                     border-radius: 6px;
+                    transition: 300ms ease;
+                }
+                .generate:focus {
+                    background-color: #6767EC;
                 }
                 .generate:hover {
-                    background-color: var(--color-grey);
-                    opacity: 1;
+                    background-color: #3a3ae6;
                 }
                 .generate svg {
                     width: 20px;
@@ -177,10 +193,11 @@ export class UsernameInput extends SingleInputElement {
     inputTemplate() {
         super.inputTemplate()
         return html`
+            <p class="intro">${_('LETS_GET_STARTED', 'Let\'s get started')}</p>
             <h3 class="instruction">${_('MAKE_UP_USERNAME', 'Pick a username from the list of generated names, or create your own. Don’t use your real name or a name you used on other websites.')}</h3>
             <div class="input-wrapper">
-                <p>${_('USERNAME_GENERATOR', 'Username generator')}</p>
                 <div class="generator-wrapper">
+                    <p class="username-generator">${_('USERNAME_GENERATOR', 'Username generator')}</p>
                     <input
                         ?disabled=${this.disabled}
                         @blur="${() => this.validateInput(this.id, this.value)}"
@@ -199,7 +216,7 @@ export class UsernameInput extends SingleInputElement {
         return html`
             <div class="generator">
                 <div class="names">
-                    <button class="btn secondary generate" @click=${this.generateNames}>
+                    <button class="btn generate" @click=${this.generateNames}>
                         ${this.generateIcon}
                     </button>
                     <div id="name__first" class="name">

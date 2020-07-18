@@ -35,6 +35,7 @@ interface Form {
     username: string;
     password: string;
     email: string;
+    region: 'row' | 'usa' | 'jpn' | 'eur' | '';
 }
 
 @customElement('kwc-auth')
@@ -51,6 +52,7 @@ export class KwcAuth extends LitElement {
         username: '',
         password: '',
         email: '',
+        region: '',
     };
 
     static get styles() {
@@ -228,6 +230,7 @@ export class KwcAuth extends LitElement {
     }
     handleRegister(e: CustomEvent) {
         this.form.email = e.detail.payload.email;
+        this.form.region = e.detail.payload.region;
         this.dispatchEvent(new CustomEvent('register', {
             detail: {
                 form: this.form,

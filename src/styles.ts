@@ -124,7 +124,7 @@ label {
 }
 
 .error {
-    color: red;
+    color: var(--color-kano-orange);
     font-size: 14px;
     position: absolute;
     bottom: 10px;
@@ -155,8 +155,9 @@ label {
 
 .link-wrapper p {
     font-weight: bold;
-    font-size: 16px;
+    font-size: 14px;
     padding: 0;
+    color: var(--color-grey);
 }
 
 .link-wrapper {
@@ -166,10 +167,16 @@ label {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin: 16px 0 0;
-    border-top: 1px solid #E9EBEC;
+    margin: 16px 0 6px;
     height: 32px;
-    font-size: 16px;
+    font-size: 14px;
+}
+.link-wrapper__info {
+    display: flex;
+    align-items: center;
+}
+.link-wrapper__info img {
+    margin-right: 14px;
 }
 
 [hidden] {
@@ -178,6 +185,37 @@ label {
 
 .privacy-wrapper {
     text-align: center;
+}
+
+.intro {
+    font-weight: bold;
+    font-size: 18px;
+    color: var(--color-kano-orange);
+}
+.password__username {
+    font-size: 40px;
+    color: #6767EC;
+    margin: 8px 0 1px;
+    max-width: 420px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.password__input {
+    margin: 6px 0 0;
+}
+.breaker {
+    height: 1px;
+    background-color: #C4C4C4;
+    border-radius: 6px;
+}
+.instruction {
+    font-size: 20px;
+    margin: 14px 0 20px;
+}
+.input-title {
+    font-weight: bold;
+    font-size: 14px;
+    color: #6767EC;
 }
 
 .header {
