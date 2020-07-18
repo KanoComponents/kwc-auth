@@ -2,7 +2,6 @@
 import { PasswordInput } from  './kwc-auth-password';
 import { AuthTestUtil } from '../test/util.js';
 
-
 const password = fixture<PasswordInput>`
     <kwc-auth-password></kwc-auth-password>
 `;

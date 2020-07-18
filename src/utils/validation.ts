@@ -9,6 +9,16 @@ export const validateUsername = (username : string) => {
     return errorUsername;
 };
 
+export const validateForgotPassword = (username : string) => {
+    let errorUsername = null;
+
+    if (!username || username.length === 0) { 
+        errorUsername = 'Username is required.';
+    }
+    return errorUsername;
+};
+
+
 export const validatePassword = (password : string) => {
     let errorPassword = null;
 

@@ -249,9 +249,8 @@ export class AuthView extends LitElement {
     }
     headerTemplate() {
         const { id } = this.view;
-        const privacyHeader = _('UPDATED_PRIVACY_SETTINGS', 'We\'ve updated our privacy settings');
+        const privacyHeader = _('UPDATED_PRIVACY_SETTINGS', 'We’ve updated our privacy settings');
         const signupHeader = _('SIGNUP', 'Signup');
-
 
         let header = html``;
         switch(id) {
@@ -272,6 +271,15 @@ export class AuthView extends LitElement {
                 break;
             case 'success':
                 header = this.headerContentTemplate(_('WELCOME_TO_KANO', 'Welcome to Kano'));
+                break;
+            case 'forgot-username':
+                header = this.headerContentTemplate(signupHeader);
+                break;
+            case 'forgot-password':
+                header = this.headerContentTemplate(signupHeader);
+                break;
+            case 'forgot-email':
+                header = this.headerContentTemplate(signupHeader);
                 break;
             default:
                 break;

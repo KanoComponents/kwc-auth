@@ -86,7 +86,10 @@ export class EmailInput extends SingleInputElement {
 
     handleClick(e: Event) {
         e.preventDefault();
-        if (!this.validateInput(this.id, this.value) || !this.validateInput('region', this.selectedRegion)) {
+        if (!this.validateInput(this.id, this.value)) {
+            return;
+        }
+        if (!this.hideLogin && !this.validateInput('region', this.selectedRegion)) {
             return;
         }
         const event: SubmitDetails = {
@@ -138,8 +141,10 @@ export class EmailInput extends SingleInputElement {
                     class="input"
                     type="email"
                     placeholder=${_('EXAMPLE_EMAIL', 'name@email.com')} />
-                <p class="input-title">${_('CREATE_A_PASSWORD', 'What region are you in?')}</p>
-                ${this.renderRegions()}
+                <div ?hidden=${this.hideLogin}>
+                    <p class="input-title">${_('CREATE_A_PASSWORD', 'What region are you in?')}</p>
+                    ${this.renderRegions()}
+                </div>
             </div>
         `;
     }

@@ -1,9 +1,11 @@
+import { LitElement, css, customElement, html, query, property } from 'lit-element/lit-element.js';
+
 import '@kano/styles/typography.js';
 import { button } from '@kano/styles/button.js';
-import { LitElement, css, customElement, html, query, property } from 'lit-element/lit-element.js';
+import { _ } from '@kano/i18n/dist/index.js';
+
 import { templateContent } from '../utils/template-content.js';
 import { styles } from '../styles.js';
-import { _ } from '@kano/i18n/dist/index.js';
 import * as icons from '../icons.js';
 
 @customElement('kwc-auth-login')
@@ -173,7 +175,7 @@ export class Login extends LitElement {
                 </div>
                 <div class="footer">
                     <p class="color-grey">${_('FORGOT_YOUR', 'Forgot your')} 
-                        <a @click=${(e: Event) => this._changeView(e, 'forgot-username')} href="">${_('USERNAME_LOWERCASE', 'username')}</a> ${_('OR', 'or')} 
+                        <a @click=${(e: Event) => this._changeView(e, 'update-email')} href="">${_('USERNAME_LOWERCASE', 'username')}</a> ${_('OR', 'or')} 
                         <a @click=${(e: Event) => this._changeView(e, 'forgot-password')} href="">${_('PASSWORD_LOWERCASE', 'password')}</a>${_('QUESTION_MARK', '?')}
                     </p>
                     <p class="color-grey sign-up">

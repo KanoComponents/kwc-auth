@@ -70,7 +70,7 @@ suite('kwc-auth-example', () => {
             assert.exists(content)
         })
 
-        test('function returns null if backButton data doesn\'t exist', () => {
+        test('function returns null if backButton data doesn’t exist', () => {
             element.view.backButton = undefined;
             const el = element.backButtonTemplate();
             assert.notExists(el);
