@@ -100,7 +100,6 @@ export class EmailInput extends SingleInputElement {
 
     updateRegion(region: string) {
         this.selectedRegion = region;
-        console.log(this.selectedRegion);
     }
 
     renderRegion(el: { name: string, value: string }) {
@@ -122,7 +121,6 @@ export class EmailInput extends SingleInputElement {
     }
 
     inputTemplate() {
-        console.log('value-in-email', this.value);
         return html`
             <p class="intro">${_('AUTH_WHAT_EMAIL', 'What’s your parent’s email address?')}</p>
             <h4 class="instruction">${_('AUTH_GIVE_VALID_EMAIL', 'All Kano accounts need a valid parent email address to share and view creations on Kano World.')}</h4>

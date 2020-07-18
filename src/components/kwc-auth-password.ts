@@ -41,7 +41,6 @@ export class PasswordInput extends SingleInputElement {
     }
 
     togglePassword() {
-        console.log(this.showPassword);
         this.showPassword = !this.showPassword;
     }
 }

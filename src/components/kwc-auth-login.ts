@@ -216,7 +216,6 @@ export class Login extends LitElement {
     }
 
     togglePassword() {
-        console.log(this.showPassword);
         this.showPassword = !this.showPassword;
     }
     
