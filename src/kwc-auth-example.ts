@@ -124,7 +124,7 @@ export class AuthView extends LitElement {
             }
             .page-content {
                 height: calc(100vh - 56px);
-                padding-top: 26px;
+                padding-top: 20px;
                 box-sizing: border-box;
             }
             .login-page {

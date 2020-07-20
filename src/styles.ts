@@ -209,7 +209,7 @@ label {
 }
 .instruction {
     font-size: 20px;
-    margin: 14px 0 20px;
+    margin: 6px 0px 16px;
 }
 .input-title {
     font-weight: bold;
