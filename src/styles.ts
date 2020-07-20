@@ -166,7 +166,7 @@ label {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin: 16px 0 8px;
+    margin: 16px 0 12px;
     height: 32px;
     font-size: 14px;
 }
