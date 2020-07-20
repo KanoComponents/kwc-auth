@@ -132,7 +132,7 @@ export class EmailInput extends SingleInputElement {
             <p class="intro">${_('AUTH_WHAT_EMAIL', 'What’s your parent’s email address?')}</p>
             <h4 class="instruction">${_('AUTH_GIVE_VALID_EMAIL', 'All Kano accounts need a valid parent email address to share and view creations on Kano World.')}</h4>
             <div class="input-wrapper">
-                <p class="input-title">${_('CREATE_A_PASSWORD', 'Parent’s email address')}</p>
+                <p class="input-title">${_('AUTH_PARENT_EMAIL', 'Parent’s email address')}</p>
                 <input
                     ?disabled=${this.disabled}
                     @blur="${() => this.validateInput(this.id, this.value)}"
@@ -142,7 +142,7 @@ export class EmailInput extends SingleInputElement {
                     type="email"
                     placeholder=${_('EXAMPLE_EMAIL', 'name@email.com')} />
                 <div ?hidden=${this.hideLogin}>
-                    <p class="input-title">${_('CREATE_A_PASSWORD', 'What region are you in?')}</p>
+                    <p class="input-title">${_('WHAT_REGION_ARE_YOU_IN', 'What region are you in?')}</p>
                     ${this.renderRegions()}
                 </div>
             </div>
