@@ -20,6 +20,11 @@ export class Login extends LitElement {
                     padding: 0;
                     margin: 0;
                 }
+                .login__wrapper {
+                    height: inherit;
+                    display: flex;
+                    flex-direction: column;
+                }
                 .header {
                     background-color: #E9EBEC;
                     min-height: 56px;
@@ -72,10 +77,14 @@ export class Login extends LitElement {
                 }
                 form {
                     padding: 15px 30px;
+                    display: flex;
+                    flex-direction: column;
+                    flex-grow: 1;
                 }
                 .footer {
-                    margin-top: 16px;
+                    margin-top: auto;
                     font-weight: bold;
+                    padding-top: 16px;
                 }
                 .footer p,
                 .footer a {
@@ -152,7 +161,7 @@ export class Login extends LitElement {
     render() {
         return html`
          ${templateContent(button)}
-        <div>
+        <div class="login__wrapper">
             <div class="header"
                 style="background-image:${this.loginGlyph}">
                 <img src=${icons.world} class="world-logo" />
