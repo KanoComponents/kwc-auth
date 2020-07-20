@@ -25,11 +25,10 @@ export class UsernameInput extends SingleInputElement {
             css`
                 .instruction {
                     padding: 0 10px 0;
-                    margin: 6px 0 20px;
+                    margin: 6px 0 16px;
                 }
                 .intro {
-                    color: var(--color-kano-orange);
-                    font-size: 18px;
+                    padding: 0 10px 2px;
                 }
                 p {
                     font-weight: bold;
@@ -42,13 +41,13 @@ export class UsernameInput extends SingleInputElement {
                 }
                 input {
                     height: 48px;
-                    margin-bottom: 11px;
+                    margin-bottom: 4px;
                 }
                 #input {
                     font-size: 18px;
                 }
                 .generator-wrapper {
-                    padding: 15px 16px;
+                    padding: 11px 12px 6px;
                     border: 1px solid var(--color-porcelain);
                     border-radius: 9px;
                 }
