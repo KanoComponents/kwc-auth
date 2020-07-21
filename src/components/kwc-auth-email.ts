@@ -11,16 +11,16 @@ import { SingleInputElement, SubmitDetails } from './auth-single-form.js';
 export class EmailInput extends SingleInputElement {
     @property({ type: String }) selectedRegion = '';
     @property({ type: Array }) regions = [{
-            name: 'United States',
+            name: _('UNITED_STATES', 'United States'),
             value: 'usa'
         }, {
-            name: 'Japan',
+            name: _('JAPAN', 'Japan'),
             value: 'jpn'
         }, {
-            name: 'Europe',
+            name: _('EUROPE', 'Europe'),
             value: 'eur'
         }, {
-            name: 'Other',
+            name: _('OTHER', 'Other'),
             value: 'row'
         }];
 
