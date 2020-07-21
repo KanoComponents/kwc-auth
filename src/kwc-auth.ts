@@ -44,6 +44,7 @@ export class KwcAuth extends LitElement {
     @property({ type: Boolean }) loading = false;
     @property({ type: Boolean }) hideLogin = true;
     @property({ type: String }) view = '';
+    @property({ type: String }) locale = '';
     @property({ type: String }) logo = 'kano';
     @property({ type: String }) backgroundGlyph = 'shapesGlyph';
     @property({ type: Boolean }) allowExit = false;
@@ -118,6 +119,7 @@ export class KwcAuth extends LitElement {
                     <kwc-auth-username
                         .disabled=${this.loading}
                         .allowExit=${this.allowExit}
+                        .locale=${this.locale}
                         @submit=${this.handleUsernameSubmit}
                         @exit=${this.handleExit}
                     ></kwc-auth-username>
@@ -127,6 +129,7 @@ export class KwcAuth extends LitElement {
                     <kwc-auth-username
                         .hideLogin=${this.hideLogin}
                         .disabled=${this.loading}
+                        .locale=${this.locale}
                         @submit=${this.handleUpdateUsername}
                     ></kwc-auth-username>
             `;
@@ -135,6 +138,7 @@ export class KwcAuth extends LitElement {
                     <kwc-auth-password
                         .username=${this.form.username}
                         .disabled=${this.loading}
+                        .locale=${this.locale}
                         @submit=${this.handlePasswordSubmit}
                     ></kwc-auth-password>
             `;
@@ -142,6 +146,7 @@ export class KwcAuth extends LitElement {
                 return html`
                     <kwc-auth-email
                         .disabled=${this.loading}
+                        .locale=${this.locale}
                         @submit=${this.handleRegister}
                     ></kwc-auth-email>
             `;
@@ -150,6 +155,7 @@ export class KwcAuth extends LitElement {
                     <kwc-auth-email
                         .hideLogin=${this.hideLogin}
                         .disabled=${this.loading}
+                        .locale=${this.locale}
                         @submit=${this.handleUpdateEmail}
                     ></kwc-auth-email>
             `;
@@ -157,6 +163,7 @@ export class KwcAuth extends LitElement {
                 return html`
                     <kwc-auth-forgot-email
                         .disabled=${this.loading}
+                        .locale=${this.locale}
                         @submit=${this.handleForgotEmail}
                     ></kwc-auth-forgot-email>                                                              
                     `; 
@@ -164,6 +171,7 @@ export class KwcAuth extends LitElement {
                 return html`
                     <kwc-auth-forgot-password
                         .disabled=${this.loading}
+                        .locale=${this.locale}
                         @submit=${this.handleForgotPassword}
                     ></kwc-auth-forgot-password>                                                              
                     `; 
@@ -171,12 +179,14 @@ export class KwcAuth extends LitElement {
                 return html`
                     <kwc-auth-forgot-username
                         .disabled=${this.loading}
+                        .locale=${this.locale}
                         @submit=${this.handleForgotUsername}
                     ></kwc-auth-forgot-username>                                                              
                     `; 
             case 'success':
                 return html`
                     <kwc-auth-successful-signup
+                        .locale=${this.locale}
                         @submit=${this.handleFinishedFlow}
                         @resend-email=${this.handleResendEmail}
                     ></kwc-auth-successful-signup>                                                              
@@ -186,6 +196,7 @@ export class KwcAuth extends LitElement {
                     <kwc-auth-login
                         .disabled=${this.loading}
                         .logo=${this.logo}
+                        .locale=${this.locale}
                         @submit=${this.handleLogin}
                         @changeView=${this.changeView}
                     ></kwc-auth-login>

@@ -42,6 +42,7 @@ export class AuthView extends LitElement {
     public allowExit : boolean = false;
 
     public actions? : IActions;
+    public locale? : string;
 
     set flowDefinition(value : IViewDefinition[]) {
         if (this.flowDefinition) {
@@ -342,6 +343,7 @@ export class AuthView extends LitElement {
                         <div class="login-page__container">
                             <kwc-auth
                             .view='${this.view.id}'
+                            .locale='${this.locale}'
                             @changeView=${this.handleChangeView}
                             @login=${this.handleLogin}
                             ></kwc-auth>
@@ -354,6 +356,7 @@ export class AuthView extends LitElement {
                     <div class="page-content page-content--${this.view.id}">
                         <kwc-auth 
                             .view='${this.view.id}'
+                            .locale='${this.locale}'
                             .allowExit=${this.allowExit}
                             @changeView=${this.handleChangeView}
                             @submit-username=${this.handleSubmitUsername}
