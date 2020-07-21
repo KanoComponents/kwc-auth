@@ -84,11 +84,17 @@ export class Login extends LitElement {
                 .footer {
                     margin-top: auto;
                     font-weight: bold;
+                    font-size: 14px;
                     padding-top: 16px;
+                }
+                .footer * {
+                    font-size: inherit;
+                }
+                .footer--ja {
+                    font-size: 12px;
                 }
                 .footer p,
                 .footer a {
-                    font-size: 14px;
                     margin-bottom: 0;
                 }
                 .eye-toggle {
@@ -99,6 +105,9 @@ export class Login extends LitElement {
                 }
                 .privacy {
                     color: var(--color-grey);
+                }
+                .footer--ja .sign-up * {
+                    font-size: 11px;
                 }
                 .sign-up {
                     display: flex;
@@ -162,33 +171,37 @@ export class Login extends LitElement {
     renderFooter() {
         if (this.locale === 'ja-JP') {
             return html`
-                <p class="color-grey">
-                    <a @click=${(e: Event) => this._changeView(e, 'forgot-username')} href="">${_('USERNAME_LOWERCASE', 'username')}</a> ${_('OR', 'or')} 
-                    <a @click=${(e: Event) => this._changeView(e, 'forgot-password')} href="">${_('PASSWORD_LOWERCASE', 'password')}</a>
-                    ${_('FORGOT_YOUR', 'Forgot your')}${_('QUESTION_MARK', '?')}
-                </p>
-                <p class="color-grey sign-up">
-                    <span>
-                        <a @click=${(e: Event) => this._changeView(e, 'username')} href="">${_('SIGN_UP', 'Sign up')}</a>
-                        ${_('NO_ACCOUNT', 'No account?')}
-                    </span>
-                    <a href="https://world.kano.me/privacy-policy" class="privacy" target="_blank">${_('PRIVACY_POLICY', 'Privacy Policy')}</a>
-                </p>
+                <div class="footer footer--ja">
+                    <p class="color-grey">
+                        <a @click=${(e: Event) => this._changeView(e, 'forgot-username')} href="">${_('USERNAME_LOWERCASE', 'username')}</a> ${_('OR', 'or')} 
+                        <a @click=${(e: Event) => this._changeView(e, 'forgot-password')} href="">${_('PASSWORD_LOWERCASE', 'password')}</a>
+                        ${_('FORGOT_YOUR', 'Forgot your')}${_('QUESTION_MARK', '?')}
+                    </p>
+                    <p class="color-grey sign-up">
+                        <span>
+                            <a @click=${(e: Event) => this._changeView(e, 'username')} href="">${_('SIGN_UP', 'Sign up')}</a>
+                            ${_('NO_ACCOUNT', 'No account?')}
+                        </span>
+                        <a href="https://world.kano.me/privacy-policy" class="privacy" target="_blank">${_('PRIVACY_POLICY', 'Privacy Policy')}</a>
+                    </p>
+                </div>
         `
         } else {
             return html`
-                <p class="color-grey">
-                    ${_('FORGOT_YOUR', 'Forgot your')} 
-                    <a @click=${(e: Event) => this._changeView(e, 'forgot-username')} href="">${_('USERNAME_LOWERCASE', 'username')}</a> ${_('OR', 'or')} 
-                    <a @click=${(e: Event) => this._changeView(e, 'forgot-password')} href="">${_('PASSWORD_LOWERCASE', 'password')}</a>${_('QUESTION_MARK', '?')}
-                </p>
-                <p class="color-grey sign-up">
-                    <span>
-                        ${_('NO_ACCOUNT', 'No account?')} 
-                        <a @click=${(e: Event) => this._changeView(e, 'username')} href="">${_('SIGN_UP', 'Sign up')}</a>!&nbsp;
-                    </span>
-                    <a href="https://world.kano.me/privacy-policy" class="privacy" target="_blank">${_('PRIVACY_POLICY', 'Privacy Policy')}</a>
-                </p>
+                <div class="footer">
+                    <p class="color-grey">
+                        ${_('FORGOT_YOUR', 'Forgot your')} 
+                        <a @click=${(e: Event) => this._changeView(e, 'forgot-username')} href="">${_('USERNAME_LOWERCASE', 'username')}</a> ${_('OR', 'or')} 
+                        <a @click=${(e: Event) => this._changeView(e, 'forgot-password')} href="">${_('PASSWORD_LOWERCASE', 'password')}</a>${_('QUESTION_MARK', '?')}
+                    </p>
+                    <p class="color-grey sign-up">
+                        <span>
+                            ${_('NO_ACCOUNT', 'No account?')} 
+                            <a @click=${(e: Event) => this._changeView(e, 'username')} href="">${_('SIGN_UP', 'Sign up')}</a>!&nbsp;
+                        </span>
+                        <a href="https://world.kano.me/privacy-policy" class="privacy" target="_blank">${_('PRIVACY_POLICY', 'Privacy Policy')}</a>
+                    </p>
+                </div>
             `
         }
     }
@@ -217,9 +230,7 @@ export class Login extends LitElement {
                     <button class="btn l" type="submit" ?disabled=${this.disabled}>${_('LOGIN', 'Login')}</button>
                     <div class="error-message">${this.error}</div>
                 </div>
-                <div class="footer">
-                    ${this.renderFooter()}
-                </div> 
+                ${this.renderFooter()} 
             </form>
         </div>
     `;
