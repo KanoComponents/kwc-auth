@@ -119,6 +119,7 @@ export class Login extends LitElement {
 
     @property({type: String}) error = '';
     @property({ type: Boolean }) disabled = false;
+    @property({ type: String }) locale = '';
     @property({ type: String }) logo = '';
     @property({ type: String }) loginGlyph: string;
     
@@ -158,6 +159,40 @@ export class Login extends LitElement {
         this.loginGlyph = `url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjIxIiBoZWlnaHQ9IjU3IiB2aWV3Qm94PSIwIDAgMjIxIDU3IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDApIj4KPHBhdGggb3BhY2l0eT0iMC42IiBkPSJNMTMyIDEyLjlDMTMyIDcuMzAwMDEgMTM2LjYgMi43MDAwMSAxNDIuMiAyLjcwMDAxQzE0Ny44IDIuNzAwMDEgMTUyLjQgNy4zMDAwMSAxNTIuNCAxMi45QzE1Mi40IDE4LjUgMTQ3LjggMjMuMSAxNDIuMiAyMy4xQzEzNi42IDIzLjEgMTMyIDE4LjUgMTMyIDEyLjlaTTE0OS42IDEyLjlDMTQ5LjYgOC44MDAwMSAxNDYuMyA1LjUwMDAxIDE0Mi4yIDUuNTAwMDFDMTM4LjEgNS41MDAwMSAxMzQuOCA4LjgwMDAxIDEzNC44IDEyLjlDMTM0LjggMTcgMTM4LjEgMjAuMyAxNDIuMiAyMC4zQzE0Ni4zIDIwLjMgMTQ5LjYgMTcgMTQ5LjYgMTIuOVoiIGZpbGw9IiNGRjY5MDAiLz4KPHBhdGggb3BhY2l0eT0iMC42IiBkPSJNMTM4LjQgMTIuOUMxMzguNCAxMC44IDE0MC4xIDkgMTQyLjMgOUMxNDQuNCA5IDE0Ni4yIDEwLjcgMTQ2LjIgMTIuOUMxNDYuMiAxNS4xIDE0NC41IDE2LjggMTQyLjMgMTYuOEMxNDAuMSAxNi44IDEzOC40IDE1IDEzOC40IDEyLjlaTTE0My4zIDEyLjlDMTQzLjMgMTIuMyAxNDIuOCAxMS44IDE0Mi4yIDExLjhDMTQxLjYgMTEuOCAxNDEuMSAxMi4zIDE0MS4xIDEyLjlDMTQxLjEgMTMuNSAxNDEuNiAxNCAxNDIuMiAxNEMxNDIuOCAxNCAxNDMuMyAxMy41IDE0My4zIDEyLjlaIiBmaWxsPSIjRkY2OTAwIi8+CjxwYXRoIG9wYWNpdHk9IjAuNiIgZD0iTTE4OS4xIDI2LjJDMTg5LjEgMjMuMyAxOTEuNCAyMSAxOTQuMyAyMUMxOTcuMiAyMSAxOTkuNSAyMy4zIDE5OS41IDI2LjJDMTk5LjUgMjkuMSAxOTcuMiAzMS40IDE5NC4zIDMxLjRDMTkxLjQgMzEuNCAxODkuMSAyOS4xIDE4OS4xIDI2LjJaTTE5NS44IDI2LjJDMTk1LjggMjUuNCAxOTUuMiAyNC44IDE5NC40IDI0LjhDMTkzLjYgMjQuOCAxOTMgMjUuNCAxOTMgMjYuMkMxOTMgMjcgMTkzLjYgMjcuNiAxOTQuNCAyNy42QzE5NS4yIDI3LjYgMTk1LjggMjcgMTk1LjggMjYuMloiIGZpbGw9IiNGRjY5MDAiLz4KPHBhdGggb3BhY2l0eT0iMC42IiBkPSJNNjguNSAyNS40QzcwLjEgMjUuNCA3MS41IDI0LjEgNzEuNSAyMi40VjExLjVDNzEuNSA5LjkgNzAuMiA4LjUgNjguNSA4LjVDNjYuOSA4LjUgNjUuNSA5LjggNjUuNSAxMS41VjIyLjRDNjUuNSAyNC4xIDY2LjggMjUuNCA2OC41IDI1LjRaIiBmaWxsPSIjRkY2OTAwIi8+CjxnIG9wYWNpdHk9IjAuNiI+CjxwYXRoIG9wYWNpdHk9IjAuNiIgZD0iTTEyNS40IDE5LjdDMTI1LjQgMjEuNCAxMjQuMSAyMi43IDEyMi40IDIyLjdDMTIwLjcgMjIuNyAxMTkuNCAyMS40IDExOS40IDE5LjdDMTE5LjQgMTggMTIwLjcgMTYuNyAxMjIuNCAxNi43QzEyNC4xIDE2LjcgMTI1LjQgMTguMSAxMjUuNCAxOS43WiIgZmlsbD0iI0ZGNjkwMCIvPgo8L2c+CjxwYXRoIGQ9Ik0yMTQuMSAwVjQuNkMyMTQuMSA2LjIgMjE1LjQgNy42IDIxNy4xIDcuNkMyMTguOCA3LjYgMjIwLjEgNi4zIDIyMC4xIDQuNlYwSDIxNC4xWiIgZmlsbD0iIzY3NjdFQyIvPgo8cGF0aCBkPSJNMTMyIDEyLjlDMTMyIDcuMzAwMDEgMTM2LjYgMi43MDAwMSAxNDIuMiAyLjcwMDAxQzE0Ny44IDIuNzAwMDEgMTUyLjQgNy4zMDAwMSAxNTIuNCAxMi45QzE1Mi40IDE4LjUgMTQ3LjggMjMuMSAxNDIuMiAyMy4xQzEzNi42IDIzLjEgMTMyIDE4LjUgMTMyIDEyLjlaTTE0OS42IDEyLjlDMTQ5LjYgOC44MDAwMSAxNDYuMyA1LjUwMDAxIDE0Mi4yIDUuNTAwMDFDMTM4LjEgNS41MDAwMSAxMzQuOCA4LjgwMDAxIDEzNC44IDEyLjlDMTM0LjggMTcgMTM4LjEgMjAuMyAxNDIuMiAyMC4zQzE0Ni4zIDIwLjMgMTQ5LjYgMTcgMTQ5LjYgMTIuOVoiIGZpbGw9IiNGRjY5MDAiLz4KPHBhdGggZD0iTTEzOC40IDEyLjlDMTM4LjQgMTAuOCAxNDAuMSA5IDE0Mi4zIDlDMTQ0LjQgOSAxNDYuMiAxMC43IDE0Ni4yIDEyLjlDMTQ2LjIgMTUuMSAxNDQuNSAxNi44IDE0Mi4zIDE2LjhDMTQwLjEgMTYuOCAxMzguNCAxNSAxMzguNCAxMi45Wk0xNDMuMyAxMi45QzE0My4zIDEyLjMgMTQyLjggMTEuOCAxNDIuMiAxMS44QzE0MS42IDExLjggMTQxLjEgMTIuMyAxNDEuMSAxMi45QzE0MS4xIDEzLjUgMTQxLjYgMTQgMTQyLjIgMTRDMTQyLjggMTQgMTQzLjMgMTMuNSAxNDMuMyAxMi45WiIgZmlsbD0iI0ZGNjkwMCIvPgo8cGF0aCBkPSJNMTg5LjEgMjYuMkMxODkuMSAyMy4zIDE5MS40IDIxIDE5NC4zIDIxQzE5Ny4yIDIxIDE5OS41IDIzLjMgMTk5LjUgMjYuMkMxOTkuNSAyOS4xIDE5Ny4yIDMxLjQgMTk0LjMgMzEuNEMxOTEuNCAzMS40IDE4OS4xIDI5LjEgMTg5LjEgMjYuMlpNMTk1LjggMjYuMkMxOTUuOCAyNS40IDE5NS4yIDI0LjggMTk0LjQgMjQuOEMxOTMuNiAyNC44IDE5MyAyNS40IDE5MyAyNi4yQzE5MyAyNyAxOTMuNiAyNy42IDE5NC40IDI3LjZDMTk1LjIgMjcuNiAxOTUuOCAyNyAxOTUuOCAyNi4yWiIgZmlsbD0iI0ZGNjkwMCIvPgo8cGF0aCBkPSJNNjguNSAyNS40QzcwLjEgMjUuNCA3MS41IDI0LjEgNzEuNSAyMi40VjExLjVDNzEuNSA5LjkgNzAuMiA4LjUgNjguNSA4LjVDNjYuOSA4LjUgNjUuNSA5LjggNjUuNSAxMS41VjIyLjRDNjUuNSAyNC4xIDY2LjggMjUuNCA2OC41IDI1LjRaIiBmaWxsPSIjRkY2OTAwIi8+CjxwYXRoIGQ9Ik0xMjUuNCAxOS43QzEyNS40IDIxLjQgMTI0LjEgMjIuNyAxMjIuNCAyMi43QzEyMC43IDIyLjcgMTE5LjQgMjEuNCAxMTkuNCAxOS43QzExOS40IDE4IDEyMC43IDE2LjcgMTIyLjQgMTYuN0MxMjQuMSAxNi43IDEyNS40IDE4LjEgMTI1LjQgMTkuN1oiIGZpbGw9IiNGRjY5MDAiLz4KPHBhdGggZD0iTTAgMFY4LjRDMCAxMCAxLjMgMTEuNCAzIDExLjRDNC43IDExLjQgNiAxMC4xIDYgOC40VjBIMFoiIGZpbGw9IiNGRkIzMDAiLz4KPHBhdGggZD0iTTEzMiAxMi45QzEzMiA3LjMwMDAxIDEzNi42IDIuNzAwMDEgMTQyLjIgMi43MDAwMUMxNDcuOCAyLjcwMDAxIDE1Mi40IDcuMzAwMDEgMTUyLjQgMTIuOUMxNTIuNCAxOC41IDE0Ny44IDIzLjEgMTQyLjIgMjMuMUMxMzYuNiAyMy4xIDEzMiAxOC41IDEzMiAxMi45Wk0xNDkuNiAxMi45QzE0OS42IDguODAwMDEgMTQ2LjMgNS41MDAwMSAxNDIuMiA1LjUwMDAxQzEzOC4xIDUuNTAwMDEgMTM0LjggOC44MDAwMSAxMzQuOCAxMi45QzEzNC44IDE3IDEzOC4xIDIwLjMgMTQyLjIgMjAuM0MxNDYuMyAyMC4zIDE0OS42IDE3IDE0OS42IDEyLjlaIiBmaWxsPSIjRUY1Mjg1Ii8+CjxwYXRoIGQ9Ik0xMzguNCAxMi45QzEzOC40IDEwLjggMTQwLjEgOSAxNDIuMyA5QzE0NC40IDkgMTQ2LjIgMTAuNyAxNDYuMiAxMi45QzE0Ni4yIDE1LjEgMTQ0LjUgMTYuOCAxNDIuMyAxNi44QzE0MC4xIDE2LjggMTM4LjQgMTUgMTM4LjQgMTIuOVpNMTQzLjMgMTIuOUMxNDMuMyAxMi4zIDE0Mi44IDExLjggMTQyLjIgMTEuOEMxNDEuNiAxMS44IDE0MS4xIDEyLjMgMTQxLjEgMTIuOUMxNDEuMSAxMy41IDE0MS42IDE0IDE0Mi4yIDE0QzE0Mi44IDE0IDE0My4zIDEzLjUgMTQzLjMgMTIuOVoiIGZpbGw9IiNGRkIzMDAiLz4KPHBhdGggZD0iTTE4OS4xIDI2LjJDMTg5LjEgMjMuMyAxOTEuNCAyMSAxOTQuMyAyMUMxOTcuMiAyMSAxOTkuNSAyMy4zIDE5OS41IDI2LjJDMTk5LjUgMjkuMSAxOTcuMiAzMS40IDE5NC4zIDMxLjRDMTkxLjQgMzEuNCAxODkuMSAyOS4xIDE4OS4xIDI2LjJaTTE5NS44IDI2LjJDMTk1LjggMjUuNCAxOTUuMiAyNC44IDE5NC40IDI0LjhDMTkzLjYgMjQuOCAxOTMgMjUuNCAxOTMgMjYuMkMxOTMgMjcgMTkzLjYgMjcuNiAxOTQuNCAyNy42QzE5NS4yIDI3LjYgMTk1LjggMjcgMTk1LjggMjYuMloiIGZpbGw9IiNGRkIzMDAiLz4KPHBhdGggZD0iTTY4LjUgMjUuNEM3MC4xIDI1LjQgNzEuNSAyNC4xIDcxLjUgMjIuNFYxMS41QzcxLjUgOS45IDcwLjIgOC41IDY4LjUgOC41QzY2LjkgOC41IDY1LjUgOS44IDY1LjUgMTEuNVYyMi40QzY1LjUgMjQuMSA2Ni44IDI1LjQgNjguNSAyNS40WiIgZmlsbD0iI0ZGNjkwMCIvPgo8cGF0aCBkPSJNNzUuOTAwMiA0NS42QzcwLjMwMDIgNDUuNiA2NS43MDAyIDUwLjIgNjUuNzAwMiA1NS44SDY4LjUwMDJINzIuMDAwMkg3NC44MDAySDc2LjkwMDJINzkuNzAwMkg4My4yMDAySDg2LjAwMDJDODYuMTAwMiA1MC4yIDgxLjUwMDIgNDUuNiA3NS45MDAyIDQ1LjZaIiBmaWxsPSIjMDBDOUIyIi8+CjxwYXRoIGQ9Ik0yMTMuNiA1NlY1MS44QzIxMy42IDUwLjEgMjEyLjIgNDguNyAyMTAuNSA0OC43QzIwOC44IDQ4LjcgMjA3LjQgNTAuMSAyMDcuNCA1MS44VjU2SDIxMy42WiIgZmlsbD0iI0ZGNjkwMCIvPgo8cGF0aCBkPSJNMTI1LjQgMTkuN0MxMjUuNCAyMS40IDEyNC4xIDIyLjcgMTIyLjQgMjIuN0MxMjAuNyAyMi43IDExOS40IDIxLjQgMTE5LjQgMTkuN0MxMTkuNCAxOCAxMjAuNyAxNi43IDEyMi40IDE2LjdDMTI0LjEgMTYuNyAxMjUuNCAxOC4xIDEyNS40IDE5LjdaIiBmaWxsPSIjMDBDOUIyIi8+CjxwYXRoIGQ9Ik0xNzUuNSAwVjYuNUMxNzUuNSA4LjEgMTc2LjggOS41IDE3OC41IDkuNUMxODAuMSA5LjUgMTgxLjUgOC4yIDE4MS41IDYuNVYwSDE3NS41WiIgZmlsbD0iI0ZGNjkwMCIvPgo8cGF0aCBkPSJNNDMuNjAwNCAxMi45QzQ1LjIwMDQgMTEuMyA0Ni4xMDA0IDkuMSA0Ni4xMDA0IDYuOEM0Ni4xMDA0IDQuNSA0NS4yMDA0IDIuMyA0My42MDA0IDAuN0w0My4wMDA0IDBIMzguODAwNEMzOS4yMDA0IDAuOCAzOS43MDA0IDEuNSA0MC40MDA0IDIuMkw0MS4zMDA0IDMuMUM0Mi4zMDA0IDQuMSA0Mi44MDA0IDUuNCA0Mi44MDA0IDYuOEM0Mi44MDA0IDguMiA0Mi4zMDA0IDkuNSA0MS4zMDA0IDEwLjVMNDAuOTAwNCAxMC45QzM5LjMwMDQgMTIuNSAzOC40MDA0IDE0LjcgMzguNDAwNCAxN0MzOC40MDA0IDE5LjMgMzkuMzAwNCAyMS41IDQwLjkwMDQgMjMuMUM0MS42MDA0IDIzLjggNDIuNjAwNCAyMy44IDQzLjMwMDQgMjMuMUM0NC4wMDA0IDIyLjQgNDQuMDAwNCAyMS40IDQzLjMwMDQgMjAuN0M0Mi4zMDA0IDE5LjcgNDEuODAwNCAxOC40IDQxLjgwMDQgMTdDNDEuODAwNCAxNS42IDQyLjMwMDQgMTQuMyA0My4zMDA0IDEzLjNMNDMuNjAwNCAxMi45WiIgZmlsbD0iIzY3NjdFQyIvPgo8cGF0aCBkPSJNMTQ1LjIgNTZWNTAuOVY0MS40QzE0NS4yIDM5LjggMTQzLjkgMzguNSAxNDIuMyAzOC41QzE0MC43IDM4LjUgMTM5LjQgMzkuOCAxMzkuNCA0MS40VjUwLjlWNTZIMTQ1LjJaIiBmaWxsPSIjNjc2N0VDIi8+CjxwYXRoIGQ9Ik0xNzYuNSA1Mi4xQzE3Ni41IDUzLjUgMTc2IDU0LjggMTc1IDU1LjhMMTc0LjkgNTUuOUgxNzkuMUMxNzkuNyA1NC43IDE4MCA1My40IDE4MCA1Mi4xQzE4MCA0OS44IDE3OS4xIDQ3LjYgMTc3LjUgNDZDMTc2LjggNDUuMyAxNzUuOCA0NS4zIDE3NS4xIDQ2QzE3NC40IDQ2LjcgMTc0LjQgNDcuNyAxNzUuMSA0OC40QzE3NiA0OS40IDE3Ni41IDUwLjcgMTc2LjUgNTIuMVoiIGZpbGw9IiMwMEM5QjIiLz4KPHBhdGggZD0iTTExNy45IDU2VjM2LjVDMTE3LjkgMzQuOSAxMTYuNiAzMy41IDExNC45IDMzLjVDMTEzLjMgMzMuNSAxMTEuOSAzNC44IDExMS45IDM2LjVWNTZIMTE3LjlaIiBmaWxsPSIjRkY2OTAwIi8+CjxwYXRoIGQ9Ik0zNiA1Ni4xVjQ0LjNDMzYgNDIuNyAzNC43IDQxLjMgMzMgNDEuM0MzMS40IDQxLjMgMzAgNDIuNiAzMCA0NC4zVjU2LjFIMzZaIiBmaWxsPSIjRkY2OTAwIi8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDAiPgo8cmVjdCB3aWR0aD0iMjIwLjEiIGhlaWdodD0iNTYuMSIgZmlsbD0id2hpdGUiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K')`;
     }
 
+    renderFooter() {
+        if (this.locale === 'ja-JP') {
+            return html`
+                <p class="color-grey">
+                    <a @click=${(e: Event) => this._changeView(e, 'forgot-username')} href="">${_('USERNAME_LOWERCASE', 'username')}</a> ${_('OR', 'or')} 
+                    <a @click=${(e: Event) => this._changeView(e, 'forgot-password')} href="">${_('PASSWORD_LOWERCASE', 'password')}</a>
+                    ${_('FORGOT_YOUR', 'Forgot your')}${_('QUESTION_MARK', '?')}
+                </p>
+                <p class="color-grey sign-up">
+                    <span>
+                        <a @click=${(e: Event) => this._changeView(e, 'username')} href="">${_('SIGN_UP', 'Sign up')}</a>
+                        ${_('NO_ACCOUNT', 'No account?')}
+                    </span>
+                    <a href="https://world.kano.me/privacy-policy" class="privacy" target="_blank">${_('PRIVACY_POLICY', 'Privacy Policy')}</a>
+                </p>
+        `
+        } else {
+            return html`
+                <p class="color-grey">
+                    ${_('FORGOT_YOUR', 'Forgot your')} 
+                    <a @click=${(e: Event) => this._changeView(e, 'forgot-username')} href="">${_('USERNAME_LOWERCASE', 'username')}</a> ${_('OR', 'or')} 
+                    <a @click=${(e: Event) => this._changeView(e, 'forgot-password')} href="">${_('PASSWORD_LOWERCASE', 'password')}</a>${_('QUESTION_MARK', '?')}
+                </p>
+                <p class="color-grey sign-up">
+                    <span>
+                        ${_('NO_ACCOUNT', 'No account?')} 
+                        <a @click=${(e: Event) => this._changeView(e, 'username')} href="">${_('SIGN_UP', 'Sign up')}</a>!&nbsp;
+                    </span>
+                    <a href="https://world.kano.me/privacy-policy" class="privacy" target="_blank">${_('PRIVACY_POLICY', 'Privacy Policy')}</a>
+                </p>
+            `
+        }
+    }
+
     render() {
         return html`
          ${templateContent(button)}
@@ -183,17 +218,7 @@ export class Login extends LitElement {
                     <div class="error-message">${this.error}</div>
                 </div>
                 <div class="footer">
-                    <p class="color-grey">${_('FORGOT_YOUR', 'Forgot your')} 
-                        <a @click=${(e: Event) => this._changeView(e, 'forgot-username')} href="">${_('USERNAME_LOWERCASE', 'username')}</a> ${_('OR', 'or')} 
-                        <a @click=${(e: Event) => this._changeView(e, 'forgot-password')} href="">${_('PASSWORD_LOWERCASE', 'password')}</a>${_('QUESTION_MARK', '?')}
-                    </p>
-                    <p class="color-grey sign-up">
-                        <span>
-                            ${_('NO_ACCOUNT', 'No account?')} 
-                            <a @click=${(e: Event) => this._changeView(e, 'username')} href="">${_('SIGN_UP', 'Sign up')}</a>!&nbsp;
-                        </span>
-                        <a href="https://world.kano.me/privacy-policy" class="privacy" target="_blank">${_('PRIVACY_POLICY', 'Privacy Policy')}</a>
-                    </p>
+                    ${this.renderFooter()}
                 </div> 
             </form>
         </div>
