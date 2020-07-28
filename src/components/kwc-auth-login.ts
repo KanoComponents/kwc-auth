@@ -169,7 +169,7 @@ export class Login extends LitElement {
     }
 
     renderFooter() {
-        if (this.locale === 'ja-JP') {
+        if (this.locale === 'ja-jp') {
             return html`
                 <div class="footer footer--ja">
                     <p class="color-grey">
