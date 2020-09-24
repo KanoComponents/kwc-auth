@@ -29,12 +29,12 @@ const headerImage = `url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjIxIiBoZWln
 
 @customElement('kwc-auth-example')
 export class AuthView extends LitElement {
-    
+
     @property ({type: Object})
     public view : View = { id: '' };
-    
+
     public views : Map<string, View> = new Map<string, View>();
-    
+
     @property ({type: String})
     public headerText : string = '';
 
@@ -189,6 +189,7 @@ export class AuthView extends LitElement {
                 width: 420px;
                 margin: 0 auto;
                 box-sizing: border-box;
+                padding: 0 10px;
             }
             header h3,
             header img {
@@ -354,7 +355,7 @@ export class AuthView extends LitElement {
                 return html`
                     ${this.headerTemplate()}
                     <div class="page-content page-content--${this.view.id}">
-                        <kwc-auth 
+                        <kwc-auth
                             .view='${this.view.id}'
                             .locale='${this.locale}'
                             .allowExit=${this.allowExit}
@@ -427,14 +428,14 @@ export class AuthView extends LitElement {
             return this.getActions().checkUsernameAvailability(e.detail)
                 .then(() => this.changeTemplate('password'))
                 .catch((e) => this.displayError(e.message, (el) => el.username));
-        });        
+        });
     }
 
     handleSubmitPassword() {
         return this.wrapTask(() => {
             return new Promise((resolve) => setTimeout(resolve, 500))
                 .then(() => this.changeTemplate('email'))
-        });        
+        });
     }
 
     handleLogin(e: CustomEvent) {

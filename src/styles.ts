@@ -145,7 +145,6 @@ label {
 .input-wrapper {
     position: relative;
 }
-
 .link-wrapper a.privacy {
     margin-bottom: 0px;
     font-weight: bold;
@@ -166,8 +165,9 @@ label {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin: 16px 0 12px;
     height: 32px;
+    margin: 16px 0 12px;
+    padding: 0 10px;
     font-size: 14px;
 }
 .link-wrapper__info {

@@ -7,7 +7,7 @@ import { generateVerb, generateNoun } from './names.js';
 import { styles } from '../styles.js';
 
 @customElement('kwc-auth-username')
-export class UsernameInput extends SingleInputElement {    
+export class UsernameInput extends SingleInputElement {
     constructor() {
         super();
         this.id = 'username';
@@ -124,13 +124,16 @@ export class UsernameInput extends SingleInputElement {
                     animation-fill-mode: backwards;
                 }
                 #name__third {
-                    max-width: 8px; 
+                    max-width: 8px;
+                }
+                .input-wrapper {
+                    padding: 0 10px;
                 }
                 .button-wrapper {
                     position: relative;
                     margin-top: 20px;
+                    padding: 0 10px;
                 }
-
                 .button-wrapper button {
                     margin: 0;
                 }
