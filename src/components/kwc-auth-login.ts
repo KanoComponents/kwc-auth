@@ -76,7 +76,7 @@ export class Login extends LitElement {
                     text-align: center;
                 }
                 form {
-                    padding: 15px 30px;
+                    padding: 15px 20px;
                     display: flex;
                     flex-direction: column;
                     flex-grow: 1;
@@ -131,20 +131,20 @@ export class Login extends LitElement {
     @property({ type: String }) locale = '';
     @property({ type: String }) logo = '';
     @property({ type: String }) loginGlyph: string;
-    
+
     @query('#username')
     private usernameInput? : HTMLInputElement;
-    
+
      /**
       * Returns the current value of the username field or an empty string
       */
     get username() {
         return this.usernameInput ? this.usernameInput.value : '';
     }
-    
+
     @query('#password')
     private passwordInput? : HTMLInputElement;
-     
+
      /**
      * Returns the current value of the password field or an empty string
      */
@@ -173,7 +173,7 @@ export class Login extends LitElement {
             return html`
                 <div class="footer footer--ja">
                     <p class="color-grey">
-                        <a @click=${(e: Event) => this._changeView(e, 'forgot-username')} href="">${_('USERNAME_LOWERCASE', 'username')}</a> ${_('OR', 'or')} 
+                        <a @click=${(e: Event) => this._changeView(e, 'forgot-username')} href="">${_('USERNAME_LOWERCASE', 'username')}</a> ${_('OR', 'or')}
                         <a @click=${(e: Event) => this._changeView(e, 'forgot-password')} href="">${_('PASSWORD_LOWERCASE', 'password')}</a>
                         ${_('FORGOT_YOUR', 'Forgot your')}${_('QUESTION_MARK', '?')}
                     </p>
@@ -190,13 +190,13 @@ export class Login extends LitElement {
             return html`
                 <div class="footer">
                     <p class="color-grey">
-                        ${_('FORGOT_YOUR', 'Forgot your')} 
-                        <a @click=${(e: Event) => this._changeView(e, 'forgot-username')} href="">${_('USERNAME_LOWERCASE', 'username')}</a> ${_('OR', 'or')} 
+                        ${_('FORGOT_YOUR', 'Forgot your')}
+                        <a @click=${(e: Event) => this._changeView(e, 'forgot-username')} href="">${_('USERNAME_LOWERCASE', 'username')}</a> ${_('OR', 'or')}
                         <a @click=${(e: Event) => this._changeView(e, 'forgot-password')} href="">${_('PASSWORD_LOWERCASE', 'password')}</a>${_('QUESTION_MARK', '?')}
                     </p>
                     <p class="color-grey sign-up">
                         <span>
-                            ${_('NO_ACCOUNT', 'No account?')} 
+                            ${_('NO_ACCOUNT', 'No account?')}
                             <a @click=${(e: Event) => this._changeView(e, 'username')} href="">${_('SIGN_UP', 'Sign up')}</a>!&nbsp;
                         </span>
                         <a href="https://world.kano.me/privacy-policy" class="privacy" target="_blank">${_('PRIVACY_POLICY', 'Privacy Policy')}</a>
@@ -230,7 +230,7 @@ export class Login extends LitElement {
                     <button class="btn l" type="submit" ?disabled=${this.disabled}>${_('LOGIN', 'Login')}</button>
                     <div class="error-message">${this.error}</div>
                 </div>
-                ${this.renderFooter()} 
+                ${this.renderFooter()}
             </form>
         </div>
     `;
@@ -243,14 +243,14 @@ export class Login extends LitElement {
 
     _submit(e: Event) {
         e.preventDefault();
-        
+
         this.dispatchEvent(new CustomEvent('submit', {
             detail: {
                 username: this.username,
                 password: this.password,
             },
             bubbles: true,
-            composed: true, 
+            composed: true,
         }))
     }
 
@@ -266,5 +266,5 @@ export class Login extends LitElement {
     togglePassword() {
         this.showPassword = !this.showPassword;
     }
-    
+
 }

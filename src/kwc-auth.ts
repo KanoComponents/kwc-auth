@@ -48,7 +48,7 @@ export class KwcAuth extends LitElement {
     @property({ type: String }) logo = 'kano';
     @property({ type: String }) backgroundGlyph = 'shapesGlyph';
     @property({ type: Boolean }) allowExit = false;
-    
+
     @property({ type: Object }) form: Form = {
         username: '',
         password: '',
@@ -165,31 +165,31 @@ export class KwcAuth extends LitElement {
                         .disabled=${this.loading}
                         .locale=${this.locale}
                         @submit=${this.handleForgotEmail}
-                    ></kwc-auth-forgot-email>                                                              
-                    `; 
+                    ></kwc-auth-forgot-email>
+                    `;
             case 'forgot-password':
                 return html`
                     <kwc-auth-forgot-password
                         .disabled=${this.loading}
                         .locale=${this.locale}
                         @submit=${this.handleForgotPassword}
-                    ></kwc-auth-forgot-password>                                                              
-                    `; 
+                    ></kwc-auth-forgot-password>
+                    `;
             case 'forgot-username':
                 return html`
                     <kwc-auth-forgot-username
                         .disabled=${this.loading}
                         .locale=${this.locale}
                         @submit=${this.handleForgotUsername}
-                    ></kwc-auth-forgot-username>                                                              
-                    `; 
+                    ></kwc-auth-forgot-username>
+                    `;
             case 'success':
                 return html`
                     <kwc-auth-successful-signup
                         .locale=${this.locale}
                         @submit=${this.handleFinishedFlow}
                         @resend-email=${this.handleResendEmail}
-                    ></kwc-auth-successful-signup>                                                              
+                    ></kwc-auth-successful-signup>
                     `;
             default:
                 return html`
