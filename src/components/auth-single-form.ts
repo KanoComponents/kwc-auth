@@ -7,7 +7,6 @@ import { _ } from '@kano/i18n/dist/index.js';
 import { validateUsername, validatePassword, validateEmail, validateRegion, validateForgotPassword } from '../utils/validation.js';
 import { templateContent } from '../utils/template-content.js';
 import { styles } from '../styles.js';
-import * as icons from '../icons.js';
 
 export interface SubmitDetails {
     detail: EventDetail;
@@ -77,7 +76,6 @@ export class SingleInputElement extends LitElement {
             </div>
             <div class="link-wrapper">
                 <div class="link-wrapper__info">
-                    <img src=${icons.kano} class="kano-logo" />
                     <a href="https://world.kano.me/privacy-policy" class="privacy" target="_blank">${_('PRIVACY_POLICY', 'Privacy Policy')}</a>
                 </div>
                 <p ?hidden=${this.hideLogin}>${this.getLoginPromptMessage()} <a href="#" @click=${this.handleLoginClick}>${_('AUTH_LOGIN', 'Login')}</a></p>
