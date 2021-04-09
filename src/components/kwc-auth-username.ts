@@ -68,7 +68,7 @@ export class UsernameInput extends SingleInputElement {
                     justify-content: center;
                     align-items: center;
                     position: relative;
-                    font-weight: bold;
+                    font-weight: 500;
                     flex: 1;
                     border-radius: 6px;
                     border: 1px solid var(--color-stone);
