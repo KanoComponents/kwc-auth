@@ -43,9 +43,6 @@ export class UsernameInput extends SingleInputElement {
                     height: 48px;
                     margin-bottom: 4px;
                 }
-                #input {
-                    font-size: 18px;
-                }
                 .generator-wrapper {
                     padding: 11px 12px 6px;
                     border: 1px solid var(--color-porcelain);
