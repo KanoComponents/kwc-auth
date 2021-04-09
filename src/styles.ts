@@ -88,7 +88,7 @@ input {
     display: block;
     outline: none;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 500;
     margin: 6px 0 15px;
 }
 
@@ -188,7 +188,7 @@ label {
 
 .intro {
     font-weight: bold;
-    font-size: 18px;
+    font-size: 16px;
     color: var(--color-kano-orange);
 }
 .password__username {
@@ -208,7 +208,8 @@ label {
     border-radius: 6px;
 }
 .instruction {
-    font-size: 20px;
+    font-size: 16px;
+    font-weight: 500;
     margin: 6px 0px 16px;
 }
 .input-title {
