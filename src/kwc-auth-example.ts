@@ -61,6 +61,7 @@ export class AuthView extends LitElement {
             css`
             :host {
                 display: block;
+                font-family: "proxima", Helvetica, Arial, sans-serif;
             }
             kwc-auth {
                 height: 100%;
@@ -72,7 +73,6 @@ export class AuthView extends LitElement {
             p,
             a,
             input {
-                font-family: 'Bariol', sans-serif;
                 line-height: 1em;
             }
 
@@ -103,7 +103,6 @@ export class AuthView extends LitElement {
             }
 
             button {
-                font-family: var(--font-body);
                 text-align: center;
                 margin-top: 20px;
             }

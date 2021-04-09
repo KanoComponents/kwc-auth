@@ -5,7 +5,7 @@ import '@kano/styles/color.js';
 export const styles = css`
 
 :host {
-    font-family: var(--font-body);
+    font-family: "proxima", Helvetica, Arial, sans-serif;
     display: flex;
     flex-direction: column;
     padding: 0;
@@ -40,7 +40,7 @@ h4,
 p,
 a,
 input {
-    font-family: var(--font-body);
+    font-family: "proxima", Helvetica, Arial, sans-serif;
     line-height: 1.25em;
 }
 
@@ -79,7 +79,7 @@ a {
 }
 
 button {
-    font-family: var(--font-body);
+    font-family: "proxima", Helvetica, Arial, sans-serif;
     text-align: center;
     margin-top: 20px;
 }
@@ -231,6 +231,7 @@ label {
 .button-wrapper button {
     min-width: min-content;
     margin: 0;
+    font-family: "proxima", Helvetica, Arial, sans-serif;
 }
 .button-wrapper__exit {
     font-weight: bold;
